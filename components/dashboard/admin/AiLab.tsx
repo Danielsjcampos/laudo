@@ -16,11 +16,53 @@ const AiLab: React.FC = () => {
 
     const runDiagnosticTest = async () => {
         setIsProcessing(true);
+        const apiKey = process.env.API_KEY;
+
+        if (!apiKey) {
+            addToast('Erro: API Key não configurada. Verifique o arquivo .env.local', 'error');
+            setIsProcessing(false);
+            return;
+        }
+
         try {
-            const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+            let imagePart = null;
+            if (testImage) {
+                try {
+                    const imgResponse = await fetch(testImage);
+                    if (!imgResponse.ok) throw new Error("Failed to fetch image");
+                    const arrayBuffer = await imgResponse.arrayBuffer();
+
+                    let binary = '';
+                    const bytes = new Uint8Array(arrayBuffer);
+                    const len = bytes.byteLength;
+                    for (let i = 0; i < len; i++) {
+                        binary += String.fromCharCode(bytes[i]);
+                    }
+                    const base64 = window.btoa(binary);
+
+                    imagePart = {
+                        inlineData: {
+                            data: base64,
+                            mimeType: imgResponse.headers.get('content-type') || 'image/png'
+                        }
+                    };
+                } catch (e) {
+                    console.error("Failed to fetch image", e);
+                    addToast('Falha ao baixar imagem para análise. Verifique a URL.', 'error');
+                    setIsProcessing(false);
+                    return;
+                }
+            }
+
+            const ai = new GoogleGenAI({ apiKey });
+
+            const parts: any[] = [];
+            if (systemPrompt) parts.push({ text: `CONTEXTO DE TREINAMENTO: ${systemPrompt}` });
+            if (imagePart) parts.push(imagePart);
+
             const response = await ai.models.generateContent({
-                model: 'gemini-3-pro-preview',
-                contents: [{ text: `CONTEXTO DE TREINAMENTO: ${systemPrompt}\n\nURL DA IMAGEM PARA ANÁLISE: ${testImage}` }],
+                model: 'gemini-2.0-flash-thinking-exp-01-21',
+                contents: [{ role: 'user', parts: parts }],
                 config: { 
                     temperature: temp, 
                     thinkingConfig: { thinkingBudget: 12000 } 
@@ -28,9 +70,9 @@ const AiLab: React.FC = () => {
             });
             setResult(response.text || 'Sem resultado');
             addToast('Otimização do modelo concluída!', 'success');
-        } catch (error) {
+        } catch (error: any) {
             console.error(error);
-            addToast('Falha crítica no processamento da IA.', 'error');
+            addToast(`Falha crítica no processamento da IA: ${error.message || error}`, 'error');
         } finally {
             setIsProcessing(false);
         }
@@ -45,7 +87,7 @@ const AiLab: React.FC = () => {
                     </div>
                     <div>
                         <h1 className="text-3xl font-black text-gray-900">IA Sandbox Laboratory</h1>
-                        <p className="text-gray-500 font-medium">Calibração de Modelos Gemini 3 Pro para Diagnósticos de Visão</p>
+                        <p className="text-gray-500 font-medium">Calibração de Modelos Gemini 2.0 Flash Thinking para Diagnósticos de Visão</p>
                     </div>
                 </div>
                 <div className="flex space-x-3">
@@ -124,7 +166,7 @@ const AiLab: React.FC = () => {
                                         </div>
                                         <div className="text-center">
                                             <p className="font-bold text-brand-blue-600 animate-pulse">Executando Inferência Profunda...</p>
-                                            <p className="text-[10px] text-gray-400 uppercase font-black mt-2 tracking-widest">GEMINI_MULTIMODAL_V3</p>
+                                            <p className="text-[10px] text-gray-400 uppercase font-black mt-2 tracking-widest">GEMINI_MULTIMODAL_V2_FLASH</p>
                                         </div>
                                     </div>
                                 ) : result ? (

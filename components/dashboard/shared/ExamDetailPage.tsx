@@ -34,11 +34,18 @@ const ExamDetailPage: React.FC<ExamDetailPageProps> = ({ exam, userRole, onBack,
 
     const generateAIDraft = async () => {
         setIsGenerating(true);
+        const apiKey = process.env.API_KEY;
+        if (!apiKey) {
+            addToast('Erro: API Key não configurada.', 'error');
+            setIsGenerating(false);
+            return;
+        }
+
         try {
-            const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+            const ai = new GoogleGenAI({ apiKey });
             const response = await ai.models.generateContent({
-                model: 'gemini-3-pro-preview',
-                contents: [{ text: `Analise o exame: ${exam.examType} para o paciente ${exam.patientName}. Formate os insights em [INSIGHTS_START]...[INSIGHTS_END] e o rascunho em [DRAFT_START]...[DRAFT_END]` }],
+                model: 'gemini-2.0-flash-thinking-exp-01-21',
+                contents: [{ role: 'user', parts: [{ text: `Analise o exame: ${exam.examType} para o paciente ${exam.patientName}. Formate os insights em [INSIGHTS_START]...[INSIGHTS_END] e o rascunho em [DRAFT_START]...[DRAFT_END]` }] }],
                 config: { temperature: 0.2, thinkingConfig: { thinkingBudget: 4000 } }
             });
             
@@ -57,8 +64,9 @@ const ExamDetailPage: React.FC<ExamDetailPageProps> = ({ exam, userRole, onBack,
             setReportText(draft);
             setAiInsights(insights);
             addToast('Análise de IA concluída!', 'success');
-        } catch (error) {
-            addToast('Erro ao processar análise inteligente.', 'error');
+        } catch (error: any) {
+            console.error(error);
+            addToast(`Erro ao processar análise inteligente: ${error.message || error}`, 'error');
         } finally {
             setIsGenerating(false);
         }
@@ -121,7 +129,7 @@ const ExamDetailPage: React.FC<ExamDetailPageProps> = ({ exam, userRole, onBack,
                                         <BrainIcon className="h-6 w-6 text-brand-blue-600" />
                                     </div>
                                     <div>
-                                        <h3 className="font-black text-gray-900 leading-tight">Copiloto Gemini 3 Pro</h3>
+                                        <h3 className="font-black text-gray-900 leading-tight">Copiloto Gemini 2.0 Flash Thinking</h3>
                                         <p className="text-[10px] text-gray-500 uppercase font-bold tracking-wider">Vision Diagnostic Suite</p>
                                     </div>
                                 </div>

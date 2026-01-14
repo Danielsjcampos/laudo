@@ -96,14 +96,14 @@ const DashboardPage: React.FC<DashboardPageProps> = (props) => {
             return <DoctorAiConsultation />;
         }
         if (currentView === 'pending_exams') {
-            return <DoctorExamsPage exams={doctorExams} onNavigateToDetail={(id) => navigateTo('exam_detail', id)} onCompleteReport={onCompleteReport} />;
+            return <DoctorExamsPage exams={doctorExams} onNavigateToDetail={(id) => navigateTo('exam_detail', id)} onCompleteReport={(id) => onCompleteReport(id, 'Concluído via listagem')} />;
         }
         if (currentView === 'financial') {
             return <DoctorFinancialPage exams={doctorExams} />;
         }
         return <DoctorOverview 
                   exams={doctorExams}
-                  onCompleteReport={onCompleteReport}
+                  onCompleteReport={(id) => onCompleteReport(id, 'Concluído via painel')}
                   onNavigateToPendingExams={() => navigateTo('pending_exams')}
                   onNavigateToDetail={(id) => navigateTo('exam_detail', id)}
                 />;

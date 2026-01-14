@@ -28,14 +28,21 @@ const DoctorAiConsultation: React.FC = () => {
 
   const handleSend = async () => {
     if (!input.trim() || isLoading) return;
+
+    const apiKey = process.env.API_KEY;
+    if (!apiKey) {
+      addToast('Erro: API Key não configurada.', 'error');
+      return;
+    }
+
     const userMessage = input;
     setInput('');
     setMessages(prev => [...prev, { role: 'user', content: userMessage }]);
     setIsLoading(true);
     try {
-      const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+      const ai = new GoogleGenAI({ apiKey });
       const response = await ai.models.generateContent({
-        model: 'gemini-3-pro-preview',
+        model: 'gemini-2.0-flash',
         contents: userMessage,
         config: {
           systemInstruction: `Você é um consultor médico sênior. Responda tecnicamente para outros médicos.`,
@@ -44,6 +51,7 @@ const DoctorAiConsultation: React.FC = () => {
       });
       setMessages(prev => [...prev, { role: 'ai', content: response.text || '...' }]);
     } catch (error) {
+      console.error(error);
       addToast('Erro na conexão com IA.', 'error');
     } finally {
       setIsLoading(false);
