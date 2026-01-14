@@ -1,0 +1,8 @@
+
+{
+  "name": "Portal de Laudos Médicos",
+  "description": "Uma solução web que conecta clínicas, médicos e pacientes para facilitar o fluxo de exames e emissão de laudos médicos digitais.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
