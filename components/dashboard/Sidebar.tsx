@@ -12,6 +12,7 @@ import { BrainIcon } from '../icons/BrainIcon';
 import { WalletIcon } from '../icons/WalletIcon';
 import { ClinicIcon } from '../icons/ClinicIcon';
 import { XIcon } from '../icons/XIcon';
+import { CopyIcon } from '../icons/CopyIcon';
 
 interface SidebarProps {
   user: User;
@@ -41,6 +42,7 @@ const navLinks: Record<UserRole, { view: string; label: string; icon: React.Reac
     { view: 'marketplace', label: 'Marketplace', icon: <SparklesIcon className="h-5 w-5" /> },
     { view: 'ai_consult', label: 'Consultório IA', icon: <BrainIcon className="h-5 w-5" /> },
     { view: 'pending_exams', label: 'Meus Laudos', icon: <FileTextIcon className="h-5 w-5" /> },
+    { view: 'templates', label: 'Meus Modelos', icon: <CopyIcon className="h-5 w-5" /> },
     { view: 'financial', label: 'Meus Ganhos', icon: <WalletIcon className="h-5 w-5" /> },
   ],
   patient: [
