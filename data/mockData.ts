@@ -17,6 +17,13 @@ export interface Doctor {
     rating: number;
 }
 
+export interface ReportTemplate {
+    id: string;
+    doctorId: string;
+    title: string;
+    content: string;
+}
+
 export type ExamStatus = 'Disponível' | 'Aguardando Laudo' | 'Em Análise' | 'Concluído' | 'Recusado';
 export type PaymentStatus = 'Pendente' | 'Pago' | 'Processando';
 export type SubscriptionStatus = 'Ativa' | 'Atrasada' | 'Cancelada';
@@ -112,6 +119,65 @@ export const mockExams: Exam[] = [
     { id: 'e202', patientId: 'p2', patientName: 'Maria Oliveira', doctorAssignedId: null, doctorAssignedName: null, examType: 'Raio-X de Tórax (PA/Perfil)', specialtyRequired: 'Radiologia', dateRequested: '2024-05-25', status: 'Disponível', price: 50.00, clinicName: 'Hospital da Visão', paymentStatus: 'Pago', dicomUrl: 'https://github.com/cornerstonejs/cornerstoneWADOImageLoader/raw/master/testImages/test-unsigned.dcm' },
     { id: 'e203', patientId: 'p3', patientName: 'Carlos Pereira', doctorAssignedId: null, doctorAssignedName: null, examType: 'Eletrocardiograma de Repouso', specialtyRequired: 'Cardiologia', dateRequested: '2024-05-26', status: 'Disponível', price: 40.00, clinicName: 'Ortopedia Express', paymentStatus: 'Pendente' },
     { id: 'e204', patientId: 'p4', patientName: 'Ana Souza', doctorAssignedId: null, doctorAssignedName: null, examType: 'Tomografia Computadorizada de Abdômen', specialtyRequired: 'Radiologia', dateRequested: '2024-05-26', status: 'Disponível', price: 250.00, clinicName: 'Centro Image Diagnósticos', paymentStatus: 'Pago', dicomUrl: 'https://raw.githubusercontent.com/cornerstonejs/cornerstoneWADOImageLoader/master/testImages/CTImage.dcm' },
+];
+
+export const mockReportTemplates: ReportTemplate[] = [
+    {
+        id: 'rt1',
+        doctorId: 'd1',
+        title: 'Raio-X Tórax Normal',
+        content: `LAUDO RADIOLÓGICO
+
+EXAME: RAIO-X DE TÓRAX (PA/PERFIL)
+
+INDICAÇÃO CLÍNICA: Check-up.
+
+TÉCNICA:
+Incidências póstero-anterior e perfil.
+
+ANÁLISE:
+- Campos pleuropulmonares com transparência conservada, sem evidências de consolidações, massas ou nódulos.
+- Trama vascular com distribuição anatômica habitual.
+- Seios costofrênicos livres.
+- Cúpulas diafragmáticas com contornos regulares e posição habitual.
+- Índice cardiotorácico dentro dos limites da normalidade.
+- Aorta e mediastino superior centrados e de configuração normal.
+- Estruturas ósseas da caixa torácica íntegras.
+
+CONCLUSÃO:
+Estudo radiológico do tórax dentro dos padrões da normalidade.`
+    },
+    {
+        id: 'rt2',
+        doctorId: 'd1',
+        title: 'ECG Normal',
+        content: `LAUDO ELETROCARDIOGRÁFICO
+
+RITMO: Sinusal regular.
+FREQUÊNCIA CARDÍACA: 75 bpm.
+EIXO ELÉTRICO: +60 graus.
+
+ONDAS P:
+- Duração e amplitude normais.
+- Morfologia habitual.
+
+INTERVALO PR:
+- Duração normal (0,12 - 0,20s).
+
+COMPLEXO QRS:
+- Duração normal (< 0,12s).
+- Ausência de ondas Q patológicas.
+- Progressão habitual de ondas R nas precordiais.
+
+SEGMENTO ST:
+- Isoelétrico.
+
+ONDAS T:
+- Morfologia e polaridade normais.
+
+CONCLUSÃO:
+Eletrocardiograma dentro dos limites da normalidade.`
+    }
 ];
 
 export const mockPatientCarlaExams: Exam[] = [

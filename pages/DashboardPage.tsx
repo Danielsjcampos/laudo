@@ -13,6 +13,7 @@ import ExamDetailPage from '../components/dashboard/shared/ExamDetailPage';
 import PlaceholderPage from '../components/dashboard/shared/PlaceholderPage';
 import DoctorExamsPage from '../components/dashboard/doctor/DoctorExamsPage';
 import DoctorAiConsultation from '../components/dashboard/doctor/DoctorAiConsultation';
+import ReportTemplatesManager from '../components/dashboard/doctor/ReportTemplatesManager';
 import ClinicFinancialPage from '../components/dashboard/clinic/ClinicFinancialPage';
 import DoctorFinancialPage from '../components/dashboard/doctor/DoctorFinancialPage';
 import AdminOverview from '../components/dashboard/admin/AdminOverview';
@@ -96,14 +97,17 @@ const DashboardPage: React.FC<DashboardPageProps> = (props) => {
             return <DoctorAiConsultation />;
         }
         if (currentView === 'pending_exams') {
-            return <DoctorExamsPage exams={doctorExams} onNavigateToDetail={(id) => navigateTo('exam_detail', id)} onCompleteReport={onCompleteReport} />;
+            return <DoctorExamsPage exams={doctorExams} onNavigateToDetail={(id) => navigateTo('exam_detail', id)} onCompleteReport={(id) => onCompleteReport(id, 'Concluído via listagem')} />;
+        }
+        if (currentView === 'templates') {
+            return <ReportTemplatesManager />;
         }
         if (currentView === 'financial') {
             return <DoctorFinancialPage exams={doctorExams} />;
         }
         return <DoctorOverview 
                   exams={doctorExams}
-                  onCompleteReport={onCompleteReport}
+                  onCompleteReport={(id) => onCompleteReport(id, 'Concluído via painel')}
                   onNavigateToPendingExams={() => navigateTo('pending_exams')}
                   onNavigateToDetail={(id) => navigateTo('exam_detail', id)}
                 />;

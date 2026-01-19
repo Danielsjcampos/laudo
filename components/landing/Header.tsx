@@ -12,7 +12,7 @@ const Header: React.FC<HeaderProps> = ({ onNavigateToLogin }) => {
             Laudo<span style={{ color: '#2DD4BF' }}>Digital</span>
         </div>
         
-        <nav style={{ display: 'none', md: { display: 'flex' } }}>
+        <nav className="hidden md:flex">
              {/* Simple nav, hidden on mobile for now as per minimal implementation or add responsive toggle later */}
              {/* For now, just desktop links or none if not requested explicitly beyond "Links" in footer. 
                 But a landing needs nav.
