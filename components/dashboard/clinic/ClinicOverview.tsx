@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import type { Exam, Patient, Doctor } from '../../../data/mockData';
+import type { Exam, Patient, Doctor, ExamModality, ExamUrgency } from '../../../data/mockData';
 import { mockClinicPerformance } from '../../../data/mockData';
 import { Card } from '../../ui/Card';
 import { Badge } from '../../ui/Badge';
@@ -16,7 +16,15 @@ interface ClinicOverviewProps {
     exams: Exam[];
     patients: Patient[];
     doctors: Doctor[];
-    onRequestExam: (patientId: string, examType: string, specialty: string, price: number) => void;
+    onRequestExam: (
+        patientId: string, 
+        examType: string, 
+        specialty: string, 
+        price: number,
+        modality: ExamModality,
+        urgency: ExamUrgency,
+        bodyPart: string
+    ) => void;
     onNavigateToExams: () => void;
 }
 

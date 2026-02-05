@@ -51,12 +51,12 @@ const ClinicFinancialPage: React.FC<ClinicFinancialPageProps> = ({ exams }) => {
                 </div>
                 <div className="mt-12 flex items-center space-x-4">
                     <div className="bg-white/10 backdrop-blur-md px-4 py-2 rounded-2xl border border-white/20">
-                        <p className="text-[9px] font-black uppercase text-brand-blue-200 mb-1">Margem Líquida</p>
-                        <p className="text-xl font-black">{marginPercentage.toFixed(1)}%</p>
+                        <p className="text-[9px] font-black uppercase text-brand-blue-100 mb-1">Margem Líquida</p>
+                        <p className="text-xl font-black text-white">{marginPercentage.toFixed(1)}%</p>
                     </div>
-                    <div className="bg-brand-teal-500 px-4 py-2 rounded-2xl shadow-lg">
-                        <p className="text-[9px] font-black uppercase text-white/80 mb-1">Status do Mês</p>
-                        <p className="text-xl font-black">SAUDÁVEL</p>
+                    <div className="bg-teal-500 px-4 py-2 rounded-2xl shadow-lg">
+                        <p className="text-[9px] font-black uppercase text-white/90 mb-1">Status do Mês</p>
+                        <p className="text-xl font-black text-white">SAUDÁVEL</p>
                     </div>
                 </div>
             </div>

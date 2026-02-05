@@ -4,7 +4,7 @@ import LandingPage from './pages/LandingPage';
 import LoginPage from './pages/LoginPage';
 import DashboardPage from './pages/DashboardPage';
 import { mockDoctors, mockExams, mockPatients, mockPatientCarlaExams } from './data/mockData';
-import type { Doctor, Exam, Patient } from './data/mockData';
+import type { Doctor, Exam, Patient, ExamModality, ExamUrgency } from './data/mockData';
 import { ToastProvider } from './contexts/ToastContext';
 
 export type UserRole = 'admin' | 'clinic' | 'doctor' | 'patient';
@@ -43,7 +43,15 @@ const App: React.FC = () => {
   const navigateToLogin = () => setView('login');
   const navigateToLanding = () => setView('landing');
 
-  const handleRequestExam = (patientId: string, examType: string, specialty: string, price: number) => {
+  const handleRequestExam = (
+    patientId: string, 
+    examType: string, 
+    specialty: string, 
+    price: number,
+    modality: ExamModality = 'OT',
+    urgency: ExamUrgency = 'Rotina',
+    bodyPart: string = 'Não especificado'
+  ) => {
     const patient = patients.find(p => p.id === patientId);
     if (!patient) return;
 
@@ -54,6 +62,10 @@ const App: React.FC = () => {
       doctorAssignedId: null,
       doctorAssignedName: null,
       examType,
+      modality,
+      urgency,
+      bodyPart,
+      accessionNumber: `ACC-${Date.now().toString().slice(-6)}`,
       specialtyRequired: specialty,
       dateRequested: new Date().toISOString().split('T')[0],
       status: 'Disponível',

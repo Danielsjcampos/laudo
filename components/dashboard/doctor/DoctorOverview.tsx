@@ -10,7 +10,6 @@ import { SparklesIcon } from '../../icons/SparklesIcon';
 
 interface DoctorOverviewProps {
     exams: Exam[];
-    onCompleteReport: (examId: string) => void;
     onNavigateToPendingExams: () => void;
     onNavigateToDetail: (examId: string) => void;
 }

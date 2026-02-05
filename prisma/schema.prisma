@@ -1,0 +1,94 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Clinic {
+  id                 String   @id @default(cuid())
+  name               String
+  location           String
+  subscriptionStatus String   // 'Ativa' | 'Atrasada' | 'Cancelada'
+  monthlyFee         Float
+  examCount          Int      @default(0)
+  joinedDate         DateTime @default(now())
+  adminEmail         String   @unique
+  patients           Patient[]
+  exams              Exam[]
+}
+
+model Doctor {
+  id            String   @id @default(cuid())
+  name          String
+  crm           String   @unique
+  specialty     String
+  status        String   @default("Pendente") // 'Ativo' | 'Pendente'
+  joinedDate    DateTime @default(now())
+  rating        Float    @default(0)
+  exams         Exam[]
+}
+
+model Patient {
+  id        String   @id @default(cuid())
+  name      String
+  cpf       String   @unique
+  email     String   @unique
+  clinicId  String
+  clinic    Clinic   @relation(fields: [clinicId], references: [id])
+  exams     Exam[]
+}
+
+model Exam {
+  id                 String   @id @default(cuid())
+  patientId          String
+  patientName        String
+  doctorAssignedId   String?
+  doctorAssignedName String?
+  examType           String
+  modality           String   // 'RX' | 'TC' | 'RM' | 'US' | 'MG' | 'OT'
+  urgency            String   // 'Rotina' | 'Urgente'
+  bodyPart           String?
+  accessionNumber    String?  @unique
+  specialtyRequired  String
+  dateRequested      DateTime @default(now())
+  status             String   // 'Disponível' | 'Aguardando Laudo' | 'Laudando' | 'Em Análise' | 'Concluído' | 'Recusado'
+  price              Float
+  clinicName         String
+  clinicId           String
+  clinic             Clinic   @relation(fields: [clinicId], references: [id])
+  patient            Patient  @relation(fields: [patientId], references: [id])
+  doctor             Doctor?  @relation(fields: [doctorAssignedId], references: [id])
+  paymentStatus      String   // 'Pendente' | 'Pago' | 'Processando'
+  examImageUrl       String?
+  aiDraft            String?
+  finalReport        String?
+  aiInsights         String?
+  dicomUrl           String?
+}
+
+model GlobalStats {
+  id                  Int      @id @default(1)
+  totalRevenue        Float
+  totalTransferred    Float
+  platformProfit      Float
+  totalExamsProcessed Int
+  activeClinics       Int
+  totalDoctors        Int
+  monthlyGrowth       Float
+  marketplaceTax      Float
+  saasRevenue         Float
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  name      String
+  role      String   // 'admin' | 'clinic' | 'doctor' | 'patient'
+  password  String   // In a real app, hash this
+  createdAt DateTime @default(now())
+}

@@ -1,8 +1,8 @@
 
 import React, { useState } from 'react';
 import type { User } from '../App';
-import type { Patient, Doctor, Exam } from '../data/mockData';
-import Sidebar from '../components/dashboard/Sidebar';
+import type { Patient, Doctor, Exam, ExamModality, ExamUrgency } from '../data/mockData';
+import DashboardLayout from '../components/layouts/DashboardLayout';
 import ClinicOverview from '../components/dashboard/clinic/ClinicOverview';
 import DoctorOverview from '../components/dashboard/doctor/DoctorOverview';
 import MarketplaceExams from '../components/dashboard/doctor/MarketplaceExams';
@@ -20,8 +20,6 @@ import AiLab from '../components/dashboard/admin/AiLab';
 import ClinicManagement from '../components/dashboard/admin/ClinicManagement';
 import DoctorsDatabase from '../components/dashboard/admin/DoctorsDatabase';
 import SystemFinancialPage from '../components/dashboard/admin/SystemFinancialPage';
-import { MenuIcon } from '../components/icons/MenuIcon';
-import { StethoscopeIcon } from '../components/icons/StethoscopeIcon';
 
 interface DashboardPageProps {
   user: User;
@@ -29,7 +27,15 @@ interface DashboardPageProps {
   patients: Patient[];
   doctors: Doctor[];
   exams: Exam[];
-  onRequestExam: (patientId: string, examType: string, specialty: string, price: number) => void;
+  onRequestExam: (
+    patientId: string, 
+    examType: string, 
+    specialty: string, 
+    price: number,
+    modality: ExamModality,
+    urgency: ExamUrgency,
+    bodyPart: string
+  ) => void;
   onAcceptExam: (examId: string) => void;
   onCompleteReport: (examId: string, report: string) => void;
   onRegisterPatient: (name: string, cpf: string, email: string) => void;
@@ -40,12 +46,10 @@ const DashboardPage: React.FC<DashboardPageProps> = (props) => {
 
   const [currentView, setCurrentView] = useState<string>('overview');
   const [detailId, setDetailId] = useState<string | null>(null);
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const navigateTo = (view: string, id: string | null = null) => {
     setCurrentView(view);
     setDetailId(id);
-    setIsSidebarOpen(false);
   };
 
   const renderDashboard = () => {
@@ -96,14 +100,13 @@ const DashboardPage: React.FC<DashboardPageProps> = (props) => {
             return <DoctorAiConsultation />;
         }
         if (currentView === 'pending_exams') {
-            return <DoctorExamsPage exams={doctorExams} onNavigateToDetail={(id) => navigateTo('exam_detail', id)} onCompleteReport={onCompleteReport} />;
+            return <DoctorExamsPage exams={doctorExams} onNavigateToDetail={(id) => navigateTo('exam_detail', id)} />;
         }
         if (currentView === 'financial') {
             return <DoctorFinancialPage exams={doctorExams} />;
         }
         return <DoctorOverview 
                   exams={doctorExams}
-                  onCompleteReport={onCompleteReport}
                   onNavigateToPendingExams={() => navigateTo('pending_exams')}
                   onNavigateToDetail={(id) => navigateTo('exam_detail', id)}
                 />;
@@ -122,39 +125,14 @@ const DashboardPage: React.FC<DashboardPageProps> = (props) => {
   };
 
   return (
-    <div className="flex h-screen bg-gray-50 overflow-hidden relative">
-      <Sidebar 
-        user={user} 
-        onLogout={onLogout} 
-        onNavigate={navigateTo} 
-        currentView={currentView}
-        isOpen={isSidebarOpen}
-        onClose={() => setIsSidebarOpen(false)}
-      />
-      
-      <div className="flex-1 flex flex-col min-w-0 overflow-hidden">
-        {/* Topbar Mobile */}
-        <header className="lg:hidden bg-white border-b border-gray-100 px-4 py-3 flex items-center justify-between shrink-0 shadow-sm z-30">
-          <button 
-            onClick={() => setIsSidebarOpen(true)}
-            className="p-2 -ml-2 text-gray-500 hover:text-brand-blue-600 transition-colors"
-          >
-            <MenuIcon className="h-6 w-6" />
-          </button>
-          <div className="flex items-center space-x-2">
-            <StethoscopeIcon className="h-6 w-6 text-brand-blue-600" />
-            <span className="font-bold text-gray-800 text-sm">LaudoDigital</span>
-          </div>
-          <div className="w-10 h-10 rounded-full bg-brand-blue-100 text-brand-blue-600 flex items-center justify-center font-bold text-xs">
-            {user.name.charAt(0)}
-          </div>
-        </header>
-
-        <main className="flex-1 overflow-y-auto p-4 md:p-8 focus:outline-none">
-          {renderDashboard()}
-        </main>
-      </div>
-    </div>
+    <DashboardLayout
+      user={user}
+      onLogout={onLogout}
+      onNavigate={navigateTo}
+      currentView={currentView}
+    >
+      {renderDashboard()}
+    </DashboardLayout>
   );
 };
 

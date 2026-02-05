@@ -10,19 +10,34 @@
       tailwind.config = {
         theme: {
           extend: {
+            fontFamily: {
+              sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            },
             colors: {
+              medical: {
+                primary: '#0284c7', // Sky 600
+                secondary: '#0f172a', // Slate 900
+                success: '#10b981', // Emerald 500
+                surface: '#ffffff',
+                background: '#f8fafc', // Slate 50
+                border: '#e2e8f0', // Slate 200
+                text: {
+                    primary: '#1e293b',
+                    secondary: '#64748b'
+                }
+              },
               'brand-blue': {
-                '50': '#eff6ff',
-                '100': '#dbeafe',
-                '200': '#bfdbfe',
-                '300': '#93c5fd',
-                '400': '#60a5fa',
-                '500': '#3b82f6',
-                '600': '#2563eb',
-                '700': '#1d4ed8',
-                '800': '#1e40af',
-                '900': '#1e3a8a',
-                '950': '#172554',
+                '50': '#f0f9ff',
+                '100': '#e0f2fe',
+                '200': '#bae6fd',
+                '300': '#7dd3fc',
+                '400': '#38bdf8',
+                '500': '#0ea5e9',
+                '600': '#0284c7', // Primary
+                '700': '#0369a1',
+                '800': '#075985',
+                '900': '#0c4a6e',
+                '950': '#082f49',
               },
               'brand-teal': {
                 '50': '#f0fdfa',
@@ -36,7 +51,7 @@
                 '800': '#115e59',
                 '900': '#134e4a',
                 '950': '#042f2e',
-              },
+              }
             }
           }
         }
