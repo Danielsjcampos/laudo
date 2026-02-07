@@ -120,7 +120,7 @@ const App: React.FC = () => {
     price: number,
     modality: ExamModality = 'OT',
     urgency: ExamUrgency = 'Rotina',
-    bodyPart: string = 'Geral',
+    bodyPart: string = 'Não especificado',
     file: File | null = null
   ) => {
     try {
@@ -136,14 +136,15 @@ const App: React.FC = () => {
         formData.append('dicom', file);
       }
 
-      await api.post('/exams', formData);
-      await fetchData();
-      return true; // Success
-    } catch (err: any) {
+      await api.post('/exams', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
+      fetchData();
+    } catch (err) {
       console.error('Erro ao solicitar exame:', err);
-      const errorMessage = err.response?.data?.message || err.response?.data?.error || 'Erro desconhecido ao solicitar exame';
-      alert(`Erro ao solicitar exame: ${errorMessage}`);
-      return false; // Failed
+      alert('Erro ao solicitar exame');
     }
   };
 
@@ -174,15 +175,6 @@ const App: React.FC = () => {
     }
   };
 
-  const handleDeleteExam = async (examId: string) => {
-    try {
-      await api.delete(`/exams/${examId}`);
-      fetchData();
-    } catch (err) {
-      alert('Erro ao deletar exame');
-    }
-  };
-
   const renderView = () => {
     switch (view) {
       case 'login':
@@ -199,8 +191,6 @@ const App: React.FC = () => {
           onAcceptExam={handleAcceptExam}
           onCompleteReport={handleCompleteReport}
           onRegisterPatient={handleRegisterPatient}
-          onDeleteExam={handleDeleteExam}
-          onRefreshData={fetchData}
         />;
       case 'landing':
       default:
@@ -210,7 +200,7 @@ const App: React.FC = () => {
 
   return (
     <ToastProvider>
-      <div className="antialiased text-gray-800">{renderView()}</div>
+      <div className="antialiased text-gray-800 bg-medical-background min-h-screen">{renderView()}</div>
     </ToastProvider>
   );
 };

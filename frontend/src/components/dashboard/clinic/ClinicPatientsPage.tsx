@@ -2,18 +2,13 @@ import React, { useState, useMemo } from 'react';
 import type { Patient } from '../../../data/mockData';
 import { Button } from '../../ui/Button';
 import { PlusIcon } from '../../icons/PlusIcon';
-import { AddPatientModal } from '../modals/AddPatientModal';
-import SearchInput from '../../ui/SearchInput';
+import api from '../../../lib/api';
+import { EditPatientModal } from '../modals/EditPatientModal';
 
-interface ClinicPatientsPageProps {
-    patients: Patient[];
-    onRegisterPatient?: (name: string, cpf: string, email: string) => void;
-    onViewHistory?: (patientId: string) => void;
-    onEditPatient?: (patientId: string) => void;
-}
-
-const ClinicPatientsPage: React.FC<ClinicPatientsPageProps> = ({ patients, onRegisterPatient, onViewHistory, onEditPatient }) => {
+const ClinicPatientsPage: React.FC<ClinicPatientsPageProps> = ({ patients, onRegisterPatient }) => {
     const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+    const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+    const [selectedPatient, setSelectedPatient] = useState<Patient | null>(null);
     const [searchTerm, setSearchTerm] = useState('');
 
     const filteredPatients = useMemo(() => {
@@ -23,12 +18,35 @@ const ClinicPatientsPage: React.FC<ClinicPatientsPageProps> = ({ patients, onReg
         );
     }, [patients, searchTerm]);
 
+    const handleEditClick = (patient: Patient) => {
+        setSelectedPatient(patient);
+        setIsEditModalOpen(true);
+    };
+
+    const handleUpdatePatient = async (id: string, name: string, cpf: string, email: string) => {
+        try {
+            await api.put(`/patients/${id}`, { name, cpf, email });
+            alert('Paciente atualizado com sucesso!');
+            window.location.reload();
+        } catch (error) {
+            console.error(error);
+            alert('Erro ao atualizar paciente.');
+        }
+    };
+
     return (
         <div>
             <AddPatientModal
                 isOpen={isAddModalOpen}
                 onClose={() => setIsAddModalOpen(false)}
                 onSubmit={onRegisterPatient}
+            />
+
+            <EditPatientModal
+                isOpen={isEditModalOpen}
+                onClose={() => setIsEditModalOpen(false)}
+                patient={selectedPatient}
+                onSubmit={handleUpdatePatient}
             />
 
             <div className="flex justify-between items-center mb-8">
@@ -62,20 +80,9 @@ const ClinicPatientsPage: React.FC<ClinicPatientsPageProps> = ({ patients, onReg
                                     <td className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">{patient.name}</td>
                                     <td className="px-6 py-4">{patient.cpf}</td>
                                     <td className="px-6 py-4">{patient.email}</td>
-                                    <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium space-x-2">
-                                        <button
-                                            onClick={() => onEditPatient?.(patient.id)}
-                                            className="font-medium text-brand-blue-600 hover:underline"
-                                        >
-                                            Editar
-                                        </button>
-                                        <span className="text-gray-300">|</span>
-                                        <button
-                                            onClick={() => onViewHistory?.(patient.id)}
-                                            className="font-medium text-brand-blue-600 hover:underline"
-                                        >
-                                            Ver Histórico
-                                        </button>
+                                    <td className="px-6 py-4 flex gap-4">
+                                        <button onClick={() => handleEditClick(patient)} className="font-medium text-brand-blue-600 hover:underline">Editar</button>
+                                        <button className="font-medium text-gray-400 hover:text-gray-600">Ver Histórico</button>
                                     </td>
                                 </tr>
                             ))}

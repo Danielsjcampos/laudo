@@ -9,19 +9,27 @@ import { CheckCircleIcon } from '../../icons/CheckCircleIcon';
 import { Button } from '../../ui/Button';
 import { PlusIcon } from '../../icons/PlusIcon';
 import { SparklesIcon } from '../../icons/SparklesIcon';
-import { RequestExamModal } from '../modals/RequestExamModal';
 
 interface ClinicOverviewProps {
     exams: Exam[];
     patients: Patient[];
     doctors: Doctor[];
     stats: any;
-    onRequestExam: () => void; // Simplified: just opens logic
+    onRequestExam: (
+        patientId: string,
+        examType: string,
+        specialty: string,
+        price: number,
+        modality: ExamModality,
+        urgency: ExamUrgency,
+        bodyPart: string,
+        file: File | null
+    ) => void;
     onNavigateToExams: () => void;
+    onOpenRequestExam: (patientId?: string) => void;
 }
 
-const ClinicOverview: React.FC<ClinicOverviewProps> = ({ exams, patients, stats, onRequestExam, onNavigateToExams }) => {
-    // Local state removed, modal lifted to DashboardPage
+const ClinicOverview: React.FC<ClinicOverviewProps> = ({ exams, patients, stats, onRequestExam, onNavigateToExams, onOpenRequestExam }) => {
     const pendingExams = exams.filter(e => e.status !== 'Concluído').length;
 
     // Fallback para quando o banco ainda está carregando
@@ -31,14 +39,16 @@ const ClinicOverview: React.FC<ClinicOverviewProps> = ({ exams, patients, stats,
     const totalRevenue = exams.filter(e => e.status === 'Concluído').reduce((acc, curr) => acc + curr.price, 0);
 
     return (
-        <div className="max-w-7xl mx-auto space-y-10 animate-in fade-in slide-in-from-bottom-4 duration-700">
-            {/* Header */}
+        <div className="w-full space-y-10 animate-in fade-in slide-in-from-bottom-4 duration-700">
+
+
+            {/* Cabeçalho de Impacto */}
             <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
                 <div className="space-y-1">
                     <h1 className="text-4xl font-black text-gray-900 tracking-tight">Gestão Operacional</h1>
                     <p className="text-gray-500 font-medium">Dados reais do banco Neon para {stats.name}.</p>
                 </div>
-                <Button onClick={onRequestExam} className="bg-brand-blue-600 hover:bg-brand-blue-700 shadow-2xl shadow-brand-blue-200 rounded-[1.5rem] px-8 py-5 w-full md:w-auto text-base font-black uppercase tracking-widest">
+                <Button onClick={() => onOpenRequestExam()} className="bg-brand-blue-600 hover:bg-brand-blue-700 shadow-2xl shadow-brand-blue-200 rounded-[1.5rem] px-8 py-5 w-full md:w-auto text-base font-black uppercase tracking-widest">
                     <PlusIcon className="h-5 w-5 mr-2 stroke-[3px]" />
                     Requisitar Novo Laudo
                 </Button>

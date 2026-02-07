@@ -20,11 +20,9 @@ import AiLab from '../components/dashboard/admin/AiLab';
 import ClinicManagement from '../components/dashboard/admin/ClinicManagement';
 import DoctorsDatabase from '../components/dashboard/admin/DoctorsDatabase';
 import SystemFinancialPage from '../components/dashboard/admin/SystemFinancialPage';
-import api from '../lib/api';
-import { EditExamModal } from '../components/dashboard/modals/EditExamModal';
-import { PatientHistoryModal } from '../components/dashboard/modals/PatientHistoryModal';
+import { OhifViewer } from '../components/dashboard/shared/OhifViewer';
 import { RequestExamModal } from '../components/dashboard/modals/RequestExamModal';
-import { EditPatientModal } from '../components/dashboard/modals/EditPatientModal';
+
 
 interface DashboardPageProps {
   user: User;
@@ -46,30 +44,24 @@ interface DashboardPageProps {
   onAcceptExam: (examId: string) => void;
   onCompleteReport: (examId: string, report: string) => void;
   onRegisterPatient: (name: string, cpf: string, email: string) => void;
-  onDeleteExam: (examId: string) => void;
-  onRefreshData: () => void;
 }
 
 const DashboardPage: React.FC<DashboardPageProps> = (props) => {
-  const { user, onLogout, patients, doctors, exams, stats, onRequestExam, onAcceptExam, onCompleteReport, onRegisterPatient, onDeleteExam, onRefreshData } = props;
+  const { user, onLogout, patients, doctors, exams, stats, onRequestExam, onAcceptExam, onCompleteReport, onRegisterPatient } = props;
 
   const [currentView, setCurrentView] = useState<string>('overview');
   const [detailId, setDetailId] = useState<string | null>(null);
-  // Modals state
-  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
-  const [isHistoryModalOpen, setIsHistoryModalOpen] = useState(false);
-  const [isRequestExamModalOpen, setIsRequestExamModalOpen] = useState(false);
-  const [isEditPatientModalOpen, setIsEditPatientModalOpen] = useState(false);
-  const [initialPatientId, setInitialPatientId] = useState<string | undefined>(undefined);
+  const [isRequestModalOpen, setIsRequestModalOpen] = useState(false);
+  const [preSelectedPatientId, setPreSelectedPatientId] = useState<string>('');
+
+  const handleOpenRequestExam = (patientId: string = '') => {
+    setPreSelectedPatientId(patientId);
+    setIsRequestModalOpen(true);
+  };
 
   const navigateTo = (view: string, id: string | null = null) => {
     setCurrentView(view);
     setDetailId(id);
-  };
-
-  const openRequestExamModal = (patientId?: string) => {
-    setInitialPatientId(patientId);
-    setIsRequestExamModalOpen(true);
   };
 
   const renderDashboard = () => {
@@ -85,64 +77,87 @@ const DashboardPage: React.FC<DashboardPageProps> = (props) => {
         const clinicExams = exams.filter(e => patients.some(p => p.clinicId === 'c1' && p.id === e.patientId));
         const clinicPatients = patients.filter(p => p.clinicId === 'c1');
 
+        if (currentView === 'ohif_viewer' && detailId) {
+          const exam = exams.find(e => e.id === detailId);
+          return exam ? <OhifViewer dicomUrl={exam.dicomUrl || ''} onBack={() => navigateTo('exam_detail', detailId)} /> : null;
+        }
         if (currentView === 'exam_detail' && detailId) {
           const exam = exams.find(e => e.id === detailId);
-          return exam ? <ExamDetailPage exam={exam} userRole="clinic" onBack={() => navigateTo('exams')} /> : <PlaceholderPage title="Exame não encontrado" />;
+          return exam ? <ExamDetailPage
+            exam={exam}
+            userRole="clinic"
+            onBack={() => navigateTo('exams')}
+            onOpenOhif={() => navigateTo('ohif_viewer', detailId)}
+          /> : <PlaceholderPage title="Exame não encontrado" />;
         }
         if (currentView === 'exams') {
           return <ClinicExamsPage
             exams={clinicExams}
             onNavigateToDetail={(id) => navigateTo('exam_detail', id)}
+            onOpenOhif={(id) => navigateTo('ohif_viewer', id)}
+            onOpenRequestExam={handleOpenRequestExam}
             onEditExam={(id) => {
-              const exam = exams.find(e => e.id === id);
-              if (exam) {
-                setDetailId(id);
-                setIsEditModalOpen(true);
-              }
+              // TODO: Implement edit modal
+              alert('Editar exame: ' + id);
             }}
             onDeleteExam={async (id) => {
-              if (confirm('Tem certeza que deseja deletar este exame?')) {
-                onDeleteExam(id);
+              try {
+                await fetch(`http://localhost:3001/api/exams/${id}`, {
+                  method: 'DELETE',
+                  credentials: 'include'
+                });
+                window.location.reload();
+              } catch (error) {
+                alert('Erro ao deletar exame');
               }
             }}
-            onRequestExamModalOpen={(patientId) => openRequestExamModal(patientId)}
           />;
         }
         if (currentView === 'patients') {
-          return <ClinicPatientsPage
-            patients={clinicPatients}
-            onRegisterPatient={onRegisterPatient}
-            onViewHistory={(patientId) => {
-              setDetailId(patientId);
-              setIsHistoryModalOpen(true);
-            }}
-            onEditPatient={(patientId) => {
-              setDetailId(patientId);
-              setIsEditPatientModalOpen(true);
-            }}
-          />;
+          return <ClinicPatientsPage patients={clinicPatients} onRegisterPatient={onRegisterPatient} />;
         }
         if (currentView === 'financial') {
-          return <ClinicFinancialPage exams={clinicExams} onNavigateToDetail={(id) => navigateTo('exam_detail', id)} />;
+          return <ClinicFinancialPage exams={clinicExams} />;
         }
-        if (currentView === 'settings') {
-          return <PlaceholderPage title="Configurações da Clínica" message="Aqui você poderá gerenciar os dados da sua clínica, usuários e preferências de notificação." />;
-        }
-        return <ClinicOverview
-          exams={clinicExams}
-          doctors={doctors}
-          patients={clinicPatients}
-          stats={stats}
-          onRequestExam={() => openRequestExamModal()}
-          onNavigateToExams={() => navigateTo('exams')}
-        />;
+        return (
+          <>
+            <RequestExamModal
+              isOpen={isRequestModalOpen}
+              onClose={() => setIsRequestModalOpen(false)}
+              patients={patients}
+              onSubmit={onRequestExam}
+            // initialPatientId={preSelectedPatientId} // Passado via prop, preciso adicionar no Modal
+            />
+            <ClinicOverview
+              exams={clinicExams}
+              doctors={doctors}
+              patients={clinicPatients}
+              stats={stats}
+              onRequestExam={onRequestExam}
+              onOpenRequestExam={handleOpenRequestExam}
+              onNavigateToExams={() => navigateTo('exams')}
+            />
+          </>
+        );
 
       case 'doctor':
-        const doctorExams = exams.filter(e => e.doctorAssignedName === user.name);
+        // Fix: Filter by status instead of name match. 
+        // Backend already guarantees that non-available exams returned are assigned to this doctor.
+        const doctorExams = exams.filter(e => e.status !== 'Disponível');
 
+        if (currentView === 'ohif_viewer' && detailId) {
+          const exam = exams.find(e => e.id === detailId);
+          return exam ? <OhifViewer dicomUrl={exam.dicomUrl || ''} onBack={() => navigateTo('exam_detail', detailId)} /> : null;
+        }
         if (currentView === 'exam_detail' && detailId) {
           const exam = exams.find(e => e.id === detailId);
-          return exam ? <ExamDetailPage exam={exam} userRole="doctor" onBack={() => navigateTo('pending_exams')} onCompleteReport={onCompleteReport} /> : <PlaceholderPage title="Exame não encontrado" />;
+          return exam ? <ExamDetailPage
+            exam={exam}
+            userRole="doctor"
+            onBack={() => navigateTo('pending_exams')}
+            onCompleteReport={onCompleteReport}
+            onOpenOhif={() => navigateTo('ohif_viewer', detailId)}
+          /> : <PlaceholderPage title="Exame não encontrado" />;
         }
         if (currentView === 'marketplace') {
           return <MarketplaceExams exams={exams} onAccept={onAcceptExam} />;
@@ -151,7 +166,27 @@ const DashboardPage: React.FC<DashboardPageProps> = (props) => {
           return <DoctorAiConsultation />;
         }
         if (currentView === 'pending_exams') {
-          return <DoctorExamsPage exams={doctorExams} onNavigateToDetail={(id) => navigateTo('exam_detail', id)} />;
+          return <DoctorExamsPage
+            exams={doctorExams}
+            onNavigateToDetail={(id) => navigateTo('exam_detail', id)}
+            onOpenOhif={(id) => navigateTo('ohif_viewer', id)}
+          />;
+        }
+        if (currentView === 'history') {
+          return <DoctorExamsPage
+            exams={doctorExams}
+            initialTab="completed" // This prop needs to be added to DoctorExamsPage
+            onNavigateToDetail={(id) => navigateTo('exam_detail', id)}
+            onOpenOhif={(id) => navigateTo('ohif_viewer', id)}
+          />;
+        }
+        if (currentView === 'history') {
+          return <DoctorExamsPage
+            exams={doctorExams}
+            initialTab="completed"
+            onNavigateToDetail={(id) => navigateTo('exam_detail', id)}
+            onOpenOhif={(id) => navigateTo('ohif_viewer', id)}
+          />;
         }
         if (currentView === 'financial') {
           return <DoctorFinancialPage exams={doctorExams} />;
@@ -164,9 +199,18 @@ const DashboardPage: React.FC<DashboardPageProps> = (props) => {
 
       case 'patient':
         const patientExams = exams.filter(e => e.patientName === user.name);
+        if (currentView === 'ohif_viewer' && detailId) {
+          const exam = patientExams.find(e => e.id === detailId);
+          return exam ? <OhifViewer dicomUrl={exam.dicomUrl || ''} onBack={() => navigateTo('exam_detail', detailId)} /> : null;
+        }
         if (currentView === 'exam_detail' && detailId) {
           const exam = patientExams.find(e => e.id === detailId);
-          return exam ? <ExamDetailPage exam={exam} userRole="patient" onBack={() => navigateTo('my_exams')} /> : <PlaceholderPage title="Exame não encontrado" />;
+          return exam ? <ExamDetailPage
+            exam={exam}
+            userRole="patient"
+            onBack={() => navigateTo('my_exams')}
+            onOpenOhif={() => navigateTo('ohif_viewer', detailId)}
+          /> : <PlaceholderPage title="Exame não encontrado" />;
         }
         return <PatientExamsPage exams={patientExams} onNavigateToDetail={(id) => navigateTo('exam_detail', id)} />;
 
@@ -183,39 +227,6 @@ const DashboardPage: React.FC<DashboardPageProps> = (props) => {
       currentView={currentView}
     >
       {renderDashboard()}
-
-      {/* Modals */}
-      {/* Modals */}
-      <RequestExamModal
-        isOpen={isRequestExamModalOpen}
-        onClose={() => setIsRequestExamModalOpen(false)}
-        patients={patients.filter(p => p.clinicId === 'c1')}
-        initialPatientId={initialPatientId}
-        onSubmit={onRequestExam}
-      />
-
-      {detailId && (
-        <>
-          <EditExamModal
-            isOpen={isEditModalOpen}
-            onClose={() => setIsEditModalOpen(false)}
-            exam={exams.find(e => e.id === detailId)!}
-            onUpdate={onRefreshData}
-          />
-          <PatientHistoryModal
-            isOpen={isHistoryModalOpen}
-            onClose={() => setIsHistoryModalOpen(false)}
-            patient={patients.find(p => p.id === detailId)!}
-            exams={exams.filter(e => e.patientId === detailId)}
-          />
-          <EditPatientModal
-            isOpen={isEditPatientModalOpen}
-            onClose={() => setIsEditPatientModalOpen(false)}
-            patient={patients.find(p => p.id === detailId)!}
-            onUpdate={onRefreshData}
-          />
-        </>
-      )}
     </DashboardLayout>
   );
 };

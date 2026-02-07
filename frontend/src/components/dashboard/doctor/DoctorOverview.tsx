@@ -20,7 +20,7 @@ const DoctorOverview: React.FC<DoctorOverviewProps> = ({ exams, onNavigateToPend
     const estimatedEarnings = exams.reduce((acc, curr) => acc + curr.price, 0);
 
     return (
-        <div className="max-w-7xl mx-auto space-y-10 animate-in fade-in duration-1000">
+        <div className="w-full space-y-10 animate-in fade-in slide-in-from-bottom-4 duration-700">
             <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
                 <div>
                     <h1 className="text-4xl font-black text-gray-900 tracking-tight">Painel do Especialista</h1>
@@ -31,7 +31,7 @@ const DoctorOverview: React.FC<DoctorOverviewProps> = ({ exams, onNavigateToPend
                     <span className="text-sm font-bold text-brand-blue-700">Meta Diária: {completedCount}/15 Laudos</span>
                 </div>
             </div>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 <Card title="Pendente na Fila" value={pendingExams.length} icon={<ClockIcon className="h-6 w-6" />} color="yellow" />
                 <Card title="Concluídos (Mês)" value={completedCount} icon={<FileTextIcon className="h-6 w-6" />} color="green" />
@@ -51,12 +51,12 @@ const DoctorOverview: React.FC<DoctorOverviewProps> = ({ exams, onNavigateToPend
                 {/* Listagem de Trabalho Principal */}
                 <div className="lg:col-span-2 bg-white rounded-[2.5rem] shadow-sm border border-gray-100 overflow-hidden flex flex-col">
                     <div className="p-8 flex justify-between items-center border-b border-gray-50">
-                         <h2 className="text-xl font-black text-gray-800">Próximos da Fila</h2>
-                         <button onClick={onNavigateToPendingExams} className="font-black text-brand-blue-600 hover:text-brand-blue-700 transition-colors text-xs uppercase tracking-widest">
+                        <h2 className="text-xl font-black text-gray-800">Próximos da Fila</h2>
+                        <button onClick={onNavigateToPendingExams} className="font-black text-brand-blue-600 hover:text-brand-blue-700 transition-colors text-xs uppercase tracking-widest">
                             Ver Fila Completa
                         </button>
                     </div>
-                     <div className="flex-1 overflow-x-auto">
+                    <div className="flex-1 overflow-x-auto">
                         <table className="w-full text-sm text-left">
                             <thead className="text-[10px] font-black text-gray-400 uppercase tracking-widest bg-gray-50/50">
                                 <tr className="border-b border-gray-50">
@@ -83,10 +83,10 @@ const DoctorOverview: React.FC<DoctorOverviewProps> = ({ exams, onNavigateToPend
                                             <span className="text-[10px] font-black bg-gray-100 text-gray-600 px-2 py-1 rounded">2H 15M</span>
                                         </td>
                                         <td className="px-8 py-5 text-right">
-                                            <button 
+                                            <button
                                                 className="bg-brand-blue-600 text-white p-2 rounded-xl opacity-0 group-hover:opacity-100 transition-all shadow-lg shadow-brand-blue-200"
                                             >
-                                              <EditIcon className="w-4 h-4" />
+                                                <EditIcon className="w-4 h-4" />
                                             </button>
                                         </td>
                                     </tr>
@@ -99,7 +99,7 @@ const DoctorOverview: React.FC<DoctorOverviewProps> = ({ exams, onNavigateToPend
                                 <p className="font-bold">Fila de trabalho vazia. Bom descanso!</p>
                             </div>
                         )}
-                     </div>
+                    </div>
                 </div>
 
                 {/* Sidebar de Performance / Insights */}

@@ -1,3 +1,4 @@
+
 import { Router } from 'express';
 import { getPatients, createPatient, updatePatient } from '../controllers/patientController';
 import { authenticateToken } from '../middleware/auth';
@@ -8,6 +9,6 @@ router.use(authenticateToken);
 
 router.get('/', getPatients);
 router.post('/', createPatient);
-router.patch('/:id', updatePatient);
+router.put('/:id', updatePatient);
 
 export default router;

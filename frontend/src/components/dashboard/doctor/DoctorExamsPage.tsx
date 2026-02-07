@@ -8,30 +8,73 @@ import { Button } from '../../ui/Button';
 interface DoctorExamsPageProps {
     exams: Exam[];
     onNavigateToDetail: (examId: string) => void;
+    onOpenOhif?: (examId: string) => void;
+    initialTab?: 'pending' | 'completed';
 }
 
-const DoctorExamsPage: React.FC<DoctorExamsPageProps> = ({ exams, onNavigateToDetail }) => {
+const DoctorExamsPage: React.FC<DoctorExamsPageProps> = ({ exams, onNavigateToDetail, onOpenOhif, initialTab = 'pending' }) => {
     const [searchTerm, setSearchTerm] = useState('');
+    const [activeTab, setActiveTab] = useState<'pending' | 'completed'>(initialTab);
 
-    const pendingExams = exams.filter(e => e.status === 'Aguardando Laudo' || e.status === 'Em Análise' || e.status === 'Laudando');
+    React.useEffect(() => {
+        setActiveTab(initialTab);
+    }, [initialTab]);
+
+    const pendingExams = useMemo(() => exams.filter(e =>
+        e.status === 'Aguardando Laudo' || e.status === 'Em Análise' || e.status === 'Laudando'
+    ), [exams]);
+
+    const completedExams = useMemo(() => exams.filter(e =>
+        e.status === 'Concluído'
+    ), [exams]);
+
+    const displayedExams = activeTab === 'pending' ? pendingExams : completedExams;
 
     const filteredExams = useMemo(() => {
-        return pendingExams.filter(exam => 
+        return displayedExams.filter(exam =>
             exam.patientName.toLowerCase().includes(searchTerm.toLowerCase()) ||
             exam.examType.toLowerCase().includes(searchTerm.toLowerCase())
         );
-    }, [pendingExams, searchTerm]);
+    }, [displayedExams, searchTerm]);
 
     return (
         <div>
             <div className="flex justify-between items-center mb-8">
                 <div>
-                   <h1 className="text-3xl font-bold text-gray-900">Exames Pendentes</h1>
-                   <p className="text-gray-500 mt-1">Gerencie sua fila de laudos prioritários.</p>
+                    <h1 className="text-3xl font-bold text-gray-900">Meus Laudos</h1>
+                    <p className="text-gray-500 mt-1">Gerencie sua fila de trabalho e histórico.</p>
                 </div>
                 <div className="w-full max-w-xs">
                     <SearchInput value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} placeholder="Buscar por paciente..." />
                 </div>
+            </div>
+
+            {/* Tabs */}
+            <div className="flex space-x-1 bg-gray-100 p-1 rounded-xl w-fit mb-6">
+                <button
+                    onClick={() => setActiveTab('pending')}
+                    className={`px-4 py-2 rounded-lg text-sm font-bold transition-all ${activeTab === 'pending'
+                        ? 'bg-white text-gray-900 shadow-sm'
+                        : 'text-gray-500 hover:text-gray-700'
+                        }`}
+                >
+                    Pendentes na Fila
+                    <span className="ml-2 bg-brand-blue-100 text-brand-blue-700 py-0.5 px-2 rounded-full text-xs">
+                        {pendingExams.length}
+                    </span>
+                </button>
+                <button
+                    onClick={() => setActiveTab('completed')}
+                    className={`px-4 py-2 rounded-lg text-sm font-bold transition-all ${activeTab === 'completed'
+                        ? 'bg-white text-gray-900 shadow-sm'
+                        : 'text-gray-500 hover:text-gray-700'
+                        }`}
+                >
+                    Laudados (Concluídos)
+                    <span className="ml-2 bg-gray-200 text-gray-600 py-0.5 px-2 rounded-full text-xs">
+                        {completedExams.length}
+                    </span>
+                </button>
             </div>
 
             <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
@@ -74,14 +117,41 @@ const DoctorExamsPage: React.FC<DoctorExamsPageProps> = ({ exams, onNavigateToDe
                                     </td>
                                     <td className="px-6 py-4"><Badge status={exam.status} /></td>
                                     <td className="px-6 py-4 text-right">
-                                        <Button 
-                                            size="sm" 
-                                            onClick={() => onNavigateToDetail(exam.id)} 
-                                            className={exam.urgency === 'Urgente' ? 'bg-red-600 hover:bg-red-700 shadow-red-200' : ''}
-                                        >
-                                            <EditIcon className="w-4 h-4 mr-2" />
-                                            Laudar
-                                        </Button>
+                                        <div className="flex justify-end gap-2">
+                                            {onOpenOhif && (
+                                                <Button
+                                                    size="sm"
+                                                    variant="outline"
+                                                    onClick={() => onOpenOhif(exam.id)}
+                                                    className="border-cyan-200 text-cyan-700 hover:bg-cyan-50"
+                                                >
+                                                    <svg className="w-4 h-4 mr-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                                        <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
+                                                        <line x1="8" y1="21" x2="16" y2="21" />
+                                                        <line x1="12" y1="17" x2="12" y2="21" />
+                                                    </svg>
+                                                    OHIF
+                                                </Button>
+                                            )}
+                                            {activeTab === 'pending' ? (
+                                                <Button
+                                                    size="sm"
+                                                    onClick={() => onNavigateToDetail(exam.id)}
+                                                    className={exam.urgency === 'Urgente' ? 'bg-red-600 hover:bg-red-700 shadow-red-200' : ''}
+                                                >
+                                                    <EditIcon className="w-4 h-4 mr-2" />
+                                                    Laudar
+                                                </Button>
+                                            ) : (
+                                                <Button
+                                                    size="sm"
+                                                    variant="outline"
+                                                    onClick={() => onNavigateToDetail(exam.id)}
+                                                >
+                                                    Ver Laudo
+                                                </Button>
+                                            )}
+                                        </div>
                                     </td>
                                 </tr>
                             ))}
@@ -89,11 +159,10 @@ const DoctorExamsPage: React.FC<DoctorExamsPageProps> = ({ exams, onNavigateToDe
                     </table>
                     {filteredExams.length === 0 && (
                         <div className="text-center py-12 text-gray-500">
-                             <div className="bg-gray-50 p-4 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-3">
+                            <div className="bg-gray-50 p-4 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-3">
                                 <svg className="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
-                             </div>
-                             <p className="font-medium">Nenhum exame pendente na sua lista.</p>
-                             <p className="text-sm mt-1">Acesse o Marketplace para buscar novos laudos.</p>
+                            </div>
+                            <p className="font-medium">Nenhum exame encontrado nesta aba.</p>
                         </div>
                     )}
                 </div>

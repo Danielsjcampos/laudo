@@ -1,29 +1,17 @@
-
 import React, { useState, useEffect } from 'react';
-import { Modal } from '../../ui/Modal';
 import { Button } from '../../ui/Button';
-import type { Patient } from '../../../data/mockData';
-import { useToast } from '../../../contexts/ToastContext';
-import api from '../../../lib/api';
 
 interface EditPatientModalProps {
     isOpen: boolean;
     onClose: () => void;
-    patient: Patient;
-    onUpdate: () => void;
+    onSubmit: (id: string, name: string, cpf: string, email: string) => void;
+    patient: { id: string; name: string; cpf: string; email: string } | null;
 }
 
-export const EditPatientModal: React.FC<EditPatientModalProps> = ({
-    isOpen,
-    onClose,
-    patient,
-    onUpdate,
-}) => {
-    const [name, setName] = useState(patient?.name || '');
-    const [cpf, setCpf] = useState(patient?.cpf || '');
-    const [email, setEmail] = useState(patient?.email || '');
-    const [isSubmitting, setIsSubmitting] = useState(false);
-    const { addToast } = useToast();
+export const EditPatientModal: React.FC<EditPatientModalProps> = ({ isOpen, onClose, onSubmit, patient }) => {
+    const [name, setName] = useState('');
+    const [cpf, setCpf] = useState('');
+    const [email, setEmail] = useState('');
 
     useEffect(() => {
         if (patient) {
@@ -33,66 +21,72 @@ export const EditPatientModal: React.FC<EditPatientModalProps> = ({
         }
     }, [patient]);
 
-    const handleSubmit = async (e: React.FormEvent) => {
+    if (!isOpen || !patient) return null;
+
+    const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        setIsSubmitting(true);
-        try {
-            // Assuming a PATCH endpoint exists for patients. If not, this might fail or require backend update.
-            // Based on typical REST conventions and the project structure.
-            // Note: Backend routes for patients.ts were seen in file list but not read deeply. Assuming patch support or creating it.
-            await api.patch(`/patients/${patient.id}`, { name, cpf, email });
-            addToast('Paciente atualizado com sucesso!', 'success');
-            onUpdate();
-            onClose();
-        } catch (error) {
-            console.error('Erro ao atualizar paciente:', error);
-            addToast('Erro ao atualizar paciente.', 'error');
-        } finally {
-            setIsSubmitting(false);
-        }
+        onSubmit(patient.id, name, cpf, email);
+        onClose();
     };
 
     return (
-        <Modal isOpen={isOpen} onClose={onClose} title="Editar Paciente">
-            <form onSubmit={handleSubmit} className="space-y-4">
-                <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">Nome Completo</label>
-                    <input
-                        type="text"
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
-                        className="w-full px-3 py-2 border border-medical-border rounded-lg shadow-sm focus:ring-2 focus:ring-brand-blue-500 outline-none"
-                        required
-                    />
-                </div>
-                <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">CPF</label>
-                    <input
-                        type="text"
-                        value={cpf}
-                        onChange={(e) => setCpf(e.target.value)}
-                        className="w-full px-3 py-2 border border-medical-border rounded-lg shadow-sm focus:ring-2 focus:ring-brand-blue-500 outline-none"
-                        required
-                    />
-                </div>
-                <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">Email</label>
-                    <input
-                        type="email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        className="w-full px-3 py-2 border border-medical-border rounded-lg shadow-sm focus:ring-2 focus:ring-brand-blue-500 outline-none"
-                        required
-                    />
+        <div className="fixed inset-0 z-[60] flex items-center justify-center p-4">
+            <div className="absolute inset-0 bg-black/50 backdrop-blur-sm transition-opacity" onClick={onClose} />
+
+            <div className="relative bg-white rounded-2xl shadow-xl w-full max-w-md p-6 overflow-hidden animate-in fade-in zoom-in-95 duration-200">
+                <div className="flex items-center justify-between mb-6">
+                    <h3 className="text-xl font-bold text-gray-900">Editar Paciente</h3>
+                    <button onClick={onClose} className="text-gray-400 hover:text-gray-500 transition-colors">
+                        <span className="sr-only">Fechar</span>
+                        <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
                 </div>
 
-                <div className="mt-4 flex justify-end space-x-3 pt-4 border-t border-gray-100">
-                    <Button type="button" variant="outline" onClick={onClose}>Cancelar</Button>
-                    <Button type="submit" className="px-6" disabled={isSubmitting}>
-                        {isSubmitting ? 'Salvando...' : 'Salvar Alterações'}
-                    </Button>
-                </div>
-            </form>
-        </Modal>
+                <form onSubmit={handleSubmit} className="space-y-4">
+                    <div>
+                        <label className="block text-sm font-bold text-gray-700 mb-1">Nome Completo</label>
+                        <input
+                            type="text"
+                            required
+                            value={name}
+                            onChange={(e) => setName(e.target.value)}
+                            className="w-full px-4 py-2 rounded-xl border border-gray-200 focus:border-brand-blue-500 focus:ring-2 focus:ring-brand-blue-200 outline-none transition-all font-medium"
+                            placeholder="Ex: João da Silva"
+                        />
+                    </div>
+
+                    <div>
+                        <label className="block text-sm font-bold text-gray-700 mb-1">CPF</label>
+                        <input
+                            type="text"
+                            required
+                            value={cpf}
+                            onChange={(e) => setCpf(e.target.value)}
+                            className="w-full px-4 py-2 rounded-xl border border-gray-200 focus:border-brand-blue-500 focus:ring-2 focus:ring-brand-blue-200 outline-none transition-all font-medium"
+                            placeholder="000.000.000-00"
+                        />
+                    </div>
+
+                    <div>
+                        <label className="block text-sm font-bold text-gray-700 mb-1">E-mail</label>
+                        <input
+                            type="email"
+                            required
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            className="w-full px-4 py-2 rounded-xl border border-gray-200 focus:border-brand-blue-500 focus:ring-2 focus:ring-brand-blue-200 outline-none transition-all font-medium"
+                            placeholder="paciente@email.com"
+                        />
+                    </div>
+
+                    <div className="flex justify-end gap-3 mt-6">
+                        <Button type="button" variant="outline" onClick={onClose}>Cancelar</Button>
+                        <Button type="submit">Salvar Alterações</Button>
+                    </div>
+                </form>
+            </div>
+        </div>
     );
 };

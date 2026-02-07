@@ -20,20 +20,31 @@ const PORT = process.env.PORT || 3001;
 
 // Configurações de Segurança e Middleware
 app.use(helmet({
-    crossOriginResourcePolicy: { policy: "cross-origin" },
     contentSecurityPolicy: {
         directives: {
             ...helmet.contentSecurityPolicy.getDefaultDirectives(),
-            "img-src": ["'self'", "data:", "blob:", "http://localhost:3001", "http://127.0.0.1:3001", "http://localhost:3000"],
             "script-src": ["'self'", "'unsafe-inline'", "https://cdn.tailwindcss.com"],
             "style-src": ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com"],
             "font-src": ["'self'", "https://fonts.gstatic.com"],
+            "img-src": ["'self'", "data:", "blob:", "http://localhost:3001"],
+            "frame-src": ["'self'", "http://localhost:3000", "http://127.0.0.1:3000"],
+            "connect-src": ["'self'", "http://localhost:3001", "http://localhost:3000"]
         },
     },
+    crossOriginEmbedderPolicy: { policy: "require-corp" },
+    crossOriginOpenerPolicy: { policy: "same-origin" },
+    crossOriginResourcePolicy: { policy: "cross-origin" }
 }));
 
 app.use(cors({
-    origin: ['http://localhost:5173', 'http://127.0.0.1:5173', 'http://localhost:3000', 'http://127.0.0.1:3000'],
+    origin: [
+        'http://localhost:5173',
+        'http://127.0.0.1:5173',
+        'http://localhost:3000',
+        'http://127.0.0.1:3000',
+        'http://localhost:3003',
+        'http://127.0.0.1:3003'
+    ],
     credentials: true
 }));
 
@@ -41,11 +52,15 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(logMiddleware);
 
-// Servir arquivos estáticos de uploads com header CORP
-app.use('/uploads', (req, res, next) => {
-    res.setHeader('Cross-Origin-Resource-Policy', 'cross-origin');
-    next();
-}, express.static(path.join(process.cwd(), 'uploads')));
+// Servir arquivos estáticos de uploads com headers corretos para OHIF/SharedArrayBuffer
+app.use('/uploads', express.static(path.join(process.cwd(), 'uploads'), {
+    setHeaders: (res, path, stat) => {
+        res.set('Cross-Origin-Resource-Policy', 'cross-origin');
+        res.set('Access-Control-Allow-Origin', '*');
+        res.set('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+        res.set('Cache-Control', 'public, max-age=3600'); // Cache por 1 hora
+    }
+}));
 
 // Painel de Monitoramento do Core Engine
 app.get('/', getDashboard);
@@ -59,16 +74,6 @@ app.use('/api/stats', statsRoutes);
 // Rotas Básicas para Health Check
 app.get('/health', (req, res) => {
     res.json({ status: 'ok', timestamp: new Date(), service: 'LaudoDigital Backend' });
-});
-
-// Erro Global Handler
-app.use((err: any, req: Request, res: Response, next: any) => {
-    console.error('🔥 Global Error Handler:', err);
-    res.status(500).json({
-        error: 'Erro interno no Core Engine',
-        message: err.message,
-        stack: process.env.NODE_ENV === 'development' ? err.stack : undefined
-    });
 });
 
 // Rota 404 Real-time Log

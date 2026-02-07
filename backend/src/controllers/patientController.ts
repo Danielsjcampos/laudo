@@ -12,7 +12,7 @@ const PatientCreateSchema = z.object({
 
 export const getPatients = async (req: any, res: Response) => {
   try {
-    const { role, email } = req.user;
+    const { role, email, userId } = req.user;
     console.log(`👥 Patients Request: Role=${role}, Email=${email}`);
 
     let patients;
@@ -21,6 +21,38 @@ export const getPatients = async (req: any, res: Response) => {
     } else if (role === 'clinic') {
       const clinic = await prisma.clinic.findFirst({ where: { adminEmail: email } });
       patients = await prisma.patient.findMany({ where: { clinicId: clinic?.id } });
+    } else if (role === 'doctor') {
+      const dbUser = await prisma.user.findUnique({ where: { id: userId } });
+
+      if (!dbUser) {
+        // Token valido mas usuario nao existe no banco
+        return res.status(401).json({ error: 'Usuário não encontrado' });
+      }
+
+      const doctor = await prisma.doctor.findFirst({ where: { name: dbUser.name } });
+
+      if (doctor) {
+        patients = await prisma.patient.findMany({
+          where: {
+            exams: {
+              some: {
+                OR: [
+                  { doctorAssignedId: doctor.id },
+                  { status: 'Disponível' }
+                ]
+              }
+            }
+          },
+          include: { clinic: true }
+        });
+      } else {
+        patients = [];
+      }
+    } else if (role === 'patient') {
+      // Patient fetches their own record
+      // Assuming the link is via email or we need to find the patient record associated with this user
+      // If the User model has a specific link, use it. Otherwise try email match.
+      patients = await prisma.patient.findMany({ where: { email: email } });
     } else {
       console.warn(`🚫 Acesso negado em getPatients. Role: ${role}`);
       return res.status(403).json({ error: 'Não autorizado' });
@@ -74,22 +106,20 @@ export const createPatient = async (req: any, res: Response) => {
 export const updatePatient = async (req: any, res: Response) => {
   try {
     const { id } = req.params;
+    const { name, cpf, email } = req.body;
     const { role } = req.user;
 
     if (role !== 'clinic' && role !== 'admin') {
       return res.status(403).json({ error: 'Não autorizado' });
     }
 
-    const data = PatientCreateSchema.partial().parse(req.body);
-
-    const updatedPatient = await prisma.patient.update({
+    const updated = await prisma.patient.update({
       where: { id },
-      data
+      data: { name, cpf, email }
     });
 
-    res.json(updatedPatient);
+    res.json(updated);
   } catch (error) {
-    if (error instanceof z.ZodError) return res.status(400).json({ error: error.issues });
     console.error(error);
     res.status(500).json({ error: 'Erro ao atualizar paciente' });
   }

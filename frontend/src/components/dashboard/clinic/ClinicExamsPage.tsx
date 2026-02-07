@@ -2,16 +2,19 @@ import React, { useState, useMemo } from 'react';
 import type { Exam } from '../../../data/mockData';
 import { Badge } from '../../ui/Badge';
 import SearchInput from '../../ui/SearchInput';
+import { PlusIcon } from '../../icons/PlusIcon';
+import { Button } from '../../ui/Button';
 
 interface ClinicExamsPageProps {
     exams: Exam[];
     onNavigateToDetail: (examId: string) => void;
     onEditExam?: (examId: string) => void;
     onDeleteExam?: (examId: string) => void;
-    onRequestExamModalOpen?: (patientId: string) => void;
+    onOpenOhif?: (examId: string) => void;
+    onOpenRequestExam?: (patientId?: string) => void;
 }
 
-const ClinicExamsPage: React.FC<ClinicExamsPageProps> = ({ exams, onNavigateToDetail, onEditExam, onDeleteExam, onRequestExamModalOpen }) => {
+const ClinicExamsPage: React.FC<ClinicExamsPageProps> = ({ exams, onNavigateToDetail, onOpenOhif, onEditExam, onDeleteExam, onOpenRequestExam }) => {
     const [searchTerm, setSearchTerm] = useState('');
     const [deleteConfirmId, setDeleteConfirmId] = useState<string | null>(null);
 
@@ -74,8 +77,17 @@ const ClinicExamsPage: React.FC<ClinicExamsPageProps> = ({ exams, onNavigateToDe
 
             <div className="flex justify-between items-center mb-8">
                 <h1 className="text-3xl font-bold text-gray-900">Gerenciamento de Exames</h1>
-                <div className="w-full max-w-xs">
-                    <SearchInput value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} placeholder="Buscar por paciente, exame..." />
+                <div className="flex gap-4 w-full max-w-2xl justify-end">
+                    <Button
+                        onClick={() => onOpenRequestExam && onOpenRequestExam()}
+                        className="bg-brand-blue-600 hover:bg-brand-blue-700 text-white font-bold py-2 px-4 rounded-xl flex items-center gap-2"
+                    >
+                        <PlusIcon className="w-5 h-5" />
+                        Novo Exame
+                    </Button>
+                    <div className="w-full max-w-xs">
+                        <SearchInput value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} placeholder="Buscar por paciente, exame..." />
+                    </div>
                 </div>
             </div>
 
@@ -113,14 +125,25 @@ const ClinicExamsPage: React.FC<ClinicExamsPageProps> = ({ exams, onNavigateToDe
                                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
                                                 </svg>
                                             </button>
-                                            {onRequestExamModalOpen && (
+                                            {onOpenRequestExam && (
                                                 <button
-                                                    onClick={() => onRequestExamModalOpen(exam.patientId)}
+                                                    onClick={() => onOpenRequestExam(exam.patientId)}
                                                     className="p-2 text-green-600 hover:bg-green-50 rounded-lg transition-colors"
-                                                    title="Requisitar Novo Exame"
+                                                    title="Novo Exame para este Paciente"
                                                 >
-                                                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 4v16m8-8H4" />
+                                                    <PlusIcon className="w-5 h-5" />
+                                                </button>
+                                            )}
+                                            {onOpenOhif && (
+                                                <button
+                                                    onClick={() => onOpenOhif(exam.id)}
+                                                    className="p-2 text-cyan-600 hover:bg-cyan-50 rounded-lg transition-colors"
+                                                    title="Abrir no OHIF"
+                                                >
+                                                    <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                                        <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
+                                                        <line x1="8" y1="21" x2="16" y2="21" />
+                                                        <line x1="12" y1="17" x2="12" y2="21" />
                                                     </svg>
                                                 </button>
                                             )}

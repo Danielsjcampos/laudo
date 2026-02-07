@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Modal } from '../../ui/Modal';
 import { Button } from '../../ui/Button';
 import type { Patient, ExamModality, ExamUrgency } from '../../../data/mockData';
@@ -9,7 +9,6 @@ interface RequestExamModalProps {
   isOpen: boolean;
   onClose: () => void;
   patients: Patient[];
-  initialPatientId?: string;
   onSubmit: (
     patientId: string,
     examType: string,
@@ -20,6 +19,7 @@ interface RequestExamModalProps {
     bodyPart: string,
     file: File | null
   ) => void;
+  initialPatientId?: string;
 }
 
 const SPECIALTIES = ['Radiologia', 'Cardiologia', 'Neurologia', 'Pediatria', 'Ortopedia'];
@@ -30,10 +30,19 @@ export const RequestExamModal: React.FC<RequestExamModalProps> = ({
   isOpen,
   onClose,
   patients,
-  initialPatientId,
   onSubmit,
+  initialPatientId
 }) => {
   const [patientId, setPatientId] = useState(initialPatientId || patients[0]?.id || '');
+
+  // Update patientId when initialPatientId changes or modal opens
+  React.useEffect(() => {
+    if (initialPatientId) {
+      setPatientId(initialPatientId);
+    } else if (!patientId && patients.length > 0) {
+      setPatientId(patients[0].id);
+    }
+  }, [initialPatientId, isOpen, patients]);
   const [examType, setExamType] = useState('');
   const [specialty, setSpecialty] = useState(SPECIALTIES[0]);
   const [modality, setModality] = useState<ExamModality>('RX');
@@ -43,40 +52,16 @@ export const RequestExamModal: React.FC<RequestExamModalProps> = ({
   const [file, setFile] = useState<File | null>(null);
   const { addToast } = useToast();
 
-  const [isSubmitting, setIsSubmitting] = useState(false);
-
-  React.useEffect(() => {
-    if (isOpen) {
-      if (initialPatientId) {
-        setPatientId(initialPatientId);
-      } else if (!patientId && patients.length > 0) {
-        setPatientId(patients[0].id);
-      }
-    } else {
-      setIsSubmitting(false); // Reset when closed
-    }
-  }, [isOpen, initialPatientId, patients]);
-
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!file) {
-      addToast('Selecione um arquivo DICOM', 'error');
-      return;
-    }
-
     if (patientId && examType) {
-      setIsSubmitting(true);
-      try {
-        const success = await (onSubmit as any)(patientId, examType, specialty, price, modality, urgency, bodyPart || 'Geral', file);
-        if (success) {
-          addToast('Exame enviado para o Marketplace!', 'success');
-          onClose();
-        }
-      } catch (err) {
-        // Error is handled in App.tsx
-      } finally {
-        setIsSubmitting(false);
-      }
+      // In a real scenario, we would upload the file here
+      // For now, we'll pass it to onSubmit which App.tsx will handle
+      onSubmit(patientId, examType, specialty, price, modality, urgency, bodyPart || 'Geral', file);
+      addToast('Exame enviado para o Marketplace!', 'success');
+      onClose();
+    } else if (!file) {
+      addToast('Selecione um arquivo DICOM', 'error');
     }
   };
 
@@ -89,124 +74,124 @@ export const RequestExamModal: React.FC<RequestExamModalProps> = ({
 
   return (
     <Modal isOpen={isOpen} onClose={onClose} title="Requisitar Novo Laudo">
-      <form onSubmit={handleSubmit} className="space-y-4">
+      <form onSubmit={handleSubmit} className="grid grid-cols-12 gap-4 h-full">
 
-        {/* File Upload Section */}
-        <div
-          onClick={() => document.getElementById('dicom-upload')?.click()}
-          className={`border-2 border-dashed rounded-xl p-4 md:p-6 flex flex-col items-center justify-center transition-colors cursor-pointer group ${file ? 'border-brand-teal-500 bg-brand-teal-50' : 'border-gray-300 bg-gray-50 hover:bg-brand-blue-50 hover:border-brand-blue-300'}`}
-        >
-          <input
-            id="dicom-upload"
-            type="file"
-            accept=".dcm"
-            className="hidden"
-            onChange={handleFileChange}
-          />
-          <div className={`p-2 rounded-full shadow-sm group-hover:shadow-md mb-2 ${file ? 'bg-brand-teal-500 text-white' : 'bg-white text-gray-400 group-hover:text-brand-blue-600'}`}>
-            {file ? (
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
-            ) : (
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path></svg>
-            )}
-          </div>
-          <p className="text-xs font-semibold text-gray-700 max-w-full truncate px-4">
-            {file ? (file.name.length > 30 ? file.name.substring(0, 30) + '...' : file.name) : 'Selecione o arquivo DICOM'}
-          </p>
-          {!file && <p className="text-[10px] text-gray-500 mt-0.5">Suporta .dcm (Max 500MB)</p>}
-        </div>
-
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div className="md:col-span-2">
-            <label className="block text-sm font-medium text-gray-700 mb-1">Paciente</label>
-            <select
-              value={patientId}
-              onChange={(e) => setPatientId(e.target.value)}
-              className="w-full px-3 py-2 border border-medical-border rounded-lg shadow-sm focus:ring-2 focus:ring-brand-blue-500 outline-none"
-            >
-              {patients.map(p => <option key={p.id} value={p.id}>{p.name} - {p.cpf}</option>)}
-            </select>
+        {/* Coluna Esquerda - 4/12 */}
+        <div className="col-span-12 md:col-span-4 space-y-3 flex flex-col">
+          {/* File Upload - Vertical */}
+          <div
+            onClick={() => document.getElementById('dicom-upload')?.click()}
+            className={`flex-1 min-h-[140px] border-2 border-dashed rounded-2xl p-4 flex flex-col items-center justify-center text-center gap-3 transition-all cursor-pointer hover:bg-gray-50 ${file ? 'border-brand-teal-500 bg-brand-teal-50' : 'border-gray-200'}`}
+          >
+            <input id="dicom-upload" type="file" accept=".dcm" className="hidden" onChange={handleFileChange} />
+            <div className={`p-3 rounded-xl ${file ? 'bg-brand-teal-500 text-white' : 'bg-gray-100 text-gray-400'}`}>
+              {file ?
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg> :
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path></svg>
+              }
+            </div>
+            <div>
+              <p className="text-xs font-bold text-gray-700 truncate max-w-[150px]">{file ? file.name : 'Upload DICOM'}</p>
+              <p className="text-[9px] text-gray-400 font-bold uppercase tracking-wider mt-0.5">.dcm (Max 500MB)</p>
+            </div>
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Modalidade</label>
+            <label className="block text-[10px] font-black uppercase tracking-wider text-gray-400 mb-1 ml-1">Paciente</label>
+            <select
+              value={patientId}
+              onChange={(e) => setPatientId(e.target.value)}
+              className="w-full px-3 py-2 bg-gray-50 border border-gray-100 rounded-xl text-xs font-bold text-gray-900 focus:ring-2 focus:ring-brand-blue-500 outline-none"
+            >
+              {patients.map(p => <option key={p.id} value={p.id}>{p.name}</option>)}
+            </select>
+          </div>
+          <div>
+            <label className="block text-[10px] font-black uppercase tracking-wider text-gray-400 mb-1 ml-1">Prioridade</label>
+            <select
+              value={urgency}
+              onChange={(e) => setUrgency(e.target.value as ExamUrgency)}
+              className={`w-full px-3 py-2 bg-gray-50 border border-gray-100 rounded-xl text-xs font-black outline-none ${urgency === 'Urgente' ? 'text-red-600 bg-red-50' : 'text-gray-900'}`}
+            >
+              {URGENCIES.map(u => <option key={u} value={u}>{u}</option>)}
+            </select>
+          </div>
+        </div>
+
+
+        {/* Coluna Direita - 8/12 */}
+        <div className="col-span-12 md:col-span-8 grid grid-cols-2 gap-3 content-start">
+          <div className="col-span-2">
+            <label className="block text-[10px] font-black uppercase tracking-wider text-gray-400 mb-1 ml-1">Descrição</label>
+            <input
+              type="text"
+              value={examType}
+              onChange={(e) => setExamType(e.target.value)}
+              placeholder="Ex: TC Crânio"
+              className="w-full px-3 py-2 bg-gray-50 border border-gray-100 rounded-xl text-xs font-bold focus:ring-2 focus:ring-brand-blue-500 outline-none"
+              required
+            />
+          </div>
+
+          <div>
+            <label className="block text-[10px] font-black uppercase tracking-wider text-gray-400 mb-1 ml-1">Modalidade</label>
             <select
               value={modality}
               onChange={(e) => setModality(e.target.value as ExamModality)}
-              className="w-full px-3 py-2 border border-medical-border rounded-lg shadow-sm focus:ring-2 focus:ring-brand-blue-500 outline-none"
+              className="w-full px-3 py-2 bg-gray-50 border border-gray-100 rounded-xl text-xs font-bold text-gray-900 outline-none"
             >
               {MODALITIES.map(m => <option key={m} value={m}>{m}</option>)}
             </select>
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Prioridade</label>
-            <select
-              value={urgency}
-              onChange={(e) => setUrgency(e.target.value as ExamUrgency)}
-              className={`w-full px-3 py-2 border border-medical-border rounded-lg shadow-sm focus:ring-2 focus:ring-brand-blue-500 outline-none font-medium ${urgency === 'Urgente' ? 'text-red-600 bg-red-50 border-red-200' : 'text-gray-700'}`}
-            >
-              {URGENCIES.map(u => <option key={u} value={u}>{u}</option>)}
-            </select>
-          </div>
-
-          <div className="md:col-span-2">
-            <label className="block text-sm font-medium text-gray-700 mb-1">Descrição do Exame</label>
-            <input
-              type="text"
-              value={examType}
-              onChange={(e) => setExamType(e.target.value)}
-              placeholder="Ex: Ressonância Magnética de Crânio com Contraste"
-              className="w-full px-3 py-2 border border-medical-border rounded-lg shadow-sm focus:ring-2 focus:ring-brand-blue-500 outline-none"
-              required
-            />
-          </div>
-
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Região/Parte do Corpo</label>
-            <input
-              type="text"
-              value={bodyPart}
-              onChange={(e) => setBodyPart(e.target.value)}
-              placeholder="Ex: Crânio"
-              className="w-full px-3 py-2 border border-medical-border rounded-lg shadow-sm focus:ring-2 focus:ring-brand-blue-500 outline-none"
-            />
-          </div>
-
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Especialidade</label>
+            <label className="block text-[10px] font-black uppercase tracking-wider text-gray-400 mb-1 ml-1">Especialidade</label>
             <select
               value={specialty}
               onChange={(e) => setSpecialty(e.target.value)}
-              className="w-full px-3 py-2 border border-medical-border rounded-lg shadow-sm focus:ring-2 focus:ring-brand-blue-500 outline-none"
+              className="w-full px-3 py-2 bg-gray-50 border border-gray-100 rounded-xl text-xs font-bold text-gray-900 outline-none"
             >
               {SPECIALTIES.map(s => <option key={s} value={s}>{s}</option>)}
             </select>
           </div>
 
-          <div className="md:col-span-2">
-            <label className="block text-sm font-medium text-gray-700 mb-1">Oferta ao Lauda (R$)</label>
-            <div className="relative">
-              <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 font-medium">R$</span>
-              <input
-                type="number"
-                value={price}
-                onChange={(e) => setPrice(Number(e.target.value))}
-                className="w-full pl-10 pr-3 py-2 border border-medical-border rounded-lg shadow-sm focus:ring-2 focus:ring-brand-blue-500 outline-none font-bold text-gray-900"
-                step="0.01"
-                min="1"
-              />
+          <div className="col-span-2">
+            <label className="block text-[10px] font-black uppercase tracking-wider text-gray-400 mb-1 ml-1">Parte do Corpo</label>
+            <input
+              type="text"
+              value={bodyPart}
+              onChange={(e) => setBodyPart(e.target.value)}
+              placeholder="Ex: Cabeça"
+              className="w-full px-3 py-2 bg-gray-50 border border-gray-100 rounded-xl text-xs font-bold outline-none"
+            />
+          </div>
+
+          <div className="col-span-2 mt-1">
+            <div className="bg-brand-blue-600 p-3 rounded-2xl shadow-lg flex items-center justify-between gap-4">
+              <div>
+                <label className="block text-[10px] font-black uppercase tracking-wider text-brand-blue-200 mb-0.5">Oferta</label>
+                <p className="text-[9px] text-brand-blue-100 opacity-80">Valor líquido</p>
+              </div>
+              <div className="flex items-center gap-1">
+                <span className="text-brand-blue-300 font-bold text-xs">R$</span>
+                <input
+                  type="number"
+                  value={price}
+                  onChange={(e) => setPrice(Number(e.target.value))}
+                  className="w-24 bg-transparent border-b border-brand-blue-400 text-white font-black text-lg text-right focus:outline-none focus:border-white transition-colors"
+                />
+              </div>
             </div>
+          </div>
+
+          {/* Botões alinhados na direita inferior */}
+          <div className="col-span-2 flex justify-end space-x-2 pt-2">
+            <Button type="button" variant="outline" onClick={onClose} className="rounded-xl px-4 py-2 border-gray-200 text-gray-400 font-bold uppercase tracking-widest text-[10px]">Cancelar</Button>
+            <Button type="submit" className="px-6 py-2 bg-gray-900 hover:bg-black text-white rounded-xl shadow-lg font-black uppercase tracking-widest text-[10px]">Enviar</Button>
           </div>
         </div>
 
-        <div className="mt-4 flex justify-end space-x-3 pt-4 border-t border-gray-100">
-          <Button type="button" variant="outline" onClick={onClose} disabled={isSubmitting}>Cancelar</Button>
-          <Button type="submit" className="px-6" disabled={isSubmitting}>
-            {isSubmitting ? 'Enviando...' : 'Enviar Solicitação'}
-          </Button>
-        </div>
+
       </form>
     </Modal>
   );

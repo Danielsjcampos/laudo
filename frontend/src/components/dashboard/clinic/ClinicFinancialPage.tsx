@@ -7,70 +7,33 @@ import { WalletIcon } from '../../icons/WalletIcon';
 import { Button } from '../../ui/Button';
 import { SparklesIcon } from '../../icons/SparklesIcon';
 import { CheckCircleIcon } from '../../icons/CheckCircleIcon';
-import { useToast } from '../../../contexts/ToastContext';
-import { formatCurrency, formatDate } from '../../../utils/formatters';
+import api from '../../../lib/api';
 
 interface ClinicFinancialPageProps {
   exams: Exam[];
-  onNavigateToDetail?: (examId: string) => void;
 }
 
-const ClinicFinancialPage: React.FC<ClinicFinancialPageProps> = ({ exams, onNavigateToDetail }) => {
-  const { addToast } = useToast();
-  const [filterDate, setFilterDate] = React.useState<string>('');
+const ClinicFinancialPage: React.FC<ClinicFinancialPageProps> = ({ exams }) => {
+  const pendingRepasse = exams.filter(e => e.paymentStatus === 'Pendente' && e.status === 'Concluído').reduce((acc, curr) => acc + curr.price, 0);
+  const paidRepasse = exams.filter(e => e.paymentStatus === 'Pago').reduce((acc, curr) => acc + curr.price, 0);
 
-  const filteredExams = React.useMemo(() => {
-    if (!filterDate) return exams;
-    return exams.filter(e => e.dateRequested.startsWith(filterDate));
-  }, [exams, filterDate]);
-
-  const pendingRepasse = filteredExams.filter(e => e.paymentStatus === 'Pendente' && e.status === 'Concluído').reduce((acc, curr) => acc + curr.price, 0);
-  const paidRepasse = filteredExams.filter(e => e.paymentStatus === 'Pago').reduce((acc, curr) => acc + curr.price, 0);
-
+  // Receita clínica simulada (faturamento bruto total dos exames baseado nos custos do mock)
   const totalGrossRevenue = mockClinicPerformance.rentabilityByExam.reduce((acc, curr) => acc + curr.revenue, 0);
   const netMarginTotal = totalGrossRevenue - (pendingRepasse + paidRepasse);
   const marginPercentage = (netMarginTotal / totalGrossRevenue) * 100;
 
-  const handleExportDRE = () => {
-    // Generate mock CSV
-    const headers = ["Data", "Descrição", "Valor", "Tipo"];
-    const rows = [
-      ["2023-10-01", "Receita de Exames", "15000.00", "Entrada"],
-      ["2023-10-02", "Pagamento Radiologista", "-5000.00", "Saída"],
-      ["2023-10-05", "Taxa de Plataforma", "-1500.00", "Saída"]
-    ];
-    let csvContent = "data:text/csv;charset=utf-8,"
-      + headers.join(",") + "\n"
-      + rows.map(e => e.join(",")).join("\n");
-
-    const encodedUri = encodeURI(csvContent);
-    const link = document.createElement("a");
-    link.setAttribute("href", encodedUri);
-    link.setAttribute("download", "dre_resumido_laudo_digital.csv");
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-
-    addToast('DRE Exportado com sucesso!', 'success');
-  };
-
-  const handleLoteRepasse = () => {
-    if (pendingRepasse <= 0) {
-      addToast('Não há valores pendentes para repasse.', 'info');
-      return;
+  const handleReleasePayment = async (examId: string) => {
+    if (!confirm('Confirmar a liberação do pagamento para este especialista?')) return;
+    try {
+      const response = await api.post(`/exams/${examId}/pay`);
+      if (response.status === 200) {
+        alert('Pagamento liberado com sucesso!');
+        window.location.reload(); // Simple reload to refresh data
+      }
+    } catch (error) {
+      console.error("Erro ao liberar pagamento:", error);
+      alert('Erro ao liberar pagamento. Tente novamente.');
     }
-
-    // Mock processing
-    addToast('Processando lote de pagamentos...', 'info');
-    setTimeout(() => {
-      addToast(`${filteredExams.filter(e => e.paymentStatus === 'Pendente').length} pagamentos processados com sucesso!`, 'success');
-      // In a real app, calls onRefreshData() here
-    }, 2000);
-  };
-
-  const [showEfficiencyModal, setShowEfficiencyModal] = React.useState(false);
-  const handleEfficiencyReport = () => {
-    setShowEfficiencyModal(true);
   };
 
   return (
@@ -81,8 +44,8 @@ const ClinicFinancialPage: React.FC<ClinicFinancialPageProps> = ({ exams, onNavi
           <p className="text-gray-500 font-medium mt-1">Gestão de repasses médicos, margens e fluxo financeiro global.</p>
         </div>
         <div className="flex space-x-3 w-full md:w-auto">
-          <Button variant="outline" onClick={handleExportDRE} className="rounded-2xl px-8 py-3 font-black uppercase text-[10px] flex-1 md:flex-none">Exportar DRE</Button>
-          <Button onClick={handleLoteRepasse} className="bg-brand-blue-700 rounded-2xl px-8 py-3 font-black uppercase text-[10px] shadow-xl shadow-brand-blue-100 flex-1 md:flex-none">
+          <Button variant="outline" className="rounded-2xl px-8 py-3 font-black uppercase text-[10px] flex-1 md:flex-none">Exportar DRE</Button>
+          <Button className="bg-brand-blue-700 rounded-2xl px-8 py-3 font-black uppercase text-[10px] shadow-xl shadow-brand-blue-100 flex-1 md:flex-none">
             Lote de Repasse (Pendentes)
           </Button>
         </div>
@@ -181,7 +144,7 @@ const ClinicFinancialPage: React.FC<ClinicFinancialPageProps> = ({ exams, onNavi
               <p className="text-xl font-bold leading-relaxed mb-10">
                 Otimize seu fluxo: Exames de <span className="underline decoration-2 underline-offset-4">Ressonância Magnética</span> estão gerando 65% de margem com o marketplace, superando o custo de médicos internos em <span className="font-black text-white italic">22.4%</span>.
               </p>
-              <Button onClick={handleEfficiencyReport} className="bg-white text-brand-teal-700 font-black rounded-2xl px-10 py-4 text-[10px] uppercase tracking-widest hover:bg-brand-teal-50">
+              <Button className="bg-white text-brand-teal-700 font-black rounded-2xl px-10 py-4 text-[10px] uppercase tracking-widest hover:bg-brand-teal-50">
                 Ver Relatório de Eficiência
               </Button>
             </div>
@@ -209,19 +172,9 @@ const ClinicFinancialPage: React.FC<ClinicFinancialPageProps> = ({ exams, onNavi
 
       {/* Extrato Detalhado de Transações */}
       <div className="bg-white rounded-[3.5rem] shadow-sm border border-gray-100 overflow-hidden">
-        <div className="p-10 flex justify-between items-center border-b border-gray-50 flex-wrap gap-4">
+        <div className="p-10 flex justify-between items-center border-b border-gray-50">
           <h2 className="text-2xl font-black text-gray-900 tracking-tight">Extrato Consolidado</h2>
-          <div className="flex items-center space-x-2">
-            <input
-              type="month"
-              value={filterDate}
-              onChange={(e) => setFilterDate(e.target.value)}
-              className="px-3 py-2 border border-gray-200 rounded-xl text-xs font-bold outline-none focus:ring-2 focus:ring-brand-blue-500"
-            />
-            {filterDate && (
-              <button onClick={() => setFilterDate('')} className="text-[10px] font-black uppercase text-gray-400 hover:text-red-500">Limpar</button>
-            )}
-          </div>
+          <Button variant="outline" className="text-[9px] font-black uppercase tracking-widest rounded-xl">Filtrar por Período</Button>
         </div>
         <div className="overflow-x-auto">
           <table className="w-full text-sm text-left">
@@ -235,8 +188,8 @@ const ClinicFinancialPage: React.FC<ClinicFinancialPageProps> = ({ exams, onNavi
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-50">
-              {filteredExams.map(exam => (
-                <tr key={exam.id} className="hover:bg-gray-50/50 transition-colors group cursor-pointer" onClick={() => onNavigateToDetail && onNavigateToDetail(exam.id)}>
+              {exams.map(exam => (
+                <tr key={exam.id} className="hover:bg-gray-50/50 transition-colors group">
                   <td className="px-10 py-6 text-gray-500 font-medium">{new Date(exam.dateRequested).toLocaleDateString('pt-BR')}</td>
                   <td className="px-10 py-6">
                     <div className="font-bold text-gray-900 group-hover:text-brand-blue-600 transition-colors">{exam.examType}</div>
@@ -253,7 +206,10 @@ const ClinicFinancialPage: React.FC<ClinicFinancialPageProps> = ({ exams, onNavi
                   </td>
                   <td className="px-10 py-6 text-right">
                     {exam.paymentStatus === 'Pendente' && exam.status === 'Concluído' ? (
-                      <button className="bg-brand-blue-600 text-white text-[9px] font-black uppercase tracking-widest px-5 py-2.5 rounded-xl hover:bg-brand-blue-700 transition-all shadow-lg shadow-brand-blue-100">
+                      <button
+                        onClick={() => handleReleasePayment(exam.id)}
+                        className="bg-brand-blue-600 text-white text-[9px] font-black uppercase tracking-widest px-5 py-2.5 rounded-xl hover:bg-brand-blue-700 transition-all shadow-lg shadow-brand-blue-100"
+                      >
                         Liberar Pagamento
                       </button>
                     ) : (
@@ -268,42 +224,6 @@ const ClinicFinancialPage: React.FC<ClinicFinancialPageProps> = ({ exams, onNavi
           </table>
         </div>
       </div>
-      {/* Efficiency Modal */}
-      {showEfficiencyModal && (
-        <div className="fixed inset-0 z-[110] flex items-center justify-center p-4">
-          <div className="fixed inset-0 bg-gray-900/60 backdrop-blur-sm transition-opacity" onClick={() => setShowEfficiencyModal(false)} />
-          <div className="relative bg-white rounded-3xl shadow-2xl w-full max-w-2xl overflow-hidden animate-in zoom-in-95 duration-200">
-            <div className="bg-gradient-to-r from-brand-teal-500 to-brand-teal-600 p-8 text-white">
-              <h3 className="text-2xl font-black uppercase tracking-tight">Relatório de Eficiência</h3>
-              <p className="text-brand-teal-100 font-medium">Análise baseada em IA (Mock Data)</p>
-            </div>
-            <div className="p-8 space-y-6">
-              <div className="grid grid-cols-2 gap-4">
-                <div className="bg-gray-50 p-4 rounded-2xl">
-                  <p className="text-[10px] font-black uppercase text-gray-400">Tempo Médio de Laudo</p>
-                  <p className="text-2xl font-black text-gray-800">4h 12m</p>
-                  <p className="text-xs text-green-600 font-bold">-15% vs mês anterior</p>
-                </div>
-                <div className="bg-gray-50 p-4 rounded-2xl">
-                  <p className="text-[10px] font-black uppercase text-gray-400">Custo por Laudo</p>
-                  <p className="text-2xl font-black text-gray-800">R$ 42,50</p>
-                  <p className="text-xs text-green-600 font-bold">-5% Otimização</p>
-                </div>
-              </div>
-              <div className="bg-blue-50 p-6 rounded-2xl border border-blue-100">
-                <h4 className="font-bold text-blue-800 mb-2">Sugestões de Otimização</h4>
-                <ul className="list-disc list-inside text-sm text-blue-700 space-y-1">
-                  <li>Concentrar exames de RM no período da manhã para tarifas reduzidas.</li>
-                  <li>Aumentar volume de Raios-X para atingir tier de desconto.</li>
-                </ul>
-              </div>
-            </div>
-            <div className="p-6 bg-gray-50 flex justify-end">
-              <Button onClick={() => setShowEfficiencyModal(false)}>Fechar Relatório</Button>
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 };

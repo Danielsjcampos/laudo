@@ -1,6 +1,6 @@
 
 import { Router } from 'express';
-import { getExams, createExam, acceptExam, completeReport, updateExam, deleteExam } from '../controllers/examController';
+import { getExams, createExam, acceptExam, completeReport, updateExam, deleteExam, payExam } from '../controllers/examController';
 import { authenticateToken } from '../middleware/auth';
 import { upload } from '../middleware/upload';
 
@@ -14,5 +14,6 @@ router.patch('/:id', updateExam);
 router.delete('/:id', deleteExam);
 router.post('/:id/accept', acceptExam);
 router.post('/:id/complete', completeReport);
+router.post('/:id/pay', payExam);
 
 export default router;

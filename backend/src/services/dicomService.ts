@@ -13,33 +13,29 @@ interface DicomMetadata {
   modality?: string;
   seriesDescription?: string;
   studyDate?: string;
+  studyInstanceUID?: string;
+  seriesInstanceUID?: string;
+  sopInstanceUID?: string;
 }
 
 export const processDicomFile = async (filePath: string, outputDir: string) => {
   try {
     const fileBuffer = fs.readFileSync(filePath);
 
-    // Ensure we use the Buffer as an ArrayBuffer correctly for dcmjs
-    const arrayBuffer = fileBuffer.buffer.slice(fileBuffer.byteOffset, fileBuffer.byteOffset + fileBuffer.byteLength);
-
     // Convert to DICOM dataset
-    const dicomData = dcmjs.data.DicomMessage.readFile(arrayBuffer);
+    const dicomData = dcmjs.data.DicomMessage.readFile(fileBuffer.buffer);
     const dataset = dcmjs.data.DicomMetaDictionary.naturalizeDataset(dicomData.dict);
 
     // Extract metadata
-    const rawPatientName = dataset.PatientName?.Alphabetical || dataset.PatientName;
-    const patientName = typeof rawPatientName === 'string'
-      ? rawPatientName
-      : (Array.isArray(rawPatientName) && rawPatientName.length > 0)
-        ? String(rawPatientName[0])
-        : 'Não identificado';
-
     const metadata: DicomMetadata = {
-      patientName,
+      patientName: String(dataset.PatientName?.Alphabetical || dataset.PatientName || 'Não identificado'),
       studyDescription: String(dataset.StudyDescription || 'Sem descrição'),
       modality: String(dataset.Modality || 'N/A'),
       seriesDescription: String(dataset.SeriesDescription || 'Sem série'),
-      studyDate: String(dataset.StudyDate || '')
+      studyDate: String(dataset.StudyDate || ''),
+      studyInstanceUID: String(dataset.StudyInstanceUID || ''),
+      seriesInstanceUID: String(dataset.SeriesInstanceUID || ''),
+      sopInstanceUID: String(dataset.SOPInstanceUID || '')
     };
 
     // Extract PixelData

@@ -70,6 +70,7 @@ model Exam {
   finalReport        String?
   aiInsights         String?
   dicomUrl           String?
+  studyInstanceUID   String?
 }
 
 model GlobalStats {
