@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { reportThemes } from './report-designer/themes';
+import { Mic, MicOff } from 'lucide-react';
 
 interface ReportEditorProps {
     value: string;
@@ -7,6 +8,13 @@ interface ReportEditorProps {
     onSaveDraft?: () => void;
     readOnly?: boolean;
     themeId?: string;
+}
+
+declare global {
+    interface Window {
+        SpeechRecognition: any;
+        webkitSpeechRecognition: any;
+    }
 }
 
 const TEMPLATES = [
@@ -17,7 +25,93 @@ const TEMPLATES = [
 
 export const ReportEditor: React.FC<ReportEditorProps> = ({ value, onChange, onSaveDraft, readOnly, themeId }) => {
     const [selectedTemplate, setSelectedTemplate] = useState('');
+    const [isRecording, setIsRecording] = useState(false);
+    
     const theme = reportThemes.find(t => t.id === themeId) || reportThemes[0];
+    
+    const recognitionRef = useRef<any>(null);
+    const textAreaRef = useRef<HTMLTextAreaElement>(null);
+    const onChangeRef = useRef(onChange);
+
+    useEffect(() => {
+        onChangeRef.current = onChange;
+    }, [onChange]);
+
+    useEffect(() => {
+        const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+        if (SpeechRecognition) {
+            const recognition = new SpeechRecognition();
+            recognition.continuous = true;
+            recognition.interimResults = false;
+            recognition.lang = 'pt-BR';
+            
+            recognition.onstart = () => {
+                setIsRecording(true);
+            };
+
+            recognition.onresult = (event: any) => {
+                if (readOnly) return;
+                
+                for (let i = event.resultIndex; i < event.results.length; ++i) {
+                    if (event.results[i].isFinal) {
+                        const transcript = event.results[i][0].transcript;
+                        insertTextAtCursor(transcript + ' ');
+                    }
+                }
+            };
+
+            recognition.onerror = (event: any) => {
+                console.error("Speech recognition error:", event.error);
+                setIsRecording(false);
+            };
+
+            recognition.onend = () => {
+                // A gravação pode ser parada automaticamente após período de silêncio
+                setIsRecording(false);
+            };
+
+            recognitionRef.current = recognition;
+        }
+    }, [readOnly]);
+
+    const insertTextAtCursor = (textToInsert: string) => {
+        const textarea = textAreaRef.current;
+        if (!textarea) return;
+
+        const start = textarea.selectionStart;
+        const end = textarea.selectionEnd;
+        const currentVal = textarea.value;
+
+        // Limpa o texto a ser inserido, cuidando de espaçamentos caso o script o demande
+        const cleanText = textToInsert;
+
+        const newVal = currentVal.substring(0, start) + cleanText + currentVal.substring(end);
+        
+        onChangeRef.current(newVal);
+
+        // Move cursor para não sobreescrever tudo que a pessoa editar
+        setTimeout(() => {
+            if (textAreaRef.current) {
+                const newPos = start + cleanText.length;
+                textAreaRef.current.selectionStart = newPos;
+                textAreaRef.current.selectionEnd = newPos;
+            }
+        }, 10);
+    };
+
+    const toggleRecording = () => {
+        if (!recognitionRef.current) {
+            alert('Aviso: Reconhecimento de voz não suportado neste navegador. Use Google Chrome ou Edge.');
+            return;
+        }
+
+        if (isRecording) {
+            recognitionRef.current.stop();
+        } else {
+            recognitionRef.current.start();
+            textAreaRef.current?.focus();
+        }
+    };
 
     const applyTemplate = (e: React.ChangeEvent<HTMLSelectElement>) => {
         const tpl = TEMPLATES.find(t => t.label === e.target.value);
@@ -60,8 +154,30 @@ export const ReportEditor: React.FC<ReportEditorProps> = ({ value, onChange, onS
                         <button className="p-1.5 rounded hover:bg-black/5" style={{ color: theme.design_tokens.colors.secondary }}><span className="italic font-serif">I</span></button>
                         <button className="p-1.5 rounded hover:bg-black/5" style={{ color: theme.design_tokens.colors.secondary }}><span className="underline font-serif">U</span></button>
                      </div>
+
+                     <div className="h-4 w-px bg-gray-300 mx-1"></div>
+
+                     <div className="flex gap-1">
+                         <button 
+                             onClick={toggleRecording}
+                             disabled={readOnly}
+                             title={isRecording ? "Parar ditado" : "Iniciar ditado por voz"}
+                             className={`p-1.5 rounded transition-colors flex items-center gap-1.5 px-3 border ${
+                                 isRecording 
+                                     ? 'bg-red-50 text-red-600 border-red-200 hover:bg-red-100 animate-pulse' 
+                                     : 'bg-white hover:bg-gray-50 border-gray-200'
+                             }`}
+                             style={{ 
+                                 color: isRecording ? '#dc2626' : theme.design_tokens.colors.secondary,
+                                 borderColor: isRecording ? '#fecaca' : theme.design_tokens.colors.border
+                             }}
+                         >
+                             {isRecording ? <MicOff size={14} className="animate-pulse" /> : <Mic size={14} />}
+                             <span className="text-[11px] font-semibold">{isRecording ? "Gravando..." : "Ditar"}</span>
+                         </button>
+                     </div>
                 </div>
-                {!readOnly && (
+                {!readOnly && onSaveDraft && (
                     <button 
                         onClick={onSaveDraft} 
                         className="text-[10px] font-black uppercase tracking-wider hover:opacity-80"
@@ -74,6 +190,7 @@ export const ReportEditor: React.FC<ReportEditorProps> = ({ value, onChange, onS
             
             <div className="flex-1 relative">
                 <textarea
+                    ref={textAreaRef}
                     className="w-full h-full p-8 outline-none leading-relaxed resize-none transition-colors"
                     style={{ 
                         background: 'transparent',
@@ -84,16 +201,24 @@ export const ReportEditor: React.FC<ReportEditorProps> = ({ value, onChange, onS
                     }}
                     value={value}
                     onChange={(e) => onChange(e.target.value)}
-                    placeholder="Comece a digitar o laudo ou selecione um modelo..."
+                    placeholder="Comece a digitar o laudo, use o botão Ditar para gravar por voz ou selecione um modelo."
                     readOnly={readOnly}
                 />
             </div>
 
             <div 
-                className="px-4 py-2 border-t text-[10px] flex justify-between font-mono"
+                className="px-4 py-2 border-t text-[10px] flex justify-between font-mono items-center"
                 style={{ borderColor: theme.design_tokens.colors.border, color: theme.design_tokens.colors.secondary, background: theme.design_tokens.colors.surface }}
             >
-                <span>{value.length} caracteres</span>
+                <div className="flex items-center gap-3">
+                    <span>{value.length} caracteres</span>
+                    {isRecording && (
+                        <span className="flex items-center gap-1.5 text-red-500 font-semibold bg-red-50 px-2 py-0.5 rounded-full">
+                            <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse"></span>
+                            Ouvindo...
+                        </span>
+                    )}
+                </div>
                 <span>Salvamento automático: Ativo</span>
             </div>
         </div>
