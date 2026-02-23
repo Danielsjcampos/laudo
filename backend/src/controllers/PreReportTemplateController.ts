@@ -27,7 +27,14 @@ export class PreReportTemplateController {
         where: { isActive: true },
         orderBy: { modality: 'asc' }
       });
-      res.json(templates);
+      
+      const parsedTemplates = templates.map(t => ({
+        ...t,
+        sections: typeof t.sections === 'string' ? JSON.parse(t.sections) : t.sections,
+        variants: t.variants && typeof t.variants === 'string' ? JSON.parse(t.variants) : []
+      }));
+
+      res.json(parsedTemplates);
     } catch (error) {
       console.error('Error listing templates:', error);
       res.status(500).json({ error: 'Erro ao buscar templates' });
@@ -36,10 +43,16 @@ export class PreReportTemplateController {
 
   static async create(req: Request, res: Response) {
     try {
-      const template = await prisma.preReportTemplate.create({
-        data: req.body
+      const data = { ...req.body };
+      if (typeof data.sections !== 'string') data.sections = JSON.stringify(data.sections || []);
+      if (typeof data.variants !== 'string') data.variants = JSON.stringify(data.variants || []);
+      
+      const template = await prisma.preReportTemplate.create({ data });
+      res.json({
+        ...template,
+        sections: JSON.parse(template.sections),
+        variants: JSON.parse(template.variants || '[]')
       });
-      res.json(template);
     } catch (error) {
        console.error('Error creating template:', error);
       res.status(500).json({ error: 'Erro ao criar template' });
@@ -49,11 +62,19 @@ export class PreReportTemplateController {
   static async update(req: Request, res: Response) {
     try {
       const { id } = req.params;
+      const data = { ...req.body };
+      if (data.sections && typeof data.sections !== 'string') data.sections = JSON.stringify(data.sections);
+      if (data.variants && typeof data.variants !== 'string') data.variants = JSON.stringify(data.variants);
+
       const template = await prisma.preReportTemplate.update({
         where: { id },
-        data: req.body
+        data
       });
-      res.json(template);
+      res.json({
+        ...template,
+        sections: typeof template.sections === 'string' ? JSON.parse(template.sections) : template.sections,
+        variants: template.variants && typeof template.variants === 'string' ? JSON.parse(template.variants) : []
+      });
     } catch (error) {
        console.error('Error updating template:', error);
       res.status(500).json({ error: 'Erro ao atualizar template' });
