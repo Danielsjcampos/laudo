@@ -1,0 +1,25 @@
+﻿yarn run v1.22.22
+$ yarn run dev --verbose
+node.exe : O sistema não 
+pode encontrar o caminho 
+especificado.
+No D:\Tudo 
+programação\yarn.ps1:16 
+caractere:5
++     & "$basedir/node$exe"  
+"$basedir/node_modules/corepa
+ck/dist/yarn. ...
++     ~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~
+    + CategoryInfo           
+   : NotSpecified: (O siste  
+  ma não p...o especificad   
+ o.:String) [], RemoteExc    
+eption
+    + FullyQualifiedErrorId  
+   : NativeCommandError
+ 
+error Command failed with 
+exit code 1.
+info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.

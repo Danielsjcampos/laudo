@@ -1,0 +1,237 @@
+﻿node.exe : Browserslist: 
+browsers data (caniuse-lite) 
+is 8 months old. Please run:
+No linha:1 caractere:1
++ & "D:\Tudo 
+programação/node.exe" 
+"D:\Tudo 
+programação/node_modules/np 
+...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~
+    + CategoryInfo           
+   : NotSpecified: (Browser  
+  slist: b...ld. Please ru   
+ n::String) [], RemoteExc    
+eption
+    + FullyQualifiedErrorId  
+   : NativeCommandError
+ 
+  npx 
+update-browserslist-db@latest
+  Why you should do it 
+regularly: https://github.com
+/browserslist/update-db#readm
+e
+<w> [ReactRefreshPlugin] Hot 
+Module Replacement (HMR) is 
+not enabled! React Refresh 
+requires HMR to function 
+properly.
+assets by status 7.93 MiB [1m[32m[cached][39m[22m 5 assets
+assets by status 202 MiB [1m[33m[compared for emit][39m[22m
+  assets by path [1m[32massets/[39m[22m 1.4 MiB 75 assets
+  assets by path [1m[32m*.js[39m[22m 45.3 MiB 67 assets
+  assets by path [1m[32mort/[39m[22m 136 MiB 55 assets
+  assets by path [1m[32mdicom-microscopy-viewer/[39m[22m 19.7 MiB 8 assets
+  assets by path [1m[32m*.svg[39m[22m 32.3 KiB 2 assets
+  assets by path [1m[32m*.html[39m[22m 6.78 KiB 2 assets
+  assets by path [1m[32m*.json[39m[22m 1.34 KiB
+    asset [1m[32mmanifest.json[39m[22m 1.28 KiB [1m[33m[compared for emit][39m[22m [from: ../public/manifest.json] [1m[32m[copied][39m[22m
+    asset [1m[32mserve.json[39m[22m 67 bytes [1m[33m[compared for emit][39m[22m [from: ../public/serve.json] [1m[32m[copied][39m[22m
+  asset [1m[32m_redirects[39m[22m 150 bytes [1m[33m[compared for emit][39m[22m [from: ../public/_redirects] [1m[32m[copied][39m[22m
+  asset [1m[32m_headers[39m[22m 0 bytes [1m[33m[compared for emit][39m[22m [from: ../public/_headers] [1m[32m[copied][39m[22m
+
+[1mLOG from InjectManifest[39m[22m
+<i> [1m[32mThe service worker at sw.js will precache[39m[22m
+<i> [1m[32m        278 URLs, totaling 259 MB.[39m[22m
+
+[1m[33mWARNING[39m[22m in [1mDefinePlugin
+[1m[31mConflicting[39m[22m[1m values for 'process.env.NODE_ENV'[39m[22m
+
+[1m[33mWARNING[39m[22m in [1mDefinePlugin
+[1m[31mConflicting[39m[22m[1m values for 'process.env.NODE_ENV'[39m[22m
+
+[1m[33mWARNING[39m[22m in [entry] [initial]
+[1mCircular dependency between chunks with runtime (app, compute, polySeg)
+This prevents using hashes of each other and should be avoided.[39m[22m
+
+[1m[33m2 WARNINGS in child compilations (Use 'stats.children: true' resp. '--stats-children' for more details)[39m[22m
+
+2 warnings have detailed information that is not shown.
+Use 'stats.errorDetails: true' resp. '--stats-error-details' to show it.
+
+[1m[31mERROR[39m[22m in [1m../../../extensions/cornerstone/src/Viewport/OHIFCornerstoneViewport.css[39m[22m
+[1mNo template for dependency: ModuleHotAcceptDependency[39m[22m
+ @ ../../../extensions/cornerstone/src/Viewport/OHIFCornerstoneViewport.tsx 9:0-39
+ @ ../../../extensions/cornerstone/src/index.tsx 63:9-80
+ @ ./pluginImports.js 30:27-64
+ @ ./index.js 20:0-89 36:4-21 37:4-16
+
+[1m[31mERROR[39m[22m in [1m../../../extensions/cornerstone/src/Viewport/Overlays/CustomizableViewportOverlay.css[39m[22m
+[1mNo template for dependency: ModuleHotAcceptDependency[39m[22m
+ @ ../../../extensions/cornerstone/src/Viewport/Overlays/CustomizableViewportOverlay.tsx 12:0-43
+ @ ../../../extensions/cornerstone/src/Viewport/Overlays/CornerstoneOverlays.tsx 6:0-72 57:39-66
+ @ ../../../extensions/cornerstone/src/Viewport/OHIFCornerstoneViewport.tsx 10:0-65 262:39-58
+ @ ../../../extensions/cornerstone/src/index.tsx 63:9-80
+ @ ./pluginImports.js 30:27-64
+ @ ./index.js 20:0-89 36:4-21 37:4-16
+
+[1m[31mERROR[39m[22m in [1m../../../extensions/cornerstone/src/Viewport/Overlays/ViewportOrientationMarkers.css[39m[22m
+[1mNo template for dependency: ModuleHotAcceptDependency[39m[22m
+ @ ../../../extensions/cornerstone/src/Viewport/Overlays/ViewportOrientationMarkers.tsx 9:0-42
+ @ ../../../extensions/cornerstone/src/Viewport/Overlays/CornerstoneOverlays.tsx 7:0-70 66:39-65
+ @ ../../../extensions/cornerstone/src/Viewport/OHIFCornerstoneViewport.tsx 10:0-65 262:39-58
+ @ ../../../extensions/cornerstone/src/index.tsx 63:9-80
+ @ ./pluginImports.js 30:27-64
+ @ ./index.js 20:0-89 36:4-21 37:4-16
+
+[1m[31mERROR[39m[22m in [1m../../../extensions/default/src/DicomTagBrowser/DicomTagBrowser.css[39m[22m
+[1mNo template for dependency: ModuleHotAcceptDependency[39m[22m
+ @ ../../../extensions/default/src/DicomTagBrowser/DicomTagBrowser.tsx 11:0-31
+ @ ../../../extensions/default/src/commandsModule.ts 5:0-64 635:17-32
+ @ ../../../extensions/default/src/index.ts 8:0-49 60:2-19
+ @ ./pluginImports.js 26:27-60
+ @ ./index.js 20:0-89 36:4-21 37:4-16
+
+[1m[31mERROR[39m[22m in [1m../../../extensions/default/src/utils/colorPickerDialog.css[39m[22m
+[1mNo template for dependency: ModuleHotAcceptDependency[39m[22m
+ @ ../../../extensions/default/src/utils/colorPickerDialog.tsx 7:0-33
+ @ ../../../extensions/default/src/index.ts 29:0-58 74:0-76:447
+ @ ./pluginImports.js 26:27-60
+ @ ./index.js 20:0-89 36:4-21 37:4-16
+
+[1m[31mERROR[39m[22m in [1m../../../extensions/dicom-microscopy/src/DicomMicroscopyViewport.css[39m[22m
+[1mNo template for dependency: ModuleHotAcceptDependency[39m[22m
+ @ ../../../extensions/dicom-microscopy/src/DicomMicroscopyViewport.tsx 6:0-39
+ @ ../../../extensions/dicom-microscopy/src/index.tsx 24:9-44
+ @ ./pluginImports.js 54:27-69
+ @ ./index.js 20:0-89 36:4-21 37:4-16
+
+[1m[31mERROR[39m[22m in [1m../../../extensions/dicom-microscopy/src/components/ViewportOverlay/ViewportOverlay.css[39m[22m
+[1mNo template for dependency: ModuleHotAcceptDependency[39m[22m
+ @ ../../../extensions/dicom-microscopy/src/components/ViewportOverlay/index.tsx 6:0-31
+ @ ../../../extensions/dicom-microscopy/src/DicomMicroscopyViewport.tsx 7:0-59 221:77-92
+ @ ../../../extensions/dicom-microscopy/src/index.tsx 24:9-44
+ @ ./pluginImports.js 54:27-69
+ @ ./index.js 20:0-89 36:4-21 37:4-16
+
+[1m[31mERROR[39m[22m in [1m../../../extensions/dicom-pdf/src/viewports/OHIFCornerstonePdfViewport.css[39m[22m
+[1mNo template for dependency: ModuleHotAcceptDependency[39m[22m
+ @ ../../../extensions/dicom-pdf/src/viewports/OHIFCornerstonePdfViewport.tsx 7:0-42
+ @ ../../../extensions/dicom-pdf/src/index.tsx 16:9-84
+ @ ./pluginImports.js 58:27-62
+ @ ./index.js 20:0-89 36:4-21 37:4-16
+
+[1m[31mERROR[39m[22m in [1m../../../node_modules/shepherd.js/dist/css/shepherd.css[39m[22m
+[1mNo template for dependency: ModuleHotAcceptDependency[39m[22m
+ @ ../../ui-next/src/components/Onboarding/Onboarding.tsx 7:0-43
+ @ ../../ui-next/src/components/Onboarding/index.ts 3:0-42 4:0-22
+ @ ../../ui-next/src/components/index.ts 52:0-42 76:0-2154
+ @ ../../ui-next/src/index.ts 5:0-29 5:0-29
+ @ ./App.tsx 13:0-258 97:7-33 101:7-23 106:31-51 108:7-29 110:7-19 112:7-27 114:7-22 114:26-40 116:12-25 117:7-20 119:11-20
+ @ ./index.js 8:0-24 41:47-50
+
+[1m[31mERROR[39m[22m in [1m./App.css[39m[22m
+[1mNo template for dependency: ModuleHotAcceptDependency[39m[22m
+ @ ./App.tsx 21:0-19
+ @ ./index.js 8:0-24 41:47-50
+
+[1m[31mERROR[39m[22m in [1m../tailwind.css[39m[22m
+[1mNo template for dependency: ModuleHotAcceptDependency[39m[22m
+ @ ./App.tsx 22:0-25
+ @ ./index.js 8:0-24 41:47-50
+
+[1m[31mERROR[39m[22m in [1m../../ui-next/src/assets/styles.css[39m[22m
+[1mNo template for dependency: ModuleHotAcceptDependency[39m[22m
+ @ ../../ui-next/src/components/ThemeWrapper/ThemeWrapper.tsx 5:0-33
+ @ ../../ui-next/src/components/ThemeWrapper/index.ts 3:0-46 3:0-46
+ @ ../../ui-next/src/components/index.ts 4:0-46 76:0-2154
+ @ ../../ui-next/src/index.ts 5:0-29 5:0-29
+ @ ./App.tsx 13:0-258 97:7-33 101:7-23 106:31-51 108:7-29 110:7-19 112:7-27 114:7-22 114:26-40 116:12-25 117:7-20 119:11-20
+ @ ./index.js 8:0-24 41:47-50
+
+[1m[31mERROR[39m[22m in [1m../../ui-next/src/components/LineChart/LineChart.css[39m[22m
+[1mNo template for dependency: ModuleHotAcceptDependency[39m[22m
+ @ ../../ui-next/src/components/LineChart/LineChart.tsx 9:0-25
+ @ ../../ui-next/src/components/LineChart/index.ts 3:0-38 3:0-38
+ @ ../../ui-next/src/components/index.ts 70:0-51 70:0-51
+ @ ../../ui-next/src/index.ts 5:0-29 5:0-29
+ @ ./App.tsx 13:0-258 97:7-33 101:7-23 106:31-51 108:7-29 110:7-19 112:7-27 114:7-22 114:26-40 116:12-25 117:7-20 119:11-20
+ @ ./index.js 8:0-24 41:47-50
+
+[1m[31mERROR[39m[22m in [1m../../ui-next/src/components/Onboarding/Onboarding.css[39m[22m
+[1mNo template for dependency: ModuleHotAcceptDependency[39m[22m
+ @ ../../ui-next/src/components/Onboarding/Onboarding.tsx 8:0-26
+ @ ../../ui-next/src/components/Onboarding/index.ts 3:0-42 4:0-22
+ @ ../../ui-next/src/components/index.ts 52:0-42 76:0-2154
+ @ ../../ui-next/src/index.ts 5:0-29 5:0-29
+ @ ./App.tsx 13:0-258 97:7-33 101:7-23 106:31-51 108:7-29 110:7-19 112:7-27 114:7-22 114:26-40 116:12-25 117:7-20 119:11-20
+ @ ./index.js 8:0-24 41:47-50
+
+[1m[31mERROR[39m[22m in [1m../../ui-next/src/components/ProgressLoadingBar/ProgressLoadingBar.css[39m[22m
+[1mNo template for dependency: ModuleHotAcceptDependency[39m[22m
+ @ ../../ui-next/src/components/ProgressLoadingBar/ProgressLoadingBar.tsx 4:0-34
+ @ ../../ui-next/src/components/ProgressLoadingBar/index.ts 3:0-54 4:15-33
+ @ ../../ui-next/src/components/index.ts 49:0-54 76:0-2154
+ @ ../../ui-next/src/index.ts 5:0-29 5:0-29
+ @ ./App.tsx 13:0-258 97:7-33 101:7-23 106:31-51 108:7-29 110:7-19 112:7-27 114:7-22 114:26-40 116:12-25 117:7-20 119:11-20
+ @ ./index.js 8:0-24 41:47-50
+
+[1m[31mERROR[39m[22m in [1m../../ui-next/src/components/Viewport/ImageScrollbar.module.css[39m[22m
+[1mNo template for dependency: ModuleHotAcceptDependency[39m[22m
+ @ ../../ui-next/src/components/Viewport/ImageScrollbar.tsx 6:0-49 37:18-43 40:15-36 42:18-39
+ @ ../../ui-next/src/components/Viewport/index.ts 11:0-50 11:0-50
+ @ ../../ui-next/src/components/index.ts 60:0-220 76:0-2154 76:0-2154 76:0-2154 76:0-2154 76:0-2154 76:0-2154 76:0-2154 76:0-2154 76:0-2154 76:0-2154
+ @ ../../ui-next/src/index.ts 5:0-29 5:0-29
+ @ ./App.tsx 13:0-258 97:7-33 101:7-23 106:31-51 108:7-29 110:7-19 112:7-27 114:7-22 114:26-40 116:12-25 117:7-20 119:11-20
+ @ ./index.js 8:0-24 41:47-50
+
+[1m[31mERROR[39m[22m in [1m../../ui-next/src/components/Viewport/ViewportOverlay.css[39m[22m
+[1mNo template for dependency: ModuleHotAcceptDependency[39m[22m
+ @ ../../ui-next/src/components/Viewport/ViewportOverlay.tsx 6:0-31
+ @ ../../ui-next/src/components/Viewport/index.ts 9:0-52 9:0-52
+ @ ../../ui-next/src/components/index.ts 60:0-220 76:0-2154 76:0-2154 76:0-2154 76:0-2154 76:0-2154 76:0-2154 76:0-2154 76:0-2154 76:0-2154 76:0-2154
+ @ ../../ui-next/src/index.ts 5:0-29 5:0-29
+ @ ./App.tsx 13:0-258 97:7-33 101:7-23 106:31-51 108:7-29 110:7-19 112:7-27 114:7-22 114:26-40 116:12-25 117:7-20 119:11-20
+ @ ./index.js 8:0-24 41:47-50
+
+[1m[31mERROR[39m[22m in [1m../../ui-next/src/tailwind.css[39m[22m
+[1mNo template for dependency: ModuleHotAcceptDependency[39m[22m
+ @ ../../ui-next/src/components/ThemeWrapper/ThemeWrapper.tsx 4:0-28
+ @ ../../ui-next/src/components/ThemeWrapper/index.ts 3:0-46 3:0-46
+ @ ../../ui-next/src/components/index.ts 4:0-46 76:0-2154
+ @ ../../ui-next/src/index.ts 5:0-29 5:0-29
+ @ ./App.tsx 13:0-258 97:7-33 101:7-23 106:31-51 108:7-29 110:7-19 112:7-27 114:7-22 114:26-40 116:12-25 117:7-20 119:11-20
+ @ ./index.js 8:0-24 41:47-50
+
+[1m[31mERROR[39m[22m in [1m../../ui/src/components/Select/Select.css[39m[22m
+[1mNo template for dependency: ModuleHotAcceptDependency[39m[22m
+ @ ../../ui/src/components/Select/Select.tsx 8:0-22
+ @ ../../ui/src/components/Select/index.js 3:0-30 4:15-21
+ @ ../../ui/src/components/index.js 12:0-30 26:0-355
+ @ ../../ui/src/index.js 6:0-375 6:0-375 6:0-375 6:0-375 6:0-375 6:0-375 6:0-375 6:0-375 6:0-375 6:0-375 6:0-375 6:0-375 6:0-375 6:0-375 6:0-375 6:0-375 6:0-375 6:0-375 6:0-375 6:0-375 6:0-375 6:0-375 6:0-375 6:0-375 6:0-375 6:0-375
+ @ ./routes/WorkList/WorkList.tsx 16:0-137 314:56-76 383:44-50 384:16-40 385:16-42 496:38-53 510:38-52 517:38-57 526:40-52
+ @ ./routes/WorkList/index.js 3:0-37 3:0-37
+ @ ./routes/index.tsx 19:0-34 130:16-24
+ @ ./App.tsx 17:0-36 143:20-32
+ @ ./index.js 8:0-24 41:47-50
+
+[1m[31mERROR[39m[22m in [1m../../ui/src/components/Tooltip/tooltip.css[39m[22m
+[1mNo template for dependency: ModuleHotAcceptDependency[39m[22m
+ @ ../../ui/src/components/Tooltip/Tooltip.tsx 10:0-23
+ @ ../../ui/src/components/Button/Button.tsx 8:0-41 76:57-64 78:89-96
+ @ ../../ui/src/components/Button/index.js 3:0-30 6:15-21
+ @ ../../ui/src/components/index.js 23:0-47 26:0-355 26:0-355
+ @ ../../ui/src/index.js 6:0-375 6:0-375 6:0-375 6:0-375 6:0-375 6:0-375 6:0-375 6:0-375 6:0-375 6:0-375 6:0-375 6:0-375 6:0-375 6:0-375 6:0-375 6:0-375 6:0-375 6:0-375 6:0-375 6:0-375 6:0-375 6:0-375 6:0-375 6:0-375 6:0-375 6:0-375
+ @ ./routes/WorkList/WorkList.tsx 16:0-137 314:56-76 383:44-50 384:16-40 385:16-42 496:38-53 510:38-52 517:38-57 526:40-52
+ @ ./routes/WorkList/index.js 3:0-37 3:0-37
+ @ ./routes/index.tsx 19:0-34 130:16-24
+ @ ./App.tsx 17:0-36 143:20-32
+ @ ./index.js 8:0-24 41:47-50
+
+[1m[33m20 errors have detailed information that is not shown.
+Use 'stats.errorDetails: true' resp. '--stats-error-details' to show it.[39m[22m
+
+webpack 5.95.0 compiled with [1m[31m20 errors[39m[22m and [1m[33m5 warnings[39m[22m in 6262 ms (75130a51df9495f01fed)

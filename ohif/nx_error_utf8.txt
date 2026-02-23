@@ -1,0 +1,50 @@
+﻿
+> nx run @ohif/app:build
+
+node.exe : (node:21364) 
+[DEP0060] 
+DeprecationWarning: The 
+`util._extend` API is 
+deprecated. Please use 
+Object.assign() instead.
+No linha:1 caractere:1
++ & "D:\Tudo 
+programação/node.exe" 
+"D:\Tudo 
+programação/node_modules/np 
+...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~
+    + CategoryInfo           
+   : NotSpecified: ((node:2  
+  1364) [D...sign() instea   
+ d.:String) [], RemoteExc    
+eption
+    + FullyQualifiedErrorId  
+   : NativeCommandError
+ 
+(Use `node 
+--trace-deprecation ...` to 
+show where the warning was 
+created)
+[2K[1G[1myarn run v1.22.22[22m[m
+[2K[1G[2m$ node --max_old_space_size=8096 ./../../node_modules/webpack/bin/webpack.js --progress --config .webpack/webpack.pwa.js[22m
+O sistema n´┐¢o pode 
+encontrar o caminho 
+especificado.
+[2K[1G[31merror[39m 
+Command failed with exit 
+code 1.
+[2K[1G[94minfo[39m Visit [1mhttps://yarnpkg.com/en/docs/cli/run[22m for documentation about this command.
+
+ 
+
+ >  NX   Running target build for project @ohif/app failed
+
+   Failed tasks:
+   
+   - @ohif/app:build
+   
+   Hint: run the command with --verbose for more details.
+

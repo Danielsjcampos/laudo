@@ -22,7 +22,7 @@ RUN apt-get update && apt-get install -y \
 
 # Install node modules
 COPY package*.json ./
-RUN npm install
+RUN npm install --legacy-peer-deps
 
 # Generate Prisma client
 COPY prisma ./prisma/
