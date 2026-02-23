@@ -1,0 +1,1181 @@
+# TEMPLATES DE LAUDOS RADIOLÓGICOS - TC, RM, MG, OT
+
+## ⚠️ ARQUIVO COMBINADO - TC + RM + MG + OT
+
+Este arquivo contém todos os templates de:
+- TC (TOMOGRAFIA COMPUTADORIZADA) - 27 templates
+- RM (RESSONÂNCIA MAGNÉTICA) - 22 templates  
+- MG (MAMOGRAFIA) - 3 templates
+- OT (OUTROS) - 10 templates
+
+---
+
+# 3. TC – TOMOGRAFIA COMPUTADORIZADA
+
+## 3.1.1 TC – Crânio – SEM CONTRASTE
+
+**Título**  
+TOMOGRAFIA COMPUTADORIZADA DE CRÂNIO – SEM CONTRASTE
+
+**Método**  
+Aquisição helicoidal de crânio, com reconstruções multiplanares nos planos axial, coronal e sagital, realizada sem contraste.
+
+**Achados**  
+Parênquima encefálico com densidade preservada, sem coleções, hemorragias ou áreas de hipodensidade sugestivas de isquemia aguda.  
+Sistema ventricular de volumes habituais, sem desvio da linha média.  
+Espaços subaracnoides permeáveis.  
+Calota craniana sem fraturas ou lesões ósseas agressivas.  
+Seios paranasais bem pneumatizados.
+
+**Conclusão**  
+TC de crânio (sem contraste) sem alterações significativas.  
+[EDITÁVEL: Inserir hemorragia, AVC, fratura, massa, etc., se houver.]
+
+---
+
+## 3.1.2 TC – Crânio – COM CONTRASTE
+
+**Título**  
+TOMOGRAFIA COMPUTADORIZADA DE CRÂNIO – COM CONTRASTE
+
+**Método**  
+Aquisição helicoidal de crânio, com reconstruções multiplanares nos planos axial, coronal e sagital, realizada antes e após contraste iodado intravenoso.
+
+**Achados**  
+Parênquima encefálico com densidade preservada, sem coleções, hemorragias ou áreas de alteração de sinal significativas.  
+Sistema ventricular de volumes habituais, sem desvio da linha média.  
+Realce de meninges e vasos cerebrais após contraste dentro dos padrões esperados.  
+Calota craniana sem fraturas ou lesões ósseas agressivas.  
+Seios paranasais bem pneumatizados.
+
+**Conclusão**  
+TC de crânio (com contraste) sem alterações significativas.  
+[EDITÁVEL: Inserir lesão mass, leptomeningite, aneurisma, etc., se houver.]
+
+---
+
+## 3.1.3 TC – Pescoço – SEM CONTRASTE
+
+**Título**  
+TOMOGRAFIA COMPUTADORIZADA DE PESCOÇO – SEM CONTRASTE
+
+**Método**  
+Aquisição helicoidal de pescoço, com reconstruções multiplanares, realizada sem contraste.
+
+**Achados**  
+Estruturas cervicais (faringe, laringe, tireoide, glândulas salivares) sem massas ou coleções evidentes.  
+Planos gordurosos cervicais preservados.  
+Ausência de linfonodomegalias cervicais significativas.  
+Coluna cervical bem visualizada, sem alterações focais.  
+Partes moles cervicais sem edema acentuado.
+
+**Conclusão**  
+TC de pescoço (sem contraste) sem alterações significativas.  
+[EDITÁVEL: Inserir tumores, adenopatias, coleções, etc., se houver.]
+
+---
+
+## 3.1.4 TC – Pescoço – COM CONTRASTE
+
+**Título**  
+TOMOGRAFIA COMPUTADORIZADA DE PESCOÇO – COM CONTRASTE
+
+**Método**  
+Aquisição helicoidal de pescoço, com reconstruções multiplanares, realizada antes e após contraste iodado intravenoso.
+
+**Achados**  
+Estruturas cervicais (faringe, laringe, tireoide, glândulas salivares) realçam de forma homogênea após contraste, sem massas evidentes.  
+Vasos carotídeos e vertebrais com realce adequado, sem estenoses críticas visualizadas.  
+Planos gordurosos cervicais preservados.  
+Ausência de linfonodomegalias cervicais significativas.  
+Coluna cervical bem visualizada, sem alterações focais.
+
+**Conclusão**  
+TC de pescoço (com contraste) sem alterações significativas.  
+[EDITÁVEL: Inserir tumores, adenopatias, estenoses, etc., se houver.]
+
+---
+
+## 3.2.1 TC – Coluna Cervical
+
+**Título**  
+TOMOGRAFIA COMPUTADORIZADA DE COLUNA CERVICAL
+
+**Método**  
+Aquisição volumétrica de coluna cervical, com reconstruções multiplanares em planos axial, coronal e sagital.
+
+**Achados**  
+Alinhamento vertebral preservado.  
+Corpos vertebrais C1 a C7 com altura mantida, sem fraturas ou deformidades.  
+Canal vertebral com calibre habitual.  
+Processos espinhosos e articulações facetárias sem alterações relevantes.  
+Partes moles paravertebrais sem coleções.
+
+**Conclusão**  
+TC de coluna cervical sem alterações significativas.  
+[EDITÁVEL: Inserir protrusões discais, estenose, fraturas, etc., se houver.]
+
+---
+
+## 3.2.2 TC – Coluna Torácica
+
+**Título**  
+TOMOGRAFIA COMPUTADORIZADA DE COLUNA TORÁCICA
+
+**Método**  
+Aquisição volumétrica de coluna torácica, com reconstruções multiplanares em planos axial, coronal e sagital.
+
+**Achados**  
+Alinhamento vertebral preservado.  
+Corpos vertebrais T1 a T12 com altura mantida, sem fraturas ou deformidades.  
+Canal vertebral com calibre habitual.  
+Processos espinhosos e articulações facetárias sem alterações relevantes.  
+Partes moles paravertebrais sem coleções.
+
+**Conclusão**  
+TC de coluna torácica sem alterações significativas.  
+[EDITÁVEL: Inserir protrusões discais, estenose, fraturas, etc., se houver.]
+
+---
+
+## 3.2.3 TC – Coluna Lombar
+
+**Título**  
+TOMOGRAFIA COMPUTADORIZADA DE COLUNA LOMBAR
+
+**Método**  
+Aquisição volumétrica de coluna lombar, com reconstruções multiplanares em planos axial, coronal e sagital.
+
+**Achados**  
+Alinhamento vertebral preservado.  
+Corpos vertebrais L1 a L5 com altura mantida, sem fraturas ou deformidades.  
+Canal vertebral com calibre habitual.  
+Processos espinhosos e articulações facetárias sem alterações relevantes.  
+Partes moles paravertebrais sem coleções.
+
+**Conclusão**  
+TC de coluna lombar sem alterações significativas.  
+[EDITÁVEL: Inserir hérnias, estenose, fraturas, espondilolistese, etc., se houver.]
+
+---
+
+## 3.2.4 TC – Sacro
+
+**Título**  
+TOMOGRAFIA COMPUTADORIZADA DE SACRO
+
+**Método**  
+Aquisição volumétrica de sacro, com reconstruções multiplanares em planos axial, coronal e sagital.
+
+**Achados**  
+Osso sacro com densidade e contornos preservados, sem fraturas.  
+Articulações sacroilíacas sem alterações relevantes.  
+Coccígeo sem alterações significativas.  
+Partes moles adjacentes sem coleções.
+
+**Conclusão**  
+TC de sacro sem alterações significativas.  
+[EDITÁVEL: Inserir fraturas, lesões osteolíticas, etc., se houver.]
+
+---
+
+## 3.3.1 TC – Tórax – SEM CONTRASTE
+
+**Título**  
+TOMOGRAFIA COMPUTADORIZADA DE TÓRAX – SEM CONTRASTE
+
+**Método**  
+TC helicoidal de tórax, com reconstruções multiplanares, realizada sem contraste.
+
+**Achados**  
+Parênquima pulmonar com distribuição broncovascular preservada, sem consolidações, nódulos suspeitos ou derrames pleurais significativos.  
+Mediastino sem linfonodomegalias volumosas ou massas evidentes.  
+Coração e grandes vasos torácicos de calibres habituais.  
+Arcabouço ósseo visualizado sem lesões agressivas.
+
+**Conclusão**  
+TC de tórax (sem contraste) sem alterações significativas.  
+[EDITÁVEL: Inserir nódulos, massas, derrame, etc., se houver.]
+
+---
+
+## 3.3.2 TC – Tórax – COM CONTRASTE
+
+**Título**  
+TOMOGRAFIA COMPUTADORIZADA DE TÓRAX – COM CONTRASTE
+
+**Método**  
+TC helicoidal de tórax, com aquisição em fases arterial e portal após administração de contraste iodado intravenoso, com reconstruções multiplanares.
+
+**Achados**  
+Parênquima pulmonar com distribuição broncovascular preservada, sem consolidações, nódulos suspeitos ou derrames pleurais significativos.  
+Mediastino sem linfonodomegalias volumosas ou massas evidentes.  
+Coração com paredes espessadas dentro dos limites normais; câmaras cardíacas sem alterações.  
+Grandes vasos torácicos (aorta, artérias pulmonares, veias pulmonares) com calibres habituais e realce adequado após contraste.  
+Arcabouço ósseo visualizado sem lesões agressivas.
+
+**Conclusão**  
+TC de tórax (com contraste) sem alterações significativas.  
+[EDITÁVEL: Inserir nódulos, massas, tromboembolismo, dilatações vasculares, etc., se houver.]
+
+---
+
+## 3.3.3 TC – Abdome Superior – SEM CONTRASTE
+
+**Título**  
+TOMOGRAFIA COMPUTADORIZADA DE ABDOME SUPERIOR – SEM CONTRASTE
+
+**Método**  
+TC helicoidal de abdome superior, com reconstruções multiplanares, realizada sem contraste.
+
+**Achados**  
+Fígado, pâncreas, baço com dimensões e densidade preservadas, sem lesões focais significativas.  
+Vias biliares e ducto pancreático sem dilatações relevantes.  
+Rins superiores visualizados sem alterações.  
+Aorta abdominal de calibre habitual, sem dilatações aneurismáticas.  
+Não há ascite ou pneumoperitônio.
+
+**Conclusão**  
+TC de abdome superior (sem contraste) sem alterações significativas.  
+[EDITÁVEL: Inserir cálculos, inflamação, coleções, etc., se houver.]
+
+---
+
+## 3.3.4 TC – Abdome Superior – COM CONTRASTE
+
+**Título**  
+TOMOGRAFIA COMPUTADORIZADA DE ABDOME SUPERIOR – COM CONTRASTE
+
+**Método**  
+TC helicoidal de abdome superior, com aquisição em fases arterial, portal e tardias após contraste, com reconstruções multiplanares.
+
+**Achados**  
+Fígado realça de forma homogênea, com dimensões normais, sem lesões focais significativas.  
+Vesícula biliar, vias biliares intra e extra-hepáticas sem dilatações relevantes.  
+Pâncreas realça adequadamente, sem lesões focais ou dilatação do ducto.  
+Baço com realce preservado, sem alterações focais.  
+Rins com realce cortical adequado, sem massas ou cálculos.  
+Aorta abdominal com calibre habitual, realce homogêneo.  
+Não há ascite ou pneumoperitônio.
+
+**Conclusão**  
+TC de abdome superior (com contraste) sem alterações significativas.  
+[EDITÁVEL: Inserir lesões hepáticas, pancreatite, cálculos, tumores, etc., se houver.]
+
+---
+
+## 3.3.5 TC – Abdome Inferior – SEM CONTRASTE
+
+**Título**  
+TOMOGRAFIA COMPUTADORIZADA DE ABDOME INFERIOR – SEM CONTRASTE
+
+**Método**  
+TC helicoidal de abdome inferior, com reconstruções multiplanares, realizada sem contraste.
+
+**Achados**  
+Alças intestinais de abdome inferior sem dilatações ou espessamentos parietais significativos.  
+Rins em seus polos inferiores visualizados sem alterações.  
+Bexiga urinária de parede fina e conteúdo homogêneo.  
+Não há ascite ou pneumoperitônio significativos.
+
+**Conclusão**  
+TC de abdome inferior (sem contraste) sem alterações significativas.  
+[EDITÁVEL: Inserir cálculos, dilatação intestinal, inflamação, etc., se houver.]
+
+---
+
+## 3.3.6 TC – Abdome Inferior – COM CONTRASTE
+
+**Título**  
+TOMOGRAFIA COMPUTADORIZADA DE ABDOME INFERIOR – COM CONTRASTE
+
+**Método**  
+TC helicoidal de abdome inferior, com aquisição em fases arterial, portal e tardias após contraste, com reconstruções multiplanares.
+
+**Achados**  
+Alças intestinais de abdome inferior sem dilatações ou espessamentos parietais significativos após realce.  
+Rins em seus polos inferiores realçam adequadamente, sem massas ou cálculos.  
+Bexiga urinária realça adequadamente, com paredes finas.  
+Não há ascite ou pneumoperitônio significativos.
+
+**Conclusão**  
+TC de abdome inferior (com contraste) sem alterações significativas.  
+[EDITÁVEL: Inserir inflamação, obstrução, tumores, etc., se houver.]
+
+---
+
+## 3.3.7 TC – Pelve – SEM CONTRASTE
+
+**Título**  
+TOMOGRAFIA COMPUTADORIZADA DE PELVE – SEM CONTRASTE
+
+**Método**  
+TC helicoidal de pelve, com reconstruções multiplanares, realizada sem contraste.
+
+**Achados**  
+Bexiga urinária de parede fina e conteúdo homogêneo.  
+[OPCIONAL: [SE FEMININO] Útero de dimensões e morfologia habituais. Ovários de dimensões preservadas, sem massas complexas.]  
+[OPCIONAL: [SE MASCULINO] Próstata de dimensões habituais, sem lesões focais significativas. Vesículas seminais de aspecto habitual.]  
+Ossos pélvicos com densidade preservada, sem lesões agressivas.  
+Não há ascite ou coleções significativas.
+
+**Conclusão**  
+TC de pelve (sem contraste) sem alterações significativas.  
+[EDITÁVEL: Inserir tumores, cistos, coleções, etc., se houver.]
+
+---
+
+## 3.3.8 TC – Pelve – COM CONTRASTE
+
+**Título**  
+TOMOGRAFIA COMPUTADORIZADA DE PELVE – COM CONTRASTE
+
+**Método**  
+TC helicoidal de pelve, com aquisição em fases arterial, portal e tardias após contraste, com reconstruções multiplanares.
+
+**Achados**  
+Bexiga urinária realça adequadamente, com paredes finas.  
+[OPCIONAL: [SE FEMININO] Útero realça de forma homogênea, com dimensões e morfologia habituais. Ovários realçam adequadamente, sem massas complexas.]  
+[OPCIONAL: [SE MASCULINO] Próstata realça adequadamente, com dimensões habituais, sem lesões focais significativas. Vesículas seminais com realce preservado.]  
+Ossos pélvicos com densidade preservada, sem lesões agressivas.  
+Não há ascite ou coleções significativas.
+
+**Conclusão**  
+TC de pelve (com contraste) sem alterações significativas.  
+[EDITÁVEL: Inserir tumores, endometriose, coleções, etc., se houver.]
+
+---
+
+## 3.4.1 TC – Ombro – DIREITO
+
+**Título**  
+TOMOGRAFIA COMPUTADORIZADA DE OMBRO DIREITO
+
+**Método**  
+Aquisição volumétrica de ombro direito, com reconstruções em planos axial, coronal e sagital, com janelas óssea e de partes moles.
+
+**Achados**  
+Cabeça de úmero e glenóide com contornos preservados, sem fraturas.  
+Partes moles periarticulares sem alterações significativas.  
+Músculos do manguito rotador bem visualizados, sem sinais de rotura.  
+Ossos subcondral sem edema ou lesão.
+
+**Conclusão**  
+TC de ombro direito sem alterações significativas.  
+[EDITÁVEL: Inserir fraturas, artrite, roturas, etc., se houver.]
+
+---
+
+## 3.4.2 TC – Ombro – ESQUERDO
+
+**Título**  
+TOMOGRAFIA COMPUTADORIZADA DE OMBRO ESQUERDO
+
+**Método**  
+Aquisição volumétrica de ombro esquerdo, com reconstruções em planos axial, coronal e sagital, com janelas óssea e de partes moles.
+
+**Achados**  
+Cabeça de úmero e glenóide com contornos preservados, sem fraturas.  
+Partes moles periarticulares sem alterações significativas.  
+Músculos do manguito rotador bem visualizados, sem sinais de rotura.  
+Ossos subcondral sem edema ou lesão.
+
+**Conclusão**  
+TC de ombro esquerdo sem alterações significativas.  
+[EDITÁVEL: Inserir fraturas, artrite, roturas, etc., se houver.]
+
+---
+
+## 3.4.3 TC – Quadril – DIREITO
+
+**Título**  
+TOMOGRAFIA COMPUTADORIZADA DE QUADRIL DIREITO
+
+**Método**  
+Aquisição volumétrica de quadril direito, com reconstruções em planos axial, coronal e sagital, com janelas óssea e de partes moles.
+
+**Achados**  
+Cabeça de fêmur e acetábulo com contornos preservados, sem fraturas.  
+Espaço articular coxofemoral mantido.  
+Partes moles periarticulares sem alterações significativas.  
+Ossos subcondral sem edema ou necrose.
+
+**Conclusão**  
+TC de quadril direito sem alterações significativas.  
+[EDITÁVEL: Inserir fraturas, artrite, necrose, etc., se houver.]
+
+---
+
+## 3.4.4 TC – Quadril – ESQUERDO
+
+**Título**  
+TOMOGRAFIA COMPUTADORIZADA DE QUADRIL ESQUERDO
+
+**Método**  
+Aquisição volumétrica de quadril esquerdo, com reconstruções em planos axial, coronal e sagital, com janelas óssea e de partes moles.
+
+**Achados**  
+Cabeça de fêmur e acetábulo com contornos preservados, sem fraturas.  
+Espaço articular coxofemoral mantido.  
+Partes moles periarticulares sem alterações significativas.  
+Ossos subcondral sem edema ou necrose.
+
+**Conclusão**  
+TC de quadril esquerdo sem alterações significativas.  
+[EDITÁVEL: Inserir fraturas, artrite, necrose, etc., se houver.]
+
+---
+
+## 3.4.5 TC – Joelho – DIREITO
+
+**Título**  
+TOMOGRAFIA COMPUTADORIZADA DE JOELHO DIREITO
+
+**Método**  
+Aquisição volumétrica de joelho direito, com reconstruções em planos axial, coronal e sagital, com janelas óssea e de partes moles.
+
+**Achados**  
+Côndilo femoral, platô tibial e patela com contornos preservados, sem fraturas.  
+Espaço articular tibofemoral mantido.  
+Meniscos com morfologia habitual, sem sinais de lesão.  
+Cartilagem articular preservada.  
+Partes moles periarticulares sem alterações significativas.
+
+**Conclusão**  
+TC de joelho direito sem alterações significativas.  
+[EDITÁVEL: Inserir fraturas, lesões meniscais, artrite, derrame, etc., se houver.]
+
+---
+
+## 3.4.6 TC – Joelho – ESQUERDO
+
+**Título**  
+TOMOGRAFIA COMPUTADORIZADA DE JOELHO ESQUERDO
+
+**Método**  
+Aquisição volumétrica de joelho esquerdo, com reconstruções em planos axial, coronal e sagital, com janelas óssea e de partes moles.
+
+**Achados**  
+Côndilo femoral, platô tibial e patela com contornos preservados, sem fraturas.  
+Espaço articular tibofemoral mantido.  
+Meniscos com morfologia habitual, sem sinais de lesão.  
+Cartilagem articular preservada.  
+Partes moles periarticulares sem alterações significativas.
+
+**Conclusão**  
+TC de joelho esquerdo sem alterações significativas.  
+[EDITÁVEL: Inserir fraturas, lesões meniscais, artrite, derrame, etc., se houver.]
+
+---
+
+## 3.4.7 TC – Tornozelo – DIREITO
+
+**Título**  
+TOMOGRAFIA COMPUTADORIZADA DE TORNOZELO DIREITO
+
+**Método**  
+Aquisição volumétrica de tornozelo direito, com reconstruções em planos axial, coronal e sagital, com janelas óssea e de partes moles.
+
+**Achados**  
+Tálus, tíbia e fíbula com contornos preservados, sem fraturas.  
+Mortise talocrural bem preservado.  
+Espaço articular mantido.  
+Ligamentos sem evidência de lesão significativa.  
+Partes moles periarticulares sem alterações significativas.
+
+**Conclusão**  
+TC de tornozelo direito sem alterações significativas.  
+[EDITÁVEL: Inserir fraturas, entorses, artrite, etc., se houver.]
+
+---
+
+## 3.4.8 TC – Tornozelo – ESQUERDO
+
+**Título**  
+TOMOGRAFIA COMPUTADORIZADA DE TORNOZELO ESQUERDO
+
+**Método**  
+Aquisição volumétrica de tornozelo esquerdo, com reconstruções em planos axial, coronal e sagital, com janelas óssea e de partes moles.
+
+**Achados**  
+Tálus, tíbia e fíbula com contornos preservados, sem fraturas.  
+Mortise talocrural bem preservado.  
+Espaço articular mantido.  
+Ligamentos sem evidência de lesão significativa.  
+Partes moles periarticulares sem alterações significativas.
+
+**Conclusão**  
+TC de tornozelo esquerdo sem alterações significativas.  
+[EDITÁVEL: Inserir fraturas, entorses, artrite, etc., se houver.]
+
+---
+
+# 4. RM – RESSONÂNCIA MAGNÉTICA
+
+## 4.1.1 RM – Encéfalo – SEM CONTRASTE
+
+**Título**  
+RESSONÂNCIA MAGNÉTICA DE ENCÉFALO – SEM CONTRASTE
+
+**Método**  
+Estudo realizado em aparelho de [EDITÁVEL: 1.5 / 3]] Tesla, com sequências multiplanares ponderadas em T1, T2, FLAIR, difusão, sem administração de contraste.
+
+**Achados**  
+Parênquima encefálico com sinal preservado, sem lesões expansivas ou áreas de restrição à difusão.  
+Sistema ventricular e espaços subaracnoides de calibres habituais, sem desvio da linha média.  
+Fossa posterior com estruturas preservadas.  
+Seios paranasais e células mastoideas bem pneumatizados.  
+Fluxo preservado nos principais vasos intracranianos pelos artefatos de fluxo.
+
+**Conclusão**  
+RM de encéfalo (sem contraste) sem alterações significativas.  
+[EDITÁVEL: Inserir lesões, cistos, AVC, esclerose múltipla, etc., se houver.]
+
+---
+
+## 4.1.2 RM – Encéfalo – COM CONTRASTE
+
+**Título**  
+RESSONÂNCIA MAGNÉTICA DE ENCÉFALO – COM CONTRASTE
+
+**Método**  
+Estudo realizado em aparelho de [EDITÁVEL: 1.5 / 3]] Tesla, com sequências multiplanares ponderadas em T1, T2, FLAIR, difusão, antes e após administração de contraste paramagnético intravenoso.
+
+**Achados**  
+Parênquima encefálico com sinal preservado, sem lesões expansivas ou áreas de restrição à difusão.  
+Sistema ventricular e espaços subaracnoides de calibres habituais, sem desvio da linha média.  
+Realce de meninges e vasos cerebrais após contraste dentro dos padrões esperados, sem realces focais anormais.  
+Fossa posterior com estruturas preservadas.  
+Seios paranasais e células mastoideas bem pneumatizados.
+
+**Conclusão**  
+RM de encéfalo (com contraste) sem alterações significativas.  
+[EDITÁVEL: Inserir lesões, tumores, meningite, AVC, etc., se houver.]
+
+---
+
+## 4.2.1 RM – Coluna Cervical
+
+**Título**  
+RESSONÂNCIA MAGNÉTICA DE COLUNA CERVICAL
+
+**Método**  
+Sequências multiplanares ponderadas em T1, T2 e STIR, englobando coluna cervical de C1 a C7.
+
+**Achados**  
+Alinhamento vertebral preservado.  
+Corpos vertebrais com altura e sinal dentro dos limites da normalidade.  
+Discos intervertebrais com altura preservada, sem protrusões ou extrusões significativas.  
+Canal vertebral de calibre habitual, sem compressão medular ou radicular relevante.  
+Músculos e ligamentos paravertebrais sem alterações significativas.
+
+**Conclusão**  
+RM de coluna cervical sem alterações significativas.  
+[EDITÁVEL: Inserir hérnias, estenose, mielopatia, edema ósseo, etc., se houver.]
+
+---
+
+## 4.2.2 RM – Coluna Torácica
+
+**Título**  
+RESSONÂNCIA MAGNÉTICA DE COLUNA TORÁCICA
+
+**Método**  
+Sequências multiplanares ponderadas em T1, T2 e STIR, englobando coluna torácica de T1 a T12.
+
+**Achados**  
+Alinhamento vertebral preservado.  
+Corpos vertebrais com altura e sinal dentro dos limites da normalidade.  
+Discos intervertebrais com altura preservada, sem protrusões ou extrusões significativas.  
+Canal vertebral de calibre habitual, sem compressão medular relevante.  
+Músculos e ligamentos paravertebrais sem alterações significativas.
+
+**Conclusão**  
+RM de coluna torácica sem alterações significativas.  
+[EDITÁVEL: Inserir hérnias, estenose, mielopatia, tumores, etc., se houver.]
+
+---
+
+## 4.2.3 RM – Coluna Lombossacra
+
+**Título**  
+RESSONÂNCIA MAGNÉTICA DE COLUNA LOMBOSSACRA
+
+**Método**  
+Sequências multiplanares ponderadas em T1, T2 e STIR, englobando coluna lombossacra de L1 a S1.
+
+**Achados**  
+Alinhamento vertebral preservado.  
+Corpos vertebrais com altura e sinal dentro dos limites da normalidade.  
+Discos intervertebrais com altura preservada, sem protrusões ou extrusões significativas que determinem compressão relevante.  
+Canal vertebral de calibre habitual, sem estenoses críticas.  
+Raízes nervosas da cauda equina visualizadas sem compressão significativa.  
+Músculos e ligamentos paravertebrais sem alterações significativas.
+
+**Conclusão**  
+RM de coluna lombossacra sem alterações significativas.  
+[EDITÁVEL: Inserir hérnias, estenose, síndrome da cauda equina, fraturas, etc., se houver.]
+
+---
+
+## 4.3.1 RM – Abdome – SEM CONTRASTE
+
+**Título**  
+RESSONÂNCIA MAGNÉTICA DE ABDOME – SEM CONTRASTE
+
+**Método**  
+Estudo realizado com sequências multiplanares ponderadas em T1 e T2, com e sem supressão de gordura, sem administração de contraste.
+
+**Achados**  
+Órgãos abdominais sólidos (fígado, baço, pâncreas, rins e adrenais) com dimensões e sinal preservados, sem lesões focais significativas.  
+Vias biliares e ducto pancreático sem dilatações relevantes.  
+Trato gastrointestinal avaliado sem espessamentos parietais significativos.  
+Planos gordurosos e espaços peritoneais sem coleções.
+
+**Conclusão**  
+RM de abdome (sem contraste) sem alterações significativas.  
+[EDITÁVEL: Inserir cistos, massas, cálculos, etc., se houver.]
+
+---
+
+## 4.3.2 RM – Abdome – COM CONTRASTE
+
+**Título**  
+RESSONÂNCIA MAGNÉTICA DE ABDOME – COM CONTRASTE
+
+**Método**  
+Estudo realizado com sequências multiplanares ponderadas em T1 e T2, com e sem supressão de gordura, incluindo fases dinâmicas pós‑contraste.
+
+**Achados**  
+Órgãos abdominais sólidos (fígado, baço, pâncreas, rins e adrenais) realçam adequadamente, com dimensões e sinal preservados, sem lesões focais significativas.  
+Vias biliares e ducto pancreático sem dilatações relevantes.  
+Trato gastrointestinal avaliado sem espessamentos parietais significativos.  
+Planos gordurosos e espaços peritoneais sem coleções.
+
+**Conclusão**  
+RM de abdome (com contraste) sem alterações significativas.  
+[EDITÁVEL: Inserir lesões hepáticas, pancreatite, cistos, massas, etc., se houver.]
+
+---
+
+## 4.3.3 RM – Pelve – FEMININO – SEM CONTRASTE
+
+**Título**  
+RESSONÂNCIA MAGNÉTICA DE PELVE – FEMININO – SEM CONTRASTE
+
+**Método**  
+Estudo realizado com sequências multiplanares ponderadas em T1 e T2, com e sem supressão de gordura, sem administração de contraste.
+
+**Achados**  
+Útero de dimensões e morfologia habituais, miométrio de sinal homogêneo.  
+Endométrio dentro dos limites esperados para a fase do ciclo menstrual.  
+Ovários de dimensões preservadas, com folículos usuais para a faixa etária, sem massas complexas.  
+Bexiga com paredes finas e conteúdo homogêneo.  
+Partes moles pélvicas sem coleções.
+
+**Conclusão**  
+RM de pelve feminino (sem contraste) sem alterações significativas.  
+[EDITÁVEL: Inserir miomas, adenomiose, endometriose, cistos ovarianos, etc., se houver.]
+
+---
+
+## 4.3.4 RM – Pelve – FEMININO – COM CONTRASTE
+
+**Título**  
+RESSONÂNCIA MAGNÉTICA DE PELVE – FEMININO – COM CONTRASTE
+
+**Método**  
+Estudo realizado com sequências multiplanares ponderadas em T1 e T2, com e sem supressão de gordura, incluindo fases dinâmicas pós‑contraste.
+
+**Achados**  
+Útero realça de forma homogênea, com dimensões e morfologia habituais, miométrio de sinal preservado.  
+Endométrio com realce adequado, dentro dos limites esperados.  
+Ovários realçam adequadamente, de dimensões preservadas, sem massas complexas.  
+Bexiga com realce adequado de parede, conteúdo homogêneo.  
+Partes moles pélvicas sem coleções.
+
+**Conclusão**  
+RM de pelve feminino (com contraste) sem alterações significativas.  
+[EDITÁVEL: Inserir miomas, adenomiose, endometriose, neoplasias, etc., se houver.]
+
+---
+
+## 4.3.5 RM – Pelve – MASCULINO – SEM CONTRASTE
+
+**Título**  
+RESSONÂNCIA MAGNÉTICA DE PELVE – MASCULINO – SEM CONTRASTE
+
+**Método**  
+Estudo realizado com sequências multiplanares ponderadas em T1 e T2, com e sem supressão de gordura, sem administração de contraste.
+
+**Achados**  
+Próstata de dimensões preservadas, contornos regulares, com zoneamento anatômico bem definido.  
+Zona periférica com sinal T2 homogêneo, sem nódulos suspeitos.  
+Vesículas seminais com sinal preservado, morfologia habitual.  
+Bexiga com paredes finas e conteúdo homogêneo.  
+Partes moles pélvicas sem coleções.
+
+**Conclusão**  
+RM de pelve masculino (sem contraste) sem alterações significativas.  
+[EDITÁVEL: Inserir prostatite, hiperplasia, câncer, cistos, etc., se houver.]
+
+---
+
+## 4.3.6 RM – Pelve – MASCULINO – COM CONTRASTE
+
+**Título**  
+RESSONÂNCIA MAGNÉTICA DE PELVE – MASCULINO – COM CONTRASTE
+
+**Método**  
+Estudo realizado com sequências multiplanares ponderadas em T1 e T2, com e sem supressão de gordura, incluindo fases dinâmicas pós‑contraste.
+
+**Achados**  
+Próstata realça adequadamente em fases arterial e portal, com dimensões preservadas e contornos regulares.  
+Zona periférica com realce homogêneo, sem nódulos suspeitos com realce anormal.  
+Vesículas seminais com realce preservado, morfologia habitual.  
+Bexiga realça adequadamente de parede, conteúdo homogêneo.  
+Partes moles pélvicas sem coleções.
+
+**Conclusão**  
+RM de pelve masculino (com contraste) sem alterações significativas.  
+[EDITÁVEL: Inserir prostatite, hiperplasia, câncer, cistos, etc., se houver.]
+
+---
+
+## 4.4.1 RM – Joelho – DIREITO
+
+**Título**  
+RESSONÂNCIA MAGNÉTICA DE JOELHO DIREITO
+
+**Método**  
+Sequências multiplanares ponderadas em T1, T2 e STIR, focadas em joelho direito, com [OPCIONAL: administração de contraste paramagnético]].
+
+**Achados**  
+Superfícies condrais de joelho direito preservadas, sem defeitos significativos.  
+Tendões (quadríceps, patelar, isquiotibiais) com espessura e sinal habituais, sem sinais de rotura.  
+Ligamentos (colateral medial, colateral lateral, cruzado anterior e posterior) íntegros, sem sinais de rotura ou degeneração.  
+Meniscos de morfologia habitual, sem sinais de lesão.  
+Músculos com sinal homogêneo, sem edema ou coleções.  
+Não há derrame articular significativo.  
+Osso subcondral sem fraturas, edema ósseo ou lesões expansivas.
+
+**Conclusão**  
+RM de joelho direito sem alterações significativas.  
+[EDITÁVEL: Inserir lesões meniscais, tendinopatias, roturas ligamentares, osteoartrite, etc., se houver.]
+
+---
+
+## 4.4.2 RM – Joelho – ESQUERDO
+
+**Título**  
+RESSONÂNCIA MAGNÉTICA DE JOELHO ESQUERDO
+
+**Método**  
+Sequências multiplanares ponderadas em T1, T2 e STIR, focadas em joelho esquerdo, com [OPCIONAL: administração de contraste paramagnético]].
+
+**Achados**  
+Superfícies condrais de joelho esquerdo preservadas, sem defeitos significativos.  
+Tendões (quadríceps, patelar, isquiotibiais) com espessura e sinal habituais, sem sinais de rotura.  
+Ligamentos (colateral medial, colateral lateral, cruzado anterior e posterior) íntegros, sem sinais de rotura ou degeneração.  
+Meniscos de morfologia habitual, sem sinais de lesão.  
+Músculos com sinal homogêneo, sem edema ou coleções.  
+Não há derrame articular significativo.  
+Osso subcondral sem fraturas, edema ósseo ou lesões expansivas.
+
+**Conclusão**  
+RM de joelho esquerdo sem alterações significativas.  
+[EDITÁVEL: Inserir lesões meniscais, tendinopatias, roturas ligamentares, osteoartrite, etc., se houver.]
+
+---
+
+## 4.4.3 RM – Quadril – DIREITO
+
+**Título**  
+RESSONÂNCIA MAGNÉTICA DE QUADRIL DIREITO
+
+**Método**  
+Sequências multiplanares ponderadas em T1, T2 e STIR, focadas em quadril direito, com [OPCIONAL: administração de contraste paramagnético]].
+
+**Achados**  
+Cabeça de fêmur e acetábulo com contornos preservados, sem fraturas.  
+Tendões adjacentes (glúteo máximo, tensor da fáscia lata, psoas) com espessura e sinal habituais.  
+Articulação coxofemoral com espaço articular mantido.  
+Músculos com sinal homogêneo, sem edema ou coleções.  
+Osso subcondral sem edema ósseo, necrose ou lesões expansivas.
+
+**Conclusão**  
+RM de quadril direito sem alterações significativas.  
+[EDITÁVEL: Inserir tendinopatias, bursite, artrite, necrose, etc., se houver.]
+
+---
+
+## 4.4.4 RM – Quadril – ESQUERDO
+
+**Título**  
+RESSONÂNCIA MAGNÉTICA DE QUADRIL ESQUERDO
+
+**Método**  
+Sequências multiplanares ponderadas em T1, T2 e STIR, focadas em quadril esquerdo, com [OPCIONAL: administração de contraste paramagnético]].
+
+**Achados**  
+Cabeça de fêmur e acetábulo com contornos preservados, sem fraturas.  
+Tendões adjacentes (glúteo máximo, tensor da fáscia lata, psoas) com espessura e sinal habituais.  
+Articulação coxofemoral com espaço articular mantido.  
+Músculos com sinal homogêneo, sem edema ou coleções.  
+Osso subcondral sem edema ósseo, necrose ou lesões expansivas.
+
+**Conclusão**  
+RM de quadril esquerdo sem alterações significativas.  
+[EDITÁVEL: Inserir tendinopatias, bursite, artrite, necrose, etc., se houver.]
+
+---
+
+## 4.4.5 RM – Ombro – DIREITO
+
+**Título**  
+RESSONÂNCIA MAGNÉTICA DE OMBRO DIREITO
+
+**Método**  
+Sequências multiplanares ponderadas em T1, T2 e STIR, focadas em ombro direito, com [OPCIONAL: administração de contraste paramagnético]].
+
+**Achados**  
+Cabeça de úmero e superfície glenoide com contornos preservados, sem fraturas.  
+Tendões do manguito rotador (supraespinhoso, infraespinhoso, redondo menor, subescapular) íntegros, com espessura habitual, sem sinais de rotura.  
+Articulação glenoumeral com espaço articular mantido.  
+Músculos com sinal homogêneo, sem edema ou coleções.  
+Bolsa subacromial sem distensão significativa.
+
+**Conclusão**  
+RM de ombro direito sem alterações significativas.  
+[EDITÁVEL: Inserir tendinopatias, roturas, bursite, impacto, etc., se houver.]
+
+---
+
+## 4.4.6 RM – Ombro – ESQUERDO
+
+**Título**  
+RESSONÂNCIA MAGNÉTICA DE OMBRO ESQUERDO
+
+**Método**  
+Sequências multiplanares ponderadas em T1, T2 e STIR, focadas em ombro esquerdo, com [OPCIONAL: administração de contraste paramagnético]].
+
+**Achados**  
+Cabeça de úmero e superfície glenoide com contornos preservados, sem fraturas.  
+Tendões do manguito rotador (supraespinhoso, infraespinhoso, redondo menor, subescapular) íntegros, com espessura habitual, sem sinais de rotura.  
+Articulação glenoumeral com espaço articular mantido.  
+Músculos com sinal homogêneo, sem edema ou coleções.  
+Bolsa subacromial sem distensão significativa.
+
+**Conclusão**  
+RM de ombro esquerdo sem alterações significativas.  
+[EDITÁVEL: Inserir tendinopatias, roturas, bursite, impacto, etc., se houver.]
+
+---
+
+## 4.4.7 RM – Tornozelo – DIREITO
+
+**Título**  
+RESSONÂNCIA MAGNÉTICA DE TORNOZELO DIREITO
+
+**Método**  
+Sequências multiplanares ponderadas em T1, T2 e STIR, focadas em tornozelo direito.
+
+**Achados**  
+Tálus, tíbia e fíbula com contornos preservados, sem fraturas.  
+Tendão de Aquiles com espessura e sinal habituais, sem sinais de rotura ou tendinopatia acentuada.  
+Ligamentos (colateral medial, colateral lateral, ligamento sindesmótico) íntegros, sem sinais de rotura.  
+Articulação talocrural com espaço articular mantido.  
+Músculos com sinal homogêneo, sem edema ou coleções.
+
+**Conclusão**  
+RM de tornozelo direito sem alterações significativas.  
+[EDITÁVEL: Inserir tendinopatias, roturas ligamentares, fraturas, sinovite, etc., se houver.]
+
+---
+
+## 4.4.8 RM – Tornozelo – ESQUERDO
+
+**Título**  
+RESSONÂNCIA MAGNÉTICA DE TORNOZELO ESQUERDO
+
+**Método**  
+Sequências multiplanares ponderadas em T1, T2 e STIR, focadas em tornozelo esquerdo.
+
+**Achados**  
+Tálus, tíbia e fíbula com contornos preservados, sem fraturas.  
+Tendão de Aquiles com espessura e sinal habituais, sem sinais de rotura ou tendinopatia acentuada.  
+Ligamentos (colateral medial, colateral lateral, ligamento sindesmótico) íntegros, sem sinais de rotura.  
+Articulação talocrural com espaço articular mantido.  
+Músculos com sinal homogêneo, sem edema ou coleções.
+
+**Conclusão**  
+RM de tornozelo esquerdo sem alterações significativas.  
+[EDITÁVEL: Inserir tendinopatias, roturas ligamentares, fraturas, sinovite, etc., se houver.]
+
+---
+
+# 5. MG – MAMOGRAFIA
+
+## 5.1.1 MG – Mama – DIREITA
+
+**Título**  
+MAMOGRAFIA DE MAMA DIREITA
+
+**Método**  
+Mamografia digital realizada em projeções padrão (CC e MLO), com compressão adequada.
+
+**Achados**  
+Parênquima mamário de padrão [EDITÁVEL: fibroglandular / heterogeneamente denso / densidade pronunciada / predominantemente gorduroso]], compatível com a faixa etária.  
+Ausência de nódulos suspeitos, distorções arquiteturais ou microcalcificações agrupadas de aspecto suspeito.  
+Pele e complexo aréolo‑papilar sem espessamentos significativos.  
+Plano retroareolar sem alterações relevantes.  
+Região axilar sem linfonodomegalias suspeitas.
+
+**Conclusão**  
+Achados mamográficos de mama direita sem sinais suspeitos de malignidade (BI‑RADS [EDITÁVEL: categoria]]).
+
+---
+
+## 5.1.2 MG – Mama – ESQUERDA
+
+**Título**  
+MAMOGRAFIA DE MAMA ESQUERDA
+
+**Método**  
+Mamografia digital realizada em projeções padrão (CC e MLO), com compressão adequada.
+
+**Achados**  
+Parênquima mamário de padrão [EDITÁVEL: fibroglandular / heterogeneamente denso / densidade pronunciada / predominantemente gorduroso]], compatível com a faixa etária.  
+Ausência de nódulos suspeitos, distorções arquiteturais ou microcalcificações agrupadas de aspecto suspeito.  
+Pele e complexo aréolo‑papilar sem espessamentos significativos.  
+Plano retroareolar sem alterações relevantes.  
+Região axilar sem linfonodomegalias suspeitas.
+
+**Conclusão**  
+Achados mamográficos de mama esquerda sem sinais suspeitos de malignidade (BI‑RADS [EDITÁVEL: categoria]]).
+
+---
+
+## 5.1.3 MG – Mama – BILATERAL
+
+**Título**  
+MAMOGRAFIA BILATERAL DE MAMAS
+
+**Método**  
+Mamografia digital realizada em projeções padrão bilaterais (CC e MLO), com compressão adequada.
+
+**Achados**  
+Parênquima mamário de padrão [EDITÁVEL: fibroglandular / heterogeneamente denso / densidade pronunciada / predominantemente gorduroso]], simétrico bilateralmente, compatível com a faixa etária.  
+Ausência de nódulos suspeitos, distorções arquiteturais ou microcalcificações agrupadas de aspecto suspeito.  
+Pele e complexo aréolo‑papilar sem espessamentos significativos bilateralmente.  
+Planos retroareolares sem alterações relevantes.  
+Regiões axilares sem linfonodomegalias suspeitas.
+
+**Conclusão**  
+Achados mamográficos sem sinais suspeitos de malignidade bilateralmente (BI‑RADS [EDITÁVEL: categoria]]).
+
+---
+
+# 6. OT – OUTROS
+
+## 6.1.1 OT – Densitometria Óssea – Coluna Lombar
+
+**Título**  
+DENSITOMETRIA ÓSSEA – COLUNA LOMBAR (L1‑L4)
+
+**Método**  
+Exame realizado por DXA (absorciometria de dupla energia em raios X), com medição de densidade mineral óssea de coluna lombar.
+
+**Achados**  
+Densidade mineral óssea de coluna lombar L1‑L4 com valor T‑score de [EDITÁVEL: x.x]] (sítio: [EDITÁVEL: xx XX]] g/cm²).  
+Valores dentro [EDITÁVEL: dos limites da normalidade (T‑score ≥ ‑1) / da faixa de osteopenia (T‑score entre ‑1 e ‑2.5) / da faixa de osteoporose (T‑score ≤ ‑2.5)]], segundo critérios da Organização Mundial de Saúde (OMS).
+
+**Conclusão**  
+Densitometria óssea de coluna lombar compatível com [EDITÁVEL: normalidade / osteopenia / osteoporose]].  
+[EDITÁVEL: Inserir recomendações de acompanhamento ou tratamento, se aplicável.]
+
+---
+
+## 6.1.2 OT – Densitometria Óssea – Fêmur Proximal
+
+**Título**  
+DENSITOMETRIA ÓSSEA – FÊMUR PROXIMAL
+
+**Método**  
+Exame realizado por DXA, com medição de densidade mineral óssea de fêmur proximal (colo femoral e região intertrocantérica).
+
+**Achados**  
+Densidade mineral óssea de fêmur proximal direito com T‑score de [EDITÁVEL: x.x]] (sítio: [EDITÁVEL: xx X]] g/cm²).  
+[OPCIONAL: Densidade mineral óssea de fêmur proximal esquerdo com T‑score de [EDITÁVEL: x.x]] g/cm²].]  
+Valores dentro [EDITÁVEL: dos limites da normalidade / da faixa de osteopenia / da faixa de osteoporose]], segundo critérios da OMS.
+
+**Conclusão**  
+Densitometria óssea de fêmur proximal compatível com [EDITÁVEL: normalidade / osteopenia / osteoporose]].  
+[EDITÁVEL: Inserir recomendações de acompanhamento ou tratamento, se aplicável.]
+
+---
+
+## 6.1.3 OT – Densitometria Óssea – Coluna Total
+
+**Título**  
+DENSITOMETRIA ÓSSEA – AVALIAÇÃO TOTAL
+
+**Método**  
+Exame realizado por DXA, com medição de densidade mineral óssea de coluna lombossacra e fêmur proximal bilateralmente.
+
+**Achados**  
+Densidade mineral óssea de coluna lombar com T‑score de [EDITÁVEL: x.x]] g/cm².  
+Densidade mineral óssea de fêmur proximal direito com T‑score de [EDITÁVEL: x.x]] g/cm².  
+Densidade mineral óssea de fêmur proximal esquerdo com T‑score de [EDITÁVEL: x.x]] g/cm².  
+Valores dentro [EDITÁVEL: dos limites da normalidade / da faixa de osteopenia / da faixa de osteoporose]], segundo critérios da OMS.
+
+**Conclusão**  
+Densitometria óssea compatível com [EDITÁVEL: normalidade / osteopenia / osteoporose]].  
+[EDITÁVEL: Inserir recomendações de acompanhamento ou tratamento, se aplicável.]
+
+---
+
+## 6.2.1 OT – Estudos Contrastados – Enema Opaco
+
+**Título**  
+ENEMA OPACO
+
+**Método**  
+Exame realizado com administração retrógrada de contraste baritado, com radiografias seriadas do cólon.
+
+**Achados**  
+Cólon de calibres preservados, sem estenoses ou espessamentos parietais significativos.  
+Haustrações colônicas bem visualizadas e regulares.  
+Sem evidência de pólipos ou massas intracolônicas.  
+Reto sem alterações significativas.  
+Reflexo gastrocólico presente.
+
+**Conclusão**  
+Enema opaco sem alterações significativas.  
+[EDITÁVEL: Inserir pólipos, massas, divertículos, estenoses, etc., se houver.]
+
+---
+
+## 6.2.2 OT – Estudos Contrastados – Trânsito Intestinal
+
+**Título**  
+TRÂNSITO INTESTINAL (ESTUDO COM BÁRIO)
+
+**Método**  
+Exame realizado com administração oral de contraste baritado, com radiografias seriadas do estômago e intestino delgado.
+
+**Achados**  
+Estômago de tamanho e forma habituais, com preenchimento e esvaziamento adequados.  
+Duodeno sem alterações significativas.  
+Alças de intestino delgado com calibres preservados, sem dilatações ou estenoses.  
+Padrão de mucosa intestinal com pregas regulares e bem visualizadas.  
+Sem evidência de massas ou deslocamentos significativos.
+
+**Conclusão**  
+Trânsito intestinal sem alterações significativas.  
+[EDITÁVEL: Inserir estenoses, divertículos, massas, aceleração/retardo do trânsito, etc., se houver.]
+
+---
+
+## 6.3.1 OT – Medicina Nuclear – Cintilografia Óssea
+
+**Título**  
+CINTILOGRAFIA ÓSSEA TOTAL (SKELETAL SCINTIGRAPHY)
+
+**Método**  
+Exame realizado 2-3 horas após administração intravenosa de radiofármaco (tecnécio-99m MDP ou HDP), com aquisição de imagens em projeção anterior e posterior de corpo total.
+
+**Achados**  
+Distribuição traçadora fisiológica em esqueleto, glândulas salivares, rins e bexiga.  
+Simetria adequada das captações ósseas.  
+Sem focos de hipercaptação ou hipocaptação significativos e patológicos.  
+Sem evidência de lesões ósseas metabólicas, inflamatórias ou osteolíticas.
+
+**Conclusão**  
+Cintilografia óssea sem alterações significativas.  
+[EDITÁVEL: Inserir focos de hipercaptação, fraturas ocultas, infecções, tumores ósseos, etc., se houver.]
+
+---
+
+## 6.3.2 OT – Medicina Nuclear – Cintilografia Miocárdica
+
+**Título**  
+CINTILOGRAFIA MIOCÁRDICA (SPECT)
+
+**Método**  
+Exame realizado com administração de radiofármaco (tecnécio-99m sestamibi ou tetrofosmin), em repouso [OPCIONAL: e após estresse farmacológico/exercício]], com aquisição tomográfica.
+
+**Achados**  
+Perfusão miocárdica simétrica e homogênea em repouso.  
+[OPCIONAL: Resposta adequada à provocação de estresse (vasodilatação/cronotropismo)].]  
+Função ventricular esquerda preservada com fração de ejeção dentro dos limites normais.  
+Sem defeitos de perfusão reversíveis ou fixos significativos.
+
+**Conclusão**  
+Cintilografia miocárdica sem sinais de isquemia significativa.  
+[EDITÁVEL: Inserir isquemia, infarto, cardiomiopatia, etc., se houver.]
+
+---
+
+## 6.3.3 OT – Medicina Nuclear – Cintilografia da Tireoide
+
+**Título**  
+CINTILOGRAFIA DE TIREOIDE
+
+**Método**  
+Exame realizado 20-30 minutos após administração intravenosa de tecnécio-99m pertecnetato, com aquisição de imagem anterior de pescoço.
+
+**Achados**  
+Glândula tireoide de distribuição traçadora simétrica e homogênea.  
+Captação adequada e simétrica dos lobos direito e esquerdo.  
+Sem nódulos com hipocaptação (frio) ou hipercaptação (quente) significativos.  
+Sem focos ectópicos de captação.
+
+**Conclusão**  
+Cintilografia de tireoide sem alterações significativas.  
+[EDITÁVEL: Inserir nódulos frios, captação heterogênea, tiroidite, hipertireoidismo, etc., se houver.]
+
+---
+
+## 6.4.1 OT – Ultrassom Doppler – Arterial – Membros Superiores
+
+**Título**  
+ULTRASSOM COM DOPPLER ARTERIAL DE MEMBROS SUPERIORES
+
+**Método**  
+Exame realizado em modo B, Doppler colorido e espectral bilateralmente.
+
+**Achados**  
+Artérias (subclávia, axilar, braquial, radial, ulnar) com trajeto e calibres preservados bilateralmente.  
+Paredes arteriais sem espessamentos ou placas ateromatosas significativas.  
+Fluxo com padrão trifásico habitual.  
+Sem evidência de estenoses ou oclusões hemodinamicamente significativas.
+
+**Conclusão**  
+Doppler arterial de membros superiores sem alterações hemodinamicamente significativas.  
+[EDITÁVEL: Inserir estenoses, oclusões, anomalias, etc., se houver.]
+
+---
+
+## 6.4.2 OT – Ultrassom Doppler – Venoso – Membros Superiores
+
+**Título**  
+ULTRASSOM COM DOPPLER VENOSO DE MEMBROS SUPERIORES
+
+**Método**  
+Exame realizado em modo B, Doppler colorido e espectral, avaliando sistema venoso profundo e superficial bilateralmente.
+
+**Achados**  
+Veias (axilar, braquial, cefálica, basílica) compressíveis, com fluxo espontâneo e colorido.  
+Sem sinais de trombose ou oclusão.  
+Sem refluxo patológico significativo.  
+Paredes venosas sem alterações.
+
+**Conclusão**  
+Doppler venoso de membros superiores sem sinais de trombose ou insuficiência venosa significativa.  
+[EDITÁVEL: Inserir trombose, insuficiência, refluxo, etc., se houver.]
+
+---
+
+FIM DO ARQUIVO COMPLETO
+(TC: 27 templates | RM: 22 templates | MG: 3 templates | OT: 10 templates = 62 templates)

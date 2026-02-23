@@ -1,13 +1,5 @@
-
 import api from '../lib/api';
-import { UserRole } from '../App';
-
-export interface User {
-  id: string;
-  name: string;
-  email: string;
-  role: UserRole;
-}
+import { UserRole, User } from '../types/auth';
 
 export const authService = {
   async login(email: string, password: string): Promise<{ user: User; token: string }> {

@@ -16,15 +16,22 @@ interface ClinicExamsPageProps {
 
 const ClinicExamsPage: React.FC<ClinicExamsPageProps> = ({ exams, onNavigateToDetail, onOpenOhif, onEditExam, onDeleteExam, onOpenRequestExam }) => {
     const [searchTerm, setSearchTerm] = useState('');
+    const [dateFilter, setDateFilter] = useState('');
+    const [statusFilter, setStatusFilter] = useState('');
     const [deleteConfirmId, setDeleteConfirmId] = useState<string | null>(null);
 
     const filteredExams = useMemo(() => {
-        return exams.filter(exam =>
-            exam.patientName.toLowerCase().includes(searchTerm.toLowerCase()) ||
-            exam.examType.toLowerCase().includes(searchTerm.toLowerCase()) ||
-            exam.doctorAssignedName?.toLowerCase().includes(searchTerm.toLowerCase())
-        );
-    }, [exams, searchTerm]);
+        return exams.filter(exam => {
+            const matchesSearch = exam.patientName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                exam.examType.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                exam.doctorAssignedName?.toLowerCase().includes(searchTerm.toLowerCase());
+            
+            const matchesDate = dateFilter ? new Date(exam.dateRequested).toLocaleDateString('pt-BR') === new Date(dateFilter).toLocaleDateString('pt-BR') : true;
+            const matchesStatus = statusFilter ? exam.status === statusFilter : true;
+
+            return matchesSearch && matchesDate && matchesStatus;
+        });
+    }, [exams, searchTerm, dateFilter, statusFilter]);
 
     const handleDeleteClick = (examId: string) => {
         setDeleteConfirmId(examId);
@@ -75,45 +82,68 @@ const ClinicExamsPage: React.FC<ClinicExamsPageProps> = ({ exams, onNavigateToDe
                 </div>
             )}
 
-            <div className="flex justify-between items-center mb-8">
-                <h1 className="text-3xl font-bold text-gray-900">Gerenciamento de Exames</h1>
-                <div className="flex gap-4 w-full max-w-2xl justify-end">
+            <div className="flex justify-between items-center mb-6">
+                <div>
+                    <h1 className="page-header">Gerenciamento de Exames</h1>
+                    <div className="page-header-line" />
+                </div>
+                <div className="flex gap-4 w-full max-w-4xl justify-end items-center">
                     <Button
                         onClick={() => onOpenRequestExam && onOpenRequestExam()}
-                        className="bg-brand-blue-600 hover:bg-brand-blue-700 text-white font-bold py-2 px-4 rounded-xl flex items-center gap-2"
                     >
-                        <PlusIcon className="w-5 h-5" />
+                        <PlusIcon className="w-4 h-4 mr-2" />
                         Novo Exame
                     </Button>
-                    <div className="w-full max-w-xs">
-                        <SearchInput value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} placeholder="Buscar por paciente, exame..." />
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-2 w-full">
+                        <input 
+                            type="date" 
+                            className="text-sm rounded-xl p-2.5 focus:outline-none focus:ring-2"
+                            style={{ backgroundColor: 'var(--surface-card)', border: '1px solid var(--surface-border)', color: 'var(--text-primary)' }}
+                            value={dateFilter}
+                            onChange={(e) => setDateFilter(e.target.value)}
+                        />
+                         <select
+                            className="text-sm rounded-xl p-2.5 focus:outline-none focus:ring-2"
+                            style={{ backgroundColor: 'var(--surface-card)', border: '1px solid var(--surface-border)', color: 'var(--text-primary)' }}
+                            value={statusFilter}
+                            onChange={(e) => setStatusFilter(e.target.value)}
+                        >
+                            <option value="">Todos Status</option>
+                            <option value="Disponível">Disponível</option>
+                            <option value="Aguardando Laudo">Aguardando Laudo</option>
+                            <option value="Em Análise">Em Análise</option>
+                            <option value="Concluído">Concluído</option>
+                        </select>
+                        <SearchInput value={searchTerm} onChange={setSearchTerm} placeholder="Buscar..." />
                     </div>
                 </div>
             </div>
 
-            <div className="bg-white p-6 rounded-lg shadow-sm">
-                <h2 className="text-xl font-semibold text-gray-800 mb-4">Todos os Exames</h2>
+            <div className="panel-card overflow-hidden">
+                <div className="p-6 border-b" style={{ borderColor: 'var(--surface-border)' }}>
+                    <h2 className="section-title">Todos os Exames</h2>
+                </div>
                 <div className="overflow-x-auto">
-                    <table className="w-full text-sm text-left text-gray-500">
-                        <thead className="text-xs text-gray-700 uppercase bg-gray-50">
-                            <tr>
-                                <th scope="col" className="px-6 py-3">Paciente</th>
-                                <th scope="col" className="px-6 py-3">Tipo de Exame</th>
-                                <th scope="col" className="px-6 py-3">Médico Responsável</th>
-                                <th scope="col" className="px-6 py-3">Data</th>
-                                <th scope="col" className="px-6 py-3">Status</th>
-                                <th scope="col" className="px-6 py-3 text-right">Ações</th>
+                    <table className="w-full text-sm text-left">
+                        <thead>
+                            <tr style={{ backgroundColor: 'var(--surface-bg)' }}>
+                                <th scope="col" className="px-6 py-3 kpi-label text-left">Paciente</th>
+                                <th scope="col" className="px-6 py-3 kpi-label text-left">Tipo de Exame</th>
+                                <th scope="col" className="px-6 py-3 kpi-label text-left">Médico</th>
+                                <th scope="col" className="px-6 py-3 kpi-label text-left">Data</th>
+                                <th scope="col" className="px-6 py-3 kpi-label text-left">Status</th>
+                                <th scope="col" className="px-6 py-3 kpi-label text-right">Ações</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody className="divide-y" style={{ borderColor: 'var(--surface-border)' }}>
                             {filteredExams.map((exam) => (
-                                <tr key={exam.id} className="bg-white border-b hover:bg-gray-50">
+                                <tr key={exam.id} className="hover:bg-gray-50/50 transition-colors">
                                     <td className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">{exam.patientName}</td>
                                     <td className="px-6 py-4">{exam.examType}</td>
                                     <td className="px-6 py-4">{exam.doctorAssignedName || 'Não atribuído'}</td>
                                     <td className="px-6 py-4">{new Date(exam.dateRequested).toLocaleDateString('pt-BR')}</td>
                                     <td className="px-6 py-4"><Badge status={exam.status} /></td>
-                                    <td className="px-6 py-4">
+                                    <td className="px-6 py-4 text-right">
                                         <div className="flex items-center justify-end gap-2">
                                             <button
                                                 onClick={() => onNavigateToDetail(exam.id)}
@@ -149,9 +179,16 @@ const ClinicExamsPage: React.FC<ClinicExamsPageProps> = ({ exams, onNavigateToDe
                                             )}
                                             {onEditExam && (
                                                 <button
-                                                    onClick={() => onEditExam(exam.id)}
-                                                    className="p-2 text-yellow-600 hover:bg-yellow-50 rounded-lg transition-colors"
-                                                    title="Editar Exame"
+                                                    onClick={() => {
+                                                        if (exam.status !== 'Concluído') {
+                                                            onEditExam(exam.id);
+                                                        } else {
+                                                            alert('Não é possível editar exames concluídos.');
+                                                        }
+                                                    }}
+                                                    className={`p-2 rounded-lg transition-colors ${exam.status === 'Concluído' ? 'text-gray-300 cursor-not-allowed' : 'text-yellow-600 hover:bg-yellow-50'}`}
+                                                    title={exam.status === 'Concluído' ? 'Exame Concluído (Não Editável)' : 'Editar Exame'}
+                                                    disabled={exam.status === 'Concluído'}
                                                 >
                                                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
@@ -160,9 +197,16 @@ const ClinicExamsPage: React.FC<ClinicExamsPageProps> = ({ exams, onNavigateToDe
                                             )}
                                             {onDeleteExam && (
                                                 <button
-                                                    onClick={() => handleDeleteClick(exam.id)}
-                                                    className="p-2 text-red-600 hover:bg-red-50 rounded-lg transition-colors"
-                                                    title="Deletar Exame"
+                                                    onClick={() => {
+                                                        if (exam.status !== 'Concluído') {
+                                                            handleDeleteClick(exam.id);
+                                                        } else {
+                                                            alert('Não é possível deletar exames concluídos.');
+                                                        }
+                                                    }}
+                                                    className={`p-2 rounded-lg transition-colors ${exam.status === 'Concluído' ? 'text-gray-300 cursor-not-allowed' : 'text-red-600 hover:bg-red-50'}`}
+                                                    title={exam.status === 'Concluído' ? 'Exame Concluído (Não Deletável)' : 'Deletar Exame'}
+                                                    disabled={exam.status === 'Concluído'}
                                                 >
                                                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />

@@ -1,73 +1,98 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useState } from 'react';
 import type { Exam } from '../../../data/mockData';
 import { Badge } from '../../ui/Badge';
 import { DownloadIcon } from '../../icons/DownloadIcon';
-import { FileTextIcon } from '../../icons/FileTextIcon';
-import { Card } from '../../ui/Card';
-import { ClockIcon } from '../../icons/ClockIcon';
+import { PrintableReportModal } from '../../reports/PrintableReportModal';
+import { mapExamToReportData } from '../../../utils/reportMapper';
 
 interface PatientExamsPageProps {
     exams: Exam[];
     onNavigateToDetail: (examId: string) => void;
+    initialTab?: 'completed' | 'pending' | 'scheduled';
 }
 
-const PatientExamsPage: React.FC<PatientExamsPageProps> = ({ exams, onNavigateToDetail }) => {
-    
+const PatientExamsPage: React.FC<PatientExamsPageProps> = ({ exams, onNavigateToDetail, initialTab }) => {
+    const [activeTab, setActiveTab] = useState<'completed' | 'pending' | 'scheduled'>(initialTab || 'completed');
+    const [selectedExamForPrint, setSelectedExamForPrint] = useState<Exam | null>(null);
+
     const handleDownload = (e: React.MouseEvent, exam: Exam) => {
         e.stopPropagation(); 
-        alert(`Simulando download do laudo para: ${exam.examType}`);
-    }
+        setSelectedExamForPrint(exam);
+    };
 
     const completedExams = useMemo(() => exams.filter(e => e.status === 'Concluído'), [exams]);
-    const pendingExams = useMemo(() => exams.filter(e => e.status !== 'Concluído'), [exams]);
+    const pendingExams = useMemo(() => exams.filter(e => ['Aguardando Laudo', 'Em Análise', 'Laudando'].includes(e.status)), [exams]);
+    const scheduledExams = useMemo(() => exams.filter(e => e.status === 'Disponível'), [exams]);
+
+    const displayedExams = useMemo(() => {
+        switch (activeTab) {
+            case 'completed': return completedExams;
+            case 'pending': return pendingExams;
+            case 'scheduled': return scheduledExams;
+            default: return [];
+        }
+    }, [activeTab, completedExams, pendingExams, scheduledExams]);
 
     return (
         <div className="max-w-5xl mx-auto space-y-8 animate-in fade-in duration-700">
-            <div className="flex flex-col md:flex-row justify-between items-end gap-4">
+            {selectedExamForPrint && (
+                <PrintableReportModal
+                    isOpen={!!selectedExamForPrint}
+                    onClose={() => setSelectedExamForPrint(null)}
+                    data={mapExamToReportData(selectedExamForPrint)}
+                    allowThemeSelection={false} // Patients can't change theme usually
+                />
+            )}
+
+            <div className="flex flex-col md:flex-row justify-between items-end gap-6 mb-8">
                 <div>
-                     <h1 className="text-3xl font-bold text-gray-900 tracking-tight">Portal do Paciente</h1>
-                     <p className="text-gray-500 mt-2">Acompanhe seus exames e resultados em tempo real.</p>
+                     <h1 className="page-header">Portal do Paciente</h1>
+                     <div className="page-header-line" />
+                     <p className="text-sm mt-3 font-medium" style={{ color: 'var(--text-secondary)' }}>Acompanhe seus exames e resultados em tempo real.</p>
                 </div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                 <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 flex items-center">
-                     <div className="bg-green-50 p-3 rounded-xl mr-4">
-                         <FileTextIcon className="h-6 w-6 text-green-600" />
-                     </div>
-                     <div>
-                         <p className="text-xs font-bold text-gray-400 uppercase tracking-wider">Laudos Prontos</p>
-                         <p className="text-2xl font-black text-gray-900">{completedExams.length}</p>
-                     </div>
-                 </div>
-                 <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 flex items-center">
-                     <div className="bg-yellow-50 p-3 rounded-xl mr-4">
-                         <ClockIcon className="h-6 w-6 text-yellow-600" />
-                     </div>
-                     <div>
-                         <p className="text-xs font-bold text-gray-400 uppercase tracking-wider">Em Análise</p>
-                         <p className="text-2xl font-black text-gray-900">{pendingExams.length}</p>
-                     </div>
-                 </div>
+            <div className="flex items-center gap-1 mb-6 border-b p-1 shrink-0" style={{ borderColor: 'var(--surface-border)' }}>
+                <button
+                    onClick={() => setActiveTab('completed')}
+                    className="px-6 py-3 text-xs font-black uppercase tracking-widest transition-all relative"
+                    style={activeTab === 'completed' ? { color: 'var(--teal-600)' } : { color: 'var(--text-muted)' }}
+                >
+                    Laudados ({completedExams.length})
+                    {activeTab === 'completed' && <div className="absolute bottom-0 left-0 right-0 h-0.5" style={{ backgroundColor: 'var(--teal-500)' }} />}
+                </button>
+                <button
+                    onClick={() => setActiveTab('pending')}
+                    className="px-6 py-3 text-xs font-black uppercase tracking-widest transition-all relative"
+                    style={activeTab === 'pending' ? { color: 'var(--teal-600)' } : { color: 'var(--text-muted)' }}
+                >
+                    Pendentes ({pendingExams.length})
+                    {activeTab === 'pending' && <div className="absolute bottom-0 left-0 right-0 h-0.5" style={{ backgroundColor: 'var(--teal-500)' }} />}
+                </button>
+                <button
+                    onClick={() => setActiveTab('scheduled')}
+                    className="px-6 py-3 text-xs font-black uppercase tracking-widest transition-all relative"
+                    style={activeTab === 'scheduled' ? { color: 'var(--teal-600)' } : { color: 'var(--text-muted)' }}
+                >
+                    Agendados ({scheduledExams.length})
+                    {activeTab === 'scheduled' && <div className="absolute bottom-0 left-0 right-0 h-0.5" style={{ backgroundColor: 'var(--teal-500)' }} />}
+                </button>
             </div>
 
-            <div className="bg-white rounded-[2rem] shadow-sm border border-gray-100 overflow-hidden">
-                <div className="p-8 border-b border-gray-50">
-                    <h2 className="text-xl font-bold text-gray-900">Histórico de Exames</h2>
-                </div>
+            <div className="panel-card overflow-hidden">
                 <div className="overflow-x-auto">
                     <table className="w-full text-left">
-                        <thead className="text-[11px] font-black text-gray-400 uppercase tracking-widest bg-gray-50/50">
-                            <tr>
-                                <th scope="col" className="px-8 py-5">Exame</th>
-                                <th scope="col" className="px-8 py-5">Data</th>
-                                <th scope="col" className="px-8 py-5">Médico Responsável</th>
-                                <th scope="col" className="px-8 py-5">Status</th>
-                                <th scope="col" className="px-8 py-5 text-right">Laudo</th>
+                        <thead>
+                            <tr style={{ backgroundColor: 'var(--surface-bg)' }}>
+                                <th scope="col" className="px-8 py-4 kpi-label">Exame</th>
+                                <th scope="col" className="px-8 py-4 kpi-label">Data</th>
+                                <th scope="col" className="px-8 py-4 kpi-label">Médico Responsável</th>
+                                <th scope="col" className="px-8 py-4 kpi-label">Status</th>
+                                <th scope="col" className="px-8 py-4 kpi-label text-right">Ações</th>
                             </tr>
                         </thead>
-                        <tbody className="divide-y divide-gray-50">
-                            {exams.map((exam) => (
+                        <tbody className="divide-y" style={{ borderColor: 'var(--surface-border)' }}>
+                            {displayedExams.map((exam) => (
                                 <tr key={exam.id} className="hover:bg-brand-blue-50/30 transition-all cursor-pointer group" onClick={() => onNavigateToDetail(exam.id)}>
                                     <td className="px-8 py-5">
                                         <div className="font-bold text-gray-900 text-base">{exam.examType}</div>
@@ -90,16 +115,18 @@ const PatientExamsPage: React.FC<PatientExamsPageProps> = ({ exams, onNavigateTo
                                                 Baixar PDF
                                             </button>
                                         ) : (
-                                            <span className="text-xs font-bold text-gray-300 uppercase tracking-wider">Aguardando</span>
+                                            <span className="text-xs font-bold text-gray-300 uppercase tracking-wider">
+                                                {exam.status === 'Disponível' ? 'Aguardando Aprovação' : 'Em Andamento'}
+                                            </span>
                                         )}
                                     </td>
                                 </tr>
                             ))}
                         </tbody>
                     </table>
-                    {exams.length === 0 && (
+                    {displayedExams.length === 0 && (
                         <div className="text-center py-16">
-                             <p className="text-gray-400 font-medium">Você ainda não possui exames registrados.</p>
+                             <p className="text-gray-400 font-medium">Nenhum exame encontrado nesta categoria.</p>
                         </div>
                     )}
                 </div>
@@ -107,6 +134,5 @@ const PatientExamsPage: React.FC<PatientExamsPageProps> = ({ exams, onNavigateTo
         </div>
     );
 };
-
 
 export default PatientExamsPage;

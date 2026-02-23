@@ -8,6 +8,7 @@ const PatientCreateSchema = z.object({
   name: z.string(),
   cpf: z.string(),
   email: z.string().email(),
+  sex: z.string().optional(),
 });
 
 export const getPatients = async (req: any, res: Response) => {
@@ -106,7 +107,7 @@ export const createPatient = async (req: any, res: Response) => {
 export const updatePatient = async (req: any, res: Response) => {
   try {
     const { id } = req.params;
-    const { name, cpf, email } = req.body;
+    const { name, cpf, email, sex } = req.body;
     const { role } = req.user;
 
     if (role !== 'clinic' && role !== 'admin') {
@@ -115,7 +116,7 @@ export const updatePatient = async (req: any, res: Response) => {
 
     const updated = await prisma.patient.update({
       where: { id },
-      data: { name, cpf, email }
+      data: { name, cpf, email, sex }
     });
 
     res.json(updated);

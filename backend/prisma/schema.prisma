@@ -6,8 +6,8 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider = "sqlite"
+  url      = "file:./dev.db"
 }
 
 model Clinic {
@@ -39,6 +39,7 @@ model Patient {
   name      String
   cpf       String   @unique
   email     String   @unique
+  sex       String?  // 'M' | 'F'
   clinicId  String
   clinic    Clinic   @relation(fields: [clinicId], references: [id])
   exams     Exam[]
@@ -69,8 +70,13 @@ model Exam {
   aiDraft            String?
   finalReport        String?
   aiInsights         String?
+  externalSuggestion String? // Sugestão salva via link de segunda opinião (Shared View)
   dicomUrl           String?
+  medicalRequestUrl  String?
   studyInstanceUID   String?
+  clinicalHistory    String?
+  preReportTemplateId String?
+  preReportTemplate   PreReportTemplate? @relation(fields: [preReportTemplateId], references: [id])
 }
 
 model GlobalStats {
@@ -94,3 +100,51 @@ model User {
   password  String   // In a real app, hash this
   createdAt DateTime @default(now())
 }
+
+model PricingTable {
+  id              String   @id @default(cuid())
+  modality        String   // 'RX', 'TC', 'RM', 'US', 'MG', 'OT'
+  urgency         String   // 'Rotina', 'Urgente'
+  price           Float
+  updatedAt       DateTime @default(now()) @updatedAt
+
+  @@unique([modality, urgency])
+}
+
+
+model SystemSettings {
+  id        String   @id @default(cuid())
+  feeGlobal Float    @default(15.0)
+  feeDev    Float    @default(5.0)
+  updatedAt DateTime @default(now()) @updatedAt
+}
+
+model PreReportTemplate {
+  id          String   @id @default(cuid())
+  title       String
+  modality    String   // 'RX', 'TC', 'RM', 'US', 'MG', 'OT'
+  bodyRegion  String
+  complexity  Int      @default(1)
+  sections    String   // Stored as JSON string
+  variants    String?  // Stored as JSON string
+  targetSex   String?  // 'M' | 'F' (null means both)
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  exams       Exam[]
+}
+
+model VerifiedCrm {
+  id            String   @id @default(cuid())
+  crm           String
+  uf            String
+  name          String
+  specialty     String?
+  status        String   // 'Ativo' | 'Inativo' | 'Cancelado'
+  source        String   // 'Official' | 'ThirdParty' | 'Manual'
+  lastVerified  DateTime @default(now())
+  metadata      String?  // JSON string for extra info from sources
+
+  @@unique([crm, uf])
+}
+

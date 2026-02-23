@@ -8,10 +8,11 @@ const ExamCreateSchema = z.object({
   patientId: z.string(),
   examType: z.string(),
   specialtyRequired: z.string(),
-  price: z.preprocess((val) => Number(val), z.number()),
+  price: z.preprocess((val) => (val === undefined || val === null ? undefined : Number(val)), z.number().optional()),
   modality: z.string(),
   urgency: z.string(),
   bodyPart: z.string().optional(),
+  clinicalHistory: z.string().optional(),
 });
 
 export const getExams = async (req: Request, res: Response) => {
@@ -77,14 +78,12 @@ export const createExam = async (req: Request, res: Response) => {
   try {
     console.log('📥 Received exam creation request');
     console.log('Body:', JSON.stringify(req.body, null, 2));
-    console.log('File:', req.file ? { filename: req.file.filename, size: req.file.size } : 'No file');
-    console.log('Body keys:', Object.keys(req.body));
-    console.log('Body values:', Object.values(req.body));
+    const files = req.files as { [fieldname: string]: Express.Multer.File[] } | undefined;
+    const dicomFile = files?.['dicom']?.[0];
+    const medicalRequestFile = files?.['medicalRequest']?.[0];
 
     const data = ExamCreateSchema.parse(req.body);
     console.log('✅ Schema validation passed:', data);
-
-    const file = req.file;
 
     // Find patient and clinic
     console.log('🔍 Looking for patient:', data.patientId);
@@ -100,13 +99,20 @@ export const createExam = async (req: Request, res: Response) => {
     let extractedPatientName = patient.name;
     let extractedStudyUID = null;
 
-    if (file) {
-      console.log('📁 Processing DICOM file:', file.filename);
-      dicomUrl = `/uploads/dicom/${file.filename}`;
+    let medicalRequestUrl = null;
+
+    if (medicalRequestFile) {
+      console.log('📄 Processing Medical Request file:', medicalRequestFile.filename);
+      medicalRequestUrl = `/uploads/medical-requests/${medicalRequestFile.filename}`;
+    }
+
+    if (dicomFile) {
+      console.log('📁 Processing DICOM file:', dicomFile.filename);
+      dicomUrl = `/uploads/dicom/${dicomFile.filename}`;
       const previewDir = path.join(process.cwd(), 'uploads', 'previews');
 
       try {
-        const result = await processDicomFile(file.path, previewDir);
+        const result = await processDicomFile(dicomFile.path, previewDir);
         examImageUrl = result.previewUrl;
         if (result.metadata.patientName && result.metadata.patientName !== 'Não identificado') {
           extractedPatientName = Array.isArray(result.metadata.patientName)
@@ -122,6 +128,29 @@ export const createExam = async (req: Request, res: Response) => {
       }
     }
 
+    // Dynamic Pricing Logic
+    let finalPrice = data.price;
+    
+    // Always fetch price from PricingTable for consistency if not Admin
+    // Or just always use PricingTable if price is not provided
+    console.log(`💰 Calculating price for Modality: ${data.modality}, Urgency: ${data.urgency}`);
+    const pricing = await prisma.pricingTable.findUnique({
+      where: {
+        modality_urgency: {
+          modality: data.modality,
+          urgency: data.urgency
+        }
+      }
+    });
+
+    if (pricing) {
+      finalPrice = pricing.price;
+      console.log('✅ Price found in table:', finalPrice);
+    } else {
+      console.log('⚠️ Price not found in table, using fallback/sent price');
+      finalPrice = finalPrice || 50.00;
+    }
+
     console.log('💾 Creating exam in database...');
     const examData = {
       patientId: data.patientId,
@@ -131,16 +160,71 @@ export const createExam = async (req: Request, res: Response) => {
       urgency: data.urgency,
       bodyPart: data.bodyPart || 'Não especificado',
       specialtyRequired: data.specialtyRequired,
-      price: data.price,
+      clinicalHistory: data.clinicalHistory || null,
+      price: finalPrice,
       clinicId: patient.clinicId,
       clinicName: patient.clinic.name,
       status: 'Disponível',
       paymentStatus: 'Pendente',
       accessionNumber: `ACC-${Date.now().toString().slice(-6)}`,
       dicomUrl,
+      medicalRequestUrl,
       studyInstanceUID: extractedStudyUID,
       examImageUrl: examImageUrl || '/placeholder-medical.png',
     };
+
+    // --- SMART TEMPLATE LINKING ---
+    // 1. Try to find by direct ID if provided (future proofing)
+    // 2. Try to find by exact match of Title + Modality + Sex
+    console.log('🔗 Attempting to link Pre-Report Template...');
+    let template = null;
+
+    // Search by title (Exam Type), Modality AND Patient Sex
+    template = await prisma.preReportTemplate.findFirst({
+      where: {
+        title: data.examType, // SQLite case-insensitive depends on collation, strict equality for now
+        modality: data.modality,
+        isActive: true,
+        OR: [
+          { targetSex: patient.sex },
+          { targetSex: null }
+        ]
+      },
+      orderBy: {
+        targetSex: 'desc' 
+      }
+    });
+
+    if (!template && data.bodyPart) {
+       console.log('⚠️ No matching template found for:', data.examType, 'Sex:', patient.sex);
+    }
+
+    if (template) {
+       console.log('✅ Template linked:', template.title, 'for Sex:', template.targetSex || 'Both');
+       (examData as any).preReportTemplateId = template.id;
+       
+       // Auto-fill report content
+       // SQLite stores JSON as string, so we must parse it
+       let sections = [];
+       try {
+         sections = typeof template.sections === 'string' ? JSON.parse(template.sections) : template.sections;
+       } catch (e) {
+         console.error('Error parsing template sections:', e);
+         sections = [];
+       }
+       
+       const reportContent = (sections as any[]).map(s => `
+${s.label.toUpperCase()}:
+${s.defaultContent || ''}
+`).join('\n').trim();
+
+       (examData as any).finalReport = reportContent;
+       (examData as any).status = 'Aguardando Laudo'; // Optional: move directly to reporting? No, let doctor accept.
+    } else {
+       console.log('ℹ️ Exam created without template link.');
+    }
+    // -----------------------------
+
     console.log('Exam data to create:', examData);
 
     const newExam = await prisma.exam.create({
@@ -333,5 +417,54 @@ export const payExam = async (req: any, res: Response) => {
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: 'Erro ao processar pagamento' });
+  }
+};
+
+export const getPublicExam = async (req: Request, res: Response) => {
+  try {
+    const { id } = req.params;
+    console.log('🌍 Public fetch for exam:', id);
+
+    const exam = await prisma.exam.findUnique({
+      where: { id: id as string }
+    });
+
+    if (!exam) {
+      console.log('❌ Public exam not found:', id);
+      return res.status(404).json({ error: 'Exame não encontrado' });
+    }
+
+    res.json(exam);
+  } catch (error) {
+    console.error('❌ Error fetching public exam:', error);
+    res.status(500).json({ error: 'Erro ao buscar exame público' });
+  }
+};
+
+export const saveExternalSuggestion = async (req: Request, res: Response) => {
+  try {
+    const { id } = req.params;
+    const { suggestion, crm } = req.body;
+    
+    console.log(`📝 Saving external suggestion for exam ${id} from Dr. ${crm}`);
+
+    const exam = await prisma.exam.findUnique({ where: { id } });
+    if (!exam) {
+      return res.status(404).json({ error: 'Exame não encontrado' });
+    }
+
+    const updatedExam = await prisma.exam.update({
+      where: { id },
+      data: {
+        // @ts-ignore: Prisma client might be stale
+        externalSuggestion: suggestion
+      }
+    });
+
+    console.log('✅ External suggestion saved.');
+    res.json(updatedExam);
+  } catch (error) {
+    console.error('❌ Error saving external suggestion:', error);
+    res.status(500).json({ error: 'Erro ao salvar sugestão' });
   }
 };

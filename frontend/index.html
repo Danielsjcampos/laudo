@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -11,19 +11,19 @@
         theme: {
           extend: {
             fontFamily: {
-              sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+              sans: ['"Plus Jakarta Sans"', 'Inter', 'sans-serif'],
             },
             colors: {
               medical: {
-                primary: '#0284c7', // Sky 600
-                secondary: '#0f172a', // Slate 900
-                success: '#10b981', // Emerald 500
+                primary: '#0284c7',
+                secondary: '#0f172a',
+                success: '#10b981',
                 surface: '#ffffff',
-                background: '#f8fafc', // Slate 50
-                border: '#e2e8f0', // Slate 200
+                background: '#f8fafc',
+                border: '#e2e8f0',
                 text: {
-                    primary: '#1e293b',
-                    secondary: '#64748b'
+                  primary: '#1e293b',
+                  secondary: '#64748b'
                 }
               },
               'brand-blue': {
@@ -33,7 +33,7 @@
                 '300': '#7dd3fc',
                 '400': '#38bdf8',
                 '500': '#0ea5e9',
-                '600': '#0284c7', // Primary
+                '600': '#0284c7',
                 '700': '#0369a1',
                 '800': '#075985',
                 '900': '#0c4a6e',
@@ -57,18 +57,8 @@
         }
       }
     </script>
-  <script type="importmap">
-{
-  "imports": {
-    "react/": "https://aistudiocdn.com/react@^19.2.0/",
-    "react": "https://aistudiocdn.com/react@^19.2.0",
-    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
-    "@google/genai": "https://esm.sh/@google/genai@^1.35.0"
-  }
-}
-</script>
-<link rel="stylesheet" href="/src/index.css">
-</head>
+    <link rel="stylesheet" href="/src/index.css" />
+  </head>
   <body>
     <div id="root"></div>
     <script type="module" src="/src/index.tsx"></script>

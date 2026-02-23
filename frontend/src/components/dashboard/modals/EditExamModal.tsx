@@ -47,20 +47,24 @@ export const EditExamModal: React.FC<EditExamModalProps> = ({
         e.preventDefault();
         setIsSubmitting(true);
         try {
+            // Convert price to number just in case
+            const numericPrice = typeof price === 'string' ? parseFloat(price) : price;
+            
             await api.patch(`/exams/${exam.id}`, {
                 examType,
                 specialtyRequired: specialty,
                 modality,
                 urgency,
                 bodyPart,
-                price
+                price: numericPrice
             });
             addToast('Exame atualizado com sucesso!', 'success');
             onUpdate();
             onClose();
-        } catch (error) {
+        } catch (error: any) {
             console.error('Erro ao atualizar exame:', error);
-            addToast('Erro ao atualizar exame.', 'error');
+            const errorMessage = error.response?.data?.error || 'Erro ao atualizar exame.';
+            addToast(errorMessage, 'error');
         } finally {
             setIsSubmitting(false);
         }

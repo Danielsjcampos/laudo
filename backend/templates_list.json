@@ -1,0 +1,1062 @@
+[
+  {
+    "title": "USG Abdome Superior",
+    "modality": "USG",
+    "bodyRegion": "Abdome"
+  },
+  {
+    "title": "USG Abdome Total",
+    "modality": "USG",
+    "bodyRegion": "Abdome"
+  },
+  {
+    "title": "USG Aparelho Urinário",
+    "modality": "USG",
+    "bodyRegion": "Urinário"
+  },
+  {
+    "title": "USG Articulação Coxofemoral Infantil",
+    "modality": "USG",
+    "bodyRegion": "Quadril"
+  },
+  {
+    "title": "USG Bolsa Escrotal",
+    "modality": "USG",
+    "bodyRegion": "Genital"
+  },
+  {
+    "title": "USG Bolsa Escrotal com Doppler",
+    "modality": "USG",
+    "bodyRegion": "Genital"
+  },
+  {
+    "title": "USG Cotovelo Direito",
+    "modality": "USG",
+    "bodyRegion": "Cotovelo"
+  },
+  {
+    "title": "USG Joelho Direito",
+    "modality": "USG",
+    "bodyRegion": "Joelho"
+  },
+  {
+    "title": "USG Mamas",
+    "modality": "USG",
+    "bodyRegion": "Mamas"
+  },
+  {
+    "title": "USG Mão Direita",
+    "modality": "USG",
+    "bodyRegion": "Mão"
+  },
+  {
+    "title": "USG Ombro Direito",
+    "modality": "USG",
+    "bodyRegion": "Ombro"
+  },
+  {
+    "title": "USG Parede Abdominal",
+    "modality": "USG",
+    "bodyRegion": "Abdome"
+  },
+  {
+    "title": "USG Partes Moles",
+    "modality": "USG",
+    "bodyRegion": "Partes Moles"
+  },
+  {
+    "title": "USG Pelve Suprapúbica",
+    "modality": "USG",
+    "bodyRegion": "Pelve"
+  },
+  {
+    "title": "USG Pelve Suprapúbica com Doppler",
+    "modality": "USG",
+    "bodyRegion": "Pelve"
+  },
+  {
+    "title": "USG Pelve Transvaginal",
+    "modality": "USG",
+    "bodyRegion": "Pelve"
+  },
+  {
+    "title": "USG Pelve Transvaginal com Doppler",
+    "modality": "USG",
+    "bodyRegion": "Pelve"
+  },
+  {
+    "title": "USG Próstata Suprapúbica",
+    "modality": "USG",
+    "bodyRegion": "Próstata"
+  },
+  {
+    "title": "USG Punho Direito",
+    "modality": "USG",
+    "bodyRegion": "Punho"
+  },
+  {
+    "title": "USG Quadril",
+    "modality": "USG",
+    "bodyRegion": "Quadril"
+  },
+  {
+    "title": "USG Região Inguinal Direita",
+    "modality": "USG",
+    "bodyRegion": "Inguinal"
+  },
+  {
+    "title": "USG Rins e Vias Urinárias",
+    "modality": "USG",
+    "bodyRegion": "Renal"
+  },
+  {
+    "title": "USG Rins/Vias Urinárias e Próstata",
+    "modality": "USG",
+    "bodyRegion": "Renal"
+  },
+  {
+    "title": "USG Tireóide",
+    "modality": "USG",
+    "bodyRegion": "Tireóide"
+  },
+  {
+    "title": "USG Tireóide com Doppler",
+    "modality": "USG",
+    "bodyRegion": "Tireóide"
+  },
+  {
+    "title": "USG Tornozelo Direito",
+    "modality": "USG",
+    "bodyRegion": "Tornozelo"
+  },
+  {
+    "title": "USG Cervical",
+    "modality": "USG",
+    "bodyRegion": "Cervical"
+  },
+  {
+    "title": "TC Abdome Total",
+    "modality": "TC",
+    "bodyRegion": "Abdome"
+  },
+  {
+    "title": "TC Abdome Total — Avaliação Oncológica (Pâncreas)",
+    "modality": "TC",
+    "bodyRegion": "Abdome"
+  },
+  {
+    "title": "TC Abdome Total — Protocolo Hepatopatia Crônica",
+    "modality": "TC",
+    "bodyRegion": "Abdome"
+  },
+  {
+    "title": "TC Coluna Cervical",
+    "modality": "TC",
+    "bodyRegion": "Coluna"
+  },
+  {
+    "title": "TC Coluna Lombo-Sacra",
+    "modality": "TC",
+    "bodyRegion": "Coluna"
+  },
+  {
+    "title": "TC Coluna Lombar",
+    "modality": "TC",
+    "bodyRegion": "Coluna"
+  },
+  {
+    "title": "TC Cotovelo",
+    "modality": "TC",
+    "bodyRegion": "Cotovelo"
+  },
+  {
+    "title": "TC Crânio",
+    "modality": "TC",
+    "bodyRegion": "Crânio"
+  },
+  {
+    "title": "TC Crânio — Idoso",
+    "modality": "TC",
+    "bodyRegion": "Crânio"
+  },
+  {
+    "title": "TC Crânio — Protocolo AVC",
+    "modality": "TC",
+    "bodyRegion": "Crânio"
+  },
+  {
+    "title": "TC Joelho",
+    "modality": "TC",
+    "bodyRegion": "Joelho"
+  },
+  {
+    "title": "TC Mastoides",
+    "modality": "TC",
+    "bodyRegion": "Mastoides"
+  },
+  {
+    "title": "TC Ombro",
+    "modality": "TC",
+    "bodyRegion": "Ombro"
+  },
+  {
+    "title": "TC Pelve Feminina",
+    "modality": "TC",
+    "bodyRegion": "Pelve"
+  },
+  {
+    "title": "TC Pelve Masculina (Próstata)",
+    "modality": "TC",
+    "bodyRegion": "Pelve"
+  },
+  {
+    "title": "TC Pescoço",
+    "modality": "TC",
+    "bodyRegion": "Pescoço"
+  },
+  {
+    "title": "TC Punho",
+    "modality": "TC",
+    "bodyRegion": "Punho"
+  },
+  {
+    "title": "TC Bacia",
+    "modality": "TC",
+    "bodyRegion": "Bacia"
+  },
+  {
+    "title": "TC Seios da Face",
+    "modality": "TC",
+    "bodyRegion": "Face"
+  },
+  {
+    "title": "TC Região Sacro-Coccígea",
+    "modality": "TC",
+    "bodyRegion": "Sacro"
+  },
+  {
+    "title": "TC Tórax",
+    "modality": "TC",
+    "bodyRegion": "Tórax"
+  },
+  {
+    "title": "TC Tórax — Avaliação Oncológica",
+    "modality": "TC",
+    "bodyRegion": "Tórax"
+  },
+  {
+    "title": "RM Abdome Total",
+    "modality": "RM",
+    "bodyRegion": "Abdome"
+  },
+  {
+    "title": "RM Antepé",
+    "modality": "RM",
+    "bodyRegion": "Pé"
+  },
+  {
+    "title": "RM ATM",
+    "modality": "RM",
+    "bodyRegion": "ATM"
+  },
+  {
+    "title": "RM Coluna Cervical",
+    "modality": "RM",
+    "bodyRegion": "Coluna"
+  },
+  {
+    "title": "RM Coluna Dorsal",
+    "modality": "RM",
+    "bodyRegion": "Coluna"
+  },
+  {
+    "title": "RM Coluna Lombar",
+    "modality": "RM",
+    "bodyRegion": "Coluna"
+  },
+  {
+    "title": "RM Coluna Lombar — Degenerativo (Idoso)",
+    "modality": "RM",
+    "bodyRegion": "Coluna"
+  },
+  {
+    "title": "RM Cotovelo",
+    "modality": "RM",
+    "bodyRegion": "Cotovelo"
+  },
+  {
+    "title": "RM Crânio",
+    "modality": "RM",
+    "bodyRegion": "Crânio"
+  },
+  {
+    "title": "RM Crânio — Esclerose Múltipla",
+    "modality": "RM",
+    "bodyRegion": "Crânio"
+  },
+  {
+    "title": "RM Joelho",
+    "modality": "RM",
+    "bodyRegion": "Joelho"
+  },
+  {
+    "title": "RM Mão/Dedos",
+    "modality": "RM",
+    "bodyRegion": "Mão"
+  },
+  {
+    "title": "RM Ombro",
+    "modality": "RM",
+    "bodyRegion": "Ombro"
+  },
+  {
+    "title": "RM Órbitas",
+    "modality": "RM",
+    "bodyRegion": "Órbitas"
+  },
+  {
+    "title": "RM Ouvido",
+    "modality": "RM",
+    "bodyRegion": "Ouvido"
+  },
+  {
+    "title": "RM Pé e Tornozelo",
+    "modality": "RM",
+    "bodyRegion": "Pé"
+  },
+  {
+    "title": "RM Pelve — Avaliação Oncológica Reto",
+    "modality": "RM",
+    "bodyRegion": "Pelve"
+  },
+  {
+    "title": "RM Pelve Oncológica (Colo Uterino/Endométrio)",
+    "modality": "RM",
+    "bodyRegion": "Pelve"
+  },
+  {
+    "title": "RM Pelve (Endometriose)",
+    "modality": "RM",
+    "bodyRegion": "Pelve"
+  },
+  {
+    "title": "RM Pelve Fístula Perianal",
+    "modality": "RM",
+    "bodyRegion": "Pelve"
+  },
+  {
+    "title": "RM Perna Direita",
+    "modality": "RM",
+    "bodyRegion": "Perna"
+  },
+  {
+    "title": "RM Multiparamétrica Próstata",
+    "modality": "RM",
+    "bodyRegion": "Próstata"
+  },
+  {
+    "title": "RM Punho",
+    "modality": "RM",
+    "bodyRegion": "Punho"
+  },
+  {
+    "title": "RM Quadril",
+    "modality": "RM",
+    "bodyRegion": "Quadril"
+  },
+  {
+    "title": "RM Sacro Ilíacas",
+    "modality": "RM",
+    "bodyRegion": "Sacro"
+  },
+  {
+    "title": "RM Tórax",
+    "modality": "RM",
+    "bodyRegion": "Tórax"
+  },
+  {
+    "title": "RX Coluna Lombar",
+    "modality": "RX",
+    "bodyRegion": "Coluna"
+  },
+  {
+    "title": "RX Tórax",
+    "modality": "RX",
+    "bodyRegion": "Tórax"
+  },
+  {
+    "title": "Mamografia",
+    "modality": "MMG",
+    "bodyRegion": "Mamas"
+  },
+  {
+    "title": "Angiorressonância Arterial Cervical",
+    "modality": "ANGIO",
+    "bodyRegion": "Cervical"
+  },
+  {
+    "title": "Angiorressonância Arterial do Crânio",
+    "modality": "ANGIO",
+    "bodyRegion": "Crânio"
+  },
+  {
+    "title": "Angiorressonância Venosa do Crânio",
+    "modality": "ANGIO",
+    "bodyRegion": "Crânio"
+  },
+  {
+    "title": "Angiotomografia das Artérias Coronárias",
+    "modality": "ANGIO",
+    "bodyRegion": "Coração"
+  },
+  {
+    "title": "Angiotomografia Computadorizada do Tórax",
+    "modality": "ANGIO",
+    "bodyRegion": "Tórax"
+  },
+  {
+    "title": "Angiotomografia Torácica e Abdominal",
+    "modality": "ANGIO",
+    "bodyRegion": "Tórax/Abdome"
+  },
+  {
+    "title": "RADIOGRAFIA DE CRÂNIO",
+    "modality": "RX",
+    "bodyRegion": "Crânio"
+  },
+  {
+    "title": "RADIOGRAFIA DE FACE",
+    "modality": "RX",
+    "bodyRegion": "Face / Seios Paranasais"
+  },
+  {
+    "title": "RADIOGRAFIA DE MANDÍBULA",
+    "modality": "RX",
+    "bodyRegion": "Mandíbula / ATM"
+  },
+  {
+    "title": "RADIOGRAFIA DE COLUNA CERVICAL",
+    "modality": "RX",
+    "bodyRegion": "Coluna Cervical"
+  },
+  {
+    "title": "RADIOGRAFIA DE COLUNA TORÁCICA",
+    "modality": "RX",
+    "bodyRegion": "Coluna Torácica"
+  },
+  {
+    "title": "RADIOGRAFIA DE COLUNA LOMBAR",
+    "modality": "RX",
+    "bodyRegion": "Coluna Lombar"
+  },
+  {
+    "title": "RADIOGRAFIA DE SACRO",
+    "modality": "RX",
+    "bodyRegion": "Sacro"
+  },
+  {
+    "title": "RADIOGRAFIA DE COLUNA TOTAL – AVALIAÇÃO DE ESCOLIOSE",
+    "modality": "RX",
+    "bodyRegion": "Coluna Total / Escoliose"
+  },
+  {
+    "title": "RADIOGRAFIA DE OMBRO DIREITO",
+    "modality": "RX",
+    "bodyRegion": "Ombro"
+  },
+  {
+    "title": "RADIOGRAFIA DE OMBRO ESQUERDO",
+    "modality": "RX",
+    "bodyRegion": "Ombro"
+  },
+  {
+    "title": "RADIOGRAFIA DE CLAVÍCULA DIREITA",
+    "modality": "RX",
+    "bodyRegion": "Clavícula"
+  },
+  {
+    "title": "RADIOGRAFIA DE CLAVÍCULA ESQUERDA",
+    "modality": "RX",
+    "bodyRegion": "Clavícula"
+  },
+  {
+    "title": "RADIOGRAFIA DE BRAÇO DIREITO",
+    "modality": "RX",
+    "bodyRegion": "Braço"
+  },
+  {
+    "title": "RADIOGRAFIA DE BRAÇO ESQUERDO",
+    "modality": "RX",
+    "bodyRegion": "Braço"
+  },
+  {
+    "title": "RADIOGRAFIA DE COTOVELO DIREITO",
+    "modality": "RX",
+    "bodyRegion": "Cotovelo"
+  },
+  {
+    "title": "RADIOGRAFIA DE COTOVELO ESQUERDO",
+    "modality": "RX",
+    "bodyRegion": "Cotovelo"
+  },
+  {
+    "title": "RADIOGRAFIA DE ANTEBRAÇO DIREITO",
+    "modality": "RX",
+    "bodyRegion": "Antebraço"
+  },
+  {
+    "title": "RADIOGRAFIA DE ANTEBRAÇO ESQUERDO",
+    "modality": "RX",
+    "bodyRegion": "Antebraço"
+  },
+  {
+    "title": "RADIOGRAFIA DE PUNHO DIREITO",
+    "modality": "RX",
+    "bodyRegion": "Punho"
+  },
+  {
+    "title": "RADIOGRAFIA DE PUNHO ESQUERDO",
+    "modality": "RX",
+    "bodyRegion": "Punho"
+  },
+  {
+    "title": "RADIOGRAFIA DE MÃO DIREITA",
+    "modality": "RX",
+    "bodyRegion": "Mão"
+  },
+  {
+    "title": "RADIOGRAFIA DE MÃO ESQUERDA",
+    "modality": "RX",
+    "bodyRegion": "Mão"
+  },
+  {
+    "title": "RADIOGRAFIA DE PELVE",
+    "modality": "RX",
+    "bodyRegion": "Pelve / Bacia"
+  },
+  {
+    "title": "RADIOGRAFIA DE QUADRIL DIREITO",
+    "modality": "RX",
+    "bodyRegion": "Quadril"
+  },
+  {
+    "title": "RADIOGRAFIA DE QUADRIL ESQUERDO",
+    "modality": "RX",
+    "bodyRegion": "Quadril"
+  },
+  {
+    "title": "RADIOGRAFIA DE FÊMUR DIREITO",
+    "modality": "RX",
+    "bodyRegion": "Fêmur"
+  },
+  {
+    "title": "RADIOGRAFIA DE FÊMUR ESQUERDO",
+    "modality": "RX",
+    "bodyRegion": "Fêmur"
+  },
+  {
+    "title": "RADIOGRAFIA DE JOELHO DIREITO",
+    "modality": "RX",
+    "bodyRegion": "Joelho"
+  },
+  {
+    "title": "RADIOGRAFIA DE JOELHO ESQUERDO",
+    "modality": "RX",
+    "bodyRegion": "Joelho"
+  },
+  {
+    "title": "RADIOGRAFIA DE PERNA DIREITA",
+    "modality": "RX",
+    "bodyRegion": "Perna"
+  },
+  {
+    "title": "RADIOGRAFIA DE PERNA ESQUERDA",
+    "modality": "RX",
+    "bodyRegion": "Perna"
+  },
+  {
+    "title": "RADIOGRAFIA DE TORNOZELO DIREITO",
+    "modality": "RX",
+    "bodyRegion": "Tornozelo"
+  },
+  {
+    "title": "RADIOGRAFIA DE TORNOZELO ESQUERDO",
+    "modality": "RX",
+    "bodyRegion": "Tornozelo"
+  },
+  {
+    "title": "RADIOGRAFIA DE PÉ DIREITO",
+    "modality": "RX",
+    "bodyRegion": "Pé"
+  },
+  {
+    "title": "RADIOGRAFIA DE PÉ ESQUERDO",
+    "modality": "RX",
+    "bodyRegion": "Pé"
+  },
+  {
+    "title": "RADIOGRAFIA DE TÓRAX – PROJEÇÃO PA",
+    "modality": "RX",
+    "bodyRegion": "Tórax"
+  },
+  {
+    "title": "RADIOGRAFIA DE TÓRAX – PROJEÇÃO AP",
+    "modality": "RX",
+    "bodyRegion": "Tórax"
+  },
+  {
+    "title": "RADIOGRAFIA DE TÓRAX – PROJEÇÃO PERFIL",
+    "modality": "RX",
+    "bodyRegion": "Tórax"
+  },
+  {
+    "title": "RADIOGRAFIA DE ABDOME AGUDO",
+    "modality": "RX",
+    "bodyRegion": "Abdome Agudo"
+  },
+  {
+    "title": "RADIOGRAFIA DE ABDOME SIMPLES",
+    "modality": "RX",
+    "bodyRegion": "Abdome Simples"
+  },
+  {
+    "title": "TOMOGRAFIA COMPUTADORIZADA DE CRÂNIO – SEM CONTRASTE",
+    "modality": "TC",
+    "bodyRegion": "Crânio"
+  },
+  {
+    "title": "TOMOGRAFIA COMPUTADORIZADA DE CRÂNIO – COM CONTRASTE",
+    "modality": "TC",
+    "bodyRegion": "Crânio"
+  },
+  {
+    "title": "TOMOGRAFIA COMPUTADORIZADA DE PESCOÇO – SEM CONTRASTE",
+    "modality": "TC",
+    "bodyRegion": "Pescoço"
+  },
+  {
+    "title": "TOMOGRAFIA COMPUTADORIZADA DE PESCOÇO – COM CONTRASTE",
+    "modality": "TC",
+    "bodyRegion": "Pescoço"
+  },
+  {
+    "title": "TOMOGRAFIA COMPUTADORIZADA DE COLUNA CERVICAL",
+    "modality": "TC",
+    "bodyRegion": "Coluna Cervical"
+  },
+  {
+    "title": "TOMOGRAFIA COMPUTADORIZADA DE COLUNA TORÁCICA",
+    "modality": "TC",
+    "bodyRegion": "Coluna Torácica"
+  },
+  {
+    "title": "TOMOGRAFIA COMPUTADORIZADA DE COLUNA LOMBAR",
+    "modality": "TC",
+    "bodyRegion": "Coluna Lombar"
+  },
+  {
+    "title": "TOMOGRAFIA COMPUTADORIZADA DE SACRO",
+    "modality": "TC",
+    "bodyRegion": "Sacro"
+  },
+  {
+    "title": "TOMOGRAFIA COMPUTADORIZADA DE TÓRAX – SEM CONTRASTE",
+    "modality": "TC",
+    "bodyRegion": "Tórax"
+  },
+  {
+    "title": "TOMOGRAFIA COMPUTADORIZADA DE TÓRAX – COM CONTRASTE",
+    "modality": "TC",
+    "bodyRegion": "Tórax"
+  },
+  {
+    "title": "TOMOGRAFIA COMPUTADORIZADA DE ABDOME SUPERIOR – SEM CONTRASTE",
+    "modality": "TC",
+    "bodyRegion": "Abdome Superior"
+  },
+  {
+    "title": "TOMOGRAFIA COMPUTADORIZADA DE ABDOME SUPERIOR – COM CONTRASTE",
+    "modality": "TC",
+    "bodyRegion": "Abdome Superior"
+  },
+  {
+    "title": "TOMOGRAFIA COMPUTADORIZADA DE ABDOME INFERIOR – SEM CONTRASTE",
+    "modality": "TC",
+    "bodyRegion": "Abdome Inferior"
+  },
+  {
+    "title": "TOMOGRAFIA COMPUTADORIZADA DE TORNOZELO DIREITO",
+    "modality": "TC",
+    "bodyRegion": "Tornozelo"
+  },
+  {
+    "title": "TOMOGRAFIA COMPUTADORIZADA DE ABDOME INFERIOR – COM CONTRASTE",
+    "modality": "TC",
+    "bodyRegion": "Abdome Inferior"
+  },
+  {
+    "title": "TOMOGRAFIA COMPUTADORIZADA DE PELVE – SEM CONTRASTE",
+    "modality": "TC",
+    "bodyRegion": "Pelve"
+  },
+  {
+    "title": "TOMOGRAFIA COMPUTADORIZADA DE PELVE – COM CONTRASTE",
+    "modality": "TC",
+    "bodyRegion": "Pelve"
+  },
+  {
+    "title": "TOMOGRAFIA COMPUTADORIZADA DE OMBRO DIREITO",
+    "modality": "TC",
+    "bodyRegion": "Ombro"
+  },
+  {
+    "title": "TOMOGRAFIA COMPUTADORIZADA DE OMBRO ESQUERDO",
+    "modality": "TC",
+    "bodyRegion": "Ombro"
+  },
+  {
+    "title": "TOMOGRAFIA COMPUTADORIZADA DE QUADRIL DIREITO",
+    "modality": "TC",
+    "bodyRegion": "Quadril"
+  },
+  {
+    "title": "TOMOGRAFIA COMPUTADORIZADA DE QUADRIL ESQUERDO",
+    "modality": "TC",
+    "bodyRegion": "Quadril"
+  },
+  {
+    "title": "TOMOGRAFIA COMPUTADORIZADA DE JOELHO DIREITO",
+    "modality": "TC",
+    "bodyRegion": "Joelho"
+  },
+  {
+    "title": "TOMOGRAFIA COMPUTADORIZADA DE JOELHO ESQUERDO",
+    "modality": "TC",
+    "bodyRegion": "Joelho"
+  },
+  {
+    "title": "TOMOGRAFIA COMPUTADORIZADA DE TORNOZELO ESQUERDO",
+    "modality": "TC",
+    "bodyRegion": "Tornozelo"
+  },
+  {
+    "title": "RESSONÂNCIA MAGNÉTICA DE ENCÉFALO – SEM CONTRASTE",
+    "modality": "RM",
+    "bodyRegion": "Encéfalo"
+  },
+  {
+    "title": "RESSONÂNCIA MAGNÉTICA DE ENCÉFALO – COM CONTRASTE",
+    "modality": "RM",
+    "bodyRegion": "Encéfalo"
+  },
+  {
+    "title": "RESSONÂNCIA MAGNÉTICA DE COLUNA CERVICAL",
+    "modality": "RM",
+    "bodyRegion": "Coluna Cervical"
+  },
+  {
+    "title": "RESSONÂNCIA MAGNÉTICA DE COLUNA TORÁCICA",
+    "modality": "RM",
+    "bodyRegion": "Coluna Torácica"
+  },
+  {
+    "title": "RESSONÂNCIA MAGNÉTICA DE COLUNA LOMBOSSACRA",
+    "modality": "RM",
+    "bodyRegion": "Coluna Lombossacra"
+  },
+  {
+    "title": "RESSONÂNCIA MAGNÉTICA DE ABDOME – SEM CONTRASTE",
+    "modality": "RM",
+    "bodyRegion": "Abdome"
+  },
+  {
+    "title": "RESSONÂNCIA MAGNÉTICA DE ABDOME – COM CONTRASTE",
+    "modality": "RM",
+    "bodyRegion": "Abdome"
+  },
+  {
+    "title": "RESSONÂNCIA MAGNÉTICA DE PELVE – FEMININO – SEM CONTRASTE",
+    "modality": "RM",
+    "bodyRegion": "Pelve"
+  },
+  {
+    "title": "RESSONÂNCIA MAGNÉTICA DE PELVE – FEMININO – COM CONTRASTE",
+    "modality": "RM",
+    "bodyRegion": "Pelve"
+  },
+  {
+    "title": "RESSONÂNCIA MAGNÉTICA DE PELVE – MASCULINO – SEM CONTRASTE",
+    "modality": "RM",
+    "bodyRegion": "Pelve"
+  },
+  {
+    "title": "RESSONÂNCIA MAGNÉTICA DE PELVE – MASCULINO – COM CONTRASTE",
+    "modality": "RM",
+    "bodyRegion": "Pelve"
+  },
+  {
+    "title": "RESSONÂNCIA MAGNÉTICA DE JOELHO DIREITO",
+    "modality": "RM",
+    "bodyRegion": "Joelho"
+  },
+  {
+    "title": "RESSONÂNCIA MAGNÉTICA DE JOELHO ESQUERDO",
+    "modality": "RM",
+    "bodyRegion": "Joelho"
+  },
+  {
+    "title": "RESSONÂNCIA MAGNÉTICA DE QUADRIL DIREITO",
+    "modality": "RM",
+    "bodyRegion": "Quadril"
+  },
+  {
+    "title": "RESSONÂNCIA MAGNÉTICA DE QUADRIL ESQUERDO",
+    "modality": "RM",
+    "bodyRegion": "Quadril"
+  },
+  {
+    "title": "RESSONÂNCIA MAGNÉTICA DE OMBRO DIREITO",
+    "modality": "RM",
+    "bodyRegion": "Ombro"
+  },
+  {
+    "title": "RESSONÂNCIA MAGNÉTICA DE OMBRO ESQUERDO",
+    "modality": "RM",
+    "bodyRegion": "Ombro"
+  },
+  {
+    "title": "RESSONÂNCIA MAGNÉTICA DE TORNOZELO DIREITO",
+    "modality": "RM",
+    "bodyRegion": "Tornozelo"
+  },
+  {
+    "title": "RESSONÂNCIA MAGNÉTICA DE TORNOZELO ESQUERDO",
+    "modality": "RM",
+    "bodyRegion": "Tornozelo"
+  },
+  {
+    "title": "MAMOGRAFIA DE MAMA DIREITA",
+    "modality": "MG",
+    "bodyRegion": "Mama"
+  },
+  {
+    "title": "MAMOGRAFIA DE MAMA ESQUERDA",
+    "modality": "MG",
+    "bodyRegion": "Mama"
+  },
+  {
+    "title": "MAMOGRAFIA BILATERAL DE MAMAS",
+    "modality": "MG",
+    "bodyRegion": "Mama"
+  },
+  {
+    "title": "DENSITOMETRIA ÓSSEA – COLUNA LOMBAR (L1‑L4)",
+    "modality": "OT",
+    "bodyRegion": "Densitometria Óssea"
+  },
+  {
+    "title": "DENSITOMETRIA ÓSSEA – FÊMUR PROXIMAL",
+    "modality": "OT",
+    "bodyRegion": "Densitometria Óssea"
+  },
+  {
+    "title": "DENSITOMETRIA ÓSSEA – AVALIAÇÃO TOTAL",
+    "modality": "OT",
+    "bodyRegion": "Densitometria Óssea"
+  },
+  {
+    "title": "ENEMA OPACO",
+    "modality": "OT",
+    "bodyRegion": "Estudos Contrastados"
+  },
+  {
+    "title": "TRÂNSITO INTESTINAL (ESTUDO COM BÁRIO)",
+    "modality": "OT",
+    "bodyRegion": "Estudos Contrastados"
+  },
+  {
+    "title": "CINTILOGRAFIA ÓSSEA TOTAL (SKELETAL SCINTIGRAPHY)",
+    "modality": "OT",
+    "bodyRegion": "Medicina Nuclear"
+  },
+  {
+    "title": "CINTILOGRAFIA MIOCÁRDICA (SPECT)",
+    "modality": "OT",
+    "bodyRegion": "Medicina Nuclear"
+  },
+  {
+    "title": "CINTILOGRAFIA DE TIREOIDE",
+    "modality": "OT",
+    "bodyRegion": "Medicina Nuclear"
+  },
+  {
+    "title": "ULTRASSOM COM DOPPLER ARTERIAL DE MEMBROS SUPERIORES",
+    "modality": "OT",
+    "bodyRegion": "Ultrassom Doppler"
+  },
+  {
+    "title": "ULTRASSOM COM DOPPLER VENOSO DE MEMBROS SUPERIORES",
+    "modality": "OT",
+    "bodyRegion": "Ultrassom Doppler"
+  },
+  {
+    "title": "ULTRASSONOGRAFIA DE ABDOME E PELVE – EXAME COMPLETO",
+    "modality": "US",
+    "bodyRegion": "Abdome e Pelve"
+  },
+  {
+    "title": "ULTRASSONOGRAFIA DE ABDOME SUPERIOR",
+    "modality": "US",
+    "bodyRegion": "Abdome"
+  },
+  {
+    "title": "ULTRASSONOGRAFIA DE ABDOME INFERIOR",
+    "modality": "US",
+    "bodyRegion": "Abdome"
+  },
+  {
+    "title": "ULTRASSONOGRAFIA DE PELVE",
+    "modality": "US",
+    "bodyRegion": "Pelve"
+  },
+  {
+    "title": "ULTRASSONOGRAFIA DE OMBRO DIREITO",
+    "modality": "US",
+    "bodyRegion": "Ombro"
+  },
+  {
+    "title": "ULTRASSONOGRAFIA DE OMBRO ESQUERDO",
+    "modality": "US",
+    "bodyRegion": "Ombro"
+  },
+  {
+    "title": "ULTRASSONOGRAFIA DE COTOVELO DIREITO",
+    "modality": "US",
+    "bodyRegion": "Cotovelo"
+  },
+  {
+    "title": "ULTRASSONOGRAFIA DE COTOVELO ESQUERDO",
+    "modality": "US",
+    "bodyRegion": "Cotovelo"
+  },
+  {
+    "title": "ULTRASSONOGRAFIA DE PUNHO DIREITO",
+    "modality": "US",
+    "bodyRegion": "Punho"
+  },
+  {
+    "title": "ULTRASSONOGRAFIA DE PUNHO ESQUERDO",
+    "modality": "US",
+    "bodyRegion": "Punho"
+  },
+  {
+    "title": "ULTRASSONOGRAFIA DE QUADRIL DIREITO",
+    "modality": "US",
+    "bodyRegion": "Quadril"
+  },
+  {
+    "title": "ULTRASSONOGRAFIA DE QUADRIL ESQUERDO",
+    "modality": "US",
+    "bodyRegion": "Quadril"
+  },
+  {
+    "title": "ULTRASSONOGRAFIA DE JOELHO DIREITO",
+    "modality": "US",
+    "bodyRegion": "Joelho"
+  },
+  {
+    "title": "ULTRASSONOGRAFIA DE JOELHO ESQUERDO",
+    "modality": "US",
+    "bodyRegion": "Joelho"
+  },
+  {
+    "title": "ULTRASSONOGRAFIA DE TORNOZELO DIREITO",
+    "modality": "US",
+    "bodyRegion": "Tornozelo"
+  },
+  {
+    "title": "ULTRASSONOGRAFIA DE TORNOZELO ESQUERDO",
+    "modality": "US",
+    "bodyRegion": "Tornozelo"
+  },
+  {
+    "title": "ULTRASSONOGRAFIA DE TIREOIDE",
+    "modality": "US",
+    "bodyRegion": "Tireoide"
+  },
+  {
+    "title": "ULTRASSONOGRAFIA DE PESCOÇO",
+    "modality": "US",
+    "bodyRegion": "Pescoço / Partes Moles"
+  },
+  {
+    "title": "ULTRASSONOGRAFIA DE MAMA DIREITA",
+    "modality": "US",
+    "bodyRegion": "Mama"
+  },
+  {
+    "title": "ULTRASSONOGRAFIA DE MAMA ESQUERDA",
+    "modality": "US",
+    "bodyRegion": "Mama"
+  },
+  {
+    "title": "ULTRASSONOGRAFIA DE BOLSA ESCROTAL",
+    "modality": "US",
+    "bodyRegion": "Bolsa Escrotal"
+  },
+  {
+    "title": "ULTRASSONOGRAFIA DE PRÓSTATA",
+    "modality": "US",
+    "bodyRegion": "Próstata"
+  },
+  {
+    "title": "ULTRASSONOGRAFIA COM DOPPLER DE CARÓTIDA DIREITA",
+    "modality": "US",
+    "bodyRegion": "Doppler Carótida"
+  },
+  {
+    "title": "ULTRASSONOGRAFIA COM DOPPLER DE CARÓTIDA ESQUERDA",
+    "modality": "US",
+    "bodyRegion": "Doppler Carótida"
+  },
+  {
+    "title": "ULTRASSONOGRAFIA COM DOPPLER DE ARTÉRIA VERTEBRAL DIREITA",
+    "modality": "US",
+    "bodyRegion": "Doppler Vertebral"
+  },
+  {
+    "title": "ULTRASSONOGRAFIA COM DOPPLER DE ARTÉRIA VERTEBRAL ESQUERDA",
+    "modality": "US",
+    "bodyRegion": "Doppler Vertebral"
+  },
+  {
+    "title": "ULTRASSONOGRAFIA COM DOPPLER DE AORTA ABDOMINAL",
+    "modality": "US",
+    "bodyRegion": "Doppler Aorta Abdominal"
+  },
+  {
+    "title": "ULTRASSONOGRAFIA COM DOPPLER DE MEMBROS INFERIORES DIREITO",
+    "modality": "US",
+    "bodyRegion": "Doppler Membros Inferiores"
+  },
+  {
+    "title": "ULTRASSONOGRAFIA COM DOPPLER DE MEMBROS INFERIORES ESQUERDO",
+    "modality": "US",
+    "bodyRegion": "Doppler Membros Inferiores"
+  },
+  {
+    "title": "ULTRASSONOGRAFIA OBSTÉTRICA – 1º TRIMESTRE",
+    "modality": "US",
+    "bodyRegion": "Obstétrico"
+  },
+  {
+    "title": "ULTRASSONOGRAFIA OBSTÉTRICA – 2º TRIMESTRE",
+    "modality": "US",
+    "bodyRegion": "Obstétrico"
+  },
+  {
+    "title": "ULTRASSONOGRAFIA OBSTÉTRICA – 3º TRIMESTRE",
+    "modality": "US",
+    "bodyRegion": "Obstétrico"
+  }
+]

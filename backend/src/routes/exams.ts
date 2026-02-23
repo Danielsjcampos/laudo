@@ -9,7 +9,10 @@ const router = Router();
 router.use(authenticateToken); // Todas as rotas de exames requerem autenticação
 
 router.get('/', getExams);
-router.post('/', upload.single('dicom'), createExam);
+router.post('/', upload.fields([
+  { name: 'dicom', maxCount: 1 },
+  { name: 'medicalRequest', maxCount: 1 }
+]), createExam);
 router.patch('/:id', updateExam);
 router.delete('/:id', deleteExam);
 router.post('/:id/accept', acceptExam);

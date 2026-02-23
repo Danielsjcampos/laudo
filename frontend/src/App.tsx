@@ -2,23 +2,17 @@ import React, { useState } from 'react';
 import LandingPage from './pages/LandingPage';
 import LoginPage from './pages/LoginPage';
 import DashboardPage from './pages/DashboardPage';
+import SharedExamPage from './pages/SharedExamPage';
 import { mockDoctors, mockExams, mockPatients, mockPatientCarlaExams } from './data/mockData';
 import type { Doctor, Exam, Patient, ExamModality, ExamUrgency } from './data/mockData';
 import { ToastProvider } from './contexts/ToastContext';
-import { authService, User as AuthUser } from './services/authService';
+import { authService } from './services/authService';
 import api from './lib/api';
 
-export type UserRole = 'admin' | 'clinic' | 'doctor' | 'patient';
-
-export interface User {
-  id: string;
-  name: string;
-  role: UserRole;
-  email: string;
-}
+import { UserRole, User } from './types/auth';
 
 const App: React.FC = () => {
-  const [view, setView] = useState<'landing' | 'login' | 'dashboard'>('login');
+  const [view, setView] = useState<'landing' | 'login' | 'dashboard' | 'shared'>('login');
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
 
@@ -53,6 +47,13 @@ const App: React.FC = () => {
   // Check auth on mount
   React.useEffect(() => {
     const checkAuth = async () => {
+      // Check for shared URL
+      if (window.location.pathname.startsWith('/share/')) {
+        setView('shared');
+        setLoading(false);
+        return;
+      }
+
       try {
         const { user } = await authService.getMe();
         setUser(user);
@@ -73,12 +74,13 @@ const App: React.FC = () => {
     }
   }, [user, view]);
 
-  const handleLogin = async (role: UserRole) => {
+  const handleLogin = async (role: string) => {
     // Quick Dev Access Mapper
     const devCredentials = {
       admin: { email: 'admin@laudodigital.com', password: 'admin123' },
       clinic: { email: 'contato@saudeplena.com', password: 'password' },
       doctor: { email: 'roberto.martins@doc.com', password: 'password' },
+      doctor_ana: { email: 'ana.souza@doc.com', password: 'password' },
       patient: { email: 'carla.f@email.com', password: 'password' },
     };
 
@@ -121,7 +123,9 @@ const App: React.FC = () => {
     modality: ExamModality = 'OT',
     urgency: ExamUrgency = 'Rotina',
     bodyPart: string = 'Não especificado',
-    file: File | null = null
+    file: File | null = null,
+    clinicalHistory?: string,
+    medicalRequestFile?: File | null
   ) => {
     try {
       const formData = new FormData();
@@ -132,9 +136,10 @@ const App: React.FC = () => {
       formData.append('modality', modality);
       formData.append('urgency', urgency);
       formData.append('bodyPart', bodyPart);
-      if (file) {
-        formData.append('dicom', file);
-      }
+      if (clinicalHistory) formData.append('clinicalHistory', clinicalHistory);
+      
+      if (file) formData.append('dicom', file);
+      if (medicalRequestFile) formData.append('medicalRequest', medicalRequestFile);
 
       await api.post('/exams', formData, {
         headers: {
@@ -166,21 +171,37 @@ const App: React.FC = () => {
     }
   };
 
-  const handleRegisterPatient = async (name: string, cpf: string, email: string) => {
+  const handleRegisterPatient = async (data: { name: string, cpf: string, email: string, sex?: string }) => {
     try {
-      await api.post('/patients', { name, cpf, email });
-      fetchData();
+      const response = await api.post('/patients', data);
+      await fetchData();
+      return response.data;
     } catch (err) {
       alert('Erro ao registrar paciente');
+      throw err;
     }
   };
 
   const renderView = () => {
+    if (loading) {
+      return (
+        <div className="flex items-center justify-center min-h-screen bg-gray-50">
+          <div className="flex flex-col items-center gap-4">
+            <div className="w-12 h-12 border-4 border-brand-blue-600 border-t-transparent rounded-full animate-spin"></div>
+            <p className="text-sm font-bold text-gray-400 uppercase tracking-widest animate-pulse">Sincronizando...</p>
+          </div>
+        </div>
+      );
+    }
+
     switch (view) {
+      case 'shared':
+        return <SharedExamPage />;
       case 'login':
         return <LoginPage onLogin={handleLogin} onManualLogin={handleManualLogin} onNavigateToLanding={navigateToLanding} />;
       case 'dashboard':
-        return user && <DashboardPage
+        if (!user) return <LoginPage onLogin={handleLogin} onManualLogin={handleManualLogin} onNavigateToLanding={navigateToLanding} />;
+        return <DashboardPage
           user={user}
           onLogout={handleLogout}
           patients={patients}
@@ -191,6 +212,7 @@ const App: React.FC = () => {
           onAcceptExam={handleAcceptExam}
           onCompleteReport={handleCompleteReport}
           onRegisterPatient={handleRegisterPatient}
+          onRefreshData={fetchData}
         />;
       case 'landing':
       default:

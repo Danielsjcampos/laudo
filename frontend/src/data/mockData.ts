@@ -5,6 +5,26 @@ export interface Patient {
     cpf: string;
     email: string;
     clinicId: string;
+    rg?: string;
+    birthDate?: string;
+    sex?: string;
+    motherName?: string;
+    cellphone?: string;
+    phone?: string;
+    address?: {
+        cep: string;
+        street: string;
+        number: string;
+        complement?: string;
+        neighborhood: string;
+        city: string;
+        uf: string;
+    };
+    insurance?: {
+        name: string;
+        cardNumber: string;
+        validity: string;
+    };
 }
 
 export interface Doctor {
@@ -20,7 +40,7 @@ export interface Doctor {
 export type ExamStatus = 'Disponível' | 'Aguardando Laudo' | 'Laudando' | 'Em Análise' | 'Concluído' | 'Recusado';
 export type PaymentStatus = 'Pendente' | 'Pago' | 'Processando';
 export type SubscriptionStatus = 'Ativa' | 'Atrasada' | 'Cancelada';
-export type ExamModality = 'RX' | 'TC' | 'RM' | 'US' | 'MG' | 'OT';
+export type ExamModality = 'RX' | 'TC' | 'RM' | 'US' | 'USG' | 'MG' | 'OT';
 export type ExamUrgency = 'Rotina' | 'Urgente';
 
 export interface Clinic {
@@ -46,6 +66,14 @@ export interface GlobalStats {
     saasRevenue: number;
 }
 
+export interface ExamSuggestion {
+    id: string;
+    doctorName: string;
+    doctorCrm: string;
+    content: string;
+    createdAt: string;
+}
+
 export interface Exam {
     id: string;
     patientId: string;
@@ -67,7 +95,10 @@ export interface Exam {
     aiDraft?: string;
     finalReport?: string;
     aiInsights?: string;
+    clinicalHistory?: string;
     dicomUrl?: string; // URL for the raw DICOM file/zip for listeners
+    medicalRequestUrl?: string;
+    suggestions?: ExamSuggestion[]; // Array of suggestions from external doctors
 }
 
 export const mockGlobalStats: GlobalStats = {
@@ -92,7 +123,7 @@ export const mockClinics: Clinic[] = [
 
 export const mockDoctors: Doctor[] = [
     { id: 'd1', name: 'Dr. Roberto Martins', crm: '12345-SP', specialty: 'Cardiologia', status: 'Ativo', joinedDate: '2023-02-10', rating: 4.9 },
-    { id: 'd2', name: 'Dra. Lúcia Lima', crm: '54321-RJ', specialty: 'Radiologia', status: 'Ativo', joinedDate: '2023-04-15', rating: 4.8 },
+    { id: 'd2', name: 'Dra. Ana Souza', crm: '98765-SP', specialty: 'Radiologia', status: 'Ativo', joinedDate: '2023-04-15', rating: 4.8 },
     { id: 'd3', name: 'Dr. Fernando Gomes', crm: '67890-MG', specialty: 'Neurologia', status: 'Ativo', joinedDate: '2023-07-22', rating: 5.0 },
     { id: 'd4', name: 'Dra. Marina Silva', crm: '11223-SC', specialty: 'Radiologia', status: 'Ativo', joinedDate: '2023-09-01', rating: 4.7 },
     { id: 'd5', name: 'Dr. André Santos', crm: '44556-RS', specialty: 'Cardiologia', status: 'Pendente', joinedDate: '2023-12-05', rating: 0 },
@@ -106,13 +137,16 @@ export const mockPatients: Patient[] = [
 ];
 
 export const mockExams: Exam[] = [
-    { id: 'e100', patientId: 'p1', patientName: 'João Silva', doctorAssignedId: 'd1', doctorAssignedName: 'Dr. Roberto Martins', examType: 'Raio-X de Tórax', modality: 'RX', urgency: 'Rotina', bodyPart: 'Tórax', accessionNumber: 'ACC-2024-001', specialtyRequired: 'Radiologia', dateRequested: '2024-05-20', status: 'Concluído', price: 45.00, clinicName: 'Clínica Saúde Plena', paymentStatus: 'Pago', finalReport: 'Pulmões limpos.' },
-    { id: 'e101', patientId: 'p2', patientName: 'Maria Oliveira', doctorAssignedId: 'd1', doctorAssignedName: 'Dr. Roberto Martins', examType: 'Eletrocardiograma', modality: 'OT', urgency: 'Rotina', bodyPart: 'Coração', accessionNumber: 'ACC-2024-002', specialtyRequired: 'Cardiologia', dateRequested: '2024-05-21', status: 'Concluído', price: 85.00, clinicName: 'Clínica Saúde Plena', paymentStatus: 'Pago', finalReport: 'Ritmo sinusal.' },
+    { id: 'e100', patientId: 'p1', patientName: 'João Silva', doctorAssignedId: 'd1', doctorAssignedName: 'Dr. Roberto Martins', examType: 'Raio-X de Tórax', modality: 'RX', urgency: 'Rotina', bodyPart: 'Tórax', accessionNumber: 'ACC-2024-001', specialtyRequired: 'Radiologia', dateRequested: '2024-05-20', status: 'Concluído', price: 45.00, clinicName: 'Clínica Saúde Plena', paymentStatus: 'Pago', finalReport: 'Pulmões limpos.', medicalRequestUrl: '/uploads/medical-requests/sample-request.pdf' },
+    { id: 'e101', patientId: 'p2', patientName: 'Maria Oliveira', doctorAssignedId: 'd1', doctorAssignedName: 'Dr. Roberto Martins', examType: 'Eletrocardiograma', modality: 'OT', urgency: 'Rotina', bodyPart: 'Coração', accessionNumber: 'ACC-2024-002', specialtyRequired: 'Cardiologia', dateRequested: '2024-05-21', status: 'Concluído', price: 85.00, clinicName: 'Clínica Saúde Plena', paymentStatus: 'Pago', finalReport: 'Ritmo sinusal.', medicalRequestUrl: '/uploads/medical-requests/sample-request.pdf' },
     { id: 'e102', patientId: 'p3', patientName: 'Carlos Pereira', doctorAssignedId: 'd1', doctorAssignedName: 'Dr. Roberto Martins', examType: 'MAPA 24h', modality: 'OT', urgency: 'Rotina', bodyPart: 'Coração', accessionNumber: 'ACC-2024-003', specialtyRequired: 'Cardiologia', dateRequested: '2024-05-22', status: 'Concluído', price: 120.00, clinicName: 'Clínica Saúde Plena', paymentStatus: 'Pago', dicomUrl: 'https://github.com/cornerstonejs/cornerstoneWADOImageLoader/raw/master/testImages/CT2_J2KR' },
-    { id: 'e103', patientId: 'p4', patientName: 'Ana Souza', doctorAssignedId: 'd1', doctorAssignedName: 'Dr. Roberto Martins', examType: 'Ecocardiograma', modality: 'US', urgency: 'Urgente', bodyPart: 'Coração', accessionNumber: 'ACC-2024-004', specialtyRequired: 'Cardiologia', dateRequested: '2024-05-23', status: 'Aguardando Laudo', price: 150.00, clinicName: 'NeuroCenter Digital', paymentStatus: 'Pendente', dicomUrl: 'https://github.com/cornerstonejs/cornerstoneWADOImageLoader/raw/master/testImages/mr-brain-jp2k.dcm' },
+    { id: 'e103', patientId: 'p4', patientName: 'Ana Souza', doctorAssignedId: 'd1', doctorAssignedName: 'Dr. Roberto Martins', examType: 'Ecocardiograma', modality: 'US', urgency: 'Urgente', bodyPart: 'Coração', accessionNumber: 'ACC-2024-004', specialtyRequired: 'Cardiologia', dateRequested: '2024-05-23', status: 'Aguardando Laudo', price: 150.00, clinicName: 'NeuroCenter Digital', paymentStatus: 'Pendente', dicomUrl: 'https://github.com/cornerstonejs/cornerstoneWADOImageLoader/raw/master/testImages/mr-brain-jp2k.dcm', medicalRequestUrl: '/uploads/medical-requests/sample-request.pdf', suggestions: [
+        { id: 's1', doctorName: 'Dr. Fernando Gomes', doctorCrm: '19283-SP', content: 'Sugiro avaliar com atenção a movimentação da parede posterior do VE. Parece haver uma leve hipocinesia.', createdAt: '2024-05-23T14:30:00Z' },
+        { id: 's2', doctorName: 'Dra. Marina Silva', doctorCrm: '44556-SC', content: 'Concordo com o colega, porém observo também um leve espessamento pericárdico que vale ser citado.', createdAt: '2024-05-23T16:15:00Z' }
+    ] },
     { id: 'e104', patientId: 'p1', patientName: 'João Silva', doctorAssignedId: 'd1', doctorAssignedName: 'Dr. Roberto Martins', examType: 'Holter 24h', modality: 'OT', urgency: 'Rotina', bodyPart: 'Coração', accessionNumber: 'ACC-2024-005', specialtyRequired: 'Cardiologia', dateRequested: '2024-05-24', status: 'Em Análise', price: 110.00, clinicName: 'Centro Image Diagnósticos', paymentStatus: 'Pendente', dicomUrl: 'https://raw.githubusercontent.com/ivmartel/dwv/master/tests/data/bbmri-53323131.dcm' },
     { id: 'e105', patientId: 'p2', patientName: 'Maria Oliveira', doctorAssignedId: 'd1', doctorAssignedName: 'Dr. Roberto Martins', examType: 'Teste Ergométrico', modality: 'OT', urgency: 'Rotina', bodyPart: 'Coração', accessionNumber: 'ACC-2024-006', specialtyRequired: 'Cardiologia', dateRequested: '2024-05-24', status: 'Aguardando Laudo', price: 130.00, clinicName: 'Centro Image Diagnósticos', paymentStatus: 'Pendente', dicomUrl: 'https://raw.githubusercontent.com/cornerstonejs/cornerstoneWADOImageLoader/master/testImages/CTImage.dcm' },
-    { id: 'e1', patientId: 'p1', patientName: 'João Silva', doctorAssignedId: 'd1', doctorAssignedName: 'Dr. Roberto Martins', examType: 'Raio-X do Tórax', modality: 'RX', urgency: 'Rotina', bodyPart: 'Tórax', accessionNumber: 'ACC-2024-007', specialtyRequired: 'Radiologia', dateRequested: '2024-05-18', status: 'Aguardando Laudo', price: 45.00, clinicName: 'Clínica Saúde Plena', paymentStatus: 'Pendente', examImageUrl: 'https://minio.scielo.br/documentstore/1678-7099/h635JPxxJTvRsdPhvmKYjxz/f2a629f46d89228b03fdcefe60dd4c2cb7dc469d.png', dicomUrl: 'https://github.com/cornerstonejs/cornerstoneWADOImageLoader/raw/master/testImages/test-unsigned.dcm' },
+    { id: 'e1', patientId: 'p1', patientName: 'João Silva', doctorAssignedId: 'd1', doctorAssignedName: 'Dr. Roberto Martins', examType: 'Raio-X do Tórax', modality: 'RX', urgency: 'Rotina', bodyPart: 'Tórax', accessionNumber: 'ACC-2024-007', specialtyRequired: 'Radiologia', dateRequested: '2024-05-18', status: 'Aguardando Laudo', price: 45.00, clinicName: 'Clínica Saúde Plena', paymentStatus: 'Pendente', examImageUrl: 'https://minio.scielo.br/documentstore/1678-7099/h635JPxxJTvRsdPhvmKYjxz/f2a629f46d89228b03fdcefe60dd4c2cb7dc469d.png', dicomUrl: 'https://github.com/cornerstonejs/cornerstoneWADOImageLoader/raw/master/testImages/test-unsigned.dcm', medicalRequestUrl: '/uploads/medical-requests/sample-request.pdf' },
     { id: 'e2', patientId: 'p2', patientName: 'Maria Oliveira', doctorAssignedId: 'd1', doctorAssignedName: 'Dr. Roberto Martins', examType: 'Eletrocardiograma', modality: 'OT', urgency: 'Rotina', bodyPart: 'Coração', accessionNumber: 'ACC-2024-008', specialtyRequired: 'Cardiologia', dateRequested: '2024-05-15', status: 'Concluído', price: 35.00, clinicName: 'Clínica Saúde Plena', paymentStatus: 'Pago', finalReport: 'Ritmo sinusal regular. Ausência de arritmias.' },
     { id: '1.3.6.1.4.1.25403.345050719074.3824.20170125095438.5', patientId: 'p1', patientName: 'João Silva', doctorAssignedId: null, doctorAssignedName: null, examType: 'Ressonância Magnética do Crânio', modality: 'RM', urgency: 'Urgente', bodyPart: 'Crânio', accessionNumber: 'ACC-2024-009', specialtyRequired: 'Neurologia', dateRequested: '2024-05-25', status: 'Disponível', price: 200.00, clinicName: 'Clínica Saúde Plena', paymentStatus: 'Pendente', dicomUrl: 'https://github.com/cornerstonejs/cornerstoneWADOImageLoader/raw/master/testImages/CT2_J2KR' },
     { id: 'e202', patientId: 'p2', patientName: 'Maria Oliveira', doctorAssignedId: null, doctorAssignedName: null, examType: 'Raio-X de Tórax (PA/Perfil)', modality: 'RX', urgency: 'Rotina', bodyPart: 'Tórax', accessionNumber: 'ACC-2024-010', specialtyRequired: 'Radiologia', dateRequested: '2024-05-25', status: 'Disponível', price: 50.00, clinicName: 'Hospital da Visão', paymentStatus: 'Pago', dicomUrl: 'https://github.com/cornerstonejs/cornerstoneWADOImageLoader/raw/master/testImages/test-unsigned.dcm' },

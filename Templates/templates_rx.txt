@@ -1,0 +1,847 @@
+# TEMPLATES DE LAUDOS RADIOLÓGICOS - RX (RADIOGRAFIA)
+
+---
+
+## 2.1.1 RX – Crânio
+
+**Título**  
+RADIOGRAFIA DE CRÂNIO
+
+**Método**  
+Radiografias de crânio em projeções [EDITÁVEL: PA, perfil, Towne]].
+
+**Achados**  
+Calvária com espessura e trabeculação óssea preservadas.  
+Seios paranasais bem pneumatizados, sem opacidades ou níveis hidroaéreos.  
+Órbitas de aspecto habitual.  
+Linhas de sutura compatíveis com o padrão etário.  
+Partes moles cranioencefálicas sem alterações significativas.
+
+**Conclusão**  
+Radiografia de crânio sem alterações significativas.  
+[EDITÁVEL: Inserir fratura, lesão, deformidade, etc., se houver.]
+
+---
+
+## 2.1.2 RX – Face / Seios Paranasais
+
+**Título**  
+RADIOGRAFIA DE FACE
+
+**Método**  
+Radiografias de face em projeções [EDITÁVEL: Waters, Caldwell, perfil]].
+
+**Achados**  
+Seios paranasais (maxilares, esfenoidais, etmoidais) bem pneumatizados, sem opacidades significativas ou níveis hidroaéreos.  
+Ossos zigomáticos, maxilares e mandíbula sem evidências de fraturas ou deformidades.  
+Órbitas sem alterações relevantes.  
+Partes moles faciais sem edema ou coleções significativas.
+
+**Conclusão**  
+Radiografia de face sem alterações significativas.  
+[EDITÁVEL: Inserir sinusopatia, fratura, deformidade, etc., se houver.]
+
+---
+
+## 2.1.3 RX – Mandíbula / ATM
+
+**Título**  
+RADIOGRAFIA DE MANDÍBULA
+
+**Método**  
+Radiografias de mandíbula e articulação temporomandibular em projeções [EDITÁVEL: PA, perfil, abertura/fechamento]].
+
+**Achados**  
+Corpo e ramos mandibulares sem fraturas evidentes.  
+Condilo mandibular visualizado com contorno regular, sem lesões ou deslocamentos.  
+Superfícies articulares bem preservadas.  
+Movimento de abertura e fechamento sem bloqueio ou assimetria acentuada.
+
+**Conclusão**  
+Radiografia de mandíbula sem alterações significativas.  
+[EDITÁVEL: Inserir fratura, artrite, disfunção, etc., se houver.]
+
+---
+
+## 2.2.1 RX – Coluna Cervical
+
+**Título**  
+RADIOGRAFIA DE COLUNA CERVICAL
+
+**Método**  
+Projeções em [EDITÁVEL: AP, lateral, oblíquas]]] de coluna cervical.
+
+**Achados**  
+Alinhamento vertebral preservado.  
+Corpos vertebrais C1 a C7 com alturas mantidas, sem sinais de colapso.  
+Espaços discais de altura compatível com a faixa etária.  
+Processos espinhosos e articulações interapofisárias sem alterações significativas.  
+Curvaturas cervicais fisiológicas preservadas.  
+Partes moles cervicais sem alterações relevantes.
+
+**Conclusão**  
+Radiografia de coluna cervical sem alterações significativas.  
+[EDITÁVEL: Descrever espondilose, escoliose, fraturas, etc., se presentes.]
+
+---
+
+## 2.2.2 RX – Coluna Torácica
+
+**Título**  
+RADIOGRAFIA DE COLUNA TORÁCICA
+
+**Método**  
+Projeções em [EDITÁVEL: AP, lateral]]] de coluna torácica.
+
+**Achados**  
+Alinhamento vertebral preservado.  
+Corpos vertebrais T1 a T12 com alturas mantidas, sem sinais de colapso.  
+Espaços discais de altura compatível com a faixa etária.  
+Processos espinhosos e articulações interapofisárias sem alterações significativas.  
+Curvaturas torácicas fisiológicas preservadas.  
+Partes moles paratórácicas sem alterações relevantes.
+
+**Conclusão**  
+Radiografia de coluna torácica sem alterações significativas.  
+[EDITÁVEL: Descrever espondilose, escoliose, fraturas, cifose, etc., se presentes.]
+
+---
+
+## 2.2.3 RX – Coluna Lombar
+
+**Título**  
+RADIOGRAFIA DE COLUNA LOMBAR
+
+**Método**  
+Projeções em [EDITÁVEL: AP, lateral, oblíquas]]] de coluna lombar.
+
+**Achados**  
+Alinhamento vertebral preservado.  
+Corpos vertebrais L1 a L5 com alturas mantidas, sem sinais de colapso.  
+Espaços discais de altura compatível com a faixa etária.  
+Processos espinhosos e articulações interapofisárias sem alterações significativas.  
+Lordose lombar fisiológica preservada.  
+Partes moles paravertebrais sem alterações relevantes.
+
+**Conclusão**  
+Radiografia de coluna lombar sem alterações significativas.  
+[EDITÁVEL: Descrever espondilose, escoliose, fraturas, espondilolistese, redução discal, etc., se presentes.]
+
+---
+
+## 2.2.4 RX – Sacro
+
+**Título**  
+RADIOGRAFIA DE SACRO
+
+**Método**  
+Projeções em [EDITÁVEL: AP, lateral]]] de sacro.
+
+**Achados**  
+Osso sacro com densidade e contornos preservados.  
+Sem fraturas evidentes ou lesões osteolíticas significativas.  
+Articulações sacroilíacas sem alterações relevantes.  
+Coccígeo sem alterações significativas.
+
+**Conclusão**  
+Radiografia de sacro sem alterações significativas.  
+[EDITÁVEL: Inserir fratura, lesão osteolítica, artrite sacroilíaca, etc., se houver.]
+
+---
+
+## 2.2.5 RX – Coluna Total / Escoliose
+
+**Título**  
+RADIOGRAFIA DE COLUNA TOTAL – AVALIAÇÃO DE ESCOLIOSE
+
+**Método**  
+Radiografia de coluna total em projeção [EDITÁVEL: PA]] para avaliação de curvaturas e silueta vertebral.
+
+**Achados**  
+Alinhamento vertebral com curvatura fisiológica [EDITÁVEL: normal / leve desvio / escoliose]].  
+Ângulo de Cobb mensurado em [EDITÁVEL: xx graus]] [EDITÁVEL: se aplicável]].  
+Corpos vertebrais com alturas preservadas.  
+Espaços discais de altura habitual.  
+Curvas compensatórias presentes de forma harmônica.
+
+**Conclusão**  
+Radiografia de coluna total sem alterações significativas.  
+[EDITÁVEL: Descrever grau de escoliose, cifose, lordose, etc., se presente.]
+
+---
+
+## 2.3.1 RX – Ombro – DIREITO
+
+**Título**  
+RADIOGRAFIA DE OMBRO DIREITO
+
+**Método**  
+Radiografias em projeções [EDITÁVEL: AP, lateral, axilar, caudal]]] de ombro direito.
+
+**Achados**  
+Cabeça de úmero de contorno regular, sem fraturas evidentes.  
+Superfície glenoide bem preservada.  
+Articulação glenoumeral com espaço articular habitual.  
+Clavícula e escápula sem alterações significativas.  
+Partes moles adjacentes sem calcificações ou corpos estranhos relevantes.
+
+**Conclusão**  
+Radiografia de ombro direito sem alterações significativas.  
+[EDITÁVEL: Inserir fratura, luxação, artrite, calcificação, etc., se houver.]
+
+---
+
+## 2.3.2 RX – Ombro – ESQUERDO
+
+**Título**  
+RADIOGRAFIA DE OMBRO ESQUERDO
+
+**Método**  
+Radiografias em projeções [EDITÁVEL: AP, lateral, axilar, caudal]]] de ombro esquerdo.
+
+**Achados**  
+Cabeça de úmero de contorno regular, sem fraturas evidentes.  
+Superfície glenoide bem preservada.  
+Articulação glenoumeral com espaço articular habitual.  
+Clavícula e escápula sem alterações significativas.  
+Partes moles adjacentes sem calcificações ou corpos estranhos relevantes.
+
+**Conclusão**  
+Radiografia de ombro esquerdo sem alterações significativas.  
+[EDITÁVEL: Inserir fratura, luxação, artrite, calcificação, etc., se houver.]
+
+---
+
+## 2.3.3 RX – Clavícula – DIREITA
+
+**Título**  
+RADIOGRAFIA DE CLAVÍCULA DIREITA
+
+**Método**  
+Radiografias em projeções [EDITÁVEL: AP, oblíqua]]] de clavícula direita.
+
+**Achados**  
+Clavícula direita de contorno regular, sem fraturas evidentes.  
+Terço proximal, médio e distal sem alterações significativas.  
+Articulação acromioclavicular sem espaço alterado.  
+Partes moles adjacentes sem alterações relevantes.
+
+**Conclusão**  
+Radiografia de clavícula direita sem alterações significativas.  
+[EDITÁVEL: Inserir fratura, artrite acromioclavicular, deslocamento, etc., se houver.]
+
+---
+
+## 2.3.4 RX – Clavícula – ESQUERDA
+
+**Título**  
+RADIOGRAFIA DE CLAVÍCULA ESQUERDA
+
+**Método**  
+Radiografias em projeções [EDITÁVEL: AP, oblíqua]]] de clavícula esquerda.
+
+**Achados**  
+Clavícula esquerda de contorno regular, sem fraturas evidentes.  
+Terço proximal, médio e distal sem alterações significativas.  
+Articulação acromioclavicular sem espaço alterado.  
+Partes moles adjacentes sem alterações relevantes.
+
+**Conclusão**  
+Radiografia de clavícula esquerda sem alterações significativas.  
+[EDITÁVEL: Inserir fratura, artrite acromioclavicular, deslocamento, etc., se houver.]
+
+---
+
+## 2.3.5 RX – Braço – DIREITO
+
+**Título**  
+RADIOGRAFIA DE BRAÇO DIREITO
+
+**Método**  
+Radiografias em projeções [EDITÁVEL: AP, lateral]]] de braço direito.
+
+**Achados**  
+Úmero com contorno e densidade preservados, sem fraturas evidentes.  
+Cabeça e capítulo umerais sem alterações significativas.  
+Alinhamento articular mantido.  
+Partes moles adjacentes sem alterações relevantes.
+
+**Conclusão**  
+Radiografia de braço direito sem alterações significativas.  
+[EDITÁVEL: Inserir fratura, deslocamento, artrite, etc., se houver.]
+
+---
+
+## 2.3.6 RX – Braço – ESQUERDO
+
+**Título**  
+RADIOGRAFIA DE BRAÇO ESQUERDO
+
+**Método**  
+Radiografias em projeções [EDITÁVEL: AP, lateral]]] de braço esquerdo.
+
+**Achados**  
+Úmero com contorno e densidade preservados, sem fraturas evidentes.  
+Cabeça e capítulo umerais sem alterações significativas.  
+Alinhamento articular mantido.  
+Partes moles adjacentes sem alterações relevantes.
+
+**Conclusão**  
+Radiografia de braço esquerdo sem alterações significativas.  
+[EDITÁVEL: Inserir fratura, deslocamento, artrite, etc., se houver.]
+
+---
+
+## 2.3.7 RX – Cotovelo – DIREITO
+
+**Título**  
+RADIOGRAFIA DE COTOVELO DIREITO
+
+**Método**  
+Radiografias em projeções [EDITÁVEL: AP, lateral, oblíqua]]] de cotovelo direito.
+
+**Achados**  
+Côndilo umeral, capítulo e tróclea com contorno regular.  
+Cabeça de rádio sem alterações significativas.  
+Olécrano de aspecto habitual.  
+Espaço articular radioumeral mantido.  
+Alinhamento articular preservado.  
+Partes moles adjacentes sem alterações relevantes.
+
+**Conclusão**  
+Radiografia de cotovelo direito sem alterações significativas.  
+[EDITÁVEL: Inserir fratura, luxação, artrite, corpo estranho, etc., se houver.]
+
+---
+
+## 2.3.8 RX – Cotovelo – ESQUERDO
+
+**Título**  
+RADIOGRAFIA DE COTOVELO ESQUERDO
+
+**Método**  
+Radiografias em projeções [EDITÁVEL: AP, lateral, oblíqua]]] de cotovelo esquerdo.
+
+**Achados**  
+Côndilo umeral, capítulo e tróclea com contorno regular.  
+Cabeça de rádio sem alterações significativas.  
+Olécrano de aspecto habitual.  
+Espaço articular radioumeral mantido.  
+Alinhamento articular preservado.  
+Partes moles adjacentes sem alterações relevantes.
+
+**Conclusão**  
+Radiografia de cotovelo esquerdo sem alterações significativas.  
+[EDITÁVEL: Inserir fratura, luxação, artrite, corpo estranho, etc., se houver.]
+
+---
+
+## 2.3.9 RX – Antebraço – DIREITO
+
+**Título**  
+RADIOGRAFIA DE ANTEBRAÇO DIREITO
+
+**Método**  
+Radiografias em projeções [EDITÁVEL: AP, lateral]]] de antebraço direito.
+
+**Achados**  
+Rádio e ulna com contorno e densidade preservados, sem fraturas evidentes.  
+Alinhamento radioular preservado.  
+Espaços interósseos mantidos.  
+Articulações radioumerais e radiocarpiana sem alterações significativas.  
+Partes moles adjacentes sem alterações relevantes.
+
+**Conclusão**  
+Radiografia de antebraço direito sem alterações significativas.  
+[EDITÁVEL: Inserir fratura, deslocamento, artrite, etc., se houver.]
+
+---
+
+## 2.3.10 RX – Antebraço – ESQUERDO
+
+**Título**  
+RADIOGRAFIA DE ANTEBRAÇO ESQUERDO
+
+**Método**  
+Radiografias em projeções [EDITÁVEL: AP, lateral]]] de antebraço esquerdo.
+
+**Achados**  
+Rádio e ulna com contorno e densidade preservados, sem fraturas evidentes.  
+Alinhamento radioular preservado.  
+Espaços interósseos mantidos.  
+Articulações radioumerais e radiocarpiana sem alterações significativas.  
+Partes moles adjacentes sem alterações relevantes.
+
+**Conclusão**  
+Radiografia de antebraço esquerdo sem alterações significativas.  
+[EDITÁVEL: Inserir fratura, deslocamento, artrite, etc., se houver.]
+
+---
+
+## 2.3.11 RX – Punho – DIREITO
+
+**Título**  
+RADIOGRAFIA DE PUNHO DIREITO
+
+**Método**  
+Radiografias em projeções [EDITÁVEL: PA, lateral, dinâmicas com flexão/extensão]]] de punho direito.
+
+**Achados**  
+Ossos carpais (escafoide, semilunar, piramidal, pisiforme, trapézio, trapezoide, capitato, hamato) preservados, sem fraturas.  
+Articulação radiocarpiana sem alterações significativas.  
+Espaços articulares mantidos.  
+Densidade óssea preservada.  
+Partes moles adjacentes sem alterações relevantes.
+
+**Conclusão**  
+Radiografia de punho direito sem alterações significativas.  
+[EDITÁVEL: Inserir fratura (escafoide, etc.), artrite, deslocamento, etc., se houver.]
+
+---
+
+## 2.3.12 RX – Punho – ESQUERDO
+
+**Título**  
+RADIOGRAFIA DE PUNHO ESQUERDO
+
+**Método**  
+Radiografias em projeções [EDITÁVEL: PA, lateral, dinâmicas com flexão/extensão]]] de punho esquerdo.
+
+**Achados**  
+Ossos carpais (escafoide, semilunar, piramidal, pisiforme, trapézio, trapezoide, capitato, hamato) preservados, sem fraturas.  
+Articulação radiocarpiana sem alterações significativas.  
+Espaços articulares mantidos.  
+Densidade óssea preservada.  
+Partes moles adjacentes sem alterações relevantes.
+
+**Conclusão**  
+Radiografia de punho esquerdo sem alterações significativas.  
+[EDITÁVEL: Inserir fratura (escafoide, etc.), artrite, deslocamento, etc., se houver.]
+
+---
+
+## 2.3.13 RX – Mão – DIREITA
+
+**Título**  
+RADIOGRAFIA DE MÃO DIREITA
+
+**Método**  
+Radiografia em projeção [EDITÁVEL: PA]]] de mão direita, incluindo dedos.
+
+**Achados**  
+Ossos metacarpais e falanges com contorno e densidade preservados, sem fraturas evidentes.  
+Articulações interfalangianas e metacarpofalangianas sem alterações significativas.  
+Espaços articulares mantidos.  
+Sem deformidades ósseas significativas.  
+Partes moles adjacentes sem alterações relevantes.
+
+**Conclusão**  
+Radiografia de mão direita sem alterações significativas.  
+[EDITÁVEL: Inserir fratura, artrite, deformidade, etc., se houver.]
+
+---
+
+## 2.3.14 RX – Mão – ESQUERDA
+
+**Título**  
+RADIOGRAFIA DE MÃO ESQUERDA
+
+**Método**  
+Radiografia em projeção [EDITÁVEL: PA]]] de mão esquerda, incluindo dedos.
+
+**Achados**  
+Ossos metacarpais e falanges com contorno e densidade preservados, sem fraturas evidentes.  
+Articulações interfalangianas e metacarpofalangianas sem alterações significativas.  
+Espaços articulares mantidos.  
+Sem deformidades ósseas significativas.  
+Partes moles adjacentes sem alterações relevantes.
+
+**Conclusão**  
+Radiografia de mão esquerda sem alterações significativas.  
+[EDITÁVEL: Inserir fratura, artrite, deformidade, etc., se houver.]
+
+---
+
+## 2.4.1 RX – Pelve / Bacia
+
+**Título**  
+RADIOGRAFIA DE PELVE
+
+**Método**  
+Radiografia em projeção [EDITÁVEL: AP]]] de pelve.
+
+**Achados**  
+Ossos ilíacos, púbis e ísquios com contorno e densidade preservados.  
+Articulações sacroilíacas sem alterações significativas.  
+Espaço pélvico sem redução significativa.  
+Cabeças de fêmur visualizadas sem alterações relevantes.  
+Sem fraturas ou lesões ósseas agressivas.
+
+**Conclusão**  
+Radiografia de pelve sem alterações significativas.  
+[EDITÁVEL: Inserir fratura, artrite, luxação, etc., se houver.]
+
+---
+
+## 2.4.2 RX – Quadril – DIREITO
+
+**Título**  
+RADIOGRAFIA DE QUADRIL DIREITO
+
+**Método**  
+Radiografias em projeções [EDITÁVEL: AP, lateral/frog-leg]]] de quadril direito.
+
+**Achados**  
+Cabeça de fêmur de contorno regular, sem fraturas evidentes.  
+Acetábulo bem preservado.  
+Espaço articular coxofemoral mantido.  
+Colo femoral sem alterações significativas.  
+Osso subcondral sem edema ou lesão.
+
+**Conclusão**  
+Radiografia de quadril direito sem alterações significativas.  
+[EDITÁVEL: Inserir fratura, luxação, artrite, necrose, etc., se houver.]
+
+---
+
+## 2.4.3 RX – Quadril – ESQUERDO
+
+**Título**  
+RADIOGRAFIA DE QUADRIL ESQUERDO
+
+**Método**  
+Radiografias em projeções [EDITÁVEL: AP, lateral/frog-leg]]] de quadril esquerdo.
+
+**Achados**  
+Cabeça de fêmur de contorno regular, sem fraturas evidentes.  
+Acetábulo bem preservado.  
+Espaço articular coxofemoral mantido.  
+Colo femoral sem alterações significativas.  
+Osso subcondral sem edema ou lesão.
+
+**Conclusão**  
+Radiografia de quadril esquerdo sem alterações significativas.  
+[EDITÁVEL: Inserir fratura, luxação, artrite, necrose, etc., se houver.]
+
+---
+
+## 2.4.4 RX – Fêmur – DIREITO
+
+**Título**  
+RADIOGRAFIA DE FÊMUR DIREITO
+
+**Método**  
+Radiografias em projeções [EDITÁVEL: AP, lateral]]] de fêmur direito.
+
+**Achados**  
+Fêmur com contorno e densidade preservados, sem fraturas evidentes.  
+Cabeça e colo femorais sem alterações significativas.  
+Trocânter maior e menor sem alterações.  
+Diáfise femoral com trabeculação habitual.  
+Côndilo femoral sem alterações relevantes.
+
+**Conclusão**  
+Radiografia de fêmur direito sem alterações significativas.  
+[EDITÁVEL: Inserir fratura, deformidade, artrite, etc., se houver.]
+
+---
+
+## 2.4.5 RX – Fêmur – ESQUERDO
+
+**Título**  
+RADIOGRAFIA DE FÊMUR ESQUERDO
+
+**Método**  
+Radiografias em projeções [EDITÁVEL: AP, lateral]]] de fêmur esquerdo.
+
+**Achados**  
+Fêmur com contorno e densidade preservados, sem fraturas evidentes.  
+Cabeça e colo femorais sem alterações significativas.  
+Trocânter maior e menor sem alterações.  
+Diáfise femoral com trabeculação habitual.  
+Côndilo femoral sem alterações relevantes.
+
+**Conclusão**  
+Radiografia de fêmur esquerdo sem alterações significativas.  
+[EDITÁVEL: Inserir fratura, deformidade, artrite, etc., se houver.]
+
+---
+
+## 2.4.6 RX – Joelho – DIREITO
+
+**Título**  
+RADIOGRAFIA DE JOELHO DIREITO
+
+**Método**  
+Radiografias em projeções [EDITÁVEL: AP, lateral, tangencial de patela]]] de joelho direito.
+
+**Achados**  
+Côndilo femoral e platô tibial com contorno regular, sem fraturas.  
+Espaço articular tibofemoral mantido.  
+Patela de aspecto habitual, bem centralizada.  
+Espaço femoropatelar preservado.  
+Sem evidência de derrame articular significativo.
+
+**Conclusão**  
+Radiografia de joelho direito sem alterações significativas.  
+[EDITÁVEL: Inserir fratura, artrite, derrame, luxação patelar, etc., se houver.]
+
+---
+
+## 2.4.7 RX – Joelho – ESQUERDO
+
+**Título**  
+RADIOGRAFIA DE JOELHO ESQUERDO
+
+**Método**  
+Radiografias em projeções [EDITÁVEL: AP, lateral, tangencial de patela]]] de joelho esquerdo.
+
+**Achados**  
+Côndilo femoral e platô tibial com contorno regular, sem fraturas.  
+Espaço articular tibofemoral mantido.  
+Patela de aspecto habitual, bem centralizada.  
+Espaço femoropatelar preservado.  
+Sem evidência de derrame articular significativo.
+
+**Conclusão**  
+Radiografia de joelho esquerdo sem alterações significativas.  
+[EDITÁVEL: Inserir fratura, artrite, derrame, luxação patelar, etc., se houver.]
+
+---
+
+## 2.4.8 RX – Perna – DIREITA
+
+**Título**  
+RADIOGRAFIA DE PERNA DIREITA
+
+**Método**  
+Radiografias em projeções [EDITÁVEL: AP, lateral]]] de perna direita.
+
+**Achados**  
+Tíbia e fíbula com contorno e densidade preservados, sem fraturas evidentes.  
+Alinhamento tibial e fibular preservado.  
+Espaço interósseo mantido.  
+Articulações tíbio-fibular superior e talocrural sem alterações significativas.  
+Partes moles adjacentes sem alterações relevantes.
+
+**Conclusão**  
+Radiografia de perna direita sem alterações significativas.  
+[EDITÁVEL: Inserir fratura, deslocamento, artrite, etc., se houver.]
+
+---
+
+## 2.4.9 RX – Perna – ESQUERDA
+
+**Título**  
+RADIOGRAFIA DE PERNA ESQUERDA
+
+**Método**  
+Radiografias em projeções [EDITÁVEL: AP, lateral]]] de perna esquerda.
+
+**Achados**  
+Tíbia e fíbula com contorno e densidade preservados, sem fraturas evidentes.  
+Alinhamento tibial e fibular preservado.  
+Espaço interósseo mantido.  
+Articulações tíbio-fibular superior e talocrural sem alterações significativas.  
+Partes moles adjacentes sem alterações relevantes.
+
+**Conclusão**  
+Radiografia de perna esquerda sem alterações significativas.  
+[EDITÁVEL: Inserir fratura, deslocamento, artrite, etc., se houver.]
+
+---
+
+## 2.4.10 RX – Tornozelo – DIREITO
+
+**Título**  
+RADIOGRAFIA DE TORNOZELO DIREITO
+
+**Método**  
+Radiografias em projeções [EDITÁVEL: AP, lateral, mortise]]] de tornozelo direito.
+
+**Achados**  
+Mortise talocrural bem preservado.  
+Tálus, tíbia e fíbula sem fraturas evidentes.  
+Espaço articular mantido.  
+Ligamentos sem evidência de lesão significativa.  
+Partes moles adjacentes sem alterações relevantes.
+
+**Conclusão**  
+Radiografia de tornozelo direito sem alterações significativas.  
+[EDITÁVEL: Inserir fratura, entorse, artrite, etc., se houver.]
+
+---
+
+## 2.4.11 RX – Tornozelo – ESQUERDO
+
+**Título**  
+RADIOGRAFIA DE TORNOZELO ESQUERDO
+
+**Método**  
+Radiografias em projeções [EDITÁVEL: AP, lateral, mortise]]] de tornozelo esquerdo.
+
+**Achados**  
+Mortise talocrural bem preservado.  
+Tálus, tíbia e fíbula sem fraturas evidentes.  
+Espaço articular mantido.  
+Ligamentos sem evidência de lesão significativa.  
+Partes moles adjacentes sem alterações relevantes.
+
+**Conclusão**  
+Radiografia de tornozelo esquerdo sem alterações significativas.  
+[EDITÁVEL: Inserir fratura, entorse, artrite, etc., se houver.]
+
+---
+
+## 2.4.12 RX – Pé – DIREITO
+
+**Título**  
+RADIOGRAFIA DE PÉ DIREITO
+
+**Método**  
+Radiografias em projeções [EDITÁVEL: AP, lateral, oblíqua]]] de pé direito.
+
+**Achados**  
+Ossos tarsais (calcâneo, tálus, navicular, cubóide, cuneiformes) bem preservados, sem fraturas.  
+Ossos metatarsais e falanges com contorno e densidade preservados.  
+Articulações intertarsais e tarsometatarsais sem alterações significativas.  
+Arco longitudinal preservado.  
+Partes moles adjacentes sem alterações relevantes.
+
+**Conclusão**  
+Radiografia de pé direito sem alterações significativas.  
+[EDITÁVEL: Inserir fratura, esporão, artrite, deformidade, etc., se houver.]
+
+---
+
+## 2.4.13 RX – Pé – ESQUERDO
+
+**Título**  
+RADIOGRAFIA DE PÉ ESQUERDO
+
+**Método**  
+Radiografias em projeções [EDITÁVEL: AP, lateral, oblíqua]]] de pé esquerdo.
+
+**Achados**  
+Ossos tarsais (calcâneo, tálus, navicular, cubóide, cuneiformes) bem preservados, sem fraturas.  
+Ossos metatarsais e falanges com contorno e densidade preservados.  
+Articulações intertarsais e tarsometatarsais sem alterações significativas.  
+Arco longitudinal preservado.  
+Partes moles adjacentes sem alterações relevantes.
+
+**Conclusão**  
+Radiografia de pé esquerdo sem alterações significativas.  
+[EDITÁVEL: Inserir fratura, esporão, artrite, deformidade, etc., se houver.]
+
+---
+
+## 2.5.1 RX – Tórax – PA
+
+**Título**  
+RADIOGRAFIA DE TÓRAX – PROJEÇÃO PA
+
+**Método**  
+Radiografia de tórax em projeção PA, em inspiração adequada.
+
+**Achados**  
+Campos pulmonares com transparência preservada, sem opacidades focais significativas.  
+Desenho broncovascular de padrão habitual.  
+Hilos pulmonares sem aumento de volume evidente.  
+Silhueta cardíaca de dimensões dentro dos limites da normalidade para o biotipo.  
+Mediastino sem alargamento significativo.  
+Diafragmas de contornos regulares; seios costofrênicos livres.  
+Arcabouço ósseo visível sem alterações relevantes.
+
+**Conclusão**  
+Radiografia de tórax (PA) sem alterações significativas.  
+[EDITÁVEL: Inserir consolidação, derrame, cardiomegalia, etc., se houver.]
+
+---
+
+## 2.5.2 RX – Tórax – AP
+
+**Título**  
+RADIOGRAFIA DE TÓRAX – PROJEÇÃO AP
+
+**Método**  
+Radiografia de tórax em projeção AP, em inspiração adequada.
+
+**Achados**  
+Campos pulmonares com transparência preservada, sem opacidades focais significativas.  
+Desenho broncovascular de padrão habitual.  
+Hilos pulmonares sem aumento de volume evidente.  
+Silhueta cardíaca de dimensões dentro dos limites da normalidade para o biotipo.  
+Mediastino sem alargamento significativo.  
+Diafragmas de contornos regulares; seios costofrênicos livres.  
+Arcabouço ósseo visível sem alterações relevantes.
+
+**Conclusão**  
+Radiografia de tórax (AP) sem alterações significativas.  
+[EDITÁVEL: Inserir consolidação, derrame, cardiomegalia, etc., se houver.]
+
+---
+
+## 2.5.3 RX – Tórax – Perfil
+
+**Título**  
+RADIOGRAFIA DE TÓRAX – PROJEÇÃO PERFIL
+
+**Método**  
+Radiografia de tórax em projeção de perfil, em inspiração adequada.
+
+**Achados**  
+Campos pulmonares com transparência preservada.  
+Mediastino anterior sem alterações significativas.  
+Seio costofrênico posterior livre.  
+Silhueta cardíaca de dimensões habituais.  
+Articulação esternal sem alterações.  
+Arcabouço ósseo sem alterações relevantes.
+
+**Conclusão**  
+Radiografia de tórax (Perfil) sem alterações significativas.  
+[EDITÁVEL: Inserir opacidades, derrame posterior, etc., se houver.]
+
+---
+
+## 2.5.4 RX – Abdome Agudo
+
+**Título**  
+RADIOGRAFIA DE ABDOME AGUDO
+
+**Método**  
+Radiografia de abdome em projeção [EDITÁVEL: PA de pé / decúbito lateral]]] para avaliação de abdome agudo.
+
+**Achados**  
+Alças intestinais com calibres habituais, sem dilatação ou redução significativa.  
+Ausência de pneumoperitônio.  
+Ausência de níveis hidroaéreos anormais.  
+Arcabouço ósseo visualizado sem alterações relevantes.  
+Partes moles abdominais sem alterações significativas.
+
+**Conclusão**  
+Radiografia de abdome agudo sem alterações significativas.  
+[EDITÁVEL: Inserir dilatação, pneumoperitônio, obstrução, etc., se houver.]
+
+---
+
+## 2.5.5 RX – Abdome Simples
+
+**Título**  
+RADIOGRAFIA DE ABDOME SIMPLES
+
+**Método**  
+Radiografia de abdome em projeção [EDITÁVEL: supino]]], em posição adequada.
+
+**Achados**  
+Alças intestinais com calibres habituais, sem dilatação significativa.  
+Ausência de pneumoperitônio ou corpos estranhos radioopacos anormais.  
+Arcabouço ósseo visualizado sem alterações relevantes.  
+Partes moles abdominais sem alterações significativas.
+
+**Conclusão**  
+Radiografia de abdome simples sem alterações significativas.  
+[EDITÁVEL: Inserir cálculos, dilatação, fecaloma, etc., se houver.]
+
+---
+
+FIM DO ARQUIVO RX

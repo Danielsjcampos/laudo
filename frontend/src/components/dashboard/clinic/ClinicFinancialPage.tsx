@@ -14,27 +14,36 @@ interface ClinicFinancialPageProps {
 }
 
 const ClinicFinancialPage: React.FC<ClinicFinancialPageProps> = ({ exams }) => {
-  const pendingRepasse = exams.filter(e => e.paymentStatus === 'Pendente' && e.status === 'Concluído').reduce((acc, curr) => acc + curr.price, 0);
-  const paidRepasse = exams.filter(e => e.paymentStatus === 'Pago').reduce((acc, curr) => acc + curr.price, 0);
+  const [localExams, setLocalExams] = React.useState<Exam[]>(exams);
 
-  // Receita clínica simulada (faturamento bruto total dos exames baseado nos custos do mock)
-  const totalGrossRevenue = mockClinicPerformance.rentabilityByExam.reduce((acc, curr) => acc + curr.revenue, 0);
-  const netMarginTotal = totalGrossRevenue - (pendingRepasse + paidRepasse);
-  const marginPercentage = (netMarginTotal / totalGrossRevenue) * 100;
+  React.useEffect(() => {
+    setLocalExams(exams);
+  }, [exams]);
 
   const handleReleasePayment = async (examId: string) => {
     if (!confirm('Confirmar a liberação do pagamento para este especialista?')) return;
     try {
       const response = await api.post(`/exams/${examId}/pay`);
       if (response.status === 200) {
+        // Update local state instead of reloading
+        setLocalExams(prev => prev.map(e => 
+          e.id === examId ? { ...e, paymentStatus: 'Pago' } : e
+        ));
         alert('Pagamento liberado com sucesso!');
-        window.location.reload(); // Simple reload to refresh data
       }
     } catch (error) {
       console.error("Erro ao liberar pagamento:", error);
       alert('Erro ao liberar pagamento. Tente novamente.');
     }
   };
+
+  const pendingRepasse = localExams.filter(e => e.paymentStatus === 'Pendente' && e.status === 'Concluído').reduce((acc, curr) => acc + curr.price, 0);
+  const paidRepasse = localExams.filter(e => e.paymentStatus === 'Pago').reduce((acc, curr) => acc + curr.price, 0);
+
+  // Receita clínica simulada (faturamento bruto total dos exames baseado nos custos do mock)
+  const totalGrossRevenue = mockClinicPerformance.rentabilityByExam.reduce((acc, curr) => acc + curr.revenue, 0);
+  const netMarginTotal = totalGrossRevenue - (pendingRepasse + paidRepasse);
+  const marginPercentage = (netMarginTotal / totalGrossRevenue) * 100;
 
   return (
     <div className="max-w-7xl mx-auto space-y-12 animate-in fade-in duration-1000">
@@ -188,7 +197,7 @@ const ClinicFinancialPage: React.FC<ClinicFinancialPageProps> = ({ exams }) => {
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-50">
-              {exams.map(exam => (
+              {localExams.map(exam => (
                 <tr key={exam.id} className="hover:bg-gray-50/50 transition-colors group">
                   <td className="px-10 py-6 text-gray-500 font-medium">{new Date(exam.dateRequested).toLocaleDateString('pt-BR')}</td>
                   <td className="px-10 py-6">

@@ -12,9 +12,13 @@ interface DoctorExamsPageProps {
     initialTab?: 'pending' | 'completed';
 }
 
+import { PrintableReportModal } from '../../reports/PrintableReportModal';
+import { mapExamToReportData } from '../../../utils/reportMapper';
+
 const DoctorExamsPage: React.FC<DoctorExamsPageProps> = ({ exams, onNavigateToDetail, onOpenOhif, initialTab = 'pending' }) => {
     const [searchTerm, setSearchTerm] = useState('');
     const [activeTab, setActiveTab] = useState<'pending' | 'completed'>(initialTab);
+    const [selectedExamForView, setSelectedExamForView] = useState<Exam | null>(null);
 
     React.useEffect(() => {
         setActiveTab(initialTab);
@@ -39,59 +43,71 @@ const DoctorExamsPage: React.FC<DoctorExamsPageProps> = ({ exams, onNavigateToDe
 
     return (
         <div>
-            <div className="flex justify-between items-center mb-8">
+            {selectedExamForView && (
+                <PrintableReportModal
+                    isOpen={!!selectedExamForView}
+                    onClose={() => setSelectedExamForView(null)}
+                    data={mapExamToReportData(selectedExamForView)}
+                    allowThemeSelection={true} // Doctors can select theme
+                />
+            )}
+
+            <div className="flex justify-between items-center mb-6">
                 <div>
-                    <h1 className="text-3xl font-bold text-gray-900">Meus Laudos</h1>
-                    <p className="text-gray-500 mt-1">Gerencie sua fila de trabalho e histórico.</p>
+                    <h1 className="page-header">Meus Laudos</h1>
+                    <div className="page-header-line" />
+                    <p className="text-sm mt-3 font-medium" style={{ color: 'var(--text-secondary)' }}>Gerencie sua fila de trabalho e histórico.</p>
                 </div>
                 <div className="w-full max-w-xs">
-                    <SearchInput value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} placeholder="Buscar por paciente..." />
+                    <SearchInput value={searchTerm} onChange={setSearchTerm} placeholder="Buscar por paciente..." />
                 </div>
             </div>
 
             {/* Tabs */}
-            <div className="flex space-x-1 bg-gray-100 p-1 rounded-xl w-fit mb-6">
+            <div className="flex space-x-1 p-1 rounded-xl w-fit mb-6" style={{ backgroundColor: 'var(--surface-bg)' }}>
                 <button
                     onClick={() => setActiveTab('pending')}
                     className={`px-4 py-2 rounded-lg text-sm font-bold transition-all ${activeTab === 'pending'
-                        ? 'bg-white text-gray-900 shadow-sm'
-                        : 'text-gray-500 hover:text-gray-700'
+                        ? 'shadow-sm'
+                        : 'hover:opacity-80'
                         }`}
+                    style={activeTab === 'pending' ? { backgroundColor: 'var(--surface-card)', color: 'var(--text-primary)' } : { color: 'var(--text-muted)' }}
                 >
                     Pendentes na Fila
-                    <span className="ml-2 bg-brand-blue-100 text-brand-blue-700 py-0.5 px-2 rounded-full text-xs">
+                    <span className="ml-2 py-0.5 px-2 rounded-full text-[10px] font-bold" style={{ backgroundColor: 'var(--teal-glow)', color: 'var(--teal-500)' }}>
                         {pendingExams.length}
                     </span>
                 </button>
                 <button
                     onClick={() => setActiveTab('completed')}
                     className={`px-4 py-2 rounded-lg text-sm font-bold transition-all ${activeTab === 'completed'
-                        ? 'bg-white text-gray-900 shadow-sm'
-                        : 'text-gray-500 hover:text-gray-700'
+                        ? 'shadow-sm'
+                        : 'hover:opacity-80'
                         }`}
+                    style={activeTab === 'completed' ? { backgroundColor: 'var(--surface-card)', color: 'var(--text-primary)' } : { color: 'var(--text-muted)' }}
                 >
                     Laudados (Concluídos)
-                    <span className="ml-2 bg-gray-200 text-gray-600 py-0.5 px-2 rounded-full text-xs">
+                    <span className="ml-2 py-0.5 px-2 rounded-full text-[10px] font-bold" style={{ backgroundColor: 'var(--surface-bg)', color: 'var(--text-muted)' }}>
                         {completedExams.length}
                     </span>
                 </button>
             </div>
 
-            <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+            <div className="panel-card overflow-hidden">
                 <div className="overflow-x-auto">
-                    <table className="w-full text-sm text-left text-gray-500">
-                        <thead className="text-xs text-gray-400 font-bold uppercase tracking-wider bg-gray-50/50">
-                            <tr>
-                                <th scope="col" className="px-6 py-4">Prioridade</th>
-                                <th scope="col" className="px-6 py-4">Paciente / Exame</th>
-                                <th scope="col" className="px-6 py-4">Data</th>
-                                <th scope="col" className="px-6 py-4">Status</th>
-                                <th scope="col" className="px-6 py-4 text-right">Ações</th>
+                    <table className="w-full text-sm text-left">
+                        <thead>
+                            <tr style={{ backgroundColor: 'var(--surface-bg)' }}>
+                                <th scope="col" className="px-6 py-3 kpi-label text-left">Prioridade</th>
+                                <th scope="col" className="px-6 py-3 kpi-label text-left">Paciente / Exame</th>
+                                <th scope="col" className="px-6 py-3 kpi-label text-left">Data</th>
+                                <th scope="col" className="px-6 py-3 kpi-label text-left">Status</th>
+                                <th scope="col" className="px-6 py-3 kpi-label text-right">Ações</th>
                             </tr>
                         </thead>
-                        <tbody className="divide-y divide-gray-50">
+                        <tbody className="divide-y" style={{ borderColor: 'var(--surface-border)' }}>
                             {filteredExams.map((exam) => (
-                                <tr key={exam.id} className="bg-white hover:bg-brand-blue-50/30 transition-colors">
+                                <tr key={exam.id} className="hover:bg-gray-50/50 transition-colors">
                                     <td className="px-6 py-4">
                                         {exam.urgency === 'Urgente' ? (
                                             <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-red-100 text-red-800">
@@ -105,10 +121,10 @@ const DoctorExamsPage: React.FC<DoctorExamsPageProps> = ({ exams, onNavigateToDe
                                     </td>
                                     <td className="px-6 py-4">
                                         <div className="flex flex-col">
-                                            <span className="font-bold text-gray-900 text-base">{exam.patientName}</span>
+                                            <span className="font-bold text-sm" style={{ color: 'var(--text-primary)' }}>{exam.patientName}</span>
                                             <div className="flex items-center gap-2 mt-1">
-                                                <span className="text-xs font-bold bg-brand-blue-50 text-brand-blue-600 px-1.5 py-0.5 rounded uppercase">{exam.modality}</span>
-                                                <span className="text-xs text-gray-500">{exam.examType}</span>
+                                                <span className="text-[10px] font-bold px-1.5 py-0.5 rounded uppercase" style={{ backgroundColor: 'var(--teal-glow)', color: 'var(--teal-500)' }}>{exam.modality}</span>
+                                                <span className="text-xs" style={{ color: 'var(--text-muted)' }}>{exam.examType}</span>
                                             </div>
                                         </div>
                                     </td>
@@ -146,8 +162,15 @@ const DoctorExamsPage: React.FC<DoctorExamsPageProps> = ({ exams, onNavigateToDe
                                                 <Button
                                                     size="sm"
                                                     variant="outline"
-                                                    onClick={() => onNavigateToDetail(exam.id)}
+                                                    onClick={(e) => {
+                                                        e.stopPropagation();
+                                                        setSelectedExamForView(exam);
+                                                    }}
                                                 >
+                                                    <svg className="w-4 h-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                                                    </svg>
                                                     Ver Laudo
                                                 </Button>
                                             )}

@@ -17,11 +17,12 @@ const MonitorIcon = ({ className }: { className?: string }) => (
 interface OhifViewerProps {
     dicomUrl: string;
     onBack: () => void;
+    isSharedView?: boolean;
 }
 
 type ViewerMode = 'viewer' | 'microscopy' | 'segmentation';
 
-export const OhifViewer: React.FC<OhifViewerProps> = ({ dicomUrl, onBack }) => {
+export const OhifViewer: React.FC<OhifViewerProps> = ({ dicomUrl, onBack, isSharedView }) => {
     const [mode, setMode] = useState<ViewerMode>('viewer');
     const ohifBaseUrl = 'http://127.0.0.1:3000';
 
@@ -30,12 +31,18 @@ export const OhifViewer: React.FC<OhifViewerProps> = ({ dicomUrl, onBack }) => {
     const getIframeSrc = () => {
         // Use DICOM Local mode to load files directly
         const backendUrl = 'http://localhost:3001';
-        // Encode the dicomUrl to handle spaces and special characters
-        const info = {
-            url: `${backendUrl}${dicomUrl}`,
-        };
+        
+        let finalUrl = '';
+        if (dicomUrl.startsWith('http')) {
+            finalUrl = dicomUrl;
+        } else {
+            // Ensure we have exactly one slash between backendUrl and relative path
+            const cleanPath = dicomUrl.startsWith('/') ? dicomUrl : `/${dicomUrl}`;
+            finalUrl = `${backendUrl}${cleanPath}`;
+        }
+
         // Pass as URL encoded JSON
-        return `${ohifBaseUrl}/localbasic?url=${encodeURIComponent(info.url)}`;
+        return `${ohifBaseUrl}/localbasic?url=${encodeURIComponent(finalUrl)}`;
     };
 
     const toggleFullScreen = () => {
@@ -59,29 +66,31 @@ export const OhifViewer: React.FC<OhifViewerProps> = ({ dicomUrl, onBack }) => {
             {/* Mode Selector Header - Compact */}
             <div className="flex items-center justify-between px-4 py-2 bg-[#090c0f] border-b border-gray-800 shrink-0">
                 <div className="flex items-center gap-3">
-                    <button
-                        onClick={(e) => {
-                            e.preventDefault();
-                            e.stopPropagation();
-                            if (document.fullscreenElement) {
-                                document.exitFullscreen().catch(err => console.error(err));
-                            }
-                            onBack();
-                        }}
-                        className="p-1.5 text-gray-400 hover:text-white hover:bg-white/10 rounded-full transition-all z-50 cursor-pointer"
-                        title="Voltar"
-                    >
-                        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-                        </svg>
-                    </button>
+                    {!isSharedView && (
+                        <button
+                            onClick={(e) => {
+                                e.preventDefault();
+                                e.stopPropagation();
+                                if (document.fullscreenElement) {
+                                    document.exitFullscreen().catch(err => console.error(err));
+                                }
+                                onBack();
+                            }}
+                            className="p-1.5 text-gray-400 hover:text-white hover:bg-white/10 rounded-full transition-all z-50 cursor-pointer"
+                            title="Voltar"
+                        >
+                            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                            </svg>
+                        </button>
+                    )}
                     <h2 className="text-gray-200 font-bold text-sm hidden sm:block">OHIF Viewer</h2>
                 </div>
 
-                <div className="flex bg-black/40 p-0.5 rounded-lg border border-white/5 gap-0.5">
+                <div className="flex bg-black/40 p-0.5 rounded-lg border border-white/5 gap-0.5 overflow-x-auto max-w-[40%] scrollbar-hide">
                     <button
                         onClick={() => setMode('viewer')}
-                        className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-[10px] uppercase font-bold tracking-wide transition-all ${mode === 'viewer'
+                        className={`flex items-center gap-1.5 px-2 py-1.5 rounded-md text-[9px] uppercase font-black tracking-wide transition-all shrink-0 ${mode === 'viewer'
                             ? 'bg-brand-blue-600 text-white shadow-sm'
                             : 'text-gray-500 hover:text-gray-300 hover:bg-white/5'
                             }`}
@@ -91,7 +100,7 @@ export const OhifViewer: React.FC<OhifViewerProps> = ({ dicomUrl, onBack }) => {
                     </button>
                     <button
                         onClick={() => setMode('microscopy')}
-                        className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-[10px] uppercase font-bold tracking-wide transition-all ${mode === 'microscopy'
+                        className={`flex items-center gap-1.5 px-2 py-1.5 rounded-md text-[9px] uppercase font-black tracking-wide transition-all shrink-0 ${mode === 'microscopy'
                             ? 'bg-brand-blue-600 text-white shadow-sm'
                             : 'text-gray-500 hover:text-gray-300 hover:bg-white/5'
                             }`}
@@ -102,16 +111,18 @@ export const OhifViewer: React.FC<OhifViewerProps> = ({ dicomUrl, onBack }) => {
                         </svg>
                         Microscopia
                     </button>
-                    <button
-                        onClick={() => setMode('segmentation')}
-                        className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-[10px] uppercase font-bold tracking-wide transition-all ${mode === 'segmentation'
-                            ? 'bg-brand-blue-600 text-white shadow-sm'
-                            : 'text-gray-500 hover:text-gray-300 hover:bg-white/5'
-                            }`}
-                    >
-                        <BrainIcon className="w-3 h-3" />
-                        IA
-                    </button>
+                    {!isSharedView && (
+                        <button
+                            onClick={() => setMode('segmentation')}
+                            className={`flex items-center gap-1.5 px-2 py-1.5 rounded-md text-[9px] uppercase font-black tracking-wide transition-all shrink-0 ${mode === 'segmentation'
+                                ? 'bg-brand-blue-600 text-white shadow-sm'
+                                : 'text-gray-500 hover:text-gray-300 hover:bg-white/5'
+                                }`}
+                        >
+                            <BrainIcon className="w-3 h-3" />
+                            IA
+                        </button>
+                    )}
                 </div>
 
                 <div className="flex items-center gap-2">

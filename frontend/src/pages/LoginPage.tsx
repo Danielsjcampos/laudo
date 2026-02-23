@@ -6,10 +6,10 @@ import { DoctorIcon } from '../components/icons/DoctorIcon';
 import { PatientIcon } from '../components/icons/PatientIcon';
 import { SettingsIcon } from '../components/icons/SettingsIcon';
 import { CheckCircleIcon } from '../components/icons/CheckCircleIcon';
-import type { UserRole } from '../App';
+import type { UserRole } from '../types/auth';
 
 interface LoginPageProps {
-  onLogin: (role: UserRole) => void;
+  onLogin: (role: any) => void;
   onManualLogin: (email: string, password: string) => void;
   onNavigateToLanding: () => void;
 }
@@ -172,7 +172,14 @@ const LoginPage: React.FC<LoginPageProps> = ({ onLogin, onManualLogin, onNavigat
                     className="flex items-center justify-center space-x-2 px-4 py-3 bg-brand-teal-500 hover:bg-brand-teal-600 text-white rounded-xl text-xs font-bold shadow-md hover:shadow-lg active:scale-95 transition-all"
                 >
                     <DoctorIcon className="w-4 h-4" />
-                    <span>Dev Doctor</span>
+                    <span>Dev Roberto</span>
+                </button>
+                <button 
+                    onClick={() => onLogin('doctor_ana')}
+                    className="flex items-center justify-center space-x-2 px-4 py-3 bg-brand-teal-600 hover:bg-brand-teal-700 text-white rounded-xl text-xs font-bold shadow-md hover:shadow-lg active:scale-95 transition-all"
+                >
+                    <DoctorIcon className="w-4 h-4" />
+                    <span>Dev Dra. Ana</span>
                 </button>
                 <button 
                     onClick={() => onLogin('clinic')}

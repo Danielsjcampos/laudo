@@ -1,0 +1,705 @@
+# TEMPLATES DE LAUDOS RADIOLÓGICOS - USG (ULTRASSOM)
+
+---
+
+## 1.1.1 USG – Abdome e Pelve – COMPLETO
+
+**Título**  
+ULTRASSONOGRAFIA DE ABDOME E PELVE – EXAME COMPLETO
+
+**Método**  
+Exame realizado com transdutor convexo de alta resolução, em tempo real, com cortes multiplanares de abdome e pelve.  
+[OPCIONAL: Realizado em jejum de aproximadamente [EDITÁVEL: x] horas.]
+
+**Achados**  
+Fígado de contornos regulares, dimensões dentro dos limites da normalidade e ecotextura homogênea, sem lesões focais identificadas.  
+Vesícula biliar de paredes finas, bem distendida, sem imagens sugestivas de cálculos ou sinais inflamatórios significativos.  
+Vias biliares intra e extra‑hepáticas sem dilatação evidente.  
+Pâncreas com dimensões e ecotextura preservadas, sem lesões focais.  
+Baço de tamanho habitual, contornos regulares e parênquima homogêneo.  
+Rins tópicos, de dimensões preservadas, com diferenciação córtico‑medular mantida, sem evidência de cálculos ou dilatação pielocalicial.  
+Aorta abdominal e vasos ilíacos com calibres dentro dos limites habituais, sem dilatações aneurismáticas.  
+Bexiga urinária com paredes finas, bem distendida, sem imagens compatíveis com cálculos ou massas.  
+[OPCIONAL: [SE FEMININO] Útero de dimensões e morfologia habituais, miométrio de ecotextura homogênea e endométrio dentro dos limites esperados para a fase do ciclo. Ovários de dimensões preservadas, com folículos usuais para a faixa etária.]  
+[OPCIONAL: [SE MASCULINO] Próstata de dimensões preservadas, contornos regulares e ecotextura homogênea, sem nódulos significativos. Vesículas seminais sem alterações relevantes.]  
+Não há ascite significativa.
+
+**Conclusão**  
+Ultrassonografia de abdome e pelve sem alterações significativas para o método.  
+[EDITÁVEL: Inserir achado principal, se houver.]
+
+---
+
+## 1.1.2 USG – Abdome – SUPERIOR
+
+**Título**  
+ULTRASSONOGRAFIA DE ABDOME SUPERIOR
+
+**Método**  
+Exame realizado com transdutor convexo de alta resolução, em tempo real, com cortes multiplanares de abdome superior.  
+[OPCIONAL: Realizado em jejum de aproximadamente [EDITÁVEL: x] horas.]
+
+**Achados**  
+Fígado de contornos regulares, dimensões dentro dos limites da normalidade e ecotextura homogênea, sem lesões focais identificadas.  
+Vesícula biliar de paredes finas, bem distendida, sem imagens sugestivas de cálculos ou sinais inflamatórios significativos.  
+Vias biliares intra e extra‑hepáticas sem dilatação evidente.  
+Pâncreas com dimensões e ecotextura preservadas, sem lesões focais nas porções visualizadas.  
+Baço de tamanho habitual, contornos regulares e parênquima homogêneo.  
+Rins superiores visualizados sem alterações significativas.  
+Aorta abdominal proximal e veia cava inferior de calibres habituais, sem dilatações aneurismáticas.  
+Não há líquido livre significativo no abdome superior.
+
+**Conclusão**  
+Ultrassonografia de abdome superior sem alterações significativas para o método.  
+[EDITÁVEL: Inserir achado principal, se houver.]
+
+---
+
+## 1.1.3 USG – Abdome – INFERIOR
+
+**Título**  
+ULTRASSONOGRAFIA DE ABDOME INFERIOR
+
+**Método**  
+Exame realizado com transdutor convexo de alta resolução, em tempo real, com cortes multiplanares de abdome inferior.
+
+**Achados**  
+Alças intestinais do abdome inferior sem dilatações ou espessamentos parietais significativos.  
+Rins em seus polos inferiores sem alterações relevantes.  
+Vasos ilíacos e aorta abdominal distal com calibres habituais.  
+Não há líquido livre significativo.
+
+**Conclusão**  
+Ultrassonografia de abdome inferior sem alterações significativas para o método.  
+[EDITÁVEL: Inserir achado principal, se houver.]
+
+---
+
+## 1.1.4 USG – Pelve
+
+**Título**  
+ULTRASSONOGRAFIA DE PELVE
+
+**Método**  
+Exame realizado com transdutor convexo de alta resolução, em tempo real, com cortes multiplanares de pelve.  
+[OPCIONAL: Realizado com bexiga moderadamente repleta.]
+
+**Achados**  
+Bexiga urinária com paredes finas, bem distendida, sem imagens compatíveis com cálculos ou massas.  
+[OPCIONAL: [SE FEMININO] Útero de dimensões e morfologia habituais, miométrio de ecotextura homogênea e endométrio dentro dos limites esperados para a fase do ciclo. Ovários de dimensões preservadas, com folículos usuais para a faixa etária.]  
+[OPCIONAL: [SE MASCULINO] Próstata de dimensões preservadas, contornos regulares e ecotextura homogênea, sem nódulos significativos. Vesículas seminais sem alterações relevantes.]  
+Não há líquido livre significativo em cavidade pélvica.
+
+**Conclusão**  
+Ultrassonografia de pelve sem alterações significativas para o método.  
+[EDITÁVEL: Inserir achado principal, se houver.]
+
+---
+
+## 1.2.1 USG – Ombro – DIREITO
+
+**Título**  
+ULTRASSONOGRAFIA DE OMBRO DIREITO
+
+**Método**  
+Exame realizado com transdutor linear de alta frequência, com avaliação estática e dinâmica de ombro direito.
+
+**Achados**  
+Superfícies ósseas visibilizadas com contornos regulares, sem irregularidades ou erosões significativas.  
+Tendões do manguito rotador (supraespinhoso, infraespinhoso, redondo menor, subescapular) com espessura e ecotextura preservadas, sem evidência de rupturas ou calcificações relevantes.  
+Ligamentos glenoumerais avaliados íntegros, sem espessamento ou descontinuidade.  
+Estruturas musculares adjacentes com ecotextura homogênea, sem sinais de lesão muscular ou coleções.  
+Bolsa subacromial sem distensão significativa.  
+Não há derrame articular significativo.
+
+**Conclusão**  
+Ultrassonografia de ombro direito sem alterações significativas.  
+[EDITÁVEL: Descrever tendinopatia, rotura, bursite, etc., se houver.]
+
+---
+
+## 1.2.2 USG – Ombro – ESQUERDO
+
+**Título**  
+ULTRASSONOGRAFIA DE OMBRO ESQUERDO
+
+**Método**  
+Exame realizado com transdutor linear de alta frequência, com avaliação estática e dinâmica de ombro esquerdo.
+
+**Achados**  
+Superfícies ósseas visibilizadas com contornos regulares, sem irregularidades ou erosões significativas.  
+Tendões do manguito rotador (supraespinhoso, infraespinhoso, redondo menor, subescapular) com espessura e ecotextura preservadas, sem evidência de rupturas ou calcificações relevantes.  
+Ligamentos glenoumerais avaliados íntegros, sem espessamento ou descontinuidade.  
+Estruturas musculares adjacentes com ecotextura homogênea, sem sinais de lesão muscular ou coleções.  
+Bolsa subacromial sem distensão significativa.  
+Não há derrame articular significativo.
+
+**Conclusão**  
+Ultrassonografia de ombro esquerdo sem alterações significativas.  
+[EDITÁVEL: Descrever tendinopatia, rotura, bursite, etc., se houver.]
+
+---
+
+## 1.2.3 USG – Cotovelo – DIREITO
+
+**Título**  
+ULTRASSONOGRAFIA DE COTOVELO DIREITO
+
+**Método**  
+Exame realizado com transdutor linear de alta frequência, com avaliação estática e dinâmica de cotovelo direito.
+
+**Achados**  
+Superfícies ósseas visibilizadas com contornos regulares, sem irregularidades ou erosões significativas.  
+Tendões (bíceps, tríceps, flexores, extensores) com espessura e ecotextura preservadas, sem evidência de rupturas ou calcificações relevantes.  
+Ligamentos colateral radial e ulnar avaliados íntegros, sem espessamento ou descontinuidade.  
+Estruturas musculares adjacentes com ecotextura homogênea, sem sinais de lesão muscular ou coleções.  
+Não há derrame articular significativo.
+
+**Conclusão**  
+Ultrassonografia de cotovelo direito sem alterações significativas.  
+[EDITÁVEL: Descrever tendinopatia, rotura, epicondilite, etc., se houver.]
+
+---
+
+## 1.2.4 USG – Cotovelo – ESQUERDO
+
+**Título**  
+ULTRASSONOGRAFIA DE COTOVELO ESQUERDO
+
+**Método**  
+Exame realizado com transdutor linear de alta frequência, com avaliação estática e dinâmica de cotovelo esquerdo.
+
+**Achados**  
+Superfícies ósseas visibilizadas com contornos regulares, sem irregularidades ou erosões significativas.  
+Tendões (bíceps, tríceps, flexores, extensores) com espessura e ecotextura preservadas, sem evidência de rupturas ou calcificações relevantes.  
+Ligamentos colateral radial e ulnar avaliados íntegros, sem espessamento ou descontinuidade.  
+Estruturas musculares adjacentes com ecotextura homogênea, sem sinais de lesão muscular ou coleções.  
+Não há derrame articular significativo.
+
+**Conclusão**  
+Ultrassonografia de cotovelo esquerdo sem alterações significativas.  
+[EDITÁVEL: Descrever tendinopatia, rotura, epicondilite, etc., se houver.]
+
+---
+
+## 1.2.5 USG – Punho – DIREITO
+
+**Título**  
+ULTRASSONOGRAFIA DE PUNHO DIREITO
+
+**Método**  
+Exame realizado com transdutor linear de alta frequência, com avaliação estática e dinâmica de punho direito.
+
+**Achados**  
+Superfícies ósseas visibilizadas com contornos regulares, sem irregularidades ou erosões significativas.  
+Tendões dos flexores e extensores com espessura e ecotextura preservadas, sem evidência de rupturas ou calcificações relevantes.  
+Ligamentos intrínsecos e ligamento colateral ulnar avaliados íntegros, sem espessamento ou descontinuidade.  
+Estruturas musculares adjacentes com ecotextura homogênea, sem sinais de lesão muscular ou coleções.  
+Não há derrame articular ou coleções significativas no canal do carpo.
+
+**Conclusão**  
+Ultrassonografia de punho direito sem alterações significativas.  
+[EDITÁVEL: Descrever tendinopatia, síndrome do túnel do carpo, etc., se houver.]
+
+---
+
+## 1.2.6 USG – Punho – ESQUERDO
+
+**Título**  
+ULTRASSONOGRAFIA DE PUNHO ESQUERDO
+
+**Método**  
+Exame realizado com transdutor linear de alta frequência, com avaliação estática e dinâmica de punho esquerdo.
+
+**Achados**  
+Superfícies ósseas visibilizadas com contornos regulares, sem irregularidades ou erosões significativas.  
+Tendões dos flexores e extensores com espessura e ecotextura preservadas, sem evidência de rupturas ou calcificações relevantes.  
+Ligamentos intrínsecos e ligamento colateral ulnar avaliados íntegros, sem espessamento ou descontinuidade.  
+Estruturas musculares adjacentes com ecotextura homogênea, sem sinais de lesão muscular ou coleções.  
+Não há derrame articular ou coleções significativas no canal do carpo.
+
+**Conclusão**  
+Ultrassonografia de punho esquerdo sem alterações significativas.  
+[EDITÁVEL: Descrever tendinopatia, síndrome do túnel do carpo, etc., se houver.]
+
+---
+
+## 1.2.7 USG – Quadril – DIREITO
+
+**Título**  
+ULTRASSONOGRAFIA DE QUADRIL DIREITO
+
+**Método**  
+Exame realizado com transdutor linear de alta frequência, com avaliação estática e dinâmica de quadril direito.
+
+**Achados**  
+Superfícies ósseas visibilizadas com contornos regulares, sem irregularidades ou erosões significativas.  
+Tendões adjacentes (glúteo máximo, tensor da fáscia lata, psoas) com espessura e ecotextura preservadas, sem evidência de rupturas ou calcificações relevantes.  
+Ligamentos avaliados íntegros, sem espessamento ou descontinuidade.  
+Estruturas musculares adjacentes com ecotextura homogênea, sem sinais de lesão muscular ou coleções.  
+Bolsa trocanteriana sem distensão significativa.  
+Não há derrame articular significativo.
+
+**Conclusão**  
+Ultrassonografia de quadril direito sem alterações significativas.  
+[EDITÁVEL: Descrever tendinopatia, bursite, rotura, etc., se houver.]
+
+---
+
+## 1.2.8 USG – Quadril – ESQUERDO
+
+**Título**  
+ULTRASSONOGRAFIA DE QUADRIL ESQUERDO
+
+**Método**  
+Exame realizado com transdutor linear de alta frequência, com avaliação estática e dinâmica de quadril esquerdo.
+
+**Achados**  
+Superfícies ósseas visibilizadas com contornos regulares, sem irregularidades ou erosões significativas.  
+Tendões adjacentes (glúteo máximo, tensor da fáscia lata, psoas) com espessura e ecotextura preservadas, sem evidência de rupturas ou calcificações relevantes.  
+Ligamentos avaliados íntegros, sem espessamento ou descontinuidade.  
+Estruturas musculares adjacentes com ecotextura homogênea, sem sinais de lesão muscular ou coleções.  
+Bolsa trocanteriana sem distensão significativa.  
+Não há derrame articular significativo.
+
+**Conclusão**  
+Ultrassonografia de quadril esquerdo sem alterações significativas.  
+[EDITÁVEL: Descrever tendinopatia, bursite, rotura, etc., se houver.]
+
+---
+
+## 1.2.9 USG – Joelho – DIREITO
+
+**Título**  
+ULTRASSONOGRAFIA DE JOELHO DIREITO
+
+**Método**  
+Exame realizado com transdutor linear de alta frequência, com avaliação estática e dinâmica de joelho direito.
+
+**Achados**  
+Superfícies ósseas visibilizadas com contornos regulares, sem irregularidades ou erosões significativas.  
+Tendões (quadríceps, patelar, isquiotibiais) com espessura e ecotextura preservadas, sem evidência de rupturas ou calcificações relevantes.  
+Ligamentos (colateral medial, colateral lateral, cruzado anterior) avaliados íntegros, sem espessamento ou descontinuidade.  
+Estruturas meniscais visualizadas com morfologia habitual.  
+Estruturas musculares adjacentes com ecotextura homogênea, sem sinais de lesão muscular ou coleções.  
+Não há derrame articular significativo.
+
+**Conclusão**  
+Ultrassonografia de joelho direito sem alterações significativas.  
+[EDITÁVEL: Descrever tendinopatia, lesão meniscal, rotura ligamentar, derrame, etc., se houver.]
+
+---
+
+## 1.2.10 USG – Joelho – ESQUERDO
+
+**Título**  
+ULTRASSONOGRAFIA DE JOELHO ESQUERDO
+
+**Método**  
+Exame realizado com transdutor linear de alta frequência, com avaliação estática e dinâmica de joelho esquerdo.
+
+**Achados**  
+Superfícies ósseas visibilizadas com contornos regulares, sem irregularidades ou erosões significativas.  
+Tendões (quadríceps, patelar, isquiotibiais) com espessura e ecotextura preservadas, sem evidência de rupturas ou calcificações relevantes.  
+Ligamentos (colateral medial, colateral lateral, cruzado anterior) avaliados íntegros, sem espessamento ou descontinuidade.  
+Estruturas meniscais visualizadas com morfologia habitual.  
+Estruturas musculares adjacentes com ecotextura homogênea, sem sinais de lesão muscular ou coleções.  
+Não há derrame articular significativo.
+
+**Conclusão**  
+Ultrassonografia de joelho esquerdo sem alterações significativas.  
+[EDITÁVEL: Descrever tendinopatia, lesão meniscal, rotura ligamentar, derrame, etc., se houver.]
+
+---
+
+## 1.2.11 USG – Tornozelo – DIREITO
+
+**Título**  
+ULTRASSONOGRAFIA DE TORNOZELO DIREITO
+
+**Método**  
+Exame realizado com transdutor linear de alta frequência, com avaliação estática e dinâmica de tornozelo direito.
+
+**Achados**  
+Superfícies ósseas visibilizadas com contornos regulares, sem irregularidades ou erosões significativas.  
+Tendão de Aquiles com espessura e ecotextura preservadas, sem evidência de rupturas ou calcificações relevantes.  
+Tendões dos fibulares e tibiais com espessura habitual, sem evidência de rupturas.  
+Ligamentos colateral medial e lateral avaliados íntegros, sem espessamento ou descontinuidade.  
+Estruturas musculares adjacentes com ecotextura homogênea, sem sinais de lesão muscular ou coleções.  
+Não há derrame articular significativo.
+
+**Conclusão**  
+Ultrassonografia de tornozelo direito sem alterações significativas.  
+[EDITÁVEL: Descrever tendinopatia, rotura, entorse, derrame, etc., se houver.]
+
+---
+
+## 1.2.12 USG – Tornozelo – ESQUERDO
+
+**Título**  
+ULTRASSONOGRAFIA DE TORNOZELO ESQUERDO
+
+**Método**  
+Exame realizado com transdutor linear de alta frequência, com avaliação estática e dinâmica de tornozelo esquerdo.
+
+**Achados**  
+Superfícies ósseas visibilizadas com contornos regulares, sem irregularidades ou erosões significativas.  
+Tendão de Aquiles com espessura e ecotextura preservadas, sem evidência de rupturas ou calcificações relevantes.  
+Tendões dos fibulares e tibiais com espessura habitual, sem evidência de rupturas.  
+Ligamentos colateral medial e lateral avaliados íntegros, sem espessamento ou descontinuidade.  
+Estruturas musculares adjacentes com ecotextura homogênea, sem sinais de lesão muscular ou coleções.  
+Não há derrame articular significativo.
+
+**Conclusão**  
+Ultrassonografia de tornozelo esquerdo sem alterações significativas.  
+[EDITÁVEL: Descrever tendinopatia, rotura, entorse, derrame, etc., se houver.]
+
+---
+
+## 1.3.1 USG – Tireoide
+
+**Título**  
+ULTRASSONOGRAFIA DE TIREOIDE
+
+**Método**  
+Exame realizado com transdutor linear de alta frequência, com cortes longitudinais e transversais da glândula tireoide.
+
+**Achados**  
+Glândula tireoide de dimensões dentro dos limites esperados, contornos regulares e ecotextura homogênea.  
+Lobo direito [EDITÁVEL: dimensões] e lobo esquerdo [EDITÁVEL: dimensões] sem alterações focais significativas.  
+Ausência de nódulos sólidos ou císticos com características suspeitas.  
+Istmo tireoidiano sem alterações relevantes.  
+Tecidos perigoitroides e planos cervicais adjacentes sem coleções ou massas.  
+Linfonodos regionais de dimensões preservadas, com morfologia habitual, sem sinais suspeitos.
+
+**Conclusão**  
+Ultrassonografia de tireoide sem alterações significativas.  
+[EDITÁVEL: Descrever nódulos, bócios, tireoidite, etc., se houver.]
+
+---
+
+## 1.3.2 USG – Pescoço / Partes Moles
+
+**Título**  
+ULTRASSONOGRAFIA DE PESCOÇO
+
+**Método**  
+Exame realizado com transdutor linear de alta frequência, com cortes longitudinais e transversais da região cervical.
+
+**Achados**  
+Glândulas salivares (parótida e submandibular) de dimensões e ecotextura habituais, sem alterações focais significativas.  
+Planos musculares e estruturas ósseas adjacentes visualizadas com contornos e sinal habituais.  
+Linfonodos regionais de dimensões preservadas, sem sinais de malignidade ou aumento volumétrico suspeito.  
+Tecidos subcutâneos e partes moles cervicais sem coleções, massas ou calcificações significativas.
+
+**Conclusão**  
+Ultrassonografia de pescoço sem alterações significativas.  
+[EDITÁVEL: Descrever adenopatias, coleções, massas, etc., se houver.]
+
+---
+
+## 1.3.3 USG – Mama – DIREITA
+
+**Título**  
+ULTRASSONOGRAFIA DE MAMA DIREITA
+
+**Método**  
+Exame realizado com transdutor linear de alta frequência, com cortes longitudinais e transversais de mama direita.
+
+**Achados**  
+Parênquima mamário de ecotextura habitual para a faixa etária.  
+Ausência de nódulos sólidos ou cistossolidários com características suspeitas.  
+Ausência de distorções arquiteturais significativas.  
+Tecido adiposo e planos musculares adjacentes sem coleções ou massas.  
+Complexo aréolo-papilar sem alterações relevantes.  
+Linfonodos axilares sem aumento volumétrico ou alterações suspeitas.
+
+**Conclusão**  
+Ultrassonografia de mama direita sem alterações significativas.  
+[EDITÁVEL: Descrever nódulos, cistos, câncer, etc., se houver.]
+
+---
+
+## 1.3.4 USG – Mama – ESQUERDA
+
+**Título**  
+ULTRASSONOGRAFIA DE MAMA ESQUERDA
+
+**Método**  
+Exame realizado com transdutor linear de alta frequência, com cortes longitudinais e transversais de mama esquerda.
+
+**Achados**  
+Parênquima mamário de ecotextura habitual para a faixa etária.  
+Ausência de nódulos sólidos ou cistossolidários com características suspeitas.  
+Ausência de distorções arquiteturais significativas.  
+Tecido adiposo e planos musculares adjacentes sem coleções ou massas.  
+Complexo aréolo-papilar sem alterações relevantes.  
+Linfonodos axilares sem aumento volumétrico ou alterações suspeitas.
+
+**Conclusão**  
+Ultrassonografia de mama esquerda sem alterações significativas.  
+[EDITÁVEL: Descrever nódulos, cistos, câncer, etc., se houver.]
+
+---
+
+## 1.3.5 USG – Bolsa Escrotal
+
+**Título**  
+ULTRASSONOGRAFIA DE BOLSA ESCROTAL
+
+**Método**  
+Exame realizado com transdutor linear de alta frequência, com avaliação bilateral dos testículos, epidídimos e estruturas adjacentes.
+
+**Achados**  
+Testículo direito de dimensões, contornos e ecotextura preservados, sem lesões focais sólidas significativas.  
+Epidídimo direito de aspecto habitual, sem coleções ou massas.  
+Testículo esquerdo de dimensões, contornos e ecotextura preservados, sem lesões focais sólidas significativas.  
+Epidídimo esquerdo de aspecto habitual, sem coleções ou massas.  
+Não há hidrocele ou varicocele significativos.  
+Planos de separação anatômica bem delimitados.
+
+**Conclusão**  
+Ultrassonografia de bolsa escrotal sem alterações significativas.  
+[EDITÁVEL: Descrever nódulos, hidrocele, varicocele, orquite, epididimite, etc., se houver.]
+
+---
+
+## 1.3.6 USG – Próstata
+
+**Título**  
+ULTRASSONOGRAFIA DE PRÓSTATA
+
+**Método**  
+Exame realizado com transdutor linear de alta frequência, via transretal, com avaliação de próstata, vesículas seminais e estruturas adjacentes.
+
+**Achados**  
+Próstata de dimensões preservadas [EDITÁVEL: aproximadamente xx cc], contornos regulares e ecotextura homogênea.  
+Sem lesões focais significativas no parênquima prostático.  
+Zona periférica sem nódulos suspeitos.  
+Vesículas seminais de morfologia e aspecto habitual, sem coleções ou massas.  
+Sem dilatação de ductos prostáticos.
+
+**Conclusão**  
+Ultrassonografia de próstata sem alterações significativas.  
+[EDITÁVEL: Descrever hiperplasia benigna, câncer, prostatite, cistos, etc., se houver.]
+
+---
+
+## 1.4.1 USG – Doppler Carótida – DIREITA
+
+**Título**  
+ULTRASSONOGRAFIA COM DOPPLER DE CARÓTIDA DIREITA
+
+**Método**  
+Exame realizado em modo B, Doppler colorido e espectral de artéria carótida comum, interna e externa direitas, com medidas de velocidade de pico sistólico e análise de padrão de fluxo.
+
+**Achados**  
+Artéria carótida comum direita com trajeto e calibre preservados.  
+Paredes arteriais sem espessamentos significativos; intimal-medial thickness [EDITÁVEL: xx]] mm (normal).  
+Ausência de placas ateromatosas relevantes.  
+Velocidades de pico sistólico e índices de resistência dentro dos limites esperados.  
+Fluxo de padrão trifásico habitual para este território.  
+Não há evidência de estenoses hemodinamicamente significativas ou oclusões.
+
+**Conclusão**  
+Doppler de carótida direita sem alterações hemodinamicamente significativas.  
+[EDITÁVEL: Descrever grau de estenose ou oclusão, se houver.]
+
+---
+
+## 1.4.2 USG – Doppler Carótida – ESQUERDA
+
+**Título**  
+ULTRASSONOGRAFIA COM DOPPLER DE CARÓTIDA ESQUERDA
+
+**Método**  
+Exame realizado em modo B, Doppler colorido e espectral de artéria carótida comum, interna e externa esquerdas, com medidas de velocidade de pico sistólico e análise de padrão de fluxo.
+
+**Achados**  
+Artéria carótida comum esquerda com trajeto e calibre preservados.  
+Paredes arteriais sem espessamentos significativos; intimal-medial thickness [EDITÁVEL: xx]] mm (normal).  
+Ausência de placas ateromatosas relevantes.  
+Velocidades de pico sistólico e índices de resistência dentro dos limites esperados.  
+Fluxo de padrão trifásico habitual para este território.  
+Não há evidência de estenoses hemodinamicamente significativas ou oclusões.
+
+**Conclusão**  
+Doppler de carótida esquerda sem alterações hemodinamicamente significativas.  
+[EDITÁVEL: Descrever grau de estenose ou oclusão, se houver.]
+
+---
+
+## 1.4.3 USG – Doppler Vertebral – DIREITA
+
+**Título**  
+ULTRASSONOGRAFIA COM DOPPLER DE ARTÉRIA VERTEBRAL DIREITA
+
+**Método**  
+Exame realizado em modo B, Doppler colorido e espectral de artéria vertebral direita, com medidas de velocidade e análise de padrão de fluxo.
+
+**Achados**  
+Artéria vertebral direita com trajeto e calibre preservados.  
+Fluxo de padrão habitual para este território.  
+Velocidades de pico sistólico e índices de resistência dentro dos limites esperados.  
+Não há evidência de estenoses hemodinamicamente significativas ou oclusões.
+
+**Conclusão**  
+Doppler de artéria vertebral direita sem alterações hemodinamicamente significativas.  
+[EDITÁVEL: Descrever hipoplasia, estenose, reversão de fluxo, etc., se houver.]
+
+---
+
+## 1.4.4 USG – Doppler Vertebral – ESQUERDA
+
+**Título**  
+ULTRASSONOGRAFIA COM DOPPLER DE ARTÉRIA VERTEBRAL ESQUERDA
+
+**Método**  
+Exame realizado em modo B, Doppler colorido e espectral de artéria vertebral esquerda, com medidas de velocidade e análise de padrão de fluxo.
+
+**Achados**  
+Artéria vertebral esquerda com trajeto e calibre preservados.  
+Fluxo de padrão habitual para este território.  
+Velocidades de pico sistólico e índices de resistência dentro dos limites esperados.  
+Não há evidência de estenoses hemodinamicamente significativas ou oclusões.
+
+**Conclusão**  
+Doppler de artéria vertebral esquerda sem alterações hemodinamicamente significativas.  
+[EDITÁVEL: Descrever hipoplasia, estenose, reversão de fluxo, etc., se houver.]
+
+---
+
+## 1.4.5 USG – Doppler Aorta Abdominal
+
+**Título**  
+ULTRASSONOGRAFIA COM DOPPLER DE AORTA ABDOMINAL
+
+**Método**  
+Exame realizado em modo B, Doppler colorido e espectral de aorta abdominal, com medidas de calibre e análise de padrão de fluxo.
+
+**Achados**  
+Aorta abdominal com trajeto e calibre [EDITÁVEL: xx]] mm (normal) preservados.  
+Paredes sem espessamentos significativos ou placas ateromatosas relevantes.  
+Fluxo preservado, sem trombos ou dissecções evidentes.  
+Não há evidência de aneurismas ou dilatações significativas.  
+Iliácas bilaterais com calibres habituais.
+
+**Conclusão**  
+Doppler de aorta abdominal sem alterações hemodinamicamente significativas.  
+[EDITÁVEL: Descrever aneurisma, dissecção, oclusão, etc., se houver.]
+
+---
+
+## 1.4.6 USG – Doppler Membros Inferiores – DIREITO
+
+**Título**  
+ULTRASSONOGRAFIA COM DOPPLER DE MEMBROS INFERIORES DIREITO
+
+**Método**  
+Exame realizado em modo B, Doppler colorido e espectral de artérias e veias de membro inferior direito, com medidas de velocidade e análise de padrão de fluxo.
+
+**Achados**  
+Artérias (femoral, poplítea, tibiais) com trajeto e calibre preservados.  
+Paredes arteriais sem espessamentos significativos ou placas ateromatosas relevantes.  
+Velocidades e padrões de fluxo dentro dos limites esperados para este território.  
+Veias (femoral, safena interna) sem sinais de trombose; fluxo espontâneo preservado.  
+Não há refluxo venoso patológico.
+
+**Conclusão**  
+Doppler de membros inferiores direito sem alterações hemodinamicamente significativas.  
+[EDITÁVEL: Descrever estenose, oclusão, trombose, insuficiência venosa, etc., se houver.]
+
+---
+
+## 1.4.7 USG – Doppler Membros Inferiores – ESQUERDO
+
+**Título**  
+ULTRASSONOGRAFIA COM DOPPLER DE MEMBROS INFERIORES ESQUERDO
+
+**Método**  
+Exame realizado em modo B, Doppler colorido e espectral de artérias e veias de membro inferior esquerdo, com medidas de velocidade e análise de padrão de fluxo.
+
+**Achados**  
+Artérias (femoral, poplítea, tibiais) com trajeto e calibre preservados.  
+Paredes arteriais sem espessamentos significativos ou placas ateromatosas relevantes.  
+Velocidades e padrões de fluxo dentro dos limites esperados para este território.  
+Veias (femoral, safena interna) sem sinais de trombose; fluxo espontâneo preservado.  
+Não há refluxo venoso patológico.
+
+**Conclusão**  
+Doppler de membros inferiores esquerdo sem alterações hemodinamicamente significativas.  
+[EDITÁVEL: Descrever estenose, oclusão, trombose, insuficiência venosa, etc., se houver.]
+
+---
+
+## 1.5.1 USG – Obstétrico – 1º TRIMESTRE
+
+**Título**  
+ULTRASSONOGRAFIA OBSTÉTRICA – 1º TRIMESTRE
+
+**Método**  
+Exame realizado por via [EDITÁVEL: transabdominal / transvaginal]], com avaliação fetal e anexial segundo protocolo para 1º trimestre.
+
+**Achados**  
+Gestação [EDITÁVEL: única / gemelar]] em cavidade uterina, em situação [EDITÁVEL: longitudinal / transversa]], apresentação [EDITÁVEL: cefálica / pélvica]].  
+Batimentos cardíacos fetais presentes, com frequência em torno de [EDITÁVEL: xxx]] bpm.  
+Comprimento do embrião/feto (crow-rump ou biópsia parietal) compatível com idade gestacional de aproximadamente [EDITÁVEL: xx]] semanas.  
+Placenta [EDITÁVEL: localização e aspecto]].  
+Volume de líquido amniótico dentro da faixa normal para a idade gestacional.  
+Cordão umbilical de aspecto habitual.  
+Útero e colo uterino sem alterações relevantes.
+
+**Conclusão**  
+Ultrassonografia obstétrica do 1º trimestre compatível com gestação de aproximadamente [EDITÁVEL: xx]] semanas, sem alterações significativas.  
+[EDITÁVEL: Inserir malformações, viabilidade fetal, etc., se presentes.]
+
+---
+
+## 1.5.2 USG – Obstétrico – 2º TRIMESTRE
+
+**Título**  
+ULTRASSONOGRAFIA OBSTÉTRICA – 2º TRIMESTRE
+
+**Método**  
+Exame realizado por via transabdominal, com avaliação fetal, placentária e anexial segundo protocolo para 2º trimestre.
+
+**Achados**  
+Gestação [EDITÁVEL: única / gemelar]] em cavidade uterina, em situação [EDITÁVEL: longitudinal / transversa]], apresentação [EDITÁVEL: cefálica / pélvica]].  
+Batimentos cardíacos fetais presentes, com frequência em torno de [EDITÁVEL: xxx]] bpm.  
+Biometrias fetais (BIP, CC, CA, CF) compatíveis com idade gestacional de aproximadamente [EDITÁVEL: xx]] semanas.  
+Placenta de inserção [EDITÁVEL: anterior / posterior / fúndica / lateral]], com espessura e textura dentro dos limites da normalidade, sem áreas de descolamento.  
+Volume de líquido amniótico dentro da faixa normal para a idade gestacional.  
+Cordão umbilical de inserção [EDITÁVEL: central / marginal / fundal]], com número de vasos habitual.  
+Estruturas fetais avaliadas sem alterações morfológicas significativas no screening anatômico.
+
+**Conclusão**  
+Ultrassonografia obstétrica do 2º trimestre compatível com gestação de aproximadamente [EDITÁVEL: xx]] semanas, sem alterações significativas.  
+[EDITÁVEL: Inserir malformações, restrição de crescimento, placenta prévia, etc., se presentes.]
+
+---
+
+## 1.5.3 USG – Obstétrico – 3º TRIMESTRE
+
+**Título**  
+ULTRASSONOGRAFIA OBSTÉTRICA – 3º TRIMESTRE
+
+**Método**  
+Exame realizado por via transabdominal, com avaliação fetal, placentária e anexial segundo protocolo para 3º trimestre.
+
+**Achados**  
+Gestação [EDITÁVEL: única / gemelar]] em cavidade uterina, em situação [EDITÁVEL: longitudinal / transversa]], apresentação [EDITÁVEL: cefálica / pélvica]].  
+Batimentos cardíacos fetais presentes, com frequência em torno de [EDITÁVEL: xxx]] bpm.  
+Biometrias fetais (BIP, CC, CA) compatíveis com idade gestacional de aproximadamente [EDITÁVEL: xx]] semanas.  
+Peso fetal estimado em aproximadamente [EDITÁVEL: xxx]] gramas.  
+Placenta de localização [EDITÁVEL: anterior / posterior / fúndica / lateral]], sem indicativo de inserção prévia ou accreta.  
+Volume de líquido amniótico [EDITÁVEL: normal / oligoidrâmnia / poluidrâmnia]].  
+Cordão umbilical visualizado sem nós ou anomalias.  
+Índice de pulsatilidade placentário e fluxo em artéria umbilical dentro dos limites para a idade gestacional.
+
+**Conclusão**  
+Ultrassonografia obstétrica do 3º trimestre compatível com gestação de aproximadamente [EDITÁVEL: xx]] semanas, sem alterações significativas.  
+[EDITÁVEL: Inserir crescimento restrito, oligoidrâmnia, placenta prévia, descolamento, etc., se presentes.]
+
+---
+
+FIM DO ARQUIVO USG

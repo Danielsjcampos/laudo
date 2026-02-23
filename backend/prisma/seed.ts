@@ -74,7 +74,7 @@ async function main() {
 
   await prisma.doctor.createMany({
     data: [
-      { id: 'd2', name: 'Dra. Lúcia Lima', crm: '54321-RJ', specialty: 'Radiologia', status: 'Ativo', joinedDate: new Date('2023-04-15'), rating: 4.8 },
+      { id: 'd2', name: 'Dra. Ana Souza', crm: '98765-SP', specialty: 'Radiologia', status: 'Ativo', joinedDate: new Date('2023-04-15'), rating: 4.8 },
       { id: 'd3', name: 'Dr. Fernando Gomes', crm: '67890-MG', specialty: 'Neurologia', status: 'Ativo', joinedDate: new Date('2023-07-22'), rating: 5.0 },
       { id: 'd4', name: 'Dra. Marina Silva', crm: '11223-SC', specialty: 'Radiologia', status: 'Ativo', joinedDate: new Date('2023-09-01'), rating: 4.7 },
       { id: 'd5', name: 'Dr. André Santos', crm: '44556-RS', specialty: 'Cardiologia', status: 'Pendente', joinedDate: new Date('2023-12-05'), rating: 0 },
@@ -114,9 +114,40 @@ async function main() {
       { id: 'u1', name: 'Operador Sistema', role: 'admin', email: 'admin@laudodigital.com', password: adminHashed },
       { id: 'u2', name: 'Clínica Saúde Plena', role: 'clinic', email: 'contato@saudeplena.com', password: hashedPassword },
       { id: 'u3', name: 'Dr. Roberto Martins', role: 'doctor', email: 'roberto.martins@doc.com', password: hashedPassword },
+      { id: 'u5', name: 'Dra. Ana Souza', role: 'doctor', email: 'ana.souza@doc.com', password: hashedPassword },
       { id: 'u4', name: 'Carla Ferreira', role: 'patient', email: 'carla.f@email.com', password: hashedPassword },
     ]
   })
+
+  // Pricing Table
+  console.log('Seeding Pricing Table...')
+  const pricingData = [
+    { modality: 'RX', urgency: 'Rotina', price: 40.0 },
+    { modality: 'RX', urgency: 'Urgente', price: 60.0 },
+    { modality: 'TC', urgency: 'Rotina', price: 120.0 },
+    { modality: 'TC', urgency: 'Urgente', price: 180.0 },
+    { modality: 'RM', urgency: 'Rotina', price: 250.0 },
+    { modality: 'RM', urgency: 'Urgente', price: 350.0 },
+    { modality: 'US', urgency: 'Rotina', price: 80.0 },
+    { modality: 'US', urgency: 'Urgente', price: 120.0 },
+    { modality: 'MG', urgency: 'Rotina', price: 90.0 },
+    { modality: 'MG', urgency: 'Urgente', price: 130.0 },
+    { modality: 'OT', urgency: 'Rotina', price: 50.0 },
+    { modality: 'OT', urgency: 'Urgente', price: 80.0 },
+  ]
+
+  for (const item of pricingData) {
+    await prisma.pricingTable.upsert({
+      where: {
+        modality_urgency: {
+          modality: item.modality,
+          urgency: item.urgency
+        }
+      },
+      update: { price: item.price },
+      create: item
+    })
+  }
 
   console.log('Seeding finished.')
 }

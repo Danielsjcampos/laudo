@@ -1,0 +1,1550 @@
+
+<!DOCTYPE html>
+<html lang="pt" region="br" class="spaces-height-tweak">
+<head>
+<!--
+--------------------------------
+We are looking for outstanding talent! Since you are interested in our code, maybe you are also interested in becoming part of our team.
+We look forward to seeing you: https://docplanner.tech/careers
+--------------------------------
+-->
+	
+			<link rel="preconnect" href="//platform.docplanner.com/"/>
+		
+							
+		<link rel="preconnect" href="//s3-sa-east-1.amazonaws.com"/>
+		<link rel="preconnect" href="//www.googletagmanager.com"/>
+		<link rel="preconnect" href="//www.google-analytics.com"/>
+		
+			
+			<link rel="preconnect" href="https://dev.visualwebsiteoptimizer.com" />
+			<script type='text/javascript' id='vwoCode'>
+				window._vwo_code || (function() {
+					var account_id=772888,
+						version=2.0,
+						settings_tolerance=2000,
+						hide_element='body',
+						hide_element_style = 'opacity:0 !important;filter:alpha(opacity=0) !important;background:none !important',
+						/* DO NOT EDIT BELOW THIS LINE */
+						f=false,w=window,d=document,v=d.querySelector('#vwoCode'),cK='_vwo_'+account_id+'_settings',cc={};try{var c=JSON.parse(localStorage.getItem('_vwo_'+account_id+'_config'));cc=c&&typeof c==='object'?c:{}}catch(e){}var stT=cc.stT==='session'?w.sessionStorage:w.localStorage;code={use_existing_jquery:function(){return typeof use_existing_jquery!=='undefined'?use_existing_jquery:undefined},library_tolerance:function(){return typeof library_tolerance!=='undefined'?library_tolerance:undefined},settings_tolerance:function(){return cc.sT||settings_tolerance},hide_element_style:function(){return'{'+(cc.hES||hide_element_style)+'}'},hide_element:function(){return typeof cc.hE==='string'?cc.hE:hide_element},getVersion:function(){return version},finish:function(){if(!f){f=true;var e=d.getElementById('_vis_opt_path_hides');if(e)e.parentNode.removeChild(e)}},finished:function(){return f},load:function(e){var t=this.getSettings(),n=d.createElement('script'),i=this;if(t){n.textContent=t;d.getElementsByTagName('head')[0].appendChild(n);if(!w.VWO||VWO.caE){stT.removeItem(cK);i.load(e)}}else{n.fetchPriority='high';n.src=e;n.type='text/javascript';n.onerror=function(){_vwo_code.finish()};d.getElementsByTagName('head')[0].appendChild(n)}},getSettings:function(){try{var e=stT.getItem(cK);if(!e){return}e=JSON.parse(e);if(Date.now()>e.e){stT.removeItem(cK);return}return e.s}catch(e){return}},init:function(){if(d.URL.indexOf('__vwo_disable__')>-1)return;var e=this.settings_tolerance();w._vwo_settings_timer=setTimeout(function(){_vwo_code.finish();stT.removeItem(cK)},e);var t=d.currentScript,n=d.createElement('style'),i=this.hide_element(),r=t&&!t.async&&i?i+this.hide_element_style():'',c=d.getElementsByTagName('head')[0];n.setAttribute('id','_vis_opt_path_hides');v&&n.setAttribute('nonce',v.nonce);n.setAttribute('type','text/css');if(n.styleSheet)n.styleSheet.cssText=r;else n.appendChild(d.createTextNode(r));c.appendChild(n);this.load('https://dev.visualwebsiteoptimizer.com/j.php?a='+account_id+'&u='+encodeURIComponent(d.URL)+'&vn='+version)}};w._vwo_code=code;code.init();})();
+			</script>
+			
+	
+										<link rel="preload" href="//platform.docplanner.com/css/jade-dpuikitv3-ccf4255a.css" as="style"/>
+							<link rel="preload" href="//platform.docplanner.com/css/jade-search-9dc41cc5.css" as="style"/>
+					
+									<link rel="preload" href="//platform.docplanner.com/js/goro-basic-30511e08.js" as="script"/>
+					
+				
+	<meta charset="utf-8"/>
+	<title>Doctoralia - Encontre um profissional da saúde - Solicite um agendamento online</title>
+
+	
+	<link rel="search" type="application/opensearchdescription+xml" title="www.doctoralia.com.br" href="https://www.doctoralia.com.br/opensearch">
+
+			<meta name="description" content="Encontre um profissional da saúde na sua cidade! Consulte opiniões de pacientes, pergunte a especialistas em saúde e agende uma consulta online agora."/>
+	<meta name="robots" content="noindex,follow"/>
+	<meta property="fb:page_id" content="122601654502559"/>
+	
+		
+				<link rel="canonical" href="https://www.doctoralia.com.br/pesquisa"/>
+	
+				
+<meta property="og:image" content="//platform.docplanner.com/img/br/open-graph/og.png?3060678595" />
+	
+					
+<script type="text/javascript">
+	var ZLApp = {
+		'APICredentials': {},
+
+		'AppConfig': {},
+		'Roles' : {
+      'IS_CALL_CENTER_AGENT': false,
+			'IS_ZLWORKER' : false,
+			'IS_CUSTOMER_CARE' : false,
+			'IS_DOCTOR': false,
+			'IS_FACILITY': false		},
+
+		'Routes' : {},
+
+		'Storage' : {
+			session: sessionStorage,
+			local: localStorage
+		},
+
+		'Modules': {
+			CalendarEditionPage : function() {},
+			AlgoliaIndexes : {},
+			MapsLoader : {}
+		},
+
+		'Experiments': {},
+
+		'pushGAEvent': function(options) {
+			$(document).ready(function() {
+				// Universal Google Analytics Events
+
+				var layerData = $.extend({
+					'event': 'gaTriggerEvent',
+					'gaEventCategory': options[0],
+					'gaEventAction': options[1],
+					'gaEventLabel': options[2],
+					'gaEventInteraction': options[4]
+				}, options[5]);
+
+				dataLayer.push(layerData);
+			});
+		},
+    'pushHSEvent': function(eventValue) {
+		  if (window._hsq && _hsq.push) {
+				_hsq.push(["trackEvent", eventValue]);
+			}
+		},
+		"Routing" : {
+			"generate" : function(name, object) {
+				return ZLApp.NativeRouting.generate(name, object);
+			}
+		},
+		'setStorage': function(type, key, value) {
+			try {
+				var storage = this.Storage[type];
+
+				storage.setItem( key, JSON.stringify(value) );
+
+				return true;
+			} catch (exception) {
+				return false;
+			}
+		},
+		'getStorage': function(type, key) {
+			try {
+				var storage = this.Storage[type];
+
+				if (storage && storage.getItem(key) !== undefined && storage.hasOwnProperty(key) === true) {
+					return JSON.parse(storage.getItem(key));
+				} else {
+					return undefined;
+				}
+			} catch (exception) {
+				return undefined;
+			}
+		},
+		'clearStorage': function(type, key) {
+			try {
+				var storage = this.Storage[type];
+				storage.removeItem( key );
+				return true;
+			} catch (exception) {
+				return false;
+			}
+		},
+	};
+
+	// Object container for old stuff
+	window.ZL = {};
+</script>
+
+
+<script type="text/javascript">
+	ZLApp.CrmConfig = {
+		DEFAULT_CURRENCY_CODE: 'BRL',
+		DEFAULT_VAT_RATE: 2.0408,
+		WITH_ZEROS: true,
+		PRICE_TYPE: 'gross',
+		WEBSOCKET_DOMAIN: 'ws.doctoralia.com.br',
+		WEBSOCKET_TOKEN: '2c595f7e-ef38-492e-b088-73e553cf86dd',
+	};
+</script>
+
+
+
+
+<script>
+	ZLApp.Const = {
+		'AJAX_ROOT_ROUTE': 'www.doctoralia.com.br',
+		'ALGOLIA_API_KEY': '189da7b805744e97ef09dea8dbe7e35f',
+		'ALGOLIA_APP_ID': 'docplanner',
+		'ALGOLIA_PREFIX': '',
+		'ALGOLIA_SUFFIX': '',
+		'TESTING_NAME': '',
+		'BASE_DOMAIN': 'doctoralia.com.br',
+		'BOOKING_APP_BOOK_VISIT': 'efetuar-uma-marcacao',
+		'BOOKING_APP_BOOK_VISIT_SLOTS': 'escolher-data',
+		'BOOKING_SOURCE_ENABLED': false,
+		'BREAKPOINTS': {
+			'SCREEN_LG_MIN': 1200,
+			'SCREEN_MD_MAX': 1199,
+			'SCREEN_MD_MIN': 992,
+			'SCREEN_SM_MAX': 991,
+			'SCREEN_SM_MIN': 768,
+			'SCREEN_XS_MAX': 767,
+		},
+		'RECAPTCHA_SITE_KEY': '6Lcp60oeAAAAAHwGlb9OixIoRUuQtFh4p0GCMRCg',
+		'COVID_TEST_ID': '',
+		'FLU_VACCINATION_ID': '',
+		'CURRENCY': 'R$ 0 - 0',
+		'CURRENT_COUNTRY_NAME': 'Brasil',
+		'CURRENT_COUNTRY_PHONE_PREFIX': '+55',
+		'CURRENT_ROUTE': 'route_search-results',
+		'DOCTOR_REGISTRATION_WITHOUT_VERIFICATION': true,
+		'DOMAIN': 'www.doctoralia.com.br',
+		'DWH_STATISTICS_URL': 'https://dwh-statistics.doctoralia.com.br',
+		'EVENT_TRACKER_URL': 'https://event-tracker.docplanner.com',
+		'FACEBOOK_FANPAGE_URL': 'https://www.facebook.com/doctoralia.br/',
+		'FACEBOOK_LOCALE': 'pt_BR',
+		'FACILITY_URL': 'https://www.doctoralia.com.br/clinicas/__urlname__',
+		'FIRST_SOCIAL_LOGIN':  false ,
+		'GEOCODER_DOMAIN': 'geocoder.doctoralia.com.br',
+		'GOOGLE_API_KEY': 'AIzaSyAPEkgzgNuQ7h-PLlGo4YqglJ0Ht9RIiPk',
+		'GOOGLE_APP_ID': '726957026491-pgcr7kaobvmin5hedco6jv7f8qko2iui.apps.googleusercontent.com',
+		'TERAPIA_BASE_URL': '',
+		'TERAPIA_API_KEY': '',
+		'GOOGLE_ONE_TAP_REDIRECT_URL': 'https://www.doctoralia.com.br/social-connect/br_sso?_redirect=https%3A//www.doctoralia.com.br/pesquisa%3Fq%3D24298',
+		'HAS_UNIFIED_NAVIGATION': false,
+		'HUBSPOT_ECOMMERCE_CONTACT': '',
+		'HUBSPOT_ID': '442271',
+		'ISO_LOCALE': 'br',
+		'IS_LOGGED': false,
+		'IS_LOGGED_DOCTOR': false,
+		'IS_LOGGED_FACILITY_MANAGER': false,
+		'IS_PATIENT_APP': false,
+		'IS_PHONE': false,
+		'IS_STAGING': false,
+		'LANGUAGE_CODE': 'pt_BR',
+		'LOADER_IMAGE': '<p class="loader"><img src="//platform.docplanner.com/img/general/user-interface/loader-ready-white.gif?1799301098" alt=""/></p>',
+		'LOADER_URL': "//platform.docplanner.com/img/general/user-interface/loader-ready-white.gif?1799301098",
+		'LOCALE': 'br',
+		'MARKETING_CONSENT_IS_INFO': true,
+		'MARKETING_CONSENT_PRECHECKED': false,
+		'FACILITY_MARKETING_CONSENT_PRECHECKED': false,
+		'MIN_QUESTION_CHARACTERS': 50,
+		'PAGE_TYPE': '/search_results_empty_new',
+		'PATIENT_APP_VERSION': '',
+		'PATIENT_REQUEST_BASE_URL': 'https://patient-request.doctoralia.com.br',
+		'PLATFORM_LINK': '//platform.docplanner.com/',
+		'POST_CODE_MASK': '99999-999',
+		'PROTOCOL': 'https',
+		'REFERER': '',
+		'SAAS_BASE_DOMAIN': 'docplanner.doctoralia.com.br',
+		'SAAS_MANAGEMENT_WIDGET_DOMAIN': 'booking-management.doctoralia.com.br',
+		'SEARCH_PATH': "https:\/\/www.doctoralia.com.br\/pesquisa",
+		'SITE_LANG': 'pt',
+		'SITE_NAME': 'Doctoralia',
+		'SSO_DOMAIN': 'l.doctoralia.com.br',
+		'SSO_SOCIAL_CONNECT': 'https://www.doctoralia.com.br/social-connect/br_sso?_redirect=',
+		'SSO_SOCIAL_CONNECT_REDIRECT_URL': 'https://www.doctoralia.com.br/social-connect/br_sso?_redirect=https%3A//www.doctoralia.com.br/pesquisa%3Fq%3D24298',
+		'TERMS_URL': 'https://www.doctoralia.com.br/termos-e-condicoes',
+		'TIMEZONE': '-03:00',
+		'UPPERCASE_RATIO_ON_OPINIONS': 50,
+		'USER_ID': null,
+		'VISIT_URL': '',
+		'WIDGETS_APP_URL': 'widgets.doctoralia.com.br',
+		'SEARCH_APP_URL': 'https://search.doctoralia.com.br',
+		'PSYCHOTHERAPIST_SPECIALIZATION_ID': "",
+		'PSYCHOLOGY_SPECIALIZATION_ID': 76,
+		'DOCTOR_CALENDAR_WIDGET_WITH_FILTERS_ENABLED': false,
+		'USE_FULL_LIST_OF_INSURANCES_IN_CALENDAR_WIDGET': false,
+	};
+
+	ZLApp.isRoute = function(route) {
+		if (Array.isArray(route)) {
+			return route.indexOf(this.Const.CURRENT_ROUTE) > -1;
+		}
+
+		return this.Const.CURRENT_ROUTE === route;
+	};
+</script>
+
+
+																																																																																																																																																																																																																																	
+<script>
+	ZLApp.Gate = {"GATE_ADDRESS_EDITION_CUSTOM_REFUND_POLICY":true,"GATE_ADDRESS_ONLINE_CONSULTATION":true,"GATE_ADMIN_CHAT_GDPR":true,"GATE_BOOKING_INSURANCE":true,"GATE_BOOKING_DIRECT_INSURANCE":false,"GATE_SHOW_DISABLED_FACILITY_WIDGET":false,"GATE_AGENDA_NON_DOCTORS_FRONTEND_TEST":false,"GATE_CALENDAR_NOTIFICATION_FIND_OTHER_DOCTOR":true,"GATE_CHECK_YOUR_INSURANCE":true,"GATE_CONTEXTUAL_SEARCH_AT_HOMEPAGE":true,"GATE_COOKIE_CONSENT":false,"GATE_COVID_TEST_SEARCH":false,"GATE_FLU_VACCINATION_SEARCH":false,"GATE_CRM_ECOMMERCE_BLACK_FRIDAY":false,"GATE_CRM_ECOMMERCE_BOLETO":true,"GATE_CRM_ECOMMERCE_IBAN":false,"GATE_CRM_ECOMMERCE_IYZICO_ONE_TIME":false,"GATE_CRM_ECOMMERCE_PAYMENTS_TESTIMONIALS":false,"GATE_CRM_ECOMMERCE_PIX":true,"GATE_CRM_ECOMMERCE_PSE":false,"GATE_CRM_ECOMMERCE_SERVIPAG":false,"GATE_CRM_ECOMMERCE_SHOW_CPL_PRICING_DETAILS":false,"GATE_CRM_ECOMMERCE_WEBSITE":true,"GATE_CRM_ECOMMERCE_WEB_PAY":false,"GATE_CRM_ECOMMERCE_HIDE_PACKAGING_LANDING_CONTACT_FORM":false,"GATE_CRM_ECOMMERCE_TERMS_DETAILS":false,"GATE_CRM_ECOMMERCE_PAYMENT_TERMS":false,"GATE_CRM_IYZICO":false,"GATE_CRM_PAYU":false,"GATE_CRM_USE_SCA_AUTHENTICATION_FLOW":false,"GATE_CRM_USE_SCA_AUTHENTICATION_FLOW_SELECTIVE_BINS":false,"GATE_CRM_REFERRAL_PROGRAM_URL_REDESIGN":false,"GATE_DIRECT_INSURANCES":false,"GATE_DOCTOR_CALENDAR_FILTERS":true,"GATE_DOCTOR_LICENSE_NUMBER":true,"GATE_DOCTOR_PROFILE_TOP_BANNER_TOUCHPOINT":true,"GATE_DOCTOR_REGISTRATION_EMAIL_CONFIRMATION":false,"GATE_DOCTOR_STATISTICS_VIDEO":true,"GATE_OPENING_HOURS":false,"GATE_ECOMMERCE_PREMIUM_LANDING_MODAL":true,"GATE_ECOMMERCE_PREMIUM_LANDING_MODAL_MARKETING":false,"GATE_ECOMMERCE_PRICING_WEBSITE_ON_DEFAULT":false,"GATE_ECOMMERCE_WEBSITE_TOGGLE_ADDITIONAL_TEXT":false,"GATE_ECOMMERCE_THANK_YOU_PAGE_NEW_ONBOARDING_WIZARD":true,"GATE_ECOMMERCE_UNPAID_INVOICES_MODAL":true,"GATE_PRELOAD_GTM":false,"GATE_ENABLE_LICENSE_NUMBER_VERIFICATION":true,"GATE_FACILITY_CALENDAR_SERVICE_STEP":true,"GATE_FACILITY_CALENDAR_SORT_BY_NAME":true,"GATE_FACILITY_PROFILE_TOP_BANNER_TOUCHPOINT":true,"GATE_FACILITY_HUBSPOT_TOUCHPOINTS":true,"GATE_FACILITY_REGISTRATION":true,"GATE_FACILITY_REGISTRATION_EMAIL_CONFIRMATION":true,"GATE_FACILITY_SERVICES_TABLE":true,"GATE_REFACTORED_FACILITY_ITEM_ABOUT":false,"GATE_FIND_ANOTHER_SPECIALIST_WHEN_NO_AVAILABILITY":false,"GATE_GDPR_MARKETING_CONSENT_MANDATORY":false,"GATE_GDPR_REGISTRATION_INFORMATION":false,"GATE_GENERAL_MARKETING_AGREEMENT":true,"GATE_GOOGLE_ONE_TAP_LOGIN":false,"GATE_HIDE_NEARBY_DOCTORS_ON_NON_COMMERCIAL_PROFILE":false,"GATE_HIDE_PRICES_FOR_PATIENTS_WITH_INSURANCE":true,"GATE_HOMEPAGE_PATIENT_APP_BANNER":true,"GATE_HUBSPOT":true,"GATE_INSURANCE_PLANS":true,"GATE_LOCATION_DETAILS":true,"GATE_MODERATION_DOCTOR_ITEM_REQUIRED":false,"GATE_MODERATION_DOCTOR_ITEM_SPECIALIZATION":false,"GATE_MODERATION_DOCTOR_SPECIALIZATION":true,"GATE_MODERATION_EDIT_OPINION_BY_MODERATOR":true,"GATE_MODERATION_OPINION_TRUST_SCORE_DISPLAY":true,"GATE_MODERATION_AUTOMODERATOR_PARAMS_BUTTON_DISPLAY":true,"GATE_MODERATION_PANEL_DOCTOR_NEW_BY_SELF":false,"GATE_MODERATION_SPECIALIZATION_DOCUMENT_VERIFICATION":true,"GATE_NEW_SEARCH_DISTRICT_FILTERS":true,"GATE_NEW_SEARCH_FORCE_DOCTORS_ON_LANDING_PAGES":false,"GATE_NEW_SEARCH_ONLINE_CONSULTATION_BANNER":true,"GATE_NEW_SEARCH_PATIENT_APP_BANNER":true,"GATE_ONLINE_CONSULTATION_CALENDAR_PAYMENT_TIP":true,"GATE_ONLINE_LANDING_REAL_TESTIMONIALS":true,"GATE_OPINIONS_NEW_FLOW_SAMPLE_OPINIONS":false,"GATE_OPINIONS_NEW_FLOW_REQUIRE_LOGIN_JUST_BEFORE_SUBMIT":false,"GATE_OPINION_SIGNATURE_HIDE":false,"GATE_OPINION_SORTING_SHOW":false,"GATE_PB_DECIMAL_PART_IN_PRICES":true,"GATE_ENABLE_ALL_PATIENT_APP_BANNER":true,"GATE_ENABLE_BROWSER_CHAT_PATIENT_APP_BANNER":true,"GATE_QA_PATIENT_APP_BANNER":false,"GATE_USE_NEW_MESSENGER_APP":true,"GATE_CHAT_ENABLE_NEW_ON_LOAD_BANNER":true,"GATE_CHAT_ENABLE_NEW_ON_LOAD_CONFIRMATION_BANNER":true,"GATE_DEEPLINK_SEND_DIRECT_REGISTRATION_TRACKING":true,"GATE_DLP_VWO_EXPERIMENT_ENABLED":false,"GATE_ENABLE_DLP_SURVEY":false,"GATE_Q_AND_A":true,"GATE_Q_AND_A_ALLOW_PRIVATE_QUESTIONS":false,"GATE_Q_AND_A_ANSWER_MODERATION":false,"GATE_Q_AND_A_PRIVATE_QUESTIONS_PANEL_VUE":false,"GATE_RECURRING_CREDIT_CARD_PAYMENT":true,"GATE_SAVE_DOCTOR_PROFILE":true,"GATE_SAVE_DOCTOR_PROFILE_NON_LOGGED":true,"GATE_SENTRY_JS":true,"GATE_DATADOG_RUM_JS":true,"GATE_SENTRY_PERFORMANCE_TRACING":true,"GATE_SEO_ENABLE_NEW_DOCTOR_HOMEPAGE_SECTION":true,"GATE_SHOW_ADDRESS_FACILITY_WARNING":true,"GATE_SHOW_DOCTOR_PROFILE_EDITION_DESCRIPTION":true,"GATE_HIDE_REQUEST_SERVICES":false,"GATE_SHOW_GDPR_CHECKBOX":false,"GATE_SHOW_PHONE_ON_NON_COMMERCIAL_DOCTORS":false,"GATE_SLOT_RELEASED":false,"GATE_STRONG_PASSWORD_VALIDATOR":true,"GATE_TIMEZONE_ONLINE_CONSULTATION":true,"GATE_TURKISH_LAW_COMPLIANCE":false,"GATE_USER_REGISTRATION_EMAIL_CONFIRMATION":true,"GATE_VUE_LOCATION_AUTOCOMPLETE_LOGS":false,"GATE_VUE_WIDGETS":true,"GATE_WEBSOCKETS":true,"GATE_MODERATION_SPECIALIZATION_DOCUMENT_VERIFICATION_SENT_EMAIL":false,"GATE_TEST_ACCOUNTS_DASHBOARD_FACILITY_ACCOUNTS_TOGGLE":true,"GATE_OPINION_ACTIVATION_AND_EMAIL_VERIFICATION_VIA_EMAIL":false,"GATE_RECAPTCHA_ENTERPRISE_OPINIONS_FLOW":true,"GATE_OPINIONS_REMOVE_OTHER_FROM_LOCATION_DROPDOWN":false,"GATE_ECOMMERCE_USE_IFRAME":false,"GATE_DOCTOR_REGISTRATION_MODERATION_PANEL":true,"GATE_CRM_FIRST_CLASS_ECOMMERCE_PROMOTION":false,"GATE_OPINIONS_FOR_FACILITIES":false,"GATE_UNSUBSCRIBE_SMS_FOOTER":true,"GATE_OPINIONS_FACILITY_DOCTOR_DROPDOWN":false,"GATE_OPINIONS_FACILITY_ADDRESSES_DROPDOWN":false,"GATE_PATIENT_REQUEST_BUTTON":false,"GATE_ENABLE_PATIENT_REQUEST_WEBVIEW":false,"GATE_USE_NEW_PATIENT_REQUEST_PAGE":false,"GATE_PATIENT_REQUEST_VERIFICATION_STEP":false,"GATE_DOCTOR_OUT_OF_OFFICE":false,"GATE_GET_DOCTOR_CERTIFICATE":true,"GATE_CRM_ECOMMERCE_PACKAGING_LANDING":true,"GATE_CRM_ECOMMERCE_PACKAGING_LANDING_HIDE_ICONS":false,"GATE_CRM_ECOMMERCE_CUSTOMER_SUPPORT_SECTION":true,"GATE_REQUEST_PROFILE_CHANGES_WITH_TEXT_BOX":false,"GATE_FETCH_CUSTOMER_DATA_BY_TAX_NUMBER":false,"GATE_ECOMMERCE_ACCEPT_COMPANY_GMB":false,"GATE_CRM_CUSTOMER_TAX_NUMBER_NOT_REQUIRED":false,"GATE_BULK_OBJECT_VERIFICATION":true,"GATE_USER_TOOL_V2":true,"GATE_BANNER_REDIRECT_TO_LISTING":false,"GATE_SHOULD_CHECK_BOOKABLE_SERVICES_ON_FACILITY_PROFILE":true,"GATE_SHOULD_CHECK_BOOKABLE_DOCTORS_ON_FACILITY_PROFILE":true,"GATE_NEW_SEARCH_HIDE_DOCTOR_SERVICES":false,"GATE_SHOW_PRICE_INCREASE_MODAL":false,"GATE_OPINIONS_ABUSE_REPORT_VIA_EMAIL_POSSIBLE":false,"GATE_TRUST_BANNER_CERTIFICATES_PL":false,"GATE_USE_TEST_COOKIEPRO":false,"GATE_CHAT_SEND_HEALTH_PROFILE_BUTTON":false,"GATE_DOCTOR_SPECIALIZATION_IN_PROGRESS":false,"GATE_PATIENT_APP_EVENT_INTERCEPTOR":true,"GATE_DP_SPACES_HEADER":true,"GATE_CRM_ECOMMERCE_PACKAGING_LANDING_FUTURE_PRICINGS":false,"GATE_DE_SEARCH_FILTER_SLOTS_BY_INSURANCE_PROVIDER":false,"GATE_ENABLE_EFR_DEEPLINK_PARAM":true,"GATE_ENABLE_UNLEASH_FOR_DLP":true,"GATE_ENABLE_UNLEASH_CACHING_FOR_DLP":false,"GATE_VISIBILITY_SPACE_PROMO_MATERIALS_PAGE":true,"GATE_VISIBILITY_SPACE_DOCTOR_DASHBOARD":true,"GATE_FACILITY_PROFILE_PRICE_RANGES":true,"GATE_VISIBILITY_SPACE_FIRST_CLASS_PAGE":true,"GATE_FACILITY_PROFILE_GROUP_SERVICES_BY_DESCRIPTION":true,"GATE_OPINION_VERIFIED_BY_PAYMENT":true,"GATE_OPINION_MERGED_VERIFICATION_BADGES_FRONTEND":true,"GATE_NEW_DOCTOR_REGISTRATION_FLOW":true,"GATE_PRE_REGISTER_STEP":true,"GATE_DOCTOR_WELCOME_MODAL":true,"GATE_Q_AND_A_PATIENT_PANEL_SHOW_ALL":true,"GATE_SEARCH_MED24_BANNER":false,"GATE_DOCTOR_DASHBOARD":true,"GATE_NEW_SERVICES_SECTION_WITH_CUSTOM_NAMES":true,"GATE_SAAS_FOR_FREEMIUM":true,"GATE_FIRST_CLASS_LANDING_PAGE_MODALITIES":false,"GATE_FIRST_CLASS_WAITING_LIST":false,"GATE_CALENDAR_REQUEST_PHONE_NUMBER":true,"GATE_SHOW_ASK_FOR_CALENDAR_MODAL":true,"GATE_GOOGLE_ONE_TAP_LOGIN_MOVED_FROM_GTM":true,"GATE_SHOW_STATISTICS_ICON":true,"GATE_DOCTOR_DASHBOARD_CALENDAR_REQUESTS":true,"GATE_ENABLE_SAAS_INSURANCE_CONFIGURATION":true,"GATE_INSURANCE_CONFIGURATION_TEMPORARY_PMS_WORKAROUND":false,"GATE_SHOW_NEAR_ME":true,"GATE_OOPS_WIDGET":true,"GATE_FACILITY_PROFILE_MERGE_SERVICES_FOR_MULTIPLE_SPECS":true,"GATE_CRM_SHOW_ECOMMERCE_SECURE_PAYMENT_TEXT":true,"GATE_DOCTOR_PROFILE_EDITION_GENDER_ALLOW_OTHER":true,"GATE_ENABLE_ADDITIONAL_ONLINE_RESULTS_EXPERIMENT":false,"GATE_ENABLE_RADIUS_SEARCH_RESULTS_EXTENSION":true,"GATE_CRM_SHOW_ECOMMERCE_NOA_TERMS_2":false,"GATE_PHARMACIES_SEARCH":false,"GATE_SEARCH_ASSISTANT_EXPERIMENT_AUTO_SHOW":false,"GATE_SEARCH_ASSISTANT_BANNER_EXPERIMENT":true,"GATE_SEARCH_ASSISTANT_EXPERIMENT_SA_FROM_AUTOCOMPLETE":true,"GATE_SEARCH_ASSISTANT_DISPLAY_BANNER_ON_ONLINE_LISTINGS_EXPERIMENT":true,"GATE_VISIBILITY_EXPERIMENT":true,"GATE_BOOKING_PUBLIC_INSURANCE_FLOW_FRONTEND":false,"GATE_SEARCH_INSURANCE_LISTINGS_FILTER_PROCESSING":false,"GATE_MARKETPLACE_PAYMENTS_BNPL_RESCHEDULES":false,"GATE_VISIBILITY_ADDRESS_EDITOR_VALIDATION_DOCTOR":true,"GATE_VISIBILITY_ADDRESS_EDITOR_VALIDATION_FACILITY":true,"GATE_DOCTOR_NEW_MODERATION_NEW_ENDPOINT":true,"GATE_PB_INSURANCES_AVAILABILITY_SEARCH":false,"GATE_VISIBILITY_SA_HIDE_LIVE_LOCATION_QUESTION":true,"GATE_PB_AB_TEST_AVAILABILITY_CALENDAR":false,"GATE_CRM_NOA_PROMO_BLACK_FRIDAY":false,"GATE_CRM_NOA_PROMO_BLACK_FRIDAY_PRICE_INFO":false,"GATE_DOCTOR_REGISTRATION_LICENSE_REQUIRED_BY_SPECIALIZATION":false,"GATE_SUPPORT_DOCUMENT_UPLOAD_WITH_LICENSE_NUMBER":true,"GATE_ADDRESS_EDITOR_STREET_NUMBER_NOT_MANDATORY":false,"GATE_VISIBILITY_FC_PAGE_BLACK_FRIDAY_PROMO":false,"GATE_KEEP_DOCTOR_LICENSE_NUMBER_HIDDEN_IN_PROFILE":false,"GATE_VISIBILITY_WATSONIZED_WIDGET_CONFIGURATION":false,"GATE_DOCTOR_REGISTRATION_LICENSE_NUMBER_PAGE":false,"GATE_DOCTOR_REGISTRATION_LICENSE_NUMBER_MANDATORY":false,"GATE_DOCTOR_REGISTRATION_TRY_PRE_FILL":false,"GATE_ADDRESS_EDITOR_ZIP_CODE_NOT_MANDATORY":false,"GATE_ENABLE_SASS_ONLY_WIDGET_BY_DEFAULT":true,"GATE_DISPLAY_LINK_WHITE_LABEL_WIDGET":false,"GATE_LIMIT_ADDRESSES_BY_PLAN":false,"GATE_VISIBILITY_SHOW_LISTING_TERAPIA_SURVEY":false};
+
+	ZLApp.isGranted = function(gate) {
+		return this.Gate[gate];
+	};
+</script>
+
+
+	<script>
+		ZLApp.Lang = {
+						"@Disease": "doen\u00e7a",
+			"@List": "lista",
+			"@Map": "mapa",
+			"abandoned_cart_button": "Confirme a data",
+			"abandoned_cart_description": "Continue agendando sua consulta. Leva menos de 2 minutos!",
+			"abandoned_cart_header": "A sua visita ainda n\u00e3o foi confirmada",
+			"add": "Adicionar",
+			"add_patient": "Adicionar paciente",
+			"address": "Endere\u00e7o",
+			"addresses_with_no_online_booking": "Consult\u00f3rios sem agendamento (%{count})",
+			"advance_schedule_calendar_address": "Endere\u00e7o",
+			"agenda_visit_manage_cancel_visit_modal": "O seu agendamento foi cancelado.",
+			"agenda_visit_manage_confirm_visit_modal": "Obrigado! Por favor chegue a horas.",
+			"are_you_sure": "Tem a certeza?",
+			"autocomplete_disease": "doen\u00e7a",
+			"autocomplete_loading": "Estamos buscando os resultados",
+			"autocomplete_search_empty": "O que voc\u00ea est\u00e1 procurando?",
+			"autocomplete_search_prefix": "Pesquisar",
+			"autocomplete_specialization": "Especialidade",
+			"booking_sms_conf_after_resend_hint": "Foi enviada outra mensagem. Desta vez deve chegar em menos de 2 minutos.",
+			"brand_doctors": "Especialistas",
+			"calendar_placeholder_title": "Agendar pela Doctoralia",
+			"call": "Contato",
+			"cancel": "Cancelar",
+			"changes_sent_to_moderation": "As altera\u00e7\u00f5es foram enviadas aos nossos moderadores. O conte\u00fado antes da altera\u00e7\u00e3o n\u00e3o estar\u00e1 vis\u00edvel at\u00e9 que o processo de modera\u00e7\u00e3o esteja conclu\u00eddo.",
+			"chat_error_message": "Por favor, atualize a p\u00e1gina para ver as mensagens mais recentes.",
+			"check_other_calendars": "Mostrar endere\u00e7os com calend\u00e1rio",
+			"clinics_autocomplete": "Clinica",
+			"close": "Fechar",
+			"comment_should_not_capitalize": "Os coment\u00e1rios n\u00e3o devem ser escritos em letras mai\u00fasculas.",
+			"comment_to_short": "A sua opini\u00e3o dever\u00e1 ter pelo menos %minCharacters% carateres. Neste momento tem apenas %currentCount% carateres.",
+			"common_refresh": "Atualizar",
+			"components.question.doctor.book": "Agendar uma visita",
+			"confirm_when_slot_remove": "Pretende mesmo eliminar este intervalo de tempo?",
+			"congratulations_reminders_set": "Parab\u00e9ns. O lembrete foi definido.",
+			"currency_suffix": "R$ %{currency_code}",
+			"disable": "desativar",
+			"doctor_all_addresses": "Consult\u00f3rios (%{count})",
+			"doctor_all_addresses_one": "Consult\u00f3rio",
+			"doctor_autocomplete": "Especialista",
+			"doctor_edition_facility_type_header": "Tipo de endere\u00e7o",
+			"doctor_edition_online_office_name": "Nome do consult\u00f3rio online",
+			"doctor_opinions_show_opinions": "Mostrar opini\u00f5es",
+			"doctor_profile_add_opinion": "Postar opini\u00e3o",
+			"doctor_service": "Servi\u00e7o",
+			"doctor_verificated_successfully": "Este m\u00e9dico foi verificado",
+			"doctor_with_calendar": "Sem consultas",
+			"edit": "Editar",
+			"edit_visit_patient": "Editar paciente",
+			"enable": "ativar",
+			"errorTryLater": "Ocorreu um erro. Tente de novo mais tarde",
+			"error_while_uploading_photos": "O nosso servidor est\u00e1 a ter problemas para processar as suas fotografias. Por favor, tente reduzir o tamanho das mesmas ou carregue-as uma por uma.",
+			"expand_map": "Ampliar mapa",
+			"facility": "Cl\u00ednicas e hospitais",
+			"facility_listing_context_alert": "Alterar a especialidade, o endere\u00e7o ou o especialista pode causar a indisponibilidade do servi\u00e7o e fazer com que o plano de sa\u00fade que voc\u00ea selecionou n\u00e3o se aplique mais aos resultados.",
+			"facility_name_plaxeholder": "Ex.: Hospital das Cl\u00ednicas",
+			"fieldNotEmpty": "O campo n\u00e3o pode estar vazio",
+			"filter_info_box": "Utilize os filtros para encontrar os especialistas e centros m\u00e9dicos de sua prefer\u00eancia.",
+			"finish": "Termine",
+			"forward": "Continue",
+			"from": "Desde",
+			"generic-book-appointment": "Agendar consulta",
+			"google_calendar_cancel_sync_text": "Tem a certeza de que quer cancelar a sincroniza\u00e7\u00e3o?",
+			"import_address_name": "Nome do consult\u00f3rio",
+			"incorrect_date": "Data incorrecta!",
+			"insurance_box_title": "Procurando por um profissional com um conv\u00eanio m\u00e9dico espec\u00edfico? Confira nossas op\u00e7\u00f5es",
+			"internal_number_warning": "Depois de iniciada a liga\u00e7\u00e3o, por favor, insira o seguinte n\u00famero interno: ",
+			"less": "menos",
+			"license_verification_doctor_profile_modal_body": "Perfil sob verifica\u00e7\u00e3o da Doctoralia. As informa\u00e7\u00f5es publicadas neste perfil foram geradas exclusivamente pelo usu\u00e1rio, e n\u00e3o foram apuradas ainda pela Doctoralia, at\u00e9 a verifica\u00e7\u00e3o deste perfil, sugerimos que confirme a veracidade junto ao conselho da especialidade correspondente, ex.: CFM, CFP, CFO.",
+			"license_verification_doctor_profile_modal_title": "Status de verifica\u00e7\u00e3o do perfil",
+			"license_verification_doctor_profile_title": "Doctoralia est\u00e1 em processo de verifica\u00e7\u00e3o deste perfil",
+			"link_doctor_to_clinic.choose_clinic.placeholder": "Digite o nome do centro m\u00e9dico para encontr\u00e1-lo",
+			"link_doctor_to_clinic.choose_clinic.title": "Selecione o centro m\u00e9dico onde voc\u00ea atende (lembrando que ao selecionar uma cl\u00ednica, os pacientes pertencer\u00e3o \u00e0 cl\u00ednica)",
+			"loadingWait": "Carregando...por favor, aguarde! ",
+			"map": "mapa",
+			"map_empty_state_CTA": "Mova o mapa ou amplie-o para encontrar mais resultados",
+			"map_empty_state_copy_generic": "N\u00e3o h\u00e1 especialistas nesta regi\u00e3o",
+			"map_empty_state_copy_spec": "N\u00e3o h\u00e1 %dentista% aqui",
+			"map_search": "Procurar nesta \u00e1rea",
+			"map_test_modal_CTA": "Retornar \u00e0 lista de especialistas",
+			"map_test_modal_text": "Estamos trabalhando em um novo mapa. Novidades em breve.",
+			"map_test_modal_text_headline": "Em constru\u00e7\u00e3o.",
+			"mobile_sign_as": "Assinar como",
+			"mobile_specialization": "Especializa\u00e7\u00e3o",
+			"mobile_visit_try_again": "Tentar de novo",
+			"more": "mais",
+			"move_visit": "Reagendar uma consulta",
+			"no": "N\u00e3o",
+			"no_calendar_in_your_location": "Sem calend\u00e1rio neste endere\u00e7o.",
+			"no_open_slots": "N\u00e3o oferece o agendamento online",
+			"no_results_for": "N\u00e3o h\u00e1 resultados de pesquisa para",
+			"no_slots_facility_cta": "Mostrar perfil",
+			"no_slots_facility_info": "Nenhum profissional neste centro m\u00e9dico tem consultas dispon\u00edveis",
+			"online_consultation_doc_card_label": "Oferece teleconsulta",
+			"pagination_next": "Pr\u00f3ximo",
+			"pagination_previous": "Anterior",
+			"panel_delete-me-modal_no": "Manter conta",
+			"panel_delete-me-modal_yes": "Excluir conta",
+			"patient_visit_cancel_modal_confirm": "Tem certeza que quer cancelar este atendimento? Caso tenha pago antecipadamente e estiver cancelando com menos de 24h de anteced\u00eancia, voc\u00ea n\u00e3o ter\u00e1 direito ao reembolso.",
+			"patients_marketing_consent_modal_cta_no": "N\u00e3o desejo receber",
+			"patients_marketing_consent_modal_cta_yes": "Quero receber as atualiza\u00e7\u00f5es da Doctoralia",
+			"patients_marketing_consent_modal_desc": "Receba em primeira m\u00e3o as informa\u00e7\u00f5es sobre novos recursos e servi\u00e7os dispon\u00edveis para voc\u00ea! Aproveite a Doctoralia ao m\u00e1ximo para cuidar da sua sa\u00fade e da sa\u00fade de seus entes queridos.",
+			"patients_marketing_consent_modal_legal_txt": "Para enviar as atualiza\u00e7\u00f5es da Doctoralia, precisaremos do seu consentimento. Voc\u00ea poder\u00e1 alterar suas prefer\u00eancias quando quiser.",
+			"patients_marketing_consent_modal_legal_txt_learn_more": "Saiba mais em nossa Pol\u00edtica de Privacidade",
+			"patients_marketing_consent_modal_legal_txt_tooltip": "Precisamos de seu consentimento para te oferecer a melhor experi\u00eancia na Doctoralia. <a href=\"https:\/\/www.doctoralia.com.br\/privacidade\">Voc\u00ea poder\u00e1 alterar suas prefer\u00eancias sempre que quiser.<\/a>",
+			"patients_marketing_consent_modal_title": "N\u00e3o perca nenhuma atualiza\u00e7\u00e3o importante!",
+			"price_from": "A partir de %price%",
+			"provide_visit_location": "O local de visita \u00e9 necess\u00e1rio",
+			"qna_question_delete_confirm": "Tem a certeza que pretende eliminar esta quest\u00e3o?",
+			"rate_error": "Para adicionar a sua opini\u00e3o, tem de escolher uma avalia\u00e7\u00e3o",
+			"registration.facility.user_position.doctor": "Especialista",
+			"reminder_removed": "O lembrete foi eliminado",
+			"remove_slot_error_message": "N\u00e3o nos foi poss\u00edvel eliminar hor\u00e1rio",
+			"removing": "A retirar",
+			"reset_filters": "Restabelecer",
+			"saving": "Gravando...",
+			"search_all_filters": "Todos os filtros",
+			"search_calendar_missing": "Nenhum calend\u00e1rio dispon\u00edvel!",
+			"search_doctors": "Procurar especialistas",
+			"search_error_no_location": "N\u00e3o \u00e9 poss\u00edvel determinar a localiza\u00e7\u00e3o do utilizador",
+			"search_filter_calendar": "Agendar na Doctoralia",
+			"search_filter_calendar_description": "Mostre apenas especialistas com quem voc\u00ea pode agendar uma consulta na Doctoralia",
+			"search_filter_clinics": "Cl\u00ednicas",
+			"search_filter_dates_per_date": "Data da consulta",
+			"search_filter_diseases": "Doen\u00e7as",
+			"search_filter_districts": "Bairros",
+			"search_filter_doctors": "Doutores",
+			"search_filter_doctors_clinics": "Doutores e cl\u00ednicas",
+			"search_filter_entity_type": "Mostrar perfis de",
+			"search_filter_insurances": "Planos de Sa\u00fade",
+			"search_filter_kids_friendly": "Aceita crian\u00e7as",
+			"search_filter_kids_friendly_description": "Especialistas que atendem crian\u00e7as",
+			"search_filter_payment_methods": "M\u00e9todo de pagamento",
+			"search_filter_services": "Servi\u00e7os",
+			"search_filter_specializations": "Especialidades",
+			"search_in_doctors": "Procurar \"%{QUERY}\" em especialistas",
+			"search_in_facilities": "Procurar \"%{QUERY}\" em cl\u00ednicas m\u00e9dicas",
+			"search_see_profile": "Veja o perfil",
+			"search_sort_by": "Ordenar por",
+			"search_sorter": "Ordenar por",
+			"search_sorter_availability": "Consulta mais pr\u00f3xima dispon\u00edvel",
+			"search_sorter_factor_based": "Sugest\u00f5es",
+			"search_sorter_rating": "Melhor opini\u00e3o",
+			"search_sorter_recommended": "recomendado",
+			"search_whole_website": "Procure \"%phrase%\" em servi\u00e7o completo",
+			"selectService": "Selecione um servi\u00e7o",
+			"selectSpecialization": "Selecione a especialidade",
+			"select_choose": "---- escolha ----",
+			"selected": "Selecionado",
+			"send_opinion": "Envie opini\u00f5es",
+			"services_and_prices_no_price": "Pre\u00e7o n\u00e3o dispon\u00edvel",
+			"set_visit_button": "Agendar consulta",
+			"show_all_cities": "Veja mais",
+			"show_more": "Veja mais",
+			"show_phone": "Mostrar n\u00famero",
+			"show_yesterday": "Mostrar ontem",
+			"super_doctor_mail_CTA_see_all_opinions": "Ver todas as opini\u00f5es",
+			"terms_of_visits_addition": "Adicionar datas de consultas",
+			"toast_remove_slot_title": "Prazo removido!",
+			"toast_undo_remove_slot_title": "Prazo restaurado!",
+			"unexpected_error": "Houve um erro inesperado!",
+			"unsaved_changes": "Existem algumas mudan\u00e7as n\u00e3o salvadas. Quer ficar nesta p\u00e1gina para poder guard\u00e1-las?",
+			"validation.email": "Forne\u00e7a um endere\u00e7o de email v\u00e1lido",
+			"validation.maxLength": "Neste campo s\u00e3o permitidos at\u00e9 %{max} caracteres.",
+			"validation.minLength": "Este valor \u00e9 muito curto. Deveria ter %{min} caracteres ou mais.",
+			"validation.required": "Este campo \u00e9 necess\u00e1rio",
+			"validator_email": "Forne\u00e7a um endere\u00e7o de email v\u00e1lido",
+			"validator_required": "Este campo \u00e9 necess\u00e1rio",
+			"visit_details_saving_progress": "Guardando...",
+			"visit_details_visit_cancelled": "Agendamento cancelado",
+			"visit_out_of_schedule": "Consulta fora do hor\u00e1rio",
+			"visit_report_select_all": "Selecionar tudo",
+			"visit_select_date": "Escolher data da consulta",
+			"wait_a_moment": "Aguarde um momento...",
+			"warning": "Suggestion",
+			"we_are_checking_your_localization": "Estamos \u00e0 procura da sua localiza\u00e7\u00e3o...",
+			"widget_default_specialist": "especialista",
+			"widget_show_reviews": "Mostrar opini\u00f5es",
+			"yes": "Sim",
+			"you_have_x_custom_calendar_configs": "voc\u00ea tem $quantidade de semanas com hor\u00e1rio alterado",
+			"you_need_characters": "Escreva mais %{currentCount} caracteres.",
+			"your_account_demo_1": "Veja como funciona a nova lista de visitas",
+			"your_account_demo_2": "Pode escolher uma data de um calend\u00e1rio em vez de percorrer",
+			"your_account_demo_3": "Pode marcar uma consulta ao clicar em 1 bot\u00e3o",
+			"your_account_demo_4": "Pode escolher uma lista para um endere\u00e7o dado",
+			"your_account_demo_5": "Pode editar visitas anteriormente marcadas por si",
+			"your_account_demo_6": "Clique na posi\u00e7\u00e3o da lista para mostrar informa\u00e7\u00f5es detalhadas",
+	
+			'all_specs': 'Todas\u0020as\u0020especialidades',
+			'banner_promote_app_cta_2': 'Ir\u0020para\u0020o\u0020aplicativo',
+			'banner_promote_app_text_1': 'Baixe\u0020nosso\u0020aplicativo\u0020e\u0020viva\u0020a\u0020melhor\u0020experi\u00EAncia\u0020ao\u0020cuidar\u0020de\u0020sua\u0020sa\u00FAde\u0021',
+			'call_center_info_placeholder_transport': 'ex.\u003A\u0020\u0022Entrada\u0020no\u0020edif\u00EDcio\u0020pela\u0020lateral,\u0020no\u0020lado\u0020oposto\u0020ao\u0020centro\u0020comercial.\u0020Voc\u00EA\u0020consegue\u0020chegar\u0020l\u00E1\u0020utilizando\u0020a\u0020linha\u0020verde\u0020do\u0020metr\u00F4...\u0022',
+			'directions_parking': 'Descri\u00E7\u00E3o\u0020da\u0020localiza\u00E7\u00E3o',
+			'docplanner_payments_action_required': 'Pagamentos\u0020\u002D\u0020A\u00E7\u00E3o\u0020necess\u00E1ria',
+			'docplanner_payments_action_required_tip1': 'Voc\u00EA\u0020deve\u0020atualizar\u0020sua\u0020conta.',
+			'docplanner_payments_action_required_tip2': 'Acesse\u0020o\u0020site\u0020do\u0020nosso\u0020parceiro\u0020de\u0020pagamentos\u0020e\u0020para\u0020completar\u0020as\u0020informa\u00E7\u00F5es\u0020necess\u00E1rias.',
+			'docplanner_payments_action_required_update_button': 'Acessar\u0020',
+			'doctor_edition_remote_instructions_header': 'Como\u0020conectar\u002Dse\u0020a\u0020uma\u0020consulta',
+			'doctor_edition_remote_instructions_placeholder': 'Digitar\u0020instru\u00E7\u00F5es\u0020aqui',
+			'doctor_edition_remote_instructions_tip': 'Todas\u0020as\u0020informa\u00E7\u00F5es\u0020que\u0020voc\u00EA\u0020fornecer,\u0020como\u0020n\u00FAmero\u0020de\u0020telefone\u0020ou\u0020e\u002Dmail,\u0020ser\u00E3o\u0020vis\u00EDveis\u0020para\u0020os\u0020pacientes\u0020somente\u0020depois\u0020que\u0020uma\u0020consulta\u0020for\u0020agendada.',
+			'doctor_panel_address_details': '\u0020Informa\u00E7\u00F5es\u0020complementares\u0020fornecidas\u0020aos\u0020pacientes\u0020que\u0020est\u00E3o\u0020com\u0020consulta\u0020marcada\u0020para\u0020facilitar\u0020o\u0020acesso\u0020ao\u0020seu\u0020endere\u00E7o.\u0020Por\u0020exemplo\u003A\u0020acesso\u0020ao\u0020edif\u00EDcio,\u0020como\u0020chegar\u0020em\u0020transporte\u0020p\u00FAblico,\u0020etc.',
+			'has_unpaid_invoices_btn': 'Escolher\u0020m\u00E9todo\u0020de\u0020pagamento',
+			'has_unpaid_invoices_content': 'Voc\u00EA\u0020pode\u0020realizar\u0020o\u0020pagamento\u0020online\u0020ou\u0020atrav\u00E9s\u0020de\u0020transfer\u00EAncia\u0020banc\u00E1ria.',
+			'has_unpaid_invoices_title': 'Existe\u0020uma\u0020fatura\u0020pendente\u0020de\u0020pagamento\u0020na\u0020sua\u0020conta.',
+			'marketplace_account_rejected_account_apology_information': 'Nos\u0020desculpamos\u0020pela\u0020inconveni\u00EAncia\u0020e\u0020agradecemos\u0020pela\u0020sua\u0020paci\u00EAncia.',
+			'marketplace_account_rejected_account_header': 'Sua\u0020conta\u0020Doctoralia\u0020Pagamentos\u0020foi\u0020temporariamente\u0020suspensa',
+			'marketplace_account_rejected_account_header_description': 'Seus\u0020pagamentos\u0020online\u0020est\u00E3o\u0020temporariamente\u0020suspensos\u0020pelo\u0020nosso\u0020provedor\u0020de\u0020pagamentos.',
+			'marketplace_account_rejected_account_work_in_progress': 'Estamos\u0020trabalhando\u0020para\u0020que\u0020volte\u0020a\u0020funcionar\u0020normalmente.',
+			'pricing-terms-modal-unilateral-changed-of-plan-title': 'pricing\u002Dterms\u002Dmodal\u002Dunilateral\u002Dchanged\u002Dof\u002Dplan\u002Dtitle',
+			'pricing-terms-modal-unilateral-changed-of-plan-descr': 'pricing\u002Dterms\u002Dmodal\u002Dunilateral\u002Dchanged\u002Dof\u002Dplan\u002Ddescr',
+			'pricing-terms-modal-unilateral-changed-of-plan-cta': 'pricing\u002Dterms\u002Dmodal\u002Dunilateral\u002Dchanged\u002Dof\u002Dplan\u002Dcta',
+			'address_editor_select_street_from_the_list': 'Selecione\u0020a\u0020rua\u0020na\u0020lista',
+			'address_editor_select_city_from_the_list': 'Selecione\u0020a\u0020cidade\u0020na\u0020lista',
+			'address_editor_street_number_missing': 'Selecione\u0020um\u0020endere\u00E7o\u003A\u0020rua\u0020e\u0020n\u00FAmero\u0020',
+			'address_editor_invalid_street_address': 'Este\u0020endere\u00E7o\u0020n\u00E3o\u0020existe.\u0020Selecione\u0020um\u0020endere\u00E7o\u0020v\u00E1lido\u0020a\u0020partir\u0020das\u0020sugest\u00F5es.',
+			'month': {
+				'0': 'Janeiro',
+				'1': 'Fevereiro',
+				'2': 'Mar\u00E7o',
+				'3': 'Abril',
+				'4': 'Maio',
+				'5': 'Junho',
+				'6': 'Julho',
+				'7': 'Agosto',
+				'8': 'Setembro',
+				'9': 'Outubro',
+				'10': 'Novembro',
+				'11': 'Dezembro',
+			},
+			'monthShort': {
+				'0': 'Jan',
+				'1': 'Fev',
+				'2': 'Mar',
+				'3': 'Abr',
+				'4': 'Mai',
+				'5': 'Jun',
+				'6': 'Jul',
+				'7': 'Ago',
+				'8': 'Set',
+				'9': 'Out',
+				'10': 'Nov',
+				'11': 'Dez',
+			},
+			'month.0': 'Janeiro',
+			'month.1': 'Fevereiro',
+			'month.2': 'Mar\u00E7o',
+			'month.3': 'Abril',
+			'month.4': 'Maio',
+			'month.5': 'Junho',
+			'month.6': 'Julho',
+			'month.7': 'Agosto',
+			'month.8': 'Setembro',
+			'month.9': 'Outubro',
+			'month.10': 'Novembro',
+			'month.11': 'Dezembro',
+			'month_short.0': 'Jan',
+			'month_short.1': 'Fev',
+			'month_short.2': 'Mar',
+			'month_short.3': 'Abr',
+			'month_short.4': 'Mai',
+			'month_short.5': 'Jun',
+			'month_short.6': 'Jul',
+			'month_short.7': 'Ago',
+			'month_short.8': 'Set',
+			'month_short.9': 'Out',
+			'month_short.10': 'Nov',
+			'month_short.11': 'Dez',
+			'more': 'mais',
+			'online_consultation_check_box': 'Teleconsulta',
+			'search': 'Pesquisar',
+			'search_placeholder_specialization': 'especialidade,\u0020doen\u00E7a\u0020ou\u0020nome',
+			'search_placeholder_where': 'cidade\u0020ou\u0020regi\u00E3o',
+			'search_placeholder_where_city': 'search_placeholder_where_city',
+			'near_me': 'Perto\u0020de\u0020mim',
+			'statistics_video_pro_modal_body': 'Conhe\u00E7a\u002Das\u0020agora\u0020e\u0020descubra\u0020como\u0020te\u0020ajudamos\u0020a\u0020alcan\u00E7ar\u0020exatamente\u0020os\u0020resultados\u0020que\u0020voc\u00EA\u0020precisa.',
+			'statistics_video_pro_modal_body_bold': 'J\u00E1\u0020viu\u0020suas\u0020estat\u00EDsticas\u0020do\u0020\u00FAltimo\u0020m\u00EAs\u0020na\u0020Doctoralia\u003F\u0020',
+			'statistics_video_pro_modal_cta': 'Saiba\u0020mais',
+			'statistics_video_pro_modal_cta_lead': 'Outros\u0020\u0025\u007Bspecialization_name\u007D\u0020est\u00E3o\u0020conseguindo\u0020melhores\u0020resultados\u0020com\u0020Premium',
+			'statistics_video_pro_modal_cta_lead_general': 'Outros\u0020especialistas\u0020j\u00E1\u0020est\u00E3o\u0020conseguindo\u0020melhores\u0020resultados\u0020com\u0020Premium',
+			'statistics_video_pro_modal_header': 'Este\u0020v\u00EDdeo\u0020foi\u0020preparado\u0020para\u0020voc\u00EA',
+            'new': 'Novo',
+		    'a11y_info_required_fields': '\u002A\u0020campos\u0020obrigat\u00F3rios',
+			'weekDay': {
+				'0': 'Segunda\u002Dfeira',
+				'1': 'Ter\u00E7a\u002Dfeira',
+				'2': 'Quarta\u002Dfeira',
+				'3': 'Quinta\u002Dfeira',
+				'4': 'Sexta\u002Dfeira',
+				'5': 'S\u00E1bado',
+				'6': 'Domingo',
+			},
+			'weekDayShort': {
+				'0': 'Segunda\u002Dfeira',
+				'1': 'Ter,',
+				'2': 'Qua',
+				'3': 'Qui,',
+				'4': 'Sex,',
+				'5': 'S\u00E1b,',
+				'6': 'Dom,',
+			},
+			'weekday.0': 'Segunda\u002Dfeira',
+			'weekday.1': 'Ter\u00E7a\u002Dfeira',
+			'weekday.2': 'Quarta\u002Dfeira',
+			'weekday.3': 'Quinta\u002Dfeira',
+			'weekday.4': 'Sexta\u002Dfeira',
+			'weekday.5': 'S\u00E1bado',
+			'weekday.6': 'Domingo',
+			'weekday_short.0': 'Segunda\u002Dfeira',
+			'weekday_short.1': 'Ter,',
+			'weekday_short.2': 'Qua',
+			'weekday_short.3': 'Qui,',
+			'weekday_short.4': 'Sex,',
+			'weekday_short.5': 'S\u00E1b,',
+			'weekday_short.6': 'Dom,',
+		};
+	</script>
+	
+
+	<script>
+					ZLApp.APICredentials = {
+	'ACCESS_TOKEN': 'ZWQ1ZWE1OWY2ZThmMmNkMTQ4M2JjN2ZlZTI2NWM1NzhiYzdlYjExNGJjYWM2NzI5OGM3YjAzNTljMWY3NTA1Zg',
+	'ACCESS_TOKEN_EXPIRATION_TIME': '1770815622',
+	'REFRESH_TOKEN': '',
+	'REFRESH_TOKEN_EXPIRATION_TIME': '',
+	'TOKEN_URL': 'https\u003A\/\/l.doctoralia.com.br\/oauth\/v2\/token'
+};
+
+			</script>
+
+							
+			
+
+	<meta name="SKYPE_TOOLBAR" content="SKYPE_TOOLBAR_PARSER_COMPATIBLE"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+
+	
+<link rel="shortcut icon" type="image/png" data-lazyload-href="//platform.docplanner.com/img/general/icons/favicon.png?2266777747"/>
+
+	<link rel="image_src" href="//platform.docplanner.com//img/br/logo/logo-small-br.png"/>
+
+					
+		
+					<link href="//platform.docplanner.com/css/jade-dpuikitv3-ccf4255a.css" rel="stylesheet"/>
+					
+		
+					<link href="//platform.docplanner.com/css/jade-search-9dc41cc5.css" rel="stylesheet"/>
+					
+							
+			
+
+	
+						<!-- Optimize page-hiding CSS code -->
+<style>.optimize-hiding .optimize-hiding-element { opacity: 0 !important} </style>
+<script>
+(function(a,s,y,n,c,h,i,d,e)
+{s.className+=' '+y;h.start=1*new Date;
+  h.end=i=function(){s.className=s.className.replace(RegExp(' ?'+y),'')};
+  (a[n]=a[n]||[]).hide=h;setTimeout(function(){i();h.end=null},c);h.timeout=c;
+}
+)(window,document.documentElement,'optimize-hiding','dataLayer',2000,
+  {'GTM-PZ83PG': true});
+</script>
+			
+			
+						
+<!-- Google Tag Manager -->
+<script>
+		var oneTrackingPageData = {
+		'event': 'oneTrackingEvent',
+		'params': {
+			'category': 'generalData',
+			'action': 'page_data',
+			'properties': {
+				'service_category_name': '',
+				'service_category_id': '',
+				'service_subcategory_name': '',
+				'service_subcategory_id': '',
+				'experiment_name': [],
+			}
+		}
+	};
+
+	var dataLayerContainer = {};
+
+	dataLayerContainer['gtm-pageType'] = '/search_results_empty_new';
+	dataLayerContainer['gtm-region'] = '';
+	dataLayerContainer['gtm-district'] = '';
+	dataLayerContainer['gtm-specialization'] = '';
+	dataLayerContainer['gtm-specializationId'] = '';
+	dataLayerContainer['gtm-fcategory'] = '';
+	dataLayerContainer['gtm-city'] = '';
+	dataLayerContainer['gtm-disease'] = '';
+	dataLayerContainer['gtm-service'] = '';
+	dataLayerContainer['gtm-isMetaIndex'] = '0';
+	dataLayerContainer['gtm-isMetaFollow'] = '1';
+	dataLayerContainer['gtm-redesignedNonCommercialProfile'] = '0';
+	dataLayerContainer['gtm-redesignedCommercialProfile'] = '0';
+	dataLayerContainer['gtm-country-code'] = 'br';
+	dataLayerContainer['gtm-doctorIsOnOwnProfile'] = '0';
+	dataLayerContainer['gtm-is-webview'] = '0';
+
+	
+	
+	
+	
+	
+			dataLayerContainer['gtm-is-logged-in'] = '0';
+	
+	dataLayer = [oneTrackingPageData, dataLayerContainer];
+
+	var isE2ETest = '' === '1';
+	if (!isE2ETest) {
+		(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+		  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+		j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+		'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+		})(window,document,'script','dataLayer','GTM-PZ83PG');
+	}
+</script>
+<!-- End Google Tag Manager -->
+			
+</head>
+<body id="search-listing" class="search-listing" >
+	
+				<script nomodule>
+  var alert = document.createElement('div');
+  var icon = document.createElement('div');
+  var message = document.createElement('div');
+
+  alert.setAttribute('class', 'd-flex flex-row align-items-center py-1-5 pl-2 bg-white');
+  icon.setAttribute('class', 'p-1 d-flex align-center justify-content-center');
+  message.setAttribute('class', 'px-1-5 text-muted');
+  icon.innerHTML = '<i aria-hidden="true" class="svg-icon svg-icon-warning svg-icon-size-32 svg-icon-color-danger" ><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10ZM11 8a1 1 0 1 1 2 0v4a1 1 0 1 1-2 0V8Zm2.25 7.25a1.25 1.25 0 1 1-2.5 0 1.25 1.25 0 0 1 2.5 0Z"/></svg></i>';
+  message.innerHTML = 'Infelizmente seu navegador já não é compatível. Por favor, <a href="https://www.doctoralia.com.br/app-pacientes">baixe grátis nosso app para celular</a> ou <a href="https://browsehappy-com.translate.goog/?_x_tr_sl=en&_x_tr_tl=pt&_x_tr_hl=en&_x_tr_pto=wapp">mude de navegador</a>. Dessa forma poderemos proporcionar a experiência que você merece.';
+
+  alert.appendChild(icon);
+  alert.appendChild(message);
+
+  document.body.insertBefore(alert, document.body.firstChild);
+</script>
+	
+			    	
+	
+	
+		<div class="wrapper">
+			
+									
+	<div
+		class=""
+		data-banner-translations="{&quot;banner_promote_app_listing_nocalendar_test_title&quot;:&quot;Precisa de um especialista?&quot;,&quot;banner_promote_app_listing_nocalendar_test_text&quot;:&quot;Cuidar da sua sa\u00fade \u00e9 muito mais simples pelo App. Confira agora mesmo!&quot;,&quot;banner_promote_app_listing_nocalendar_test_cta&quot;:&quot;Conhecer o App&quot;,&quot;banner_promote_app_listing_nocalendar_test_cta2&quot;:&quot;Continuar pelo site da Doctoralia&quot;,&quot;banner_promote_app_listing_nocalendar_test_title2&quot;:&quot;Simplifique o cuidado com sua sa\u00fade pelo App&quot;,&quot;banner_promote_app_listing_nocalendar_test_text2&quot;:&quot;Filtre os especialistas mais pr\u00f3ximos a voc\u00ea&quot;,&quot;banner_promote_app_listing_nocalendar_test_text3&quot;:&quot;Agende uma consulta quando e onde quiser&quot;,&quot;banner_promote_app_listing_nocalendar_test_tcta3&quot;:&quot;Instalar o App&quot;,&quot;banner_promote_app_profile_nocalendar_test_title&quot;:&quot;Precisa de um especialista?&quot;,&quot;banner_promote_app_profile_nocalendar_test_text&quot;:&quot;Cuidar da sua sa\u00fade \u00e9 muito mais simples pelo App. Confira agora mesmo!&quot;,&quot;banner_promote_app_profile_nocalendar_test_cta&quot;:&quot;Conhecer o App&quot;,&quot;banner_promote_app_profile_nocalendar_test_cta2&quot;:&quot;Continuar pelo site da Doctoralia&quot;,&quot;banner_promote_app_profile_nocalendar_test_title2&quot;:&quot;Agende facilmente pelo App &quot;,&quot;banner_promote_app_profile_nocalendar_test_cta3&quot;:&quot;Abrir o App&quot;,&quot;banner_promote_app_content_page_test_title&quot;:&quot;Tem mais d\u00favidas sobre sua sa\u00fade?&quot;,&quot;banner_promote_app_content_page_test_text&quot;:&quot;Baixe o App e receba uma resposta diretamente de um especialista&quot;,&quot;banner_promote_app_content_page_test_cta&quot;:&quot;Conhecer o App&quot;,&quot;banner_promote_app_content_page_test_cta2&quot;:&quot;Continuar pelo site da Doctoralia&quot;,&quot;banner_promote_app_content_page_test_title2&quot;:&quot;Cuide da sua sa\u00fade pelo App&quot;,&quot;banner_promote_app_content_page_test_cta3&quot;:&quot;Abrir &quot;,&quot;banner_promote_app_content_booking_confirmation_V1&quot;:&quot;Ol\u00e1! A seguir, voc\u00ea encontra todos os detalhes da sua consulta. Acesse essas informa\u00e7\u00f5es a qualquer momento pelo App e receba lembretes para n\u00e3o se esquecer da vista.&quot;,&quot;banner_promote_app_content_booking_confirmation_cta_V1&quot;:&quot;Continuar pelo App&quot;,&quot;banner_promote_app_content_booking_confirmation_V2&quot;:&quot;Ol\u00e1! Agradecemos por agendar sua consulta. Acesse todos os detalhes a qualquer momento pelo App e receba lembretes para n\u00e3o se esquecer da vista.&quot;,&quot;banner_promote_app_content_booking_confirmation_V3&quot;:&quot;Acompanhe todos os detalhes de suas consultas&quot;,&quot;banner_promote_app_content_opinion_thank_you_page_title_V1&quot;:&quot;Mensagem de seu especialista&quot;,&quot;banner_promote_app_content_opinion_thank_you_page_V1&quot;:&quot;Ol\u00e1! Agrade\u00e7o por ter compartilhado a sua opini\u00e3o. Se quiser me enviar uma mensagem direta, por favor, baixe o App.&quot;,&quot;banner_promote_app_doctor_homepage_test_tag&quot;:&quot;Recomendado&quot;,&quot;banner_promote_app_doctor_homepage_test_app_title&quot;:&quot;App Doctoralia&quot;,&quot;banner_promote_app_doctor_homepage_test_cta&quot;:&quot;Acessar App&quot;,&quot;banner_promote_app_doctor_homepage_test_browser_title&quot;:&quot;Navegador&quot;,&quot;banner_promote_app_doctor_homepage_test_cta2&quot;:&quot;Continuar&quot;,&quot;banner_promote_app_doctor_homepage_test_cta3&quot;:&quot;Abrir o App&quot;,&quot;banner_promote_app_doctor_homepage_test_cta4&quot;:&quot;Continuar pelo site da Doctoralia&quot;,&quot;banner_promote_app_doctor_homepage_test_title&quot;:&quot;A Doctoralia \u00e9 melhor pelo App&quot;,&quot;banner_promote_app_email_footer&quot;:&quot;Gerencie suas consultas pelo App: receba lembretes e envie mensagens aos especialistas&quot;,&quot;download-app-generic&quot;:&quot;Baixar o App&quot;,&quot;know-more-generic&quot;:&quot;Saber mais&quot;,&quot;banner-promote-app-homepage-modal-title-V2&quot;:&quot;Cuide da sua sa\u00fade&quot;,&quot;banner-promote-app-homepage-modal-text-V2&quot;:&quot;Encontre os melhores especialistas e agende uma consulta. Baixe o App e tenha acesso a ferramentas exclusivas e gratuitas.&quot;,&quot;banner-promote-app-homepage-modal-text-V3-A&quot;:&quot;Agende consultas, entre em contato com os especialistas e receba seus lembretes no App.&quot;,&quot;banner-promote-app-homepage-modal-text-V3-B&quot;:&quot;Baixe o App: agende consultas com os seus especialistas e receba todos os lembretes.&quot;,&quot;banner-promote-app-homepage-modal-text-rating-V2&quot;:&quot;Avalia\u00e7\u00e3o dos usu\u00e1rios: 5 na Play Store e 4,9 na Apple&quot;,&quot;banner-promote-app-benefits-1&quot;:&quot;Organize as suas consultas de um jeito simples&quot;,&quot;banner-promote-app-benefits-2&quot;:&quot;Envie mensagens para os especialistas&quot;,&quot;banner-promote-app-benefits-3&quot;:&quot;Receba notifica\u00e7\u00f5es&quot;,&quot;use-the-app-generic&quot;:&quot;Use o app&quot;,&quot;banner-promote-app-listings-descr&quot;:&quot;Compare perfis profissionais e agende as consultas facilmente pelo app&quot;,&quot;banner-promote-app-listings-title&quot;:&quot;Crie sua lista de especialistas favoritos&quot;,&quot;banner-promote-app-get-most-docplanner&quot;:&quot;Aproveite o melhor da Doctoralia&quot;,&quot;banner-promote-app-more-features-title&quot;:&quot;Descubra mais funcionalidades no app&quot;,&quot;banner-promote-app-listings-V2-text&quot;:&quot;Envie mensagens para os especialistas, receba lembretes e mais!&quot;}"
+		data-id="patient-app-banner-index"
+	>
+	<patient-app-banner-index
+		:init-options="{&quot;active&quot;:true,&quot;template&quot;:&quot;FullPageWithLogo&quot;,&quot;touchpoint&quot;:&quot;listing_no_calendar&quot;}"
+	/>
+	</div>
+
+	<style>
+		.patient-app-banner-relative-placeholder {
+			height: 125px;
+		}
+		@media only screen and (min-width: 576px) {
+			.patient-app-banner-relative-placeholder {
+				display: none;
+			}
+		}
+	</style>
+	
+	
+	
+	
+			
+<!--Header-->
+<header
+	data-id="main-header"
+	role="navigation"
+	class="navbar navbar-dark bg-secondary navbar-expand-md navbar-custom mb-0 mx-auto px-2 py-0 px-md-1"
+>
+	<!--Inside company icon-->
+		<div class="container">
+		<!--Docplanner logo-->
+		
+
+	
+
+
+<div class="m-0">
+	<a
+		href="/"
+		data-test-id="dp-logo"
+		aria-label="Doctoralia - Homepage"
+			>
+		<span class="navbar-brand p-0 d-none d-lg-inline-block">
+			<svg width="2304" height="400" viewBox="0 0 3458 600" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMinYMid meet"><path d="M3305 201.758c25.59 0 47.52 6.419 65.8 19.258 8.81 5.868 16.62 12.903 23.44 21.104l1.83-23.264c.43-5.485 5.01-9.717 10.51-9.717h40.52c5.82 0 10.55 4.721 10.55 10.545v269.947c0 5.824-4.73 10.545-10.55 10.545h-40.52c-5.5 0-9.98-4.231-10.51-9.717l-1.82-23.116c-6.82 8.305-14.62 15.485-23.43 21.54-18.28 12.45-40.21 18.675-65.8 18.675-27.62 0-51.78-6.225-72.5-18.675-20.31-12.839-36.35-30.736-48.13-53.69-11.37-22.955-17.06-49.8-17.06-80.535 0-31.125 5.69-57.97 17.06-80.535 11.78-22.955 27.82-40.657 48.13-53.107 20.72-12.839 44.88-19.258 72.5-19.258zm9.95 60.111c-15.56 0-29.38 3.891-41.44 11.672-12.06 7.781-21.59 18.675-28.59 32.681-6.62 14.006-10.12 30.152-10.51 48.438.39 18.285 3.89 34.431 10.51 48.437 7 14.006 16.53 25.095 28.59 33.265 12.45 7.781 26.46 11.672 42.02 11.672 14.79 0 27.82-3.891 39.1-11.672 11.67-8.17 20.62-19.259 26.85-33.265 6.61-14.006 9.92-30.152 9.92-48.437 0-18.286-3.31-34.432-9.92-48.438-6.23-14.006-15.18-24.9-26.85-32.681-11.28-7.781-24.51-11.672-39.68-11.672z" fill="white"/><path d="M3108.96 209.14c5.83 0 10.55 4.721 10.55 10.544v269.948c0 5.823-4.72 10.545-10.55 10.545h-43.93c-5.83 0-10.55-4.722-10.55-10.545V219.684c0-5.823 4.72-10.544 10.55-10.544h43.93zm-21.96-116.6966c10.4 0 19.26 3.6876 26.58 11.0626 7.72 7.375 11.56 16.303 11.56 26.783 0 10.481-3.84 19.602-11.56 27.366-7.32 7.375-16.18 11.063-26.58 11.063-10.41 0-19.46-3.688-27.16-11.063-7.32-7.764-10.98-16.885-10.98-27.366 0-10.48 3.66-19.408 10.98-26.783 7.7-7.375 16.75-11.0626 27.16-11.0626z" fill="white"/><path d="M2938.14 500.176c-5.83 0-10.55-4.721-10.55-10.545V110.37c0-5.824 4.72-10.5453 10.55-10.5453h43.93c5.83 0 10.55 4.7213 10.55 10.5453v379.261c0 5.824-4.72 10.545-10.55 10.545h-43.93z" fill="white"/><path d="M2711.68 201.758c25.59 0 47.52 6.419 65.8 19.258 8.8 5.868 16.62 12.903 23.44 21.104l1.83-23.264c.43-5.485 5.01-9.717 10.51-9.717h40.52c5.82 0 10.54 4.721 10.54 10.545v269.947c0 5.824-4.72 10.545-10.54 10.545h-40.52c-5.5 0-9.98-4.231-10.51-9.717l-1.82-23.116c-6.82 8.305-14.63 15.485-23.44 21.54-18.28 12.45-40.21 18.675-65.8 18.675-27.62 0-51.79-6.225-72.5-18.675-20.31-12.839-36.35-30.736-48.13-53.69-11.37-22.955-17.06-49.8-17.06-80.535 0-31.125 5.69-57.97 17.06-80.535 11.78-22.955 27.82-40.657 48.13-53.107 20.71-12.839 44.88-19.258 72.5-19.258zm9.95 60.111c-15.57 0-29.38 3.891-41.44 11.672-12.06 7.781-21.59 18.675-28.59 32.681-6.62 14.006-10.12 30.152-10.51 48.438.39 18.285 3.89 34.431 10.51 48.437 7 14.006 16.53 25.095 28.59 33.265 12.45 7.781 26.46 11.672 42.02 11.672 14.78 0 27.82-3.891 39.1-11.672 11.67-8.17 20.62-19.259 26.85-33.265 6.61-14.006 9.92-30.152 9.92-48.437 0-18.286-3.31-34.432-9.92-48.438-6.23-14.006-15.18-24.9-26.85-32.681-11.28-7.781-24.51-11.672-39.68-11.672z" fill="white"/><path d="M2199.06 507.558c-29.18 0-55.24-6.42-78.19-19.259-22.57-13.228-40.27-31.319-53.11-54.273-12.83-22.955-19.25-49.411-19.25-79.368 0-29.958 6.22-56.414 18.67-79.368 12.84-22.955 30.54-40.851 53.1-53.69 22.56-13.228 48.44-19.842 77.61-19.842 29.18 0 55.05 6.614 77.61 19.842 22.56 12.839 40.06 30.735 52.52 53.69 12.84 22.954 19.26 49.41 19.26 79.368 0 29.957-6.23 56.413-18.68 79.368-12.45 22.954-29.95 41.045-52.51 54.273-22.57 12.839-48.24 19.259-77.03 19.259zm0-60.11c15.95 0 30.15-3.891 42.6-11.672 12.45-8.17 22.17-19.063 29.17-32.681 7.01-14.006 10.51-30.152 10.51-48.437 0-18.286-3.7-34.237-11.09-47.854-7-14.007-16.73-24.9-29.18-32.681-12.45-8.171-26.84-12.256-43.18-12.256-16.34 0-30.73 3.891-43.18 11.672-12.45 7.781-22.18 18.675-29.18 32.681-7 14.006-10.5 30.152-10.5 48.438 0 18.285 3.5 34.431 10.5 48.437 7.39 13.618 17.31 24.511 29.76 32.681 12.84 7.781 27.43 11.672 43.77 11.672z" fill="white"/><path d="M1929.7 137.083c5.83 0 10.55 4.721 10.55 10.545v81.641c19.64-14.379 42.69-22.096 64.69-23.961 5.8-.492 10.54 4.274 10.54 10.097v42.143c0 5.359-4.32 9.718-9.66 10.041-29.57 1.789-51.34 9.048-65.56 21.478v116.945c0 13.613 3.01 23.904 9.24 30.905 6.61 7.001 16.14 10.502 28.58 10.502 3.89 0 8.17-.778 12.84-2.334 1.83-.611 3.77-1.432 5.8-2.462 5.5-2.791 12.51-1.149 15.18 4.41 0 0 12.03 25.21 14.42 30.193 2.39 4.984.84 11.011-3.9 13.855-7.46 4.479-14.9 8.024-22.34 10.597-10.11 3.889-23.03 5.88-33.14 5.88-30.73 0-51.45-7.63-67.79-22.799-15.95-15.559-23.92-37.735-23.92-66.518V147.628c0-5.824 4.72-10.545 10.55-10.545h43.93z" fill="white"/><path d="M1699.35 507.558c-29.93 0-56.37-6.42-79.3-19.259-22.94-13.228-41.02-31.319-54.23-54.273-12.83-22.955-19.25-49.411-19.25-79.368 0-29.958 6.42-56.414 19.25-79.368 13.21-22.955 31.1-40.851 53.64-53.69 22.94-13.228 49.18-19.842 78.73-19.842 28.77 0 54.81 7.003 78.14 21.009 19.98 11.682 35.58 27.802 46.72 48.359 3.06 5.641.17 12.51-5.82 14.815l-41.2 15.861c-4.78 1.838-10.1-.339-12.89-4.63-6-9.247-14.06-16.93-24.14-23.049-12.83-7.781-27.41-11.672-43.74-11.672-15.94 0-30.13 4.085-42.57 12.255-12.44 7.781-22.16 18.675-29.16 32.681-7 13.617-10.5 29.374-10.5 47.271 0 17.896 3.5 33.848 10.5 47.854 7.38 13.617 17.3 24.511 29.74 32.681 12.83 7.781 27.21 11.672 43.15 11.672 16.33 0 30.9-4.086 43.73-12.256 10.21-6.812 18.33-15.472 24.35-26.98 2.63-4.581 8.12-6.953 13.05-5.056l40.95 15.762c5.94 2.287 8.84 9.075 5.9 14.725-11.15 21.454-26.8 38.561-46.93 51.321-22.93 14.784-48.98 22.177-78.14 22.177z" fill="white"/><path d="M1363.21 507.558c-29.18 0-55.24-6.42-78.2-19.259-22.56-13.228-40.26-31.319-53.1-54.273-12.84-22.955-19.26-49.411-19.26-79.368 0-29.958 6.23-56.414 18.68-79.368 12.84-22.955 30.54-40.851 53.1-53.69 22.56-13.228 48.43-19.842 77.61-19.842 29.18 0 55.05 6.614 77.61 19.842 22.56 12.839 40.07 30.735 52.52 53.69 12.84 22.954 19.25 49.41 19.25 79.368 0 29.957-6.22 56.413-18.67 79.368-12.45 22.954-29.95 41.045-52.52 54.273-22.56 12.839-48.24 19.259-77.02 19.259zm0-60.11c15.95 0 30.15-3.891 42.59-11.672 12.45-8.17 22.18-19.063 29.18-32.681 7-14.006 10.5-30.152 10.5-48.437 0-18.286-3.69-34.237-11.08-47.854-7-14.007-16.73-24.9-29.18-32.681-12.45-8.171-26.84-12.256-43.18-12.256-16.34 0-30.73 3.891-43.18 11.672-12.45 7.781-22.18 18.675-29.18 32.681-7 14.006-10.5 30.152-10.5 48.438 0 18.285 3.5 34.431 10.5 48.437 7.39 13.618 17.31 24.511 29.76 32.681 12.84 7.781 27.43 11.672 43.77 11.672z" fill="white"/><path d="M975.613 99.8247c39.277 0 73.967 8.5793 104.097 25.7373 30.5 16.776 54.33 40.226 71.49 70.347 17.54 30.122 26.3 64.819 26.3 104.091 0 38.892-8.76 73.398-26.3 103.52-17.16 30.122-40.99 53.761-71.49 70.919-30.13 17.158-64.82 25.737-104.097 25.737H856.943c-7.377 0-13.357-5.98-13.357-13.357V113.181c0-7.3763 5.98-13.3563 13.357-13.3563h118.67zm-64.54 337.4343h64.254c18.528 0 35.925-3.403 52.184-10.209 16.26-7.185 30.44-17.016 42.53-29.494 12.1-12.478 21.56-27.036 28.36-43.673 6.81-16.637 10.21-34.598 10.21-53.882 0-19.284-3.4-37.245-10.21-53.882-6.8-16.637-16.26-31.195-28.36-43.673-12.09-12.478-26.27-22.12-42.53-28.926-16.259-7.185-33.656-10.777-52.184-10.777h-64.254v274.516z" fill="white"/><path d="M2550.8 205.3c5.81-.432 10.54 4.335 10.54 10.159v42.545c0 5.275-4.17 9.583-9.42 10.01-21.2 1.721-36.76 6.134-52.45 13.709-17.92 8.654-31.89 21.683-41.47 32.728v175.181c0 5.823-4.72 10.545-10.55 10.545h-43.93c-5.83 0-10.55-4.722-10.55-10.545V219.684c0-5.823 4.72-10.544 10.55-10.544h43.93c5.83 0 10.55 4.721 10.55 10.544v36.123c12.77-16.371 24.51-25.618 42.37-35.647 15.94-8.952 33.02-13.567 50.43-14.86z" fill="white"/><path d="M27.2817 177.71c3.4614-10.569 14.4277-16.74 25.2607-14.216l162.5226 37.873c11.462 2.67 22.628-5.443 23.624-17.167l13.989-164.5657C253.622 8.53153 262.911 0 274.056 0h85.285c11.146 0 20.436 8.53319 21.379 19.6372l12.819 151.0558c.569 6.698-3.402 12.96-9.688 15.343-63.492 24.077-103.851 41.482-151.193 72.659-30.562 20.127-61.243 43.12-88.288 68.84-5.047 4.8-12.44 6.285-18.867 3.6l-112.3159-46.925c-10.32446-4.313-15.60156-15.835-12.11955-26.467l26.21185-80.033zm441.8883 418.258c-8.997 6.464-21.436 5.016-28.707-3.34l-80.753-92.801c-4.655-5.349-5.597-13.037-1.899-19.088 20.733-33.926 55.714-69.334 89.895-94.341 5.901-4.318 14.152-2.494 17.971 3.742l78.198 127.691c5.867 9.581 3.347 22.065-5.779 28.621l-68.926 49.516zm-288.038.205c10.509 7.274 24.989 3.786 31.425-7.255 89.37-153.318 229.418-267.187 404.47-306.9 11.369-2.579 18.325-14.299 14.695-25.374l-25.978-79.253c-3.168-9.666-12.708-15.812-22.787-14.422-216.184 29.82-400.643 155.877-505.3136 335.993-5.9933 10.398-2.7963 23.607 7.0926 30.452l96.4454 66.759z" fill="white"/></svg>
+		</span>
+					<span class="navbar-brand d-inline-block d-lg-none">
+				<svg width="32" height="30" viewBox="0 0 2000 1897" xmlns="http://www.w3.org/2000/svg"><path d="M86.2406 561.86c10.9418-33.415 45.6074-52.927 79.8514-44.946l513.753 119.74c36.232 8.445 71.528-17.208 74.678-54.276l44.22-520.301C801.726 26.9738 831.091 0 866.323 0h269.597c35.23 0 64.6 26.9791 67.58 62.0862l40.52 477.5898c1.8 21.175-10.75 40.972-30.62 48.509-200.71 76.121-328.29 131.15-477.943 229.723-96.61 63.635-193.595 136.331-279.088 217.652-15.954 15.17-39.324 19.87-59.64 11.38L41.686 898.578c-32.63682-13.637-49.31217-50.066-38.30503-83.68L86.2406 561.86zm1396.8594 1322.39c-28.44 20.44-67.76 15.86-90.75-10.56l-255.27-293.4c-14.71-16.92-17.69-41.22-6-60.35 65.54-107.27 176.12-219.22 284.17-298.28 18.65-13.65 44.73-7.88 56.81 11.83l247.19 403.72c18.55 30.29 10.58 69.76-18.27 90.49l-217.88 156.55zm-910.522.65c33.219 22.99 78.994 11.97 99.338-22.94 282.508-484.74 725.214-844.75 1278.574-970.31 35.94-8.154 57.93-45.208 46.45-80.225l-82.12-250.571c-10.01-30.563-40.17-49.994-72.03-45.598-683.38 94.28-1266.475 492.836-1597.35 1062.296-19.1 32.87-8.995 74.64 22.265 96.28l304.873 210.07z" fill="#fff"/></svg>
+			</span>
+			</a>
+</div>
+		<!--Toggle buttons-->
+			<a
+		href="#"
+		class="navbar-toggler navbar-mobile-search-toggle"
+		data-id="search-toggle"
+		data-toggle="collapse"
+		data-target="[data-id='navbar-search-collapse']"
+		data-ga-event="click"
+		data-ga-category="Doctor panel"
+		data-ga-action="Klik w lupę"
+	>
+		<div class="text-truncate pr-1">
+			<span data-id="search-query"></span>
+		</div>
+		<i aria-hidden="true" class="svg-icon svg-icon-search svg-icon-size-16 svg-icon-color-white" ><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M14 9.5a4.5 4.5 0 1 0-9 0 4.5 4.5 0 0 0 9 0Zm-.665 5.249a6.5 6.5 0 1 1 1.414-1.414l4.958 4.958a1 1 0 0 1-1.414 1.414l-4.958-4.958Z"/></svg></i>
+	</a>
+
+<button
+	class="navbar-toggler navbar-mobile-nav-toggle collapsed"
+	data-id="navbar-toggle"
+	data-target="[data-id='navbar-right-collapse']"
+	data-test-id="navbar-hamburger-menu"
+	data-toggle="collapse"
+	type="button"
+>
+	<div class="hamburger">
+		<span class="sr-only">Menu principal</span>
+		<span class="icon-bar icon-bar-one"></span>
+		<span class="icon-bar icon-bar-two"></span>
+		<span class="icon-bar icon-bar-three"></span>
+	</div>
+</button>
+
+		<!-- Collect the nav links, forms, and other content for toggling -->
+							<div class="navbar-collapse navbar-search px-2 py-1 collapse"
+			     data-id="navbar-search-collapse"
+			>
+				<div class="nav d-flex flex-nowrap flex-grow-1 justify-content-between">
+					
+<div
+	data-topsearch="true"
+	id="search"
+	class="top-search"
+>
+	<div data-id="search-autocomplete-vue-app">
+		<search-autocomplete
+			:is-search-widget-placeholder="false"
+			:suggested-items="[{&quot;specialization.id&quot;:36,&quot;specialization.name&quot;:&quot;Ginecologista&quot;},{&quot;specialization.id&quot;:78,&quot;specialization.name&quot;:&quot;Psiquiatra&quot;},{&quot;specialization.id&quot;:76,&quot;specialization.name&quot;:&quot;Psic\u00f3logo&quot;},{&quot;specialization.id&quot;:67,&quot;specialization.name&quot;:&quot;Ortopedista - Traumatologista&quot;},{&quot;specialization.id&quot;:24,&quot;specialization.name&quot;:&quot;Dermatologista&quot;},{&quot;specialization.id&quot;:71,&quot;specialization.name&quot;:&quot;Pediatra&quot;},{&quot;specialization.id&quot;:26,&quot;specialization.name&quot;:&quot;Endocrinologista&quot;},{&quot;specialization.id&quot;:65,&quot;specialization.name&quot;:&quot;Oftalmologista&quot;},{&quot;specialization.id&quot;:8,&quot;specialization.name&quot;:&quot;Cardiologista&quot;},{&quot;specialization.id&quot;:22,&quot;specialization.name&quot;:&quot;M\u00e9dico cl\u00ednico geral&quot;},{&quot;specialization.id&quot;:69,&quot;specialization.name&quot;:&quot;Otorrino&quot;},{&quot;specialization.id&quot;:87,&quot;specialization.name&quot;:&quot;Urologista&quot;},{&quot;specialization.id&quot;:60,&quot;specialization.name&quot;:&quot;Neurologista&quot;},{&quot;specialization.id&quot;:64,&quot;specialization.name&quot;:&quot;Dentista&quot;},{&quot;specialization.id&quot;:15,&quot;specialization.name&quot;:&quot;Cirurgi\u00e3o geral&quot;},{&quot;specialization.id&quot;:18,&quot;specialization.name&quot;:&quot;Cirurgi\u00e3o pl\u00e1stico&quot;},{&quot;specialization.id&quot;:32,&quot;specialization.name&quot;:&quot;Gastroenterologista&quot;},{&quot;specialization.id&quot;:58,&quot;specialization.name&quot;:&quot;Neurocirurgi\u00e3o&quot;},{&quot;specialization.id&quot;:33,&quot;specialization.name&quot;:&quot;Generalista&quot;},{&quot;specialization.id&quot;:23,&quot;specialization.name&quot;:&quot;Coloproctologista&quot;},{&quot;specialization.id&quot;:72,&quot;specialization.name&quot;:&quot;Pneumologista&quot;},{&quot;specialization.id&quot;:62,&quot;specialization.name&quot;:&quot;Nutricionista&quot;},{&quot;specialization.id&quot;:3,&quot;specialization.name&quot;:&quot;Alergista&quot;},{&quot;specialization.id&quot;:13,&quot;specialization.name&quot;:&quot;Cirurgi\u00e3o do aparelho digestivo&quot;},{&quot;specialization.id&quot;:82,&quot;specialization.name&quot;:&quot;Reumatologista&quot;},{&quot;specialization.id&quot;:6,&quot;specialization.name&quot;:&quot;Angiologista&quot;},{&quot;specialization.id&quot;:61,&quot;specialization.name&quot;:&quot;Neurologista pedi\u00e1trico&quot;},{&quot;specialization.id&quot;:20,&quot;specialization.name&quot;:&quot;Cirurgi\u00e3o vascular&quot;},{&quot;specialization.id&quot;:37,&quot;specialization.name&quot;:&quot;Hematologista&quot;},{&quot;specialization.id&quot;:41,&quot;specialization.name&quot;:&quot;Mastologista&quot;},{&quot;specialization.id&quot;:56,&quot;specialization.name&quot;:&quot;Nefrologista&quot;},{&quot;specialization.id&quot;:7,&quot;specialization.name&quot;:&quot;Oncologista&quot;},{&quot;specialization.id&quot;:14,&quot;specialization.name&quot;:&quot;Cirurgi\u00e3o buco-maxilo-facial&quot;},{&quot;specialization.id&quot;:35,&quot;specialization.name&quot;:&quot;Geriatra&quot;},{&quot;specialization.id&quot;:39,&quot;specialization.name&quot;:&quot;Infectologista&quot;},{&quot;specialization.id&quot;:63,&quot;specialization.name&quot;:&quot;Nutr\u00f3logo&quot;},{&quot;specialization.id&quot;:30,&quot;specialization.name&quot;:&quot;Fisioterapeuta&quot;},{&quot;specialization.id&quot;:12,&quot;specialization.name&quot;:&quot;Cirurgi\u00e3o de cabe\u00e7a e pesco\u00e7o&quot;},{&quot;specialization.id&quot;:75,&quot;specialization.name&quot;:&quot;Psicanalista&quot;},{&quot;specialization.id&quot;:28,&quot;specialization.name&quot;:&quot;Endoscopista&quot;},{&quot;specialization.id&quot;:38,&quot;specialization.name&quot;:&quot;Homeopata&quot;},{&quot;specialization.id&quot;:31,&quot;specialization.name&quot;:&quot;Fonoaudi\u00f3logo&quot;},{&quot;specialization.id&quot;:11,&quot;specialization.name&quot;:&quot;Cirurgi\u00e3o da m\u00e3o&quot;},{&quot;specialization.id&quot;:5,&quot;specialization.name&quot;:&quot;Anestesiologista&quot;},{&quot;specialization.id&quot;:80,&quot;specialization.name&quot;:&quot;Radiologista&quot;},{&quot;specialization.id&quot;:27,&quot;specialization.name&quot;:&quot;Endocrinologista pedi\u00e1trico&quot;},{&quot;specialization.id&quot;:1,&quot;specialization.name&quot;:&quot;M\u00e9dico Acupunturista&quot;},{&quot;specialization.id&quot;:42,&quot;specialization.name&quot;:&quot;M\u00e9dico de fam\u00edlia&quot;},{&quot;specialization.id&quot;:17,&quot;specialization.name&quot;:&quot;Cirurgi\u00e3o pedi\u00e1trico&quot;},{&quot;specialization.id&quot;:46,&quot;specialization.name&quot;:&quot;M\u00e9dico do trabalho&quot;},{&quot;specialization.id&quot;:73,&quot;specialization.name&quot;:&quot;Pneumologista pedi\u00e1trico&quot;},{&quot;specialization.id&quot;:9,&quot;specialization.name&quot;:&quot;Cirurgi\u00e3o cardiovascular&quot;},{&quot;specialization.id&quot;:16,&quot;specialization.name&quot;:&quot;Cirurgi\u00e3o oncol\u00f3gico&quot;},{&quot;specialization.id&quot;:19,&quot;specialization.name&quot;:&quot;Cirurgi\u00e3o tor\u00e1cico&quot;},{&quot;specialization.id&quot;:21,&quot;specialization.name&quot;:&quot;Especialista em Dor&quot;},{&quot;specialization.id&quot;:47,&quot;specialization.name&quot;:&quot;M\u00e9dico do esporte&quot;},{&quot;specialization.id&quot;:91,&quot;specialization.name&quot;:&quot;Gastroenterologista pedi\u00e1trico&quot;},{&quot;specialization.id&quot;:99,&quot;specialization.name&quot;:&quot;Especialista em Cl\u00ednica M\u00e9dica&quot;},{&quot;specialization.id&quot;:51,&quot;specialization.name&quot;:&quot;Intensivista&quot;},{&quot;specialization.id&quot;:34,&quot;specialization.name&quot;:&quot;Geneticista&quot;},{&quot;specialization.id&quot;:86,&quot;specialization.name&quot;:&quot;Terapeuta complementar&quot;},{&quot;specialization.id&quot;:45,&quot;specialization.name&quot;:&quot;M\u00e9dico do Sono&quot;},{&quot;specialization.id&quot;:89,&quot;specialization.name&quot;:&quot;Hepatologista&quot;},{&quot;specialization.id&quot;:49,&quot;specialization.name&quot;:&quot;Especialista em Medicina F\u00edsica e Reabilita\u00e7\u00e3o&quot;},{&quot;specialization.id&quot;:48,&quot;specialization.name&quot;:&quot;Especialista em Medicina Est\u00e9tica&quot;},{&quot;specialization.id&quot;:59,&quot;specialization.name&quot;:&quot;Neurofisiologista&quot;},{&quot;specialization.id&quot;:88,&quot;specialization.name&quot;:&quot;Cardiologista pedi\u00e1trico&quot;},{&quot;specialization.id&quot;:79,&quot;specialization.name&quot;:&quot;Quiropraxista&quot;},{&quot;specialization.id&quot;:95,&quot;specialization.name&quot;:&quot;Alergista pedi\u00e1trico&quot;},{&quot;specialization.id&quot;:25,&quot;specialization.name&quot;:&quot;Especialista em Diagn\u00f3stico por imagem&quot;},{&quot;specialization.id&quot;:52,&quot;specialization.name&quot;:&quot;Internista&quot;},{&quot;specialization.id&quot;:102,&quot;specialization.name&quot;:&quot;Ortodontista&quot;},{&quot;specialization.id&quot;:43,&quot;specialization.name&quot;:&quot;M\u00e9dico de tr\u00e1fego&quot;},{&quot;specialization.id&quot;:77,&quot;specialization.name&quot;:&quot;Psicopedagogo&quot;},{&quot;specialization.id&quot;:70,&quot;specialization.name&quot;:&quot;An\u00e1tomopatologista&quot;},{&quot;specialization.id&quot;:68,&quot;specialization.name&quot;:&quot;Osteopata&quot;},{&quot;specialization.id&quot;:57,&quot;specialization.name&quot;:&quot;Nefrologista pedi\u00e1trico&quot;},{&quot;specialization.id&quot;:85,&quot;specialization.name&quot;:&quot;Terapeuta ocupacional&quot;},{&quot;specialization.id&quot;:84,&quot;specialization.name&quot;:&quot;Sex\u00f3logo&quot;},{&quot;specialization.id&quot;:53,&quot;specialization.name&quot;:&quot;M\u00e9dico perito&quot;},{&quot;specialization.id&quot;:100,&quot;specialization.name&quot;:&quot;Especialista em Reprodu\u00e7\u00e3o Humana&quot;},{&quot;specialization.id&quot;:4,&quot;specialization.name&quot;:&quot;Patologista cl\u00ednico&quot;},{&quot;specialization.id&quot;:81,&quot;specialization.name&quot;:&quot;Radioterapeuta&quot;},{&quot;specialization.id&quot;:29,&quot;specialization.name&quot;:&quot;Enfermeiro&quot;},{&quot;specialization.id&quot;:10,&quot;specialization.name&quot;:&quot;Cirurgi\u00e3o cranio-maxilo-facial&quot;},{&quot;specialization.id&quot;:83,&quot;specialization.name&quot;:&quot;Reumatologista pedi\u00e1trico&quot;},{&quot;specialization.id&quot;:74,&quot;specialization.name&quot;:&quot;Podologista&quot;},{&quot;specialization.id&quot;:40,&quot;specialization.name&quot;:&quot;Infectologista pedi\u00e1trico&quot;},{&quot;specialization.id&quot;:94,&quot;specialization.name&quot;:&quot;Especialista em Biomedicina&quot;},{&quot;specialization.id&quot;:101,&quot;specialization.name&quot;:&quot;Odontopediatra&quot;},{&quot;specialization.id&quot;:98,&quot;specialization.name&quot;:&quot;Hematologista pedi\u00e1trico&quot;},{&quot;specialization.id&quot;:54,&quot;specialization.name&quot;:&quot;Especialista em Medicina Nuclear&quot;},{&quot;specialization.id&quot;:55,&quot;specialization.name&quot;:&quot;Especialista em Medicina Preventiva&quot;},{&quot;specialization.id&quot;:2,&quot;specialization.name&quot;:&quot;Especialista em Administra\u00e7\u00e3o em Sa\u00fade&quot;},{&quot;specialization.id&quot;:110,&quot;specialization.name&quot;:&quot;Especialista em Ultrassonografia&quot;},{&quot;specialization.id&quot;:105,&quot;specialization.name&quot;:&quot;Especialista em Harmoniza\u00e7\u00e3o orofacial&quot;},{&quot;specialization.id&quot;:103,&quot;specialization.name&quot;:&quot;Educador f\u00edsico&quot;},{&quot;specialization.id&quot;:93,&quot;specialization.name&quot;:&quot;Especialista em Medicina do adolescente&quot;},{&quot;specialization.id&quot;:50,&quot;specialization.name&quot;:&quot;M\u00e9dico hiperbarista&quot;},{&quot;specialization.id&quot;:113,&quot;specialization.name&quot;:&quot;Cirurgi\u00e3o bari\u00e1trico&quot;}]"
+			:suggested-places="[&quot;S\u00e3o Paulo&quot;,&quot;Rio de Janeiro&quot;,&quot;Bras\u00edlia&quot;,&quot;Salvador&quot;,&quot;Fortaleza&quot;,&quot;Belo Horizonte&quot;,&quot;Manaus&quot;,&quot;Curitiba&quot;,&quot;Recife&quot;,&quot;Goi\u00e2nia&quot;,&quot;Bel\u00e9m Alagoas&quot;,&quot;Porto Alegre&quot;,&quot;Guarulhos&quot;,&quot;Campinas&quot;,&quot;S\u00e3o Lu\u00eds&quot;]"
+			:top-search="true"
+			:widget="false"
+			:show-facility-type="false"
+			search-location=""
+			search-query="24298"
+			query-data-id="autocomplete-search"
+			location-data-id="autocomplete-location"
+		>
+			
+
+
+<div class="row">
+	<div class="col-md-5 col-12 specialists-col">
+		<div class="d-flex align-items-center">
+			<label for="specialization-input" class="sr-only">
+				especialidade, doença ou nome
+			</label>
+			<input
+				id="specialization-input"
+				placeholder="especialidade, doença ou nome"
+				class="form-control search-field mb-1 mb-md-0"
+				value="24298"
+				autocomplete="off"
+				tabindex="1"
+				type="text"
+				name="q"
+				data-id="autocomplete-search"
+			/>
+
+			<i aria-hidden="true" class="svg-icon svg-icon-caret svg-icon-size-12 svg-icon-color-white icon-trigger" ><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M3.293 7.293a1 1 0 0 1 1.414 0L12 14.586l7.293-7.293a1 1 0 1 1 1.414 1.414l-8 8a1 1 0 0 1-1.414 0l-8-8a1 1 0 0 1 0-1.414Z"/></svg></i>
+		</div>
+	</div>
+
+	<div class="col-md-5 col-12 city-col">
+		<div class="d-flex align-items-center">
+			<label for="location-input" class="sr-only">
+				cidade ou região
+			</label>
+			<input
+				id="location-input"
+				placeholder="cidade ou região"
+				value=""
+				class="form-control search-field mb-1 mb-md-0"
+				autocomplete="off"
+				tabindex="2"
+				type="text"
+				name="loc"
+				data-id="autocomplete-location"
+			/>
+
+			<i aria-hidden="true" class="svg-icon svg-icon-caret svg-icon-size-12 svg-icon-color-white icon-trigger" ><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M3.293 7.293a1 1 0 0 1 1.414 0L12 14.586l7.293-7.293a1 1 0 1 1 1.414 1.414l-8 8a1 1 0 0 1-1.414 0l-8-8a1 1 0 0 1 0-1.414Z"/></svg></i>
+		</div>
+	</div>
+
+	<div class="col-md-2 col-12 button-col">
+		<button
+			class="btn btn-block btn-lg search-button btn-light"
+			title="Pesquisar"
+			tabindex="3"
+		>
+
+			<i aria-hidden="true" class="svg-icon svg-icon-search svg-icon-color-white" ><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M14 9.5a4.5 4.5 0 1 0-9 0 4.5 4.5 0 0 0 9 0Zm-.665 5.249a6.5 6.5 0 1 1 1.414-1.414l4.958 4.958a1 1 0 0 1-1.414 1.414l-4.958-4.958Z"/></svg></i>
+
+			<span class="d-sm-none ml-0-5">Pesquisar</span>
+		</button>
+	</div>
+</div>
+		</search-autocomplete>
+	</div>
+</div>
+
+					<a
+						href="#"
+						class="search-close-btn d-block d-md-none"
+						data-toggle="collapse"
+						data-id="serch-form-toggle"
+						data-target="[data-id='navbar-search-collapse']"
+						data-ga-event="click"
+						data-ga-category="Doctor panel"
+						data-ga-action="Klik w lupę"
+					><i aria-hidden="true" class="svg-icon svg-icon-close svg-icon-size-24 svg-icon-color-white" ><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M3.293 19.293a1 1 0 1 0 1.414 1.414L12 13.414l7.293 7.293a1 1 0 0 0 1.414-1.414L13.414 12l7.293-7.293a1 1 0 0 0-1.414-1.414L12 10.586 4.707 3.293a1 1 0 0 0-1.414 1.414L10.586 12l-7.293 7.293Z"/></svg></i></a>
+				</div>
+			</div>
+		
+		<nav class="navbar-collapse align-items-center px-2 pr-md-0 collapse"
+		     data-id="navbar-right-collapse"
+		>
+			<ul
+				class="navbar-nav navbar-right align-items-md-center ml-auto"
+				data-id="top-navigation"
+				data-test-id="navbar"
+			>
+				
+
+	<li class="nav-item">
+							
+		
+		<a
+			href="https://www.doctoralia.com.br/social-connect/br_sso?_redirect=https%3A//www.doctoralia.com.br/pesquisa%3Fq%3D24298"
+			class="nav-link mr-0-5"
+			data-id="navbar-link"
+			data-test-id="navbar-login"
+			data-url="https://www.doctoralia.com.br/social-connect/br_sso?_redirect=https%3A//www.doctoralia.com.br/pesquisa%3Fq%3D24298"
+		>
+			Entrar
+		</a>
+	</li>
+
+			<li class="dropdown nav-item navbar-btn dp-native">
+			<button
+				class="btn btn-light d-none d-md-flex"
+				data-toggle="dropdown"
+			>
+				Você atua na área da saúde?
+				<i aria-hidden="true" class="svg-icon svg-icon-caret svg-icon-size-12 ml-0-5 caret-down" ><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M3.293 7.293a1 1 0 0 1 1.414 0L12 14.586l7.293-7.293a1 1 0 1 1 1.414 1.414l-8 8a1 1 0 0 1-1.414 0l-8-8a1 1 0 0 1 0-1.414Z"/></svg></i>
+			</button>
+			<button
+				class="nav-link dropdown-item justify-content-between d-md-none"
+				data-toggle="dropdown"
+			>
+				Você atua na área da saúde?
+				<i aria-hidden="true" class="svg-icon svg-icon-caret-right svg-icon-size-12 svg-icon-color-white ml-0-5" ><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M7.293 20.707a1 1 0 0 1 0-1.414L14.586 12 7.293 4.707a1 1 0 0 1 1.414-1.414l8 8a1 1 0 0 1 0 1.414l-8 8a1 1 0 0 1-1.414 0Z"/></svg></i>
+			</button>
+			<ul class="dropdown-menu dropdown-menu-right" data-float="false">
+				<li>
+					<button
+						class="dropdown-item dropdown-item-back d-flex d-md-none"
+						data-id="dropdown-back-btn"
+					>
+						<i aria-hidden="true" class="svg-icon svg-icon-caret-left svg-icon-size-12 svg-icon-color-white" ><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M7.293 12.707a1 1 0 0 1 0-1.414l8-8a1 1 0 1 1 1.414 1.414L9.414 12l7.293 7.293a1 1 0 0 1-1.414 1.414l-8-8Z"/></svg></i>
+						<span class="dropdown-item-text">Você atua na área da saúde?</span>
+					</button>
+				</li>
+															<li>
+							<a
+								href="https://www.doctoralia.com.br/registo-opcion"
+								class="dropdown-item"
+							>
+								<span class="dropdown-item-text">Criar perfil gratuito</span>
+							</a>
+						</li>
+									
+				<li>
+					<a
+						href="https://pro.doctoralia.com.br/?utm_source=MKTP&amp;utm_medium=referral&amp;utm_campaign=top-nav"
+						class="dropdown-item"
+						target="_blank"
+					>
+						<span class="dropdown-item-text">Área para especialistas e clínicas</span>
+						<span class="sr-only">abre num novo separador</span>
+					</a>
+				</li>
+
+				
+				
+							</ul>
+		</li>
+
+				</ul>
+		</nav>
+
+	</div>
+</header>
+
+	
+			
+
+	<div data-id="abandoned-cart-vue-app">
+</div>
+
+
+
+<style>
+.abandoned-cart-app {
+	height: 147px;
+}
+@media(min-width:992px) {
+	.abandoned-cart-app {
+		height: 78px;
+	}
+}
+</style>
+
+<script>
+	(function() {
+		var element = document.querySelector('[data-id="abandoned-cart-vue-app"]');
+		var data = ZLApp.Storage.local['booking-data'];
+
+		if (!(element instanceof HTMLElement) || !data || typeof JSON.parse(data) !== 'object') {
+			return;
+		}
+
+		function hasVisitSlotDateValid() {
+			var timestamp = new Date().getTime();
+			var bookingData = JSON.parse(data);
+			var visitTimestamp;
+
+			if (!bookingData.visitSlotDateWithTimezone) {
+				return false;
+			}
+
+			visitTimestamp = new Date(bookingData.visitSlotDateWithTimezone).getTime();
+
+			return timestamp < visitTimestamp;
+		}
+
+		function renderTemplate() {
+			var template = '\u003Cdiv\u0020class\u003D\u0022container\u002Dfluid\u0020p\u002D0\u0020bg\u002Dgray\u002D200\u0022\u003E\n\t\t\u003Cdiv\u0020class\u003D\u0022container\u0020py\u002D2\u0020px\u002D2\u0020px\u002Dmd\u002D1\u0022\u003E\n\t\t\t\u003Cdiv\u0020class\u003D\u0022d\u002Dflex\u0020justify\u002Dcontent\u002Dbetween\u0020small\u0020text\u002Dmuted\u0020mb\u002D0\u002D5\u0022\u003E\n\t\t\t\t\u003Cspan\u0020class\u003D\u0022pb\u002D0\u002D5\u0020text\u002Duppercase\u0020font\u002Dweight\u002Dbold\u0022\u003EAgendamento\u0020iniciado\u003C\/span\u003E\n\t\t\t\t\u003Cbutton\n\t\t\t\t\tclass\u003D\u0022bg\u002Dtransparent\u0020border\u002D0\u0020p\u002D0\u0020pb\u002D0\u002D5\u0020text\u002Dbody\u0022\n\t\t\t\t\ttype\u003D\u0022button\u0022\n\t\t\t\t\tdata\u002Did\u003D\u0022abandoned\u002Dcart\u002Dclose\u0022\n\t\t\t\t\u003E\n\t\t\t\t\tIgnorar\n\t\t\t\t\t\u003Cspan\u0020class\u003D\u0022sr\u002Donly\u0022\u003Efechar\u0020a\u0020faixa\u0020de\u0020visita\u0020n\u00E3o\u0020confirmada\u003C\/span\u003E\n\t\t\t\t\u003C\/button\u003E\n\t\t\t\u003C\/div\u003E\n\t\t\t\u003Cdiv\u0020class\u003D\u0022card\u0020card\u002Dshadow\u002D1\u0020mx\u002D0\u0020card\u002Dborder\u0022\u003E\n\t\t\t\t\u003Cabandoned\u002Dcart\n\t\t\t\t\tclass\u003D\u0022abandoned\u002Dcart\u002Dapp\u0022\n\t\t\t\t\t\u003Atranslations\u003D\u0022\u007B\u0026quot\u003Babandonment_widget_title\u0026quot\u003B\u003A\u0026quot\u003BAgendamento\u0020iniciado\u0026quot\u003B,\u0026quot\u003Bdismiss\u002Dgeneric\u0026quot\u003B\u003A\u0026quot\u003BIgnorar\u0026quot\u003B,\u0026quot\u003Babandonment_widget_button\u0026quot\u003B\u003A\u0026quot\u003BConcluir\u0020agendamento\u0026quot\u003B,\u0026quot\u003Bopinion_numeral\u0026quot\u003B\u003A\u0026quot\u003Bopini\\u00e3o\u007Copini\\u00f5es\u0026quot\u003B\u007D\u0022\n\t\t\t\t\u003E\n\t\t\t\t\t\u003Cdiv\u0020class\u003D\u0022h\u002D100\u0020d\u002Dflex\u0020align\u002Ditems\u002Dcenter\u0020justify\u002Dcontent\u002Dcenter\u0022\u003E\n\t\t\t\t\t\t\u003Ci\u0020aria\u002Dhidden\u003D\u0022true\u0022\u0020class\u003D\u0022svg\u002Dicon\u0020svg\u002Dicon\u002Dspinner\u0020svg\u002Dicon\u002Dsize\u002D20\u0020spinner\u0022\u0020\u003E\u003Csvg\u0020xmlns\u003D\u0022http\u003A\/\/www.w3.org\/2000\/svg\u0022\u0020width\u003D\u002224\u0022\u0020height\u003D\u002224\u0022\u0020fill\u003D\u0022none\u0022\u0020viewBox\u003D\u00220\u00200\u002024\u002024\u0022\u003E\u003Cpath\u0020fill\u003D\u0022url\u0028\u0023spinner\u002Dsvg\u002Da\u0029\u0022\u0020d\u003D\u0022M12\u00203c0\u002D.552.449\u002D1.005.998\u002D.95A10\u002010\u00200\u00200\u00201\u002012\u002022v\u002D2a7.999\u00207.999\u00200\u00200\u00200\u0020.997\u002D15.938C12.45\u00203.994\u002012\u00203.552\u002012\u00203Z\u0022\/\u003E\u003Cpath\u0020fill\u003D\u0022url\u0028\u0023spinner\u002Dsvg\u002Db\u0029\u0022\u0020d\u003D\u0022M12\u002022A10\u002010\u00200\u00200\u00201\u00205.344\u00204.537c.412\u002D.368\u00201.041\u002D.265\u00201.366.182.325.447.22\u00201.068\u002D.183\u00201.446A8\u00208\u00200\u00200\u00200\u002012\u002020v2Z\u0022\/\u003E\u003Cdefs\u003E\u003ClinearGradient\u0020id\u003D\u0022spinner\u002Dsvg\u002Da\u0022\u0020x1\u003D\u002212\u0022\u0020x2\u003D\u002212\u0022\u0020y1\u003D\u002220\u0022\u0020y2\u003D\u00223.5\u0022\u0020gradientUnits\u003D\u0022userSpaceOnUse\u0022\u003E\u003Cstop\u0020class\u003D\u0022spinner\u002Dstop\u002Dcolor\u0022\/\u003E\u003Cstop\u0020class\u003D\u0022spinner\u002Dstop\u002Dcolor\u0022\u0020offset\u003D\u00221\u0022\u0020stop\u002Dopacity\u003D\u00220\u0022\/\u003E\u003C\/linearGradient\u003E\u003ClinearGradient\u0020id\u003D\u0022spinner\u002Dsvg\u002Db\u0022\u0020x1\u003D\u002212\u0022\u0020x2\u003D\u002212\u0022\u0020y1\u003D\u00224.5\u0022\u0020y2\u003D\u002220\u0022\u0020gradientUnits\u003D\u0022userSpaceOnUse\u0022\u003E\u003Cstop\u0020class\u003D\u0022spinner\u002Dstop\u002Dcolor\u0022\/\u003E\u003Cstop\u0020class\u003D\u0022spinner\u002Dstop\u002Dcolor\u0022\u0020offset\u003D\u00221\u0022\/\u003E\u003C\/linearGradient\u003E\u003C\/defs\u003E\u003C\/svg\u003E\u003C\/i\u003E\n\t\t\t\t\t\u003C\/div\u003E\n\t\t\t\t\u003C\/abandoned\u002Dcart\u003E\n\t\t\t\u003C\/div\u003E\n\t\t\u003C\/div\u003E\n\t\u003C\/div\u003E';
+
+			element.insertAdjacentHTML('beforeend', template);
+		}
+
+		if(!hasVisitSlotDateValid()) {
+			ZLApp.Storage.local.removeItem('booking-data');
+
+			return;
+		}
+
+		requestAnimationFrame(renderTemplate);
+	}())
+</script>
+
+
+		<div data-id=search-listing>
+				
+			<main
+				class="container"
+				role="main"
+				data-id="main-content"
+			>
+									<div></div>
+								<div>		<div
+		class="row mx-0"
+		data-id="search-listing-container"
+		data-test-id="search-listing-container"
+	>
+						
+			</div>
+
+		
+					
+	
+
+<div class="search-results-not-found">
+	<div class="row flex-column-reverse flex-sm-row mt-3 align-items-center">
+		<div class="col-lg-8">
+						<h1 class="h2 mb-1-5">
+				Não encontramos nenhum 24298 que atenda aos seus critérios
+			</h1>
+
+			<p class="not-found-paragraph mb-1">
+				Considere alterar a localização ou incluir a opção de consulta online, com especialistas de todo o país.
+			</p>
+
+							<div data-id="no-results-options">
+					<no-results-options>
+						<div class="d-flex flex-wrap">
+							<button class="btn btn-lg btn-light mr-1-5 mb-1" disabled>
+								Alterar localização
+							</button>
+							<button class="btn btn-lg btn-light mr-1-5 mb-1" disabled>
+								Buscar consulta online
+							</button>
+						</div>
+					</no-results-options>
+				</div>
+					</div>
+
+		<div class="col-lg-4">
+			<img alt="Não encontramos nenhum 24298 que atenda aos seus critérios" class="results-not-found-illustration mb-2" src="//platform.docplanner.com/img/general/ilustrations/empty_search.svg">
+		</div>
+	</div>
+</div>
+	
+	
+					
+	
+					
+	
+		
+	
+			<div
+  class="modal fade modal-scrollable modal-stick-bottom-xs"
+  id="first-class-modal-with-payments"
+>
+  <div class="modal-dialog modal-md">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="modal-title h4">
+          First Class
+        </div>
+        <button
+          class="close"
+          data-dismiss="modal"
+          aria-hidden="true"
+        >
+          <i aria-hidden="true" class="svg-icon svg-icon-negative-filled svg-icon-size-20 svg-icon-color-gray-500" ><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10Zm3.707-13.707a1 1 0 0 1 0 1.414L13.414 12l2.293 2.293a1 1 0 0 1-1.414 1.414L12 13.414l-2.293 2.293a1 1 0 0 1-1.414-1.414L10.586 12 8.293 9.707a1 1 0 0 1 1.414-1.414L12 10.586l2.293-2.293a1 1 0 0 1 1.414 0Z"/></svg></i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Este perfil corresponde aos seus critérios de pesquisa e aparece em destaque devido à sua disponibilidade, classificação, integridade do perfil, pagamentos online e plano de assinatura do profissional.</p>
+      </div>
+      <div class="modal-footer">
+        <button
+          class="btn btn-md btn-primary"
+          data-dismiss="modal"
+          aria-hidden="true"
+        >
+          Fechar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+	
+	
+	
+	<div data-id="search-results-dialogs-vue">
+		<dp-dialogs-container/>
+	</div>
+
+		
+	</div>
+
+			</main>
+		</div>
+
+		<div class="push-footer"></div>
+	</div>
+
+
+			
+
+
+
+<script type="application/ld+json">
+	{"@context":"https:\/\/schema.org","@type":"Organization","url":"https:\/\/www.doctoralia.com.br\/","logo":"https:\/\/www.doctoralia.com.br\/img\/br\/logo\/logo-default-br.svg?v=4","legalName":"Doctoralia Brasil Servi\u00e7os Online e Software Ltda","brand":{"@type":"Brand","name":"Doctoralia"}}
+</script>
+
+<footer id="footer" class="footer text-center text-sm-left bg-white pt-2 pb-2 text-placeholder" data-id="footer">
+
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-3 col-md-6">
+				<h2 class="h4 text-muted">
+					Serviço
+				</h2>
+				<ul class="list-unstyled text-list">
+						<li><a href="https://www.doctoralia.com.br/privacidade"  class="text-placeholder">Privacidade e cookies</a></li>
+
+
+					
+												<li><a href="https://www.doctoralia.com.br/politica-de-privacidade-para-profissionais-de-saude"  class="text-placeholder">Privacidade para profissionais não cadastrados</a></li>
+
+					
+					
+						<li><a href="https://www.docplanner.com/about-us"  class="text-placeholder">Sobre nós</a></li>
+
+						<li><a href="https://www.doctoralia.com.br/contato"  class="text-placeholder">Contato</a></li>
+
+						<li><a href="https://www.docplanner.com/career"  class="text-placeholder">Vagas <span class="badge bg-info-light">Estamos contratando!</span></a></li>
+
+						<li><a href="https://www.doctoralia.com.br/termos-e-condicoes"  class="text-placeholder">Termos e Condições</a></li>
+
+
+					
+												<li><a href="https://press.doctoralia.com.br"  class="text-placeholder">Imprensa</a></li>
+
+					
+												<li><a href="https://pro.doctoralia.com.br/hubfs/WR%20DOC%20FAC%20Pro%20zone/%5BBR%5D%20Brazil/Legal%20PDFs/Doctoralia%20-%20RelatorioIgualdadeSalarialLote_2025_2_27053196000139.pdf"  class="text-placeholder">Lei da Igualdade Salarial</a></li>
+
+					
+					
+					
+					
+					
+					
+					
+														</ul>
+			</div>
+			<div class="col-lg-3 col-md-6">
+				<h2 class="h4 text-muted">
+					Pacientes
+				</h2>
+
+				<ul class="list-unstyled text-list">
+						<li><a href="https://www.doctoralia.com.br/especializacoes-medicas"  class="text-placeholder">Especialistas</a></li>
+
+
+					
+						<li><a href="https://www.doctoralia.com.br/clinicas"  class="text-placeholder">Clínicas e Hospitais</a></li>
+
+
+												<li><a href="https://www.doctoralia.com.br/convenios"  class="text-placeholder">Planos de saúde</a></li>
+
+					
+												<li><a href="https://www.doctoralia.com.br/perguntas-respostas"  class="text-placeholder">Pergunte ao especialista</a></li>
+
+					
+												<li><a href="https://www.doctoralia.com.br/medicamentos"  class="text-placeholder">Medicamentos</a></li>
+
+					
+						<li><a href="https://www.doctoralia.com.br/servicos-de-tratamento"  class="text-placeholder">Serviços</a></li>
+
+						<li><a href="https://www.doctoralia.com.br/doencas"  class="text-placeholder">Doencas</a></li>
+
+
+						<li><a href="https://www.doctoralia.com.br/faq"  class="text-placeholder">Perguntas frequentes</a></li>
+
+
+												<li><a href="https://www.doctoralia.com.br/app-pacientes"  class="text-placeholder">Aplicações móveis</a></li>
+
+					
+												<li><a href="https://www.doctoralia.com.br/blog/"  class="text-placeholder">Blog para pacientes</a></li>
+
+					
+					
+					
+														</ul>
+			</div>
+			<div class="col-lg-3 col-md-6">
+				<h2 class="h4 text-muted">
+					Para especialistas e clínicas
+				</h2>
+
+				<ul class="list-unstyled text-list">
+																<li>
+							<a
+								href="https://pro.doctoralia.com.br/preco?utm_source=MKTP&amp;utm_medium=referral&amp;utm_campaign=footer"
+								class="text-placeholder"
+								data-ga-event="click"
+								data-ga-category="visitDoctorZone"
+								data-ga-action="footer - pricelist"
+								data-ga-label="footer"
+							>
+								Preço
+							</a>
+						</li>
+					
+																<li>
+							<a
+								href="https://pro.doctoralia.com.br/solucoes/para-medicos-e-profissionais-da-saude?utm_medium=referral&amp;utm_source=MKTP&amp;utm_campaign=footer"
+								class="text-placeholder"
+								data-ga-event="click"
+								data-ga-category="visitDoctorZone"
+								data-ga-action="footer - doctorZone"
+								data-ga-label="footer"
+							>
+								Solução para especialistas
+							</a>
+						</li>
+					
+																<li>
+							<a
+								href="https://pro.doctoralia.com.br/solucoes/para-clinicas?utm_medium=referral&amp;utm_source=MKTP&amp;utm_campaign=footer"
+								class="text-placeholder"
+								data-ga-event="click"
+								data-ga-category="visitFacilityZone"
+								data-ga-action="footer - facilityZone"
+								data-ga-label="footer"
+							>
+								Solução para clinicas
+							</a>
+						</li>
+					
+																	<li><a href="https://noa.ai/pt-br/noa-notes?utm_source=MKTP&amp;utm_medium=referral&amp;utm_campaign=footer"  class="text-placeholder">Noa Notes <span class="badge bg-info-light">novo</span></a></li>
+
+					
+																	<li><a href="https://pro.doctoralia.com.br/recursos-gratuitos?utm_source=MKTP&amp;utm_medium=referral&amp;utm_campaign=footer"  class="text-placeholder">Conteúdos</a></li>
+
+					
+																<li>
+							<a
+								href="https://www.doctoralia.com.br/ecommerce-terms"
+								class="text-placeholder"
+								data-ga-event="click"
+								data-ga-category="visitEcommerceTerms"
+								data-ga-action="footer - ecommerceTerms"
+								data-ga-label="footer"
+							>
+								Termos de uso
+							</a>
+						</li>
+					
+																<li>
+							<a
+								href="https://pro.doctoralia.com.br/alerta-pagamentos-e-cobrancas?utm_source=MKTP&amp;utm_medium=referral&amp;utm_campaign=footer"
+								class="text-placeholder"
+							>
+								Alerta de segurança
+							</a>
+						</li>
+					
+																							<li>
+								<a
+									href="https://help.docplanner.com/s/?language=pt_BR"
+									class="text-placeholder"
+									data-ga-event="click"
+									data-ga-category="footerHelpCenter"
+									data-ga-action="click"
+								>
+									Central de Ajuda para clientes
+								</a>
+							</li>
+											
+										
+														</ul>
+			</div>
+
+			<div class="col-lg-3 col-md-6">
+				<h2 class="sr-only">
+					Contato
+				</h2>
+
+				<div class="mt-2 d-sm-none"></div>
+				<a
+					href="/"
+					class="small default h4 mx-auto mx-sm-0 mb-1"
+					data-lazyload-class="logo-zl"
+									>
+					<span class="sr-only">Doctoralia - Homepage</span>
+				</a>
+				<address>
+					<p>
+						Doctoralia Brasil Serviços Online e Software Ltda<br/>
+						Rua Visconde do Rio Branco, 1488 - 2º andar - Batel<br/>
+						80420-210 Curitiba (Paraná), Brasil
+					</p>
+					
+									</address>
+
+				
+									<ul class="list-inline">
+													<li class="list-inline-item">
+								<a target="_blank" rel="me" href="https://www.facebook.com/doctoralia.br/">
+									<i aria-hidden="true" class="svg-icon svg-icon-facebook-circle svg-icon-size-32 svg-icon-color-gray-300" ><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95Z"/></svg></i>
+									<span class="sr-only">Facebook</span>
+									<span class="sr-only">abre num novo separador</span>
+								</a>
+							</li>
+													<li class="list-inline-item">
+								<a target="_blank" rel="me" href="https://www.instagram.com/doctoralia_br/">
+									<i aria-hidden="true" class="svg-icon svg-icon-instagram-circle svg-icon-size-32 svg-icon-color-gray-300" ><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10ZM9.526 6.036C10.166 6.006 10.371 6 12 6c1.63 0 1.834.007 2.474.036.638.03 1.075.13 1.456.279.395.153.73.358 1.063.692.334.334.539.668.692 1.063.148.381.25.818.279 1.456.03.64.036.845.036 2.474 0 1.63-.007 1.834-.036 2.474-.03.638-.13 1.075-.279 1.456-.153.395-.358.73-.692 1.063a2.941 2.941 0 0 1-1.063.692c-.381.148-.818.25-1.456.279-.64.03-.845.036-2.474.036-1.63 0-1.834-.007-2.474-.036-.638-.03-1.075-.13-1.456-.279a2.941 2.941 0 0 1-1.063-.692 2.94 2.94 0 0 1-.692-1.063c-.148-.381-.25-.818-.279-1.456C6.006 13.834 6 13.629 6 12c0-1.63.007-1.834.036-2.474.03-.638.13-1.075.279-1.456a2.94 2.94 0 0 1 .692-1.063 2.94 2.94 0 0 1 1.063-.692c.381-.148.818-.25 1.456-.279Zm4.899 1.08c-.633-.029-.823-.035-2.425-.035-1.602 0-1.792.006-2.425.035-.585.027-.902.124-1.114.207a1.86 1.86 0 0 0-.69.448c-.21.21-.34.41-.448.69-.083.212-.18.53-.207 1.114-.029.633-.035.823-.035 2.425 0 1.602.006 1.792.035 2.425.027.584.124.902.207 1.114.108.28.239.48.448.69.21.21.41.34.69.448.212.082.53.18 1.114.207.633.029.823.035 2.425.035 1.602 0 1.792-.006 2.425-.035.584-.027.902-.125 1.114-.207.28-.108.48-.238.69-.448.21-.21.34-.41.448-.69.082-.212.18-.53.207-1.114.029-.633.035-.823.035-2.425 0-1.602-.006-1.792-.035-2.425-.027-.585-.125-.902-.207-1.114a1.858 1.858 0 0 0-.448-.69c-.21-.21-.41-.34-.69-.448-.212-.083-.53-.18-1.114-.207ZM8.918 12a3.081 3.081 0 1 1 6.162 0 3.081 3.081 0 0 1-6.162 0ZM10 12a2 2 0 1 0 4 0 2 2 0 0 0-4 0Zm5.203-3.923a.72.72 0 1 1 0 1.44.72.72 0 0 1 0-1.44Z"/></svg></i>
+									<span class="sr-only">Instagram</span>
+									<span class="sr-only">abre num novo separador</span>
+								</a>
+							</li>
+													<li class="list-inline-item">
+								<a target="_blank" rel="me" href="https://www.linkedin.com/company/doctoralia-brasil/">
+									<i aria-hidden="true" class="svg-icon svg-icon-linkedin-circle svg-icon-size-32 svg-icon-color-gray-300" ><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10ZM7.164 9.036H9.13V16H7.164V9.036ZM7 7.116C7 6.5 7.514 6 8.148 6c.633 0 1.147.5 1.147 1.117 0 .616-.513 1.116-1.147 1.116S7 7.733 7 7.117ZM15.033 16v-3.548c0-2.132-2.623-1.97-2.623 0V16h-1.967V9.036h1.967v1.118C13.325 8.516 17 8.396 17 11.72V16h-1.967Z"/></svg></i>
+									<span class="sr-only">Linkedin</span>
+									<span class="sr-only">abre num novo separador</span>
+								</a>
+							</li>
+													<li class="list-inline-item">
+								<a target="_blank" rel="me" href="https://www.glassdoor.com/Overview/Working-at-DocPlanner-EI_IE1071394.11,21.htm">
+									<i aria-hidden="true" class="svg-icon svg-icon-glassdoor-circle svg-icon-size-32 svg-icon-color-gray-300" ><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10Zm-3.992-5.712h6.396v-7.04c0-.037.026-.065.056-.065h1.483c.03 0 .057.032.057.064v7.041c0 .944-.713 1.712-1.596 1.712H9.608c-.887 0-1.6-.764-1.6-1.712ZM16 7.716H9.604v7.04c0 .033-.027.065-.06.065H8.06c-.03 0-.06-.028-.06-.064V7.716C8 6.768 8.713 6 9.6 6h4.804C15.287 6 16 6.768 16 7.716Z"/></svg></i>
+									<span class="sr-only">Glassdoor</span>
+									<span class="sr-only">abre num novo separador</span>
+								</a>
+							</li>
+											</ul>
+							</div>
+		</div>
+
+		<hr class="my-3">
+
+		<div>
+			
+			<p class="text-center">
+									<a href="https://www.znanylekarz.pl"
+					   target="_blank"
+					>Polska<span class="sr-only"> abre num novo separador</span></a>, 									<a href="https://www.doktortakvimi.com"
+					   target="_blank"
+					>Türkiye<span class="sr-only"> abre num novo separador</span></a>, 									<a href="https://www.doctoralia.es"
+					   target="_blank"
+					>España<span class="sr-only"> abre num novo separador</span></a>, 									<a href="https://www.miodottore.it"
+					   target="_blank"
+					>Italia<span class="sr-only"> abre num novo separador</span></a>, 									<a href="https://www.jameda.de"
+					   target="_blank"
+					>Deutschland<span class="sr-only"> abre num novo separador</span></a>, 									<a href="https://www.znamylekar.cz"
+					   target="_blank"
+					>Česko<span class="sr-only"> abre num novo separador</span></a>, 									<a href="https://www.doctoralia.com.pt"
+					   target="_blank"
+					>Portugal<span class="sr-only"> abre num novo separador</span></a>, 									<a href="https://www.doctoralia.com.mx"
+					   target="_blank"
+					>México<span class="sr-only"> abre num novo separador</span></a>, 									<a href="https://www.doctoralia.cl"
+					   target="_blank"
+					>Chile<span class="sr-only"> abre num novo separador</span></a>, 									<a href="https://www.doctoralia.com.br"
+					   target="_blank"
+					>Brasil<span class="sr-only"> abre num novo separador</span></a>, 									<a href="https://www.doctoraliar.com"
+					   target="_blank"
+					>Argentina<span class="sr-only"> abre num novo separador</span></a>, 									<a href="https://www.doctoralia.pe"
+					   target="_blank"
+					>Perú<span class="sr-only"> abre num novo separador</span></a>, 									<a href="https://www.doctoralia.co"
+					   target="_blank"
+					>Colombia<span class="sr-only"> abre num novo separador</span></a>							</p>
+
+			
+			
+			<p class="text-center">
+				www.doctoralia.com.br &copy; 2026 -
+				Agende agora sua consulta
+			</p>
+
+			
+			
+		</div>
+	</div>
+
+			<div class="row m-0 w-100 floating-cookie-info floating-cookie-info-hidden"
+     data-id="floating-cookie-info"
+>
+	<div class="col-md-12 p-0">
+		<div class="floating-cookie-info-wrapper mb-md-3 ml-md-3">
+			<div class="card card-shadow-1 card-border p-0 floating-cookie-info-panel">
+				<div class="card-body p-0 pt-3 pt-md-2 d-flex">
+
+					<img src="//platform.docplanner.com/img/general/gdpr/cookie-illustration.png?3156262526" alt="cookie" width="185" height="126" class="floating-cookie-info-img align-self-end"/>
+
+					<div class="text-body text-left d-flex flex-column justify-content-md-end pb-1-5 pl-1-5 pb-md-2 pr-1 pr-md-2">
+						<h3 class="mb-1">Sua privacidade é importante.</h3>
+
+						<p class="mb-0">
+							Estamos usando cookies para melhorar sua experiência.  <a href="https://www.doctoralia.com.br/privacidade" target="_blank">Saiba mais</a>.
+						</p>
+					</div>
+					<div class="floating-cookie-info-btn">
+						<button class="btn btn-link btn-only-icon"
+						        data-id="cookie-info-close"
+						        type="button"
+						>
+							<i aria-hidden="true" class="svg-icon svg-icon-negative-filled svg-icon-size-20 svg-icon-color-gray-500" ><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10Zm3.707-13.707a1 1 0 0 1 0 1.414L13.414 12l2.293 2.293a1 1 0 0 1-1.414 1.414L12 13.414l-2.293 2.293a1 1 0 0 1-1.414-1.414L10.586 12 8.293 9.707a1 1 0 0 1 1.414-1.414L12 10.586l2.293-2.293a1 1 0 0 1 1.414 0Z"/></svg></i>
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+	</footer>
+	
+	
+		
+	
+					
+						<script src="//platform.docplanner.com/js/goro-basic-30511e08.js"></script>
+			
+									<script defer="defer" src="//platform.docplanner.com/js/jade-polyfills-81554b3b.js"></script>
+					<script defer="defer" src="//platform.docplanner.com/js/runtime-65b360e9.js"></script>
+					<script defer="defer" src="//platform.docplanner.com/js/jade-app-0ab73df8.js"></script>
+			
+	
+<script>
+
+
+
+
+ZLApp.AppConfig = {
+	...ZLApp.AppConfig,
+	ROUTES: {
+		FAVORITE_DOCTORS_LIST: 'https://www.doctoralia.com.br/especialistas-salvos',
+	},
+	ENABLE_SLOTS_FILTER_INSURANCES_ADVANCED_SCHEDULE: true,
+	SHOW_INSURANCE_FILTER_IN_NAVBAR: true,
+	REQUEST_QUERY_PHRASE: '24298', 	REQUEST_QUERY_PAGE: '1',
+	REQUEST_QUERY_LOCATION: '',
+	REQUEST_QUERY_LOCATION_DETAILS: {"city":null,"district":null,"province":null,"street":null},
+	REQUEST_QUERY_FILTERS: [],
+	REQUEST_QUERY_SPECIALIZATION: null,
+	TRANSLATIONS: {"search":"Pesquisar","search_filter_calendar":"Agendar na Doctoralia","search_filter_kids_friendly":"Aceita crian\u00e7as","search_filter_specializations":"Especialidades","search_filter_insurances":"Planos de Sa\u00fade","search_filter_insurance_types":"search_filter_insurance_types","search_filter_insurances_germany_public":"search_filter_insurances_germany_public","search_filter_insurances_germany_public_selfpay":"search_filter_insurances_germany_public_selfpay","search_filter_insurances_germany_private":"search_filter_insurances_germany_private","search_filter_services":"Servi\u00e7os","search_filter_diseases":"Doen\u00e7as","search_filter_languages":"Idioma","search_filter_payment_methods":"M\u00e9todo de pagamento","search_filter_calendar_description":"Mostre apenas especialistas com quem voc\u00ea pode agendar uma consulta na Doctoralia","search_filter_kids_friendly_description":"Especialistas que atendem crian\u00e7as","search_filter_entity_type":"Mostrar perfis de","search_filter_facility_types":"Tipo de estabelecimento","search_filter_therapy_types":"search_filter_therapy_types","search_filter_doctors":"Doutores","search_filter_clinics":"Cl\u00ednicas","search_filter_doctors_clinics":"Doutores e cl\u00ednicas","search_filter_online_only":"Teleconsulta","search_filter_online_only_apply_button":"Mostrar especialistas","search_filter_online_only_description":"Mostrar todos os especialistas que oferecem consulta online","search_filter_online_only_location_description":"Procurar apenas na minha regi\u00e3o: {city}","search_filter_label_featured":"Mais buscados","search_filter_gender":"G\u00eanero","search_filter_gender_male":"Masculino","search_filter_gender_female":"Feminino","search_filter_gender_other":"Outros","search_filter_gender_all":"Todos","search_filter_label_others":"Outros","search_filter_accessibility":"Acessibilidade para pacientes","accessibility_pregnant":"gr\u00e1vidas, com filhos pequenos","accessibility_wheelchair":"em cadeiras de rodas, muletas","accessibility_deaf":"deficientes auditivos","accessibility_blind":"deficientes visuais","filter_language":"Idioma","search_filter_availability":"Datas dispon\u00edveis","availability_filter_today":"Hoje","availability_filter_3_days":"Pr\u00f3ximos 3 dias","availability_filter_anytime":"Qualquer data","search_opinions_clear_cta":"Apagar","search_filters_sorting":"search_filters_sorting","search_sorter":"Ordenar por","search_sorter_sort":"search_sorter_sort","search_sorter_sorting":"search_sorter_sorting","specialization_in_progress":"specialization_in_progress","certified_psychotherapist":"certified_psychotherapist","filter_show_results_pluralization":"Mostrar 1 resultado|Mostrar %{number} resultados","filters":"Filtros","search_more_filters":"Mais filtros","reset_filters":"Restabelecer","reset_all_filters":"Limpar filtros","cancel":"Cancelar","show_more":"Veja mais","all":"Todos","show_profile":"Mostrar perfil","show_more_hours":"Mostrar mais hor\u00e1rios","profile.facility.calendar.inactive":"Este centro m\u00e9dico n\u00e3o disponibiliza a marca\u00e7\u00e3o de consultas online","profile.calendar.range_overbooked":"N\u00e3o h\u00e1 hor\u00e1rio para esse dias","calendar_slot_available":"Hor\u00e1rio dispon\u00edvel - clique para agendar uma visita","calendar_slot_booked":"Hor\u00e1rio n\u00e3o dispon\u00edvel","no_visits":"Sem consultas","search_next_available_term":"pr\u00f3xima data","less":"menos","more":"mais","today":"hoje","tomorrow":"Amanh\u00e3","no_slots_facility_info":"Nenhum profissional neste centro m\u00e9dico tem consultas dispon\u00edveis","no_slots_facility_cta":"Mostrar perfil","visit_show_calendar":"Mostrar o calend\u00e1rio","see_next_available_day":"Mostrar horas dispon\u00edveis","next_available_day":"Pr\u00f3ximo dia dispon\u00edvel","calendar_overbooked_no_terms":"Este calend\u00e1rio n\u00e3o tem hor\u00e1rios dispon\u00edveis","ask_for_calendar":"Pedir calend\u00e1rio de consultas","ask_for_calendar_b":"Solicite um atendimento","ask_for_calendar_modal_description":"Este especialista ainda n\u00e3o tem calend\u00e1rio online neste endere\u00e7o","ask_for_calendar_modal_description_b":"Esse especialista n\u00e3o oferece agendamento online para esse endere\u00e7o.","search_calendar_missing_b":"O agendamento online n\u00e3o est\u00e1 dispon\u00edvel","request_calendar_noncomm_modal_title_b":"Deixe uma solicita\u00e7\u00e3o de atendimento com esse especialista","no_open_slots":"N\u00e3o oferece o agendamento online","notify_me":"Notificar-me sobre datas dispon\u00edveis","search_calendar_missing":"Nenhum calend\u00e1rio dispon\u00edvel!","show_phone":"Mostrar n\u00famero","no_calendar_in_your_location":"Sem calend\u00e1rio neste endere\u00e7o.","check_other_calendars":"Mostrar endere\u00e7os com calend\u00e1rio","mobile_calendar":"Calend\u00e1rio","no_results_for":"N\u00e3o h\u00e1 resultados de pesquisa para","change_location":"Alterar localiza\u00e7\u00e3o","search_online":"Buscar consulta online","show_map":"Mostrar mapa","map_search":"Procurar nesta \u00e1rea","map_empty_state_copy_generic":"N\u00e3o h\u00e1 especialistas nesta regi\u00e3o","map_empty_state_CTA":"Mova o mapa ou amplie-o para encontrar mais resultados","disclaimer_google_maps":"disclaimer_google_maps","choose_city":"Procure entre as principais cidades","type_city":"Digite o nome da cidade","listing_city_search_no_results":"N\u00e3o foi poss\u00edvel encontrar \"%{query}\" entre as principais cidades. Confira se voc\u00ea digitou o nome corretamente e tente mais uma vez.","opinion_numeral":"opini\u00e3o|opini\u00f5es","first_class_label":"First Class","first_class_label_yellow_search_results":"First Class","doctor_verificated_first_class":"Este perfil corresponde aos seus crit\u00e9rios de pesquisa selecionados, aparece nas primeiras op\u00e7\u00f5es devido \u00e0 disponibilidade, opini\u00f5es, perfil completo e plano de assinatura do profissional.","address":"Endere\u00e7o","price_from":"A partir de %price%","currency_suffix":"R$ %{currency_code}","services_and_prices_no_price":"Pre\u00e7o n\u00e3o dispon\u00edvel","premium_touchpoint_search_header":"Voc\u00ea tamb\u00e9m gostaria de aparecer aqui?","premium_touchpoint_search_body":"Permita que os pacientes te encontrem e aumente sua reputa\u00e7\u00e3o online com o perfil Premium.","online_consultation_online_tab":"Teleconsulta","learn_more":"Saiba mais","online_consultation_listing_specialist_search_placeholder":"Pesquisar por especializa\u00e7\u00e3o","online_consultation_listing_specialist_search_title":"Especializa\u00e7\u00f5es dispon\u00edveis","online_consultation_listing_specialist_search_no_results":"N\u00f3s n\u00e3o conseguimos encontrar por %{query}\". Confirme se voc\u00ea digitou o nome da especializa\u00e7\u00e3o corretamente e tente novamente.","suggestions_box_listing_services_search_no_results":"N\u00e3o foi poss\u00edvel encontrar '%{query}'.  Veja se voc\u00ea digitou o nome do servi\u00e7o corretamente e tente novamente.","suggestions_box_listing_services_search_placeholder":"Buscar por servi\u00e7o","suggestions_box_listing_services_search_title":"Que tipo de consulta voc\u00ea quer agendar?","suggestions_box_listing_services_search_show_more":"Outros servi\u00e7os","search_filter_insurance_no_results":"N\u00e3o foi poss\u00edvel encontrar \"%{query}\". Certifique-se de que o nome do conv\u00eanio esteja correto e tente novamente.","search_filter_insurance_placeholder":"Pesquisar por plano de sa\u00fade","search_filter_insurance_title":"Planos dispon\u00edveis","save":"Salvar","saved":"Salvo","share":"Compartilhar","login":"Entrar","login_before_save_doctor_header":"Salvar especialista","login_before_save_doctor_text":"Para salvar este especialista, crie sua conta na Doctoralia.","login_before_save_doctor_or":"ou","login_before_save_doctor_email":"Utilizar meu e-mail","login_before_save_doctor_already":"J\u00e1 possui uma conta?","login_before_save_doctor_login":"Entrar","login_with_apple":"Continuar com a Apple","login_with_facebook":"Continuar com Facebook","login_with_google":"Continuar com Google","save_doctor_toaster_link":"lista de especialistas","save_doctor_toaster_removed":"Exclu\u00eddo de sua","save_doctor_toaster_saved":"Salvo em sua","banner_promote_app_doctor_homepage_test_title":"A Doctoralia \u00e9 melhor pelo App","banner_promote_app_doctor_homepage_test_tag":"Recomendado","banner_promote_app_doctor_homepage_test_app_title":"App Doctoralia","banner_promote_app_doctor_homepage_test_cta":"Acessar App","banner_promote_app_doctor_homepage_test_browser_title":"Navegador","banner_promote_app_doctor_homepage_test_cta2":"Continuar","banner_promote_app_doctor_homepage_test_cta3":"Abrir o App","banner_promote_app_doctor_homepage_test_cta4":"Continuar pelo site da Doctoralia","banner_promote_app_listing_nocalendar_test_title":"Precisa de um especialista?","banner_promote_app_listing_nocalendar_test_text":"Cuidar da sua sa\u00fade \u00e9 muito mais simples pelo App. Confira agora mesmo!","banner_promote_app_listing_nocalendar_test_cta":"Conhecer o App","banner_promote_app_listing_nocalendar_test_cta2":"Continuar pelo site da Doctoralia","banner_promote_app_listing_nocalendar_test_title2":"Simplifique o cuidado com sua sa\u00fade pelo App","banner_promote_app_listing_nocalendar_test_text2":"Filtre os especialistas mais pr\u00f3ximos a voc\u00ea","banner_promote_app_listing_nocalendar_test_text3":"Agende uma consulta quando e onde quiser","banner_promote_app_listing_nocalendar_test_tcta3":"Instalar o App","banner_promote_app_profile_nocalendar_test_title":"Precisa de um especialista?","banner_promote_app_profile_nocalendar_test_text":"Cuidar da sua sa\u00fade \u00e9 muito mais simples pelo App. Confira agora mesmo!","banner_promote_app_profile_nocalendar_test_cta":"Conhecer o App","banner_promote_app_profile_nocalendar_test_cta2":"Continuar pelo site da Doctoralia","banner_promote_app_profile_nocalendar_test_title2":"Agende facilmente pelo App ","banner_promote_app_profile_nocalendar_test_cta3":"Abrir o App","banner_promote_app_content_page_test_title":"Tem mais d\u00favidas sobre sua sa\u00fade?","banner_promote_app_content_page_test_text":"Baixe o App e receba uma resposta diretamente de um especialista","banner_promote_app_content_page_test_cta":"Conhecer o App","banner_promote_app_content_page_test_cta2":"Continuar pelo site da Doctoralia","banner_promote_app_content_page_test_title2":"Cuide da sua sa\u00fade pelo App","banner_promote_app_content_page_test_cta3":"Abrir ","banner_promote_app_content_booking_confirmation_V1":"Ol\u00e1! A seguir, voc\u00ea encontra todos os detalhes da sua consulta. Acesse essas informa\u00e7\u00f5es a qualquer momento pelo App e receba lembretes para n\u00e3o se esquecer da vista.","banner_promote_app_content_booking_confirmation_cta_V1":"Continuar pelo App","banner_promote_app_content_booking_confirmation_V2":"Ol\u00e1! Agradecemos por agendar sua consulta. Acesse todos os detalhes a qualquer momento pelo App e receba lembretes para n\u00e3o se esquecer da vista.","download-app-generic":"Baixar o App","banner_promote_app_content_booking_confirmation_V3":"Acompanhe todos os detalhes de suas consultas","banner_promote_app_content_opinion_thank_you_page_title_V1":"Mensagem de seu especialista","banner_promote_app_content_opinion_thank_you_page_V1":"Ol\u00e1! Agrade\u00e7o por ter compartilhado a sua opini\u00e3o. Se quiser me enviar uma mensagem direta, por favor, baixe o App.","banner_promote_app_email_footer":"Gerencie suas consultas pelo App: receba lembretes e envie mensagens aos especialistas","insurance_checker_modal_cta_secondary":"Apagar","insurance_checker_modal_title":"Selecione seu conv\u00eanio","insurance_checker_accepted_modal_title":"Seu conv\u00eanio \u00e9 aceito","insurance_checker_accepted_modal_cta_primary":"Ir para o perfil","insurance_checker_accepted_modal_cta_secondary":"Veja mais especialistas que aceitam %{InsuranceName}","insurance_checker_accepted_modal_text":"%{DoctorName} aceita %{InsuranceName}. Voc\u00ea pode consultar o seu perfil completo e agendar uma consulta.","insurance_checker_not_accepted_no_others_modal_title":"Seu conv\u00eanio n\u00e3o \u00e9 aceito","insurance_checker_not_accepted_no_others_modal_text":"%{doctorname} n\u00e3o aceita %{InsuranceName}. N\u00e3o encontramos outros especialistas na regi\u00e3o que atendam pelo seu conv\u00eanio. Voc\u00ea pode agendar uma consulta particular ou atualizar seus filtros de busca.","insurance_checker_not_accepted_no_others_modal_cta_primary":"Continuar assim mesmo","insurance_checker_not_accepted_no_others_modal_cta_secondary":"Voltar","insurance_checker_not_accepted_modal_cta_primary":"Continuar assim mesmo","insurance_checker_not_accepted_modal_cta_secondary":"Buscar especialistas que aceitam %{InsuranceName}","insurance_checker_not_accepted_modal_text":"%{DoctorName} n\u00e3o aceita %{InsuranceName}. Voc\u00ea pode agendar uma consulta particular ou encontrar outros profissionais que aceitem seu conv\u00eanio.","insurance_checker_not_accepted_modal_title":"Seu conv\u00eanio n\u00e3o \u00e9 aceito","online_consultation_calendar_online_tap":"Teleconsulta","visit_boost_doctor_profile_attention_text_5":"Clique em uma data que melhor lhe atenda e marque uma consulta. Voc\u00ea ir\u00e1 receber uma confirma\u00e7\u00e3o por email.","online_consultation_calendar_office_tap":"Consulta no local","home_online_consultation_tab_office":"No local","advance_schedule_calendar_select_insurance":"Selecione seu conv\u00eanio m\u00e9dico","booking_insurance_not_accepted_placeholder":"N\u00e3o aceitamos conv\u00eanio m\u00e9dico","booking_insurance_checkbox":"Estou agendando sem plano de sa\u00fade","booking_service_type_no_service":"booking_service_type_no_service","advance_schedule_calendar_select_service":"Escolha o tipo de visita","advance_schedule_calendar_service":"Tipo de visita","advance_schedule_calendar_select_fisrt_visit":"\u00c9 o seu primeiro atendimento com este especialista?","profile.facility.calendar.headline":"Agendar atendimento","service_modal_popular":"Servi\u00e7os em destaque","service_modal_all":"Outros servi\u00e7os","currency_symbol":"R$","splitted_calendar_notify_me":"Avise-me quando um hor\u00e1rio ficar dispon\u00edvel ","widget_default_specialization":"especializa\u00e7\u00e3o","widget_default_specialist":"especialista","profile.facility.calendar.all_doctors":"Primeira data dispon\u00edvel","profile.facility.calendar.footer.title":"Escolha uma especialidade e comece a marcar a sua consulta","profile.facility.calendar.specialists_available":"%{count} especialistas dispon\u00edveis","profile.facility.calendar.specialists_with_specialization":"1 especialista|%{count} especialistas","profile.facility.calendar.select_specialist":"Escolha um especialista","profile.facility.doctors.show_all_doctors":"Ver especialista|Ver todos os especialistas (%{count})","services":"Servi\u00e7os","doctor_opinions_count":"Uma opini\u00e3o|%opinions_count% opini\u00f5es","select_address":"Selecione endere\u00e7o","advance_schedule_calendar_no_options_matching":"N\u00e3o h\u00e1 hor\u00e1rios dispon\u00edveis para as op\u00e7\u00f5es selecionadas.","filter_specialists_by_availability":"Mostrar apenas especialistas com  hor\u00e1rios dispon\u00edveis","non_commercial_profiles_recommended_doctors_primary_cta":"Ver disponibilidade","request_calendar_noncomm_modal_title":"Solicite a este especialista para ativar o calend\u00e1rio","request_calendar_noncomm_modal_hint":"Este especialista n\u00e3o permite agendamento online neste endere\u00e7o. Deixe seus dados de contato e informaremos se, no futuro, o calend\u00e1rio estiver ativo. \u00c9 poss\u00edvel que compartilhemos seus dados de contato com o especialista para que ele possa entrar em contato com voc\u00ea.","request_calendar_noncomm_modal_thank_you":"Sua solicita\u00e7\u00e3o foi enviada. Recomendamos que voc\u00ea confira outros %{specialization.rank_word} pr\u00f3ximos de voc\u00ea para uma consulta o quanto antes. Caso, no futuro, %{doctor_name} ofere\u00e7a agendamento online neste endere\u00e7o informaremos voc\u00ea.","request_calendar_noncomm_modal_button":"Enviar","no_calendar_comm_modal_thank_you":"Sua solicita\u00e7\u00e3o foi enviada. Recomendamos que voc\u00ea agende agora em um endere\u00e7o diferente ou confira outros %{specialization.rank_word} pr\u00f3ximos de voc\u00ea para uma consulta o quanto antes. Caso, no futuro, %{doctor_name} ofere\u00e7a agendamento online neste endere\u00e7o informaremos voc\u00ea.","error_occurred":"Ocorreu um erro.","contact_email":"E-mail","type_your_email_here":"Digite seu email aqui","a11y_info_required_fields":"* campos obrigat\u00f3rios","request_calendar_phone_title":"Telefone","request_calendar_phone_placeholder":"Digite seu n\u00famero de telefone. Exemplo: 11999999999","request_calendar_phone_title_optional":"(opcional)","request_calendar_phone_infotip":"Forne\u00e7a seu n\u00famero de telefone para facilitar o contato do m\u00e9dico e o envio dos hor\u00e1rios dispon\u00edveis.","request_calendar_phone_error":"Insira um n\u00famero de telefone v\u00e1lido","booking_law_info_checkbox":"Voc\u00ea aceita  <a href=\"%{terms_url}\" target=\"_blank\">os termos de uso<\/a>, bem como declara ci\u00eancia do conte\u00fado da  <a href=\"%{privacy_url}\" target=\"_blank\">pol\u00edtica de privacidade<\/a> .","booking_law_info_checkbox_logged_out":"Voc\u00ea aceita  <a href=\"%{terms_url}\" target=\"_blank\">os termos de uso<\/a>, bem como declara ci\u00eancia do conte\u00fado da  <a href=\"%{privacy_url}\" target=\"_blank\">pol\u00edtica de privacidade<\/a> .","introduction-all-specialists-title":"Vamos encontrar o(a) %{specialist} certo(a) para voc\u00ea","introduction-all-specialists-descr":"Responda %{number} perguntas e mostraremos os melhores especialistas para voc\u00ea.\nSuas respostas s\u00e3o totalmente an\u00f4nimas.","introduction-all-specialists-cta":"Come\u00e7ar","all-specialists-skip":"Pular","loading-all-specialists-results-title":"Buscando %{specialists} para voc\u00ea...","loading-all-specialists-results-descr":"Analisamos suas respostas para escolher, entre mais de 1000 especialistas, os 10 que melhor se adaptam \u00e0s suas prefer\u00eancias","next-generic":"Pr\u00f3xima","previous-generic":"Anterior","skip-generic":"Saltar","insurance-generic":"Conv\u00eanio","filter_by":"Filtrar por:","banner_search_assistant_end_screen_title":"banner_search_assistant_end_screen_title","banner_search_assistant_end_screen_cta_text":"banner_search_assistant_end_screen_cta_text","search_assistant_live_location_button":"Partilhar a sua localiza\u00e7\u00e3o em direto","search_assistant_live_location_error_message_permission_denied":"O acesso \u00e0 localiza\u00e7\u00e3o foi bloqueado pelas defini\u00e7\u00f5es do seu browser.\n","search_assistant_live_location_error_message_unknown":"N\u00e3o \u00e9 poss\u00edvel aceder \u00e0 localiza\u00e7\u00e3o.","skip_and_go_to_results":"Saltar e ver resultados\n","a11y_alt_search_assistant_end_screen_illustration":"Ilustra\u00e7\u00e3o de uma pessoa a apontar para cart\u00f5es de resultados m\u00e9dicos simplificados que representam uma lista de m\u00e9dicos.","a11y_alt_search_assistant_live_location_illustration":"Ilustra\u00e7\u00e3o de um mapa com pinos de localiza\u00e7\u00e3o com avatares de utilizadores e uma lupa, representando a partilha de geolocaliza\u00e7\u00e3o.","a11y_alt_search_assistant_banner_illustration":"Ilustra\u00e7\u00e3o de uma pessoa sentada de pernas cruzadas numa pose meditativa, rodeada por retratos circulares ligados por uma linha orbital amarela, que simboliza o bem-estar.","search_assistant_banner_header_1":"Vamos encontrar a solu\u00e7\u00e3o correta","search_assistant_banner_header_2":"%snome_da_especializa\u00e7\u00e3o% para si","all-specialists-continue":"Continuar","all-specialists-something-else":"Outra op\u00e7\u00e3o","general-question-psychologist-title":"Para quem voc\u00ea est\u00e1 buscando atendimento?","general-question-psychologist-myself":"Para mim","general-question-psychologist-couple":"Para meu parceiro(a) e para mim","general-question-psychologist-child":"Para uma crian\u00e7a ou adolescente","general-question-psychologist-other":"Para outro adulto","disease-question-psychologist-title":"O que te fez buscar terapia?","disease-question-psychologist-descr":"Selecione todas as op\u00e7\u00f5es aplic\u00e1veis.","disease-question-psychologist-cat2-header":"Tenho dificuldades com certos comportamentos ou h\u00e1bitos\n","disease-question-psychologist-cat2-desr":"Depend\u00eancias, compuls\u00f5es ou uma rela\u00e7\u00e3o dif\u00edcil com a comida\n","disease-question-psychologist-cat3-header":"Sinto-me ansioso(a), sobrecarregado(a) ou triste","disease-question-psychologist-cat3-desr":"Relacionado \u00e0 depress\u00e3o, burnout ou ins\u00f4nia","disease-question-psychologist-cat4-header":"Tenho dificuldades com emo\u00e7\u00f5es intensas e mudan\u00e7as de humor","disease-question-psychologist-cat4-desr":"Altos e baixos extremos, sensa\u00e7\u00e3o de vazio ou desconex\u00e3o","disease-question-psychologist-cat5-header":"Passei por algo dif\u00edcil","disease-question-psychologist-cat5-desr":"Trauma, luto, mudan\u00e7a de vida importante","disease-question-psychologist-cat6-header":"Enfrento desafios nos meus relacionamentos","disease-question-psychologist-cat6-desr":"Por exemplo, com parceiro(a), filhos, fam\u00edlia\n","disease-question-psychologist-cat7-header":"Quero me entender melhor","disease-question-psychologist-cat7-desr":"Trabalhar na autoestima ou no desenvolvimento pessoal","disease-question-psychologist-title-child":"Que tipo de ajuda seu filho(a) precisa?","disease-question-psychologist-descr-child":"Selecione as principais \u00e1reas.","disease-question-psychologist-cat2-header-child":"Meu filho(a) tem dificuldades com certos comportamentos ou h\u00e1bitos","disease-question-psychologist-cat2-desr-child":"Depend\u00eancias, compuls\u00f5es ou uma rela\u00e7\u00e3o dif\u00edcil com a comida","disease-question-psychologist-cat3-header-child":"Meu filho(a) se sente ansioso(a), sobrecarregado(a) ou triste","disease-question-psychologist-cat3-desr-child":"Relacionado \u00e0 depress\u00e3o, burnout ou ins\u00f4nia","disease-question-psychologist-cat4-header-child":"Meu filho(a) sente emo\u00e7\u00f5es intensas","disease-question-psychologist-cat4-desr-child":"Mudan\u00e7as extremas de humor, sensa\u00e7\u00e3o de vazio ou desconex\u00e3o","disease-question-psychologist-cat5-header-child":"Meu filho(a) passou por algo dif\u00edcil","disease-question-psychologist-cat5-desr-child":"Trauma, luto, mudan\u00e7a importante de vida","disease-question-psychologist-cat6-header-child":"Meu filho(a) enfrenta desafios nos relacionamentos","disease-question-psychologist-cat6-desr-child":"Com pais, colegas, na escola (incluindo bullying)","disease-question-psychologist-cat7-header-child":"Meu filho(a) est\u00e1 em busca de sua identidade","disease-question-psychologist-cat7-desr-child":"Trabalhar a autoestima ou autoconhecimento","disease-question-psychologist-title-other-person":"Que tipo de ajuda essa pessoa precisa?","disease-question-psychologist-descr-other-person":"Selecione todas as op\u00e7\u00f5es que se aplicam \u00e0 pessoa que voc\u00ea est\u00e1 buscando ajuda.","disease-question-psychologist-cat2-header-other-person":"Ela tem dificuldades com certos comportamentos ou h\u00e1bitos","disease-question-psychologist-cat2-desr-other-person":"Depend\u00eancias, compuls\u00f5es ou uma rela\u00e7\u00e3o dif\u00edcil com a comida","disease-question-psychologist-cat3-header-other-person":"Ela se sente ansiosa, sobrecarregada ou triste","disease-question-psychologist-cat3-desr-other-person":"Relacionado \u00e0 depress\u00e3o, burnout ou ins\u00f4nia","disease-question-psychologist-cat4-header-other-person":"Ela tem dificuldades com emo\u00e7\u00f5es intensas e mudan\u00e7as de humor","disease-question-psychologist-cat4-desr-other-person":"Altos e baixos extremos, sensa\u00e7\u00e3o de vazio ou desconex\u00e3o","disease-question-psychologist-cat5-header-other-person":"Ela passou por algo dif\u00edcil","disease-question-psychologist-cat5-desr-other-person":"Trauma, luto, mudan\u00e7a importante de vida","disease-question-psychologist-cat6-header-other-person":"Ela enfrenta desafios nos relacionamentos","disease-question-psychologist-cat6-desr-other-person":"Por exemplo, com parceiro(a), filhos, fam\u00edlia","disease-question-psychologist-cat7-header-other-person":"Ela quer se entender melhor","disease-question-psychologist-cat7-desr-other-person":"Trabalhar na autoestima ou no desenvolvimento pessoal","disease-question-psychologist-title-specific":"Voc\u00ea poderia especificar qual dessas condi\u00e7\u00f5es melhor te descreve?","disease-question-psychologist-descr-specific":"Selecione todas as op\u00e7\u00f5es aplic\u00e1veis.","gender-question-psychologist-title":"Voc\u00ea gostaria que o especialista fosse de um g\u00eanero espec\u00edfico?","gender-question-psychologist-whatever":"N\u00e3o tenho prefer\u00eancia","gender-question-psychologist-female":"Sim, uma mulher","gender-question-psychologist-male":"Sim, um homem","gender-question-psychologist-nonbinary":"Sim, uma pessoa n\u00e3o-bin\u00e1ria","location-question-all-specialists-title":"Voc\u00ea prefere que as consultas sejam presenciais ou online?","location-question-all-specialists-office":"Presencial no consult\u00f3rio","location-question-all-specialists-online":"Online","location-question-all-specialists-whatever":"N\u00e3o tenho prefer\u00eancia","live-location-question-all-specialists-title":"Informe sua localiza\u00e7\u00e3o para que possamos mostrar especialistas da sua regi\u00e3o que atendam ao que voc\u00ea procura"},
+	SEARCH_PATH: 'https://www.doctoralia.com.br/pesquisa',
+	ONLINE_ADDRESSES_AVAILABLE_WITH_LOCATION: false,
+	FAVORITE_DOCTORS: [],
+	USER_EMAIL: null,
+	HAS_RESULTS: false,
+	AVAILABLE_FILTERS: [],
+	ACTIVE_FILTERS: [],
+	TOTAL_RESULTS: 0,
+	CITY_NAME: '',
+	ACTIVE_SPECIALIZATIONS: null,
+	ACTIVE_SORTER: '',
+	AVAILABLE_SORTERS: ["recommended"],
+	IS_NEAR_ME_SEARCH: false,
+	HAS_CALENDARS: false,
+	SLIDER_MODE: false,
+	SEARCH_ASSISTANT: false,
+	HAS_SEARCH_ASSISTANT_RESULTS: false,
+	IS_AD_CAMPAIGN: false,
+	DISPLAY_BANNER_SEARCH_ASSISTANT: false,
+	SEND_REQUEST_FOR_SLOTS_WITHOUT_INSURANCE_FILTER: false,
+	SHOW_TERAPIA_BANNER_EXPERIMENT: false,
+	SHOW_TERAPIA_SURVEY: false,
+	NFZ_FILTER_VISIBLE: false,
+	NFZ_FILTER_ACTIVE: false,
+};
+
+</script>
+
+	<script type="text/javascript">
+  dataLayer.push({ 'gtm-listing-profiles': '0' });
+  dataLayer.push({ 'gtm-listing-facility-profiles': '0' });
+  dataLayer.push({ 'gtm-listing-calendar-profiles': '0' });
+
+                    </script>
+
+			<script type="text/javascript">
+	function downloadJSAtOnload() {
+      var event;
+      if(typeof(Event) === 'function') {
+        event = new Event('deferLoading');
+      } else {
+        event = document.createEvent('Event');
+        event.initEvent('deferLoading', true, true);
+      }
+      document.dispatchEvent(event);
+	}
+
+	// Check for browser support of event handling capability
+	if (window.addEventListener)
+		window.addEventListener("load", downloadJSAtOnload, false);
+	else if (window.attachEvent)
+		window.attachEvent("onload", downloadJSAtOnload);
+	else window.onload = downloadJSAtOnload;
+</script>
+	
+			<div data-id="dp-notifications-vue">
+			<dp-notifications-container/>
+		</div>
+	</body>
+</html>

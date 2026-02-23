@@ -1,19 +1,24 @@
+import dotenv from 'dotenv';
+dotenv.config();
 
 // @ts-nocheck
 import express from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
-import dotenv from 'dotenv';
 import cookieParser from 'cookie-parser';
 import authRoutes from './routes/auth';
 import examRoutes from './routes/exams';
 import patientRoutes from './routes/patients';
 import statsRoutes from './routes/stats';
+import pricingRoutes from './routes/pricing';
+import financeRoutes from './routes/finance';
+import commonRoutes from './routes/common';
+import templatesRoutes from './routes/templates';
+import clinicsRoutes from './routes/clinics';
 import path from 'path';
 
 import { getDashboard, logMiddleware } from './controllers/MonitorController';
-
-dotenv.config();
+import { getPublicExam, saveExternalSuggestion } from './controllers/examController';
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -65,11 +70,20 @@ app.use('/uploads', express.static(path.join(process.cwd(), 'uploads'), {
 // Painel de Monitoramento do Core Engine
 app.get('/', getDashboard);
 
+// Rota Pública para Compartilhamento de Exames
+app.get('/api/public/exams/:id', getPublicExam);
+app.post('/api/public/exams/:id/suggestion', saveExternalSuggestion);
+
 // Rotas da API
 app.use('/api/auth', authRoutes);
 app.use('/api/exams', examRoutes);
 app.use('/api/patients', patientRoutes);
 app.use('/api/stats', statsRoutes);
+app.use('/api/pricing', pricingRoutes);
+app.use('/api/finance', financeRoutes);
+app.use('/api/common', commonRoutes);
+app.use('/api/templates', templatesRoutes);
+app.use('/api/clinics', clinicsRoutes);
 
 // Rotas Básicas para Health Check
 app.get('/health', (req, res) => {

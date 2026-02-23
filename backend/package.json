@@ -11,7 +11,9 @@
   "dependencies": {
     "@prisma/client": "^5.7.0",
     "@types/multer": "^2.0.0",
+    "axios": "^1.13.5",
     "bcryptjs": "^2.4.3",
+    "cheerio": "^1.2.0",
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
     "dcmjs": "^0.49.4",
@@ -20,6 +22,8 @@
     "helmet": "^7.1.0",
     "jsonwebtoken": "^9.0.2",
     "multer": "^2.0.2",
+    "pg": "^8.18.0",
+    "puppeteer": "^24.37.2",
     "sharp": "^0.34.5",
     "zod": "^3.22.4"
   },

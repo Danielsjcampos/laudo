@@ -33,12 +33,15 @@ const DoctorAiConsultation: React.FC = () => {
     setMessages(prev => [...prev, { role: 'user', content: userMessage }]);
     setIsLoading(true);
     try {
-      const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+      const apiKey = (import.meta.env.VITE_GEMINI_API_KEY as string) || 'KEY_NOT_CONFIGURED';
+      const ai = new GoogleGenAI({ apiKey });
       const response = await ai.models.generateContent({
-        model: 'gemini-3-pro-preview',
+        model: 'gemini-1.5-flash',
         contents: userMessage,
         config: {
-          systemInstruction: `Você é um consultor médico sênior. Responda tecnicamente para outros médicos.`,
+          systemInstruction: `Você é um consultor médico sênior do sistema LaudoDigital. 
+          Sua tarefa é auxiliar outros médicos em dúvidas clínicas, interpretação técnica de exames e orientações sobre o sistema. 
+          Responda sempre de forma profissional, ética e baseada em evidências.`,
           temperature: 0.3,
         }
       });
