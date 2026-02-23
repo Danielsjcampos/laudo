@@ -427,7 +427,7 @@ Exame dentro dos padrões da normalidade para os achados descritos.
 
                         {/* Report Editor - Weighted by Theme */}
                         <div className="flex-1 flex flex-col min-h-[400px]">
-                            {userRole === 'doctor' && !reportText && (
+                            {userRole === 'doctor' && reportText === '' && !exam.templateId && !isGenerating && (
                                 <div className="bg-amber-50 border border-amber-200 rounded-xl p-3 mb-3 flex items-center gap-3 animate-in fade-in slide-in-from-top-2">
                                     <div className="bg-amber-100 p-1.5 rounded-lg text-amber-600">
                                         <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -436,7 +436,7 @@ Exame dentro dos padrões da normalidade para os achados descritos.
                                     </div>
                                     <div>
                                         <p className="text-sm font-bold text-amber-900">Modelo de pré-laudo indisponível</p>
-                                        <p className="text-xs text-amber-700">Nenhum template encontrado para este exame. Inicie o laudo manualmente ou utilize a IA.</p>
+                                        <p className="text-xs text-amber-700">Nenhum template predefinido para este exame. Inicie o laudo manualmente ou utilize a IA.</p>
                                     </div>
                                 </div>
                             )}

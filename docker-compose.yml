@@ -26,13 +26,11 @@ services:
         condition: any
         delay: 5s
 
-# OHIF Viewer - Temporarily disabled (Docker build failing)
-# Will be re-enabled once the webpack build issue is resolved
-#  ohif:
-#    image: ghcr.io/danielsjcampos/laudo-ohif:main
-#    ports:
-#      - "3000:80"
-#    deploy:
-#      restart_policy:
-#        condition: any
-#        delay: 5s
+  ohif:
+    image: ghcr.io/danielsjcampos/laudo-ohif:main
+    ports:
+      - "3000:80"
+    deploy:
+      restart_policy:
+        condition: any
+        delay: 5s
