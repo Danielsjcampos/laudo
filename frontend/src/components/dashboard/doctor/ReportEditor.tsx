@@ -159,9 +159,10 @@ export const ReportEditor: React.FC<ReportEditorProps> = ({ value, onChange, onS
 
                      <div className="flex gap-1">
                          <button 
+                             onMouseDown={(e) => e.preventDefault()}
                              onClick={toggleRecording}
                              disabled={readOnly}
-                             title={isRecording ? "Parar ditado" : "Iniciar ditado por voz"}
+                             title={isRecording ? "Parar ditado" : "Selecione um texto e clique para substituir por voz, ou apenas clique para ditar."}
                              className={`p-1.5 rounded transition-colors flex items-center gap-1.5 px-3 border ${
                                  isRecording 
                                      ? 'bg-red-50 text-red-600 border-red-200 hover:bg-red-100 animate-pulse' 
