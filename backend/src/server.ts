@@ -71,6 +71,7 @@ app.use('/uploads', express.static(path.join(process.cwd(), 'uploads'), {
 
 // Painel de Monitoramento do Core Engine
 app.get('/', getDashboard);
+app.get('/api', getDashboard);
 
 // Rota Pública para Compartilhamento de Exames
 app.get('/api/public/exams/:id', getPublicExam);
