@@ -143,7 +143,7 @@ async function main() {
                       modality: t.modality,
                       bodyRegion: t.bodyRegion,
                       complexity: 1, // Default
-                      sections: t.sections,
+                      sections: JSON.stringify(t.sections),
                       isActive: true
                   }
               });

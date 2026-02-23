@@ -16,7 +16,8 @@ async function main() {
   for (const t of templates) {
     console.log(`- [${t.modality}] ${t.title} (${t.bodyRegion})`);
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    console.log(`  Sections: ${(t.sections as any[]).map((s: any) => s.label).join(', ')}`);
+    const parsedSections = typeof t.sections === 'string' ? JSON.parse(t.sections) : t.sections;
+    console.log(`  Sections: ${(parsedSections as any[]).map((s: any) => s.label).join(', ')}`);
   }
 }
 
