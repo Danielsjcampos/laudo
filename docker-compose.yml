@@ -1,17 +1,14 @@
-version: "3.8"
+version: '3.8'
 
 services:
   backend:
-    build:
-      context: ./backend
-      dockerfile: Dockerfile
+    image: ghcr.io/danielsjcampos/laudo-backend:main
     container_name: laudodigital-backend
-    restart: unless-stopped
+    restart: always
     ports:
       - "3001:3001"
     environment:
       - PORT=3001
-      # Note: We are using the DATABASE_URL and secrets from the .env or backend environment
       - DATABASE_URL=${DATABASE_URL:-postgresql://neondb_owner:npg_x3Q5lLutDkHV@ep-jolly-bird-acludz09-pooler.sa-east-1.aws.neon.tech/neondb?sslmode=require}
       - JWT_SECRET=${JWT_SECRET:-sua_chave_secreta_aqui_123}
       - GEMINI_API_KEY=${GEMINI_API_KEY}
@@ -19,28 +16,24 @@ services:
       - laudodigital-net
 
   frontend:
-    build:
-      context: ./frontend
-      dockerfile: Dockerfile
+    image: ghcr.io/danielsjcampos/laudo-frontend:main
     container_name: laudodigital-frontend
-    restart: unless-stopped
+    restart: always
     ports:
-      - "3003:80" # Nginx internal port is 80, mapping it to 3003
+      - "3003:80"
     environment:
-      - VITE_API_URL=${VITE_API_URL:-http://localhost:3001}
+      - VITE_API_URL=https://laudo.2b.app.br/api
     depends_on:
       - backend
     networks:
       - laudodigital-net
 
   ohif:
-    build:
-      context: ./ohif
-      dockerfile: Dockerfile
+    image: ghcr.io/danielsjcampos/laudo-ohif:main
     container_name: laudodigital-ohif
-    restart: unless-stopped
+    restart: always
     ports:
-      - "3000:80" # Mapping the Nginx Port of the built OHIF frontend to public 3000
+      - "3000:80"
     depends_on:
       - backend
     networks:
@@ -48,7 +41,7 @@ services:
 
 networks:
   laudodigital-net:
-    driver: bridge
+    driver: overlay # Necessário no modo swarm para comunicação entre containers em diferentes nós, ou bridge caso não utilize swarm nativo via Docker
 
 volumes:
   laudodigital-db-data:
