@@ -59,7 +59,7 @@ COPY --parents ./addOns/package.json ./addOns/*/*/package.json ./extensions/*/pa
 # Run the install before copying the rest of the files
 
 RUN bun pm cache rm
-RUN bun install
+RUN bun install --no-save
 RUN bun add ajv@8.12.0
 # Copy the local directory
 COPY --link --exclude=yarn.lock --exclude=package.json --exclude=Dockerfile . .
