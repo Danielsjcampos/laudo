@@ -1,0 +1,54 @@
+version: "3.8"
+
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: laudodigital-backend
+    restart: unless-stopped
+    ports:
+      - "3001:3001"
+    environment:
+      - PORT=3001
+      # Note: We are using the DATABASE_URL and secrets from the .env or backend environment
+      - DATABASE_URL=${DATABASE_URL:-postgresql://neondb_owner:npg_x3Q5lLutDkHV@ep-jolly-bird-acludz09-pooler.sa-east-1.aws.neon.tech/neondb?sslmode=require}
+      - JWT_SECRET=${JWT_SECRET:-sua_chave_secreta_aqui_123}
+      - GEMINI_API_KEY=${GEMINI_API_KEY}
+    networks:
+      - laudodigital-net
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: laudodigital-frontend
+    restart: unless-stopped
+    ports:
+      - "3003:80" # Nginx internal port is 80, mapping it to 3003
+    environment:
+      - VITE_API_URL=${VITE_API_URL:-http://localhost:3001}
+    depends_on:
+      - backend
+    networks:
+      - laudodigital-net
+
+  ohif:
+    build:
+      context: ./ohif
+      dockerfile: Dockerfile
+    container_name: laudodigital-ohif
+    restart: unless-stopped
+    ports:
+      - "3000:80" # Mapping the Nginx Port of the built OHIF frontend to public 3000
+    depends_on:
+      - backend
+    networks:
+      - laudodigital-net
+
+networks:
+  laudodigital-net:
+    driver: bridge
+
+volumes:
+  laudodigital-db-data:
