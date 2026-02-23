@@ -73,6 +73,7 @@ ARG PUBLIC_URL=/
 ENV PUBLIC_URL=${PUBLIC_URL}
 
 RUN bun run show:config
+ENV NODE_OPTIONS="--max_old_space_size=8096"
 RUN bun run build
 
 # Precompress files
