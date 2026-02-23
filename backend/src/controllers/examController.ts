@@ -219,7 +219,7 @@ ${s.defaultContent || ''}
 `).join('\n').trim();
 
        (examData as any).finalReport = reportContent;
-       (examData as any).status = 'Aguardando Laudo'; // Optional: move directly to reporting? No, let doctor accept.
+       // (examData as any).status = 'Aguardando Laudo'; // Mantemos como 'Disponível' para o Marketplace
     } else {
        console.log('ℹ️ Exam created without template link.');
     }
