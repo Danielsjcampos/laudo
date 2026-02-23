@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { reportThemes } from './report-designer/themes';
 import { Mic, MicOff } from 'lucide-react';
 
@@ -26,23 +26,48 @@ const TEMPLATES = [
 export const ReportEditor: React.FC<ReportEditorProps> = ({ value, onChange, onSaveDraft, readOnly, themeId }) => {
     const [selectedTemplate, setSelectedTemplate] = useState('');
     const [isRecording, setIsRecording] = useState(false);
+    const [interimText, setInterimText] = useState('');
     
     const theme = reportThemes.find(t => t.id === themeId) || reportThemes[0];
     
     const recognitionRef = useRef<any>(null);
     const textAreaRef = useRef<HTMLTextAreaElement>(null);
     const onChangeRef = useRef(onChange);
+    const shouldRecordRef = useRef(false);
 
     useEffect(() => {
         onChangeRef.current = onChange;
     }, [onChange]);
+
+    const insertTextAtCursor = useCallback((textToInsert: string) => {
+        const textarea = textAreaRef.current;
+        if (!textarea) return;
+
+        const start = textarea.selectionStart;
+        const end = textarea.selectionEnd;
+        const currentVal = textarea.value;
+
+        const newVal = currentVal.substring(0, start) + textToInsert + currentVal.substring(end);
+        
+        onChangeRef.current(newVal);
+
+        // Move cursor e foca para que o usuário veja a mudança sem perder o foco
+        setTimeout(() => {
+            if (textAreaRef.current) {
+                const newPos = start + textToInsert.length;
+                textAreaRef.current.setSelectionRange(newPos, newPos);
+                // Evitamos o focus automático agressivo se não for necessário,
+                // mas garantimos a re-seleção.
+            }
+        }, 10);
+    }, []);
 
     useEffect(() => {
         const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
         if (SpeechRecognition) {
             const recognition = new SpeechRecognition();
             recognition.continuous = true;
-            recognition.interimResults = false;
+            recognition.interimResults = true; // Feedback em tempo real
             recognition.lang = 'pt-BR';
             
             recognition.onstart = () => {
@@ -52,52 +77,70 @@ export const ReportEditor: React.FC<ReportEditorProps> = ({ value, onChange, onS
             recognition.onresult = (event: any) => {
                 if (readOnly) return;
                 
+                let currentInterim = '';
                 for (let i = event.resultIndex; i < event.results.length; ++i) {
                     if (event.results[i].isFinal) {
-                        const transcript = event.results[i][0].transcript;
+                        let transcript = event.results[i][0].transcript;
+                        
+                        // Capitalização inteligente
+                        const textarea = textAreaRef.current;
+                        if (textarea) {
+                            const beforeCursor = textarea.value.substring(0, textarea.selectionStart);
+                            // Se está no início ou logo após um ponto final/enter
+                            if (beforeCursor.length === 0 || /(^|[\.\!\?\n]\s*)$/.test(beforeCursor)) {
+                                transcript = transcript.charAt(0).toUpperCase() + transcript.slice(1);
+                            } else if (!beforeCursor.endsWith(' ') && !beforeCursor.endsWith('\n')) {
+                                // Garante um espaço se for colar depois de uma palavra
+                                transcript = ' ' + transcript.trimStart();
+                            }
+                        }
+
+                        // Substituições e correções ortográficas espertas por voz
+                        transcript = transcript.replace(/\s+([.,!?])/g, '$1'); // "teste ." -> "teste."
+                        
                         insertTextAtCursor(transcript + ' ');
+                    } else {
+                        currentInterim += event.results[i][0].transcript;
                     }
                 }
+                setInterimText(currentInterim);
             };
 
             recognition.onerror = (event: any) => {
                 console.error("Speech recognition error:", event.error);
-                setIsRecording(false);
+                if (event.error !== 'no-speech' && event.error !== 'network') {
+                    shouldRecordRef.current = false;
+                    setIsRecording(false);
+                    setInterimText('');
+                }
             };
 
             recognition.onend = () => {
-                // A gravação pode ser parada automaticamente após período de silêncio
-                setIsRecording(false);
+                // Gravação contínua real (Continuous Dictation)
+                // Browsers param automaticamente quando há silêncio. Nós reiniciamos
+                // caso a intenção do usuário fosse manter ligado.
+                if (shouldRecordRef.current) {
+                    try {
+                        recognition.start();
+                    } catch (e) {
+                        console.error(e);
+                    }
+                } else {
+                    setIsRecording(false);
+                    setInterimText('');
+                }
             };
 
             recognitionRef.current = recognition;
         }
-    }, [readOnly]);
 
-    const insertTextAtCursor = (textToInsert: string) => {
-        const textarea = textAreaRef.current;
-        if (!textarea) return;
-
-        const start = textarea.selectionStart;
-        const end = textarea.selectionEnd;
-        const currentVal = textarea.value;
-
-        // Limpa o texto a ser inserido, cuidando de espaçamentos caso o script o demande
-        const cleanText = textToInsert;
-
-        const newVal = currentVal.substring(0, start) + cleanText + currentVal.substring(end);
-        
-        onChangeRef.current(newVal);
-
-        // Move cursor para não sobreescrever tudo que a pessoa editar
-        setTimeout(() => {
-            if (textAreaRef.current) {
-                const newPos = start + cleanText.length;
-                textAreaRef.current.selectionStart = newPos;
-                textAreaRef.current.selectionEnd = newPos;
+        return () => {
+            shouldRecordRef.current = false;
+            if (recognitionRef.current) {
+                recognitionRef.current.stop();
             }
-        }, 10);
-    };
+        };
+    }, [readOnly, insertTextAtCursor]);
 
     const toggleRecording = () => {
         if (!recognitionRef.current) {
@@ -105,10 +148,18 @@ export const ReportEditor: React.FC<ReportEditorProps> = ({ value, onChange, onS
             return;
         }
 
-        if (isRecording) {
+        if (shouldRecordRef.current) {
+            shouldRecordRef.current = false;
             recognitionRef.current.stop();
+            setIsRecording(false);
+            setInterimText('');
         } else {
-            recognitionRef.current.start();
+            shouldRecordRef.current = true;
+            try {
+                recognitionRef.current.start();
+            } catch (e) {
+                // Ignorar se já estava iniciado no browser
+            }
             textAreaRef.current?.focus();
         }
     };
@@ -123,7 +174,7 @@ export const ReportEditor: React.FC<ReportEditorProps> = ({ value, onChange, onS
 
     return (
         <div 
-            className="rounded-3xl shadow-sm border flex flex-col overflow-hidden h-full transition-all duration-300"
+            className="rounded-3xl shadow-sm border flex flex-col overflow-hidden h-full transition-all duration-300 relative"
             style={{ 
                 borderColor: theme.design_tokens.colors.border,
                 background: theme.design_tokens.colors.background,
@@ -162,10 +213,10 @@ export const ReportEditor: React.FC<ReportEditorProps> = ({ value, onChange, onS
                              onMouseDown={(e) => e.preventDefault()}
                              onClick={toggleRecording}
                              disabled={readOnly}
-                             title={isRecording ? "Parar ditado" : "Selecione um texto e clique para substituir por voz, ou apenas clique para ditar."}
-                             className={`p-1.5 rounded transition-colors flex items-center gap-1.5 px-3 border ${
+                             title={isRecording ? "Parar ditado contínuo" : "Selecione um texto para substituir ou palique e grave continuamente."}
+                             className={`p-1.5 rounded transition-all duration-300 flex items-center gap-1.5 px-3 border shadow-sm ${
                                  isRecording 
-                                     ? 'bg-red-50 text-red-600 border-red-200 hover:bg-red-100 animate-pulse' 
+                                     ? 'bg-red-50 text-red-600 border-red-200 hover:bg-red-100 ring-2 ring-red-100' 
                                      : 'bg-white hover:bg-gray-50 border-gray-200'
                              }`}
                              style={{ 
@@ -192,7 +243,7 @@ export const ReportEditor: React.FC<ReportEditorProps> = ({ value, onChange, onS
             <div className="flex-1 relative">
                 <textarea
                     ref={textAreaRef}
-                    className="w-full h-full p-8 outline-none leading-relaxed resize-none transition-colors"
+                    className="w-full h-full p-8 outline-none leading-relaxed resize-none transition-colors relative z-10"
                     style={{ 
                         background: 'transparent',
                         color: theme.design_tokens.colors.primary,
@@ -202,25 +253,30 @@ export const ReportEditor: React.FC<ReportEditorProps> = ({ value, onChange, onS
                     }}
                     value={value}
                     onChange={(e) => onChange(e.target.value)}
-                    placeholder="Comece a digitar o laudo, use o botão Ditar para gravar por voz ou selecione um modelo."
+                    placeholder="Comece a digitar o laudo ou use o botão 'Ditar' para iniciar o ditado inteligente..."
                     readOnly={readOnly}
                 />
             </div>
 
             <div 
-                className="px-4 py-2 border-t text-[10px] flex justify-between font-mono items-center"
+                className="px-4 py-2 border-t text-[10px] min-h-[36px] flex justify-between font-mono items-center"
                 style={{ borderColor: theme.design_tokens.colors.border, color: theme.design_tokens.colors.secondary, background: theme.design_tokens.colors.surface }}
             >
-                <div className="flex items-center gap-3">
-                    <span>{value.length} caracteres</span>
+                <div className="flex items-center gap-3 overflow-hidden flex-1">
+                    <span className="shrink-0">{value.length} caracteres</span>
                     {isRecording && (
-                        <span className="flex items-center gap-1.5 text-red-500 font-semibold bg-red-50 px-2 py-0.5 rounded-full">
+                        <span className="flex items-center gap-1.5 text-red-500 font-semibold bg-red-50 px-2 py-0.5 rounded-full shrink-0 shadow-sm">
                             <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse"></span>
-                            Ouvindo...
+                            Ouvindo ativo
+                        </span>
+                    )}
+                    {interimText && (
+                        <span className="text-gray-400 italic font-sans truncate ml-2 text-xs" title={interimText}>
+                            "... {interimText}"
                         </span>
                     )}
                 </div>
-                <span>Salvamento automático: Ativo</span>
+                <span className="shrink-0 ml-4 font-semibold text-gray-400">Autosave ON</span>
             </div>
         </div>
     );
