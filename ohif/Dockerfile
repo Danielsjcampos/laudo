@@ -59,7 +59,7 @@ COPY --parents ./addOns/package.json ./addOns/*/*/package.json ./extensions/*/pa
 # Run the install before copying the rest of the files
 
 RUN bun pm cache rm
-RUN bun install --no-save
+RUN bun install
 RUN bun add ajv@8.12.0
 # Copy the local directory
 COPY --link --exclude=yarn.lock --exclude=package.json --exclude=Dockerfile . .
@@ -73,7 +73,8 @@ ARG PUBLIC_URL=/
 ENV PUBLIC_URL=${PUBLIC_URL}
 
 RUN bun run show:config
-RUN bun run build
+ENV NODE_ENV=production
+RUN node --max_old_space_size=8096 ./node_modules/webpack/bin/webpack.js --progress --config platform/app/.webpack/webpack.pwa.js
 
 # Precompress files
 RUN chmod u+x .docker/compressDist.sh
