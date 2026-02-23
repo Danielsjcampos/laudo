@@ -73,10 +73,7 @@ ARG PUBLIC_URL=/
 ENV PUBLIC_URL=${PUBLIC_URL}
 
 RUN bun run show:config
-WORKDIR /usr/src/app/platform/app
-ENV NODE_ENV=production
-RUN node --max_old_space_size=8096 ../../node_modules/webpack/bin/webpack.js --progress --config .webpack/webpack.pwa.js
-WORKDIR /usr/src/app
+RUN bun run build
 
 # Precompress files
 RUN chmod u+x .docker/compressDist.sh
