@@ -3,8 +3,6 @@ version: '3.8'
 services:
   backend:
     image: ghcr.io/danielsjcampos/laudo-backend:main
-    ports:
-      - "3001:3001"
     environment:
       - PORT=3001
       - DATABASE_URL=${DATABASE_URL}
@@ -12,32 +10,57 @@ services:
       - OPENAI_API_KEY=${OPENAI_API_KEY}
     volumes:
       - uploads_data:/app/uploads
+    networks:
+      - 2net
     deploy:
-      restart_policy:
-        condition: any
-        delay: 5s
+      mode: replicated
+      replicas: 1
+      labels:
+        - traefik.enable=true
+        - traefik.http.routers.laudo_backend.rule=Host(`laudo.2b.app.br`) && PathPrefix(`/api`)
+        - traefik.http.routers.laudo_backend.entrypoints=websecure
+        - traefik.http.routers.laudo_backend.tls.certresolver=letsencryptresolver
+        - traefik.http.services.laudo_backend.loadbalancer.server.port=3001
+        - traefik.http.services.laudo_backend.loadbalancer.passHostHeader=true
+        # Sem strip_api: backend já espera /api nas rotas (ex: /api/auth, /api/exams)
 
   frontend:
     image: ghcr.io/danielsjcampos/laudo-frontend:main
-    ports:
-      - "3003:80"
     environment:
       - VITE_API_URL=https://laudo.2b.app.br/api
     volumes:
       - uploads_data:/uploads:ro
+    networks:
+      - 2net
     deploy:
-      restart_policy:
-        condition: any
-        delay: 5s
+      mode: replicated
+      replicas: 1
+      labels:
+        - traefik.enable=true
+        - traefik.http.routers.laudo_frontend.rule=Host(`laudo.2b.app.br`)
+        - traefik.http.routers.laudo_frontend.entrypoints=websecure
+        - traefik.http.routers.laudo_frontend.tls.certresolver=letsencryptresolver
+        - traefik.http.services.laudo_frontend.loadbalancer.server.port=80
+        - traefik.http.services.laudo_frontend.loadbalancer.passHostHeader=true
 
   ohif:
     image: ghcr.io/danielsjcampos/laudo-ohif:main
-    ports:
-      - "3000:80"
+    networks:
+      - 2net
     deploy:
-      restart_policy:
-        condition: any
-        delay: 5s
+      mode: replicated
+      replicas: 1
+      labels:
+        - traefik.enable=true
+        - traefik.http.routers.laudo_ohif.rule=Host(`viewer.laudo.2b.app.br`)
+        - traefik.http.routers.laudo_ohif.entrypoints=websecure
+        - traefik.http.routers.laudo_ohif.tls.certresolver=letsencryptresolver
+        - traefik.http.services.laudo_ohif.loadbalancer.server.port=80
+        - traefik.http.services.laudo_ohif.loadbalancer.passHostHeader=true
+
+networks:
+  2net:
+    external: true
 
 volumes:
   uploads_data:
