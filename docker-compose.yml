@@ -45,6 +45,8 @@ services:
 
   ohif:
     image: ghcr.io/danielsjcampos/laudo-ohif:main
+    environment:
+      - PORT=8080
     networks:
       - 2net
     deploy:
@@ -55,7 +57,7 @@ services:
         - traefik.http.routers.laudo_ohif.rule=Host(`viewer.laudo.2b.app.br`)
         - traefik.http.routers.laudo_ohif.entrypoints=websecure
         - traefik.http.routers.laudo_ohif.tls.certresolver=letsencryptresolver
-        - traefik.http.services.laudo_ohif.loadbalancer.server.port=80
+        - traefik.http.services.laudo_ohif.loadbalancer.server.port=8080
         - traefik.http.services.laudo_ohif.loadbalancer.passHostHeader=true
 
 networks:
