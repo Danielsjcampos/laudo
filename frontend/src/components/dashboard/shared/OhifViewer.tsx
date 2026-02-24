@@ -24,20 +24,13 @@ type ViewerMode = 'viewer' | 'microscopy' | 'segmentation';
 
 export const OhifViewer: React.FC<OhifViewerProps> = ({ dicomUrl, onBack, isSharedView }) => {
     const [mode, setMode] = useState<ViewerMode>('viewer');
-    // Em produção usa viewer.laudo.2b.app.br, em localhost usa 127.0.0.1:3000
-    const ohifBaseUrl = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
-        ? 'http://127.0.0.1:3000'
-        : `https://viewer.${window.location.host}`;
+    const ohifBaseUrl = 'http://127.0.0.1:3000';
 
     const containerRef = React.useRef<HTMLDivElement>(null);
 
     const getIframeSrc = () => {
-        // Usa o origin atual para funcionar tanto em localhost quanto em produção
-        const backendUrl = window.location.origin;
-        // Em desenvolvimento, o Vite proxy não cobre /uploads, então usamos localhost:3001 diretamente
-        const uploadsBackend = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
-            ? 'http://localhost:3001'
-            : window.location.origin;
+        // Use DICOM Local mode to load files directly
+        const backendUrl = 'http://localhost:3001';
         
         let finalUrl = '';
         if (dicomUrl.startsWith('http')) {
@@ -45,7 +38,7 @@ export const OhifViewer: React.FC<OhifViewerProps> = ({ dicomUrl, onBack, isShar
         } else {
             // Ensure we have exactly one slash between backendUrl and relative path
             const cleanPath = dicomUrl.startsWith('/') ? dicomUrl : `/${dicomUrl}`;
-            finalUrl = `${uploadsBackend}${cleanPath}`;
+            finalUrl = `${backendUrl}${cleanPath}`;
         }
 
         // Pass as URL encoded JSON
