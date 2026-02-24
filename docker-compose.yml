@@ -10,6 +10,8 @@ services:
       - DATABASE_URL=${DATABASE_URL}
       - JWT_SECRET=${JWT_SECRET}
       - OPENAI_API_KEY=${OPENAI_API_KEY}
+    volumes:
+      - uploads_data:/app/uploads
     deploy:
       restart_policy:
         condition: any
@@ -21,6 +23,8 @@ services:
       - "3003:80"
     environment:
       - VITE_API_URL=https://laudo.2b.app.br/api
+    volumes:
+      - uploads_data:/uploads:ro
     deploy:
       restart_policy:
         condition: any
@@ -34,3 +38,7 @@ services:
       restart_policy:
         condition: any
         delay: 5s
+
+volumes:
+  uploads_data:
+    driver: local
