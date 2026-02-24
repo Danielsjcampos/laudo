@@ -8,7 +8,15 @@ server {
     root   /usr/share/nginx/html;
     index  index.html index.htm;
     try_files $uri $uri/ ${PUBLIC_URL}index.html;
-    add_header Cross-Origin-Resource-Policy same-origin;
+
+    # Permite ser embeddado como iframe em qualquer origem (laudo.2b.app.br)
+    add_header Cross-Origin-Resource-Policy cross-origin always;
+    add_header Cross-Origin-Opener-Policy same-origin always;
+    add_header Cross-Origin-Embedder-Policy require-corp always;
+    add_header Access-Control-Allow-Origin * always;
+    add_header Access-Control-Allow-Methods "GET, OPTIONS" always;
+    add_header Access-Control-Allow-Headers "Origin, X-Requested-With, Content-Type, Accept, Range" always;
+
     proxy_set_header Host $host;
     proxy_set_header X-Real-IP $remote_addr;
     proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
@@ -19,3 +27,4 @@ server {
     root   /usr/share/nginx/html;
   }
 }
+
