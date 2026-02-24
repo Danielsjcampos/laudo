@@ -31,9 +31,22 @@ app.use(helmet({
             "script-src": ["'self'", "'unsafe-inline'", "https://cdn.tailwindcss.com"],
             "style-src": ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com"],
             "font-src": ["'self'", "https://fonts.gstatic.com"],
-            "img-src": ["'self'", "data:", "blob:", "http://localhost:3001"],
-            "frame-src": ["'self'", "http://localhost:3000", "http://127.0.0.1:3000"],
-            "connect-src": ["'self'", "http://localhost:3001", "http://localhost:3000"]
+            "img-src": [
+                "'self'", "data:", "blob:",
+                "http://localhost:3001", "http://127.0.0.1:3001",
+                "https://laudo.2b.app.br",
+                "https://viewer.laudo.2b.app.br"
+            ],
+            "frame-src": [
+                "'self'",
+                "http://localhost:3000", "http://127.0.0.1:3000",
+                "https://viewer.laudo.2b.app.br"
+            ],
+            "connect-src": [
+                "'self'",
+                "http://localhost:3001", "http://localhost:3000",
+                "https://laudo.2b.app.br", "https://viewer.laudo.2b.app.br"
+            ]
         },
     },
     crossOriginEmbedderPolicy: { policy: "require-corp" },

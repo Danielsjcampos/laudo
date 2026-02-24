@@ -24,26 +24,36 @@ type ViewerMode = 'viewer' | 'microscopy' | 'segmentation';
 
 export const OhifViewer: React.FC<OhifViewerProps> = ({ dicomUrl, onBack, isSharedView }) => {
     const [mode, setMode] = useState<ViewerMode>('viewer');
-    const ohifBaseUrl = 'http://127.0.0.1:3000';
+
+    // --- URL DINÂMICA: funciona tanto em localhost quanto no VPS ---
+    const isProduction = window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1';
+    const ohifBaseUrl = isProduction
+        ? `https://viewer.${window.location.hostname}` // VPS: https://viewer.laudo.2b.app.br
+        : 'http://127.0.0.1:3000';                     // Local: http://127.0.0.1:3000
+
+    const backendBaseUrl = isProduction
+        ? `https://${window.location.hostname}`         // VPS: https://laudo.2b.app.br
+        : 'http://localhost:3001';                      // Local: http://localhost:3001
 
     const containerRef = React.useRef<HTMLDivElement>(null);
 
     const getIframeSrc = () => {
-        // Use DICOM Local mode to load files directly
-        const backendUrl = 'http://localhost:3001';
-        
         let finalUrl = '';
         if (dicomUrl.startsWith('http')) {
-            finalUrl = dicomUrl;
+            // URL já absoluta — garante protocolo correto em produção
+            if (isProduction && dicomUrl.startsWith('http://')) {
+                finalUrl = dicomUrl.replace('http://', 'https://');
+            } else {
+                finalUrl = dicomUrl;
+            }
         } else {
-            // Ensure we have exactly one slash between backendUrl and relative path
             const cleanPath = dicomUrl.startsWith('/') ? dicomUrl : `/${dicomUrl}`;
-            finalUrl = `${backendUrl}${cleanPath}`;
+            finalUrl = `${backendBaseUrl}${cleanPath}`;
         }
 
-        // Pass as URL encoded JSON
         return `${ohifBaseUrl}/localbasic?url=${encodeURIComponent(finalUrl)}`;
     };
+
 
     const toggleFullScreen = () => {
         if (!document.fullscreenElement && containerRef.current) {
