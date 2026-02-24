@@ -256,3 +256,102 @@ body {
 
 /* ===== CURSOR ===== */
 .cursor-pointer { cursor: pointer; }
+
+/* ===== MOBILE UTILITIES ===== */
+
+/* Touch scroll suavizado */
+.touch-scroll {
+  -webkit-overflow-scrolling: touch;
+  overflow-y: auto;
+}
+
+/* Ocultar scrollbar mantendo scroll */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Touch target mínimo 44px (Apple HIG / Material) */
+.btn-touch {
+  min-height: 44px;
+  min-width: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Safe area padding para notch / home indicator iOS */
+.safe-bottom {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* Bottom navigation height */
+:root {
+  --bottom-nav-height: 60px;
+}
+
+/* Espaço para bottom nav no mobile */
+@media (max-width: 1023px) {
+  .main-with-bottom-nav {
+    padding-bottom: calc(var(--bottom-nav-height) + env(safe-area-inset-bottom, 0px));
+  }
+}
+
+/* Modal como bottom-sheet no mobile */
+@media (max-width: 767px) {
+  .modal-bottom-sheet {
+    position: fixed !important;
+    inset: auto 0 0 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    border-radius: 1.25rem 1.25rem 0 0 !important;
+    max-height: 92vh !important;
+    overflow-y: auto !important;
+    margin: 0 !important;
+    transform: none !important;
+    top: auto !important;
+  }
+
+  .modal-overlay-bottom {
+    align-items: flex-end !important;
+  }
+}
+
+/* Card de exame — visualização mobile para tabelas */
+.exam-card-mobile {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  .exam-table-desktop {
+    display: none !important;
+  }
+  .exam-card-mobile {
+    display: block;
+  }
+}
+
+/* Texto truncado com tooltip */
+.truncate-mobile {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+/* Tag de status badge */
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 8px;
+  border-radius: 9999px;
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+}

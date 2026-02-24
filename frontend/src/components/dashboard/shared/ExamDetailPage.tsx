@@ -110,7 +110,7 @@ Exame dentro dos padrões da normalidade para os achados descritos.
     };
 
     return (
-        <div className="h-[calc(100vh-100px)] flex flex-col">
+        <div className="flex flex-col lg:h-[calc(100vh-100px)]">
             <ClinicalHistoryModal 
                 isOpen={isHistoryOpen} 
                 onClose={() => setIsHistoryOpen(false)} 
@@ -289,46 +289,52 @@ Exame dentro dos padrões da normalidade para os achados descritos.
             )}
 
             {/* Workstation Header */}
-            <div className="mb-4 flex items-center justify-between panel-card p-4 shrink-0">
-                <div className="flex items-center gap-6">
-                    <button onClick={onBack} className="transition-all hover:scale-110" style={{ color: 'var(--text-muted)' }}>
+            <div className="mb-4 flex flex-col md:flex-row md:items-center justify-between panel-card p-3 sm:p-4 shrink-0 gap-4">
+                <div className="flex items-center gap-3 sm:gap-6">
+                    <button onClick={onBack} className="transition-all hover:scale-110 btn-touch shrink-0" style={{ color: 'var(--text-muted)' }}>
                         <span className="sr-only">Voltar</span>
                         <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" /></svg>
                     </button>
-                    <div className="w-px h-8" style={{ backgroundColor: 'var(--surface-border)' }}></div>
-                    <div className="flex gap-8">
-                        <div>
-                            <p className="text-lg font-black" style={{ color: 'var(--text-primary)' }}>{exam.patientName}</p>
-                            <p className="text-[10px] font-bold uppercase tracking-wider" style={{ color: 'var(--text-muted)' }}>
+                    <div className="w-px h-8 hidden sm:block" style={{ backgroundColor: 'var(--surface-border)' }}></div>
+                    <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-8 min-w-0">
+                        <div className="min-w-0">
+                            <p className="text-base sm:text-lg font-black leading-tight sm:leading-normal truncate" style={{ color: 'var(--text-primary)' }}>{exam.patientName}</p>
+                            <p className="text-[10px] font-bold uppercase tracking-wider hidden sm:block truncate" style={{ color: 'var(--text-muted)' }}>
                                 ID: {exam.patientId} <span className="mx-2">|</span> ACC: {exam.accessionNumber || 'N/A'}
                             </p>
+                            <p className="text-[9px] font-bold uppercase tracking-wider sm:hidden truncate" style={{ color: 'var(--text-muted)' }}>
+                                ACC: {exam.accessionNumber || 'N/A'}
+                            </p>
                         </div>
-                        <div className="hidden md:block">
+                        <div className="hidden sm:block shrink-0">
                             <p className="kpi-label">Exame</p>
                             <p className="text-sm font-bold" style={{ color: 'var(--text-primary)' }}>{exam.examType}</p>
                         </div>
                     </div>
                 </div>
 
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-2 sm:gap-3 overflow-x-auto sm:overflow-visible pb-1 sm:pb-0 scrollbar-hide shrink-0">
                     {exam.medicalRequestUrl && (
                         <Button
                             variant="outline"
                             size="sm"
                             onClick={() => window.open(`${api.defaults.baseURL?.replace('/api', '')}${exam.medicalRequestUrl}`, '_blank')}
-                            className="text-brand-teal-600 border-brand-teal-200 hover:bg-brand-teal-50"
+                            className="btn-touch text-brand-teal-600 border-brand-teal-200 hover:bg-brand-teal-50 shrink-0"
+                            title="Pedido Médico"
                         >
-                            <svg className="w-4 h-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
-                            Pedido Médico
+                            <svg className="w-4 h-4 sm:mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
+                            <span className="hidden sm:inline">Pedido Médico</span>
                         </Button>
                     )}
                     <Button 
                         variant="outline" 
                         size="sm" 
                         onClick={() => setIsHistoryOpen(true)}
+                        className="btn-touch shrink-0"
+                        title="História Clínica"
                     >
-                        <FileTextIcon className="w-4 h-4 mr-2" />
-                        História Clínica
+                        <FileTextIcon className="w-4 h-4 sm:mr-2" />
+                        <span className="hidden sm:inline">História Clínica</span>
                     </Button>
 
                     {/* Botão Sugestão Prioritário */}
@@ -336,10 +342,11 @@ Exame dentro dos padrões da normalidade para os achados descritos.
                         <Button
                             size="sm"
                             onClick={() => setIsSuggestionViewOpen(true)}
-                            className="bg-yellow-400 hover:bg-yellow-500 text-yellow-950 font-black shadow-lg shadow-yellow-100 flex items-center gap-2 border-none"
+                            className="btn-touch bg-yellow-400 hover:bg-yellow-500 text-yellow-950 font-black shadow-lg shadow-yellow-100 flex items-center gap-1 sm:gap-2 border-none shrink-0"
                         >
                             <SparklesIcon className="w-4 h-4" />
-                            Ver Sugestões ({exam.suggestions.length})
+                            <span className="hidden sm:inline">Sugestões ({exam.suggestions.length})</span>
+                            <span className="sm:hidden">{exam.suggestions.length}</span>
                         </Button>
                     )}
 
@@ -347,31 +354,28 @@ Exame dentro dos padrões da normalidade para os achados descritos.
                         <Button 
                             variant="primary" 
                             size="sm" 
-                            onClick={onOpenChat} // Now onOpenChat will handle specific routing or modal
-                            className="bg-brand-blue-600 hover:bg-brand-blue-700 text-white shadow-lg shadow-brand-blue-100"
+                            onClick={onOpenChat}
+                            className="btn-touch bg-brand-blue-600 hover:bg-brand-blue-700 text-white shadow-lg shadow-brand-blue-100 shrink-0"
+                            title="Contatar Clínica"
                         >
-                            <svg className="w-4 h-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" /></svg>
-                            Contatar Clínica
+                            <svg className="w-4 h-4 sm:mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" /></svg>
+                            <span className="hidden sm:inline">Contatar</span>
                         </Button>
                     )}
-                    <div className="hidden md:block text-right mr-4">
-                        <p className="kpi-label">Prioridade</p>
-                        <p className="text-sm font-extrabold italic" style={exam.urgency === 'Urgente' ? { color: 'var(--status-danger)' } : { color: 'var(--text-primary)' }}>
-                            {exam.urgency || 'Rotina'}
-                        </p>
-                    </div>
-                    <Badge status={exam.status} />
+                    <Badge status={exam.status} className="shrink-0" />
                 </div>
             </div>
 
-            <div className="flex-1 grid grid-cols-1 lg:grid-cols-[1.6fr_1fr] gap-4 min-h-0">
+
+            <div className="flex-1 grid grid-cols-1 lg:grid-cols-[1.6fr_1fr] gap-4 min-h-0 lg:overflow-hidden">
                 {/* Left Side: Viewer */}
                 {/* Left Side: Viewer (Hidden for Patients - Show Report Instead) */}
                 {userRole !== 'patient' ? (
-                    <div className="bg-black rounded-3xl overflow-hidden shadow-lg border border-gray-800 flex flex-col relative group h-full">
+                    <div className="bg-black rounded-3xl overflow-hidden shadow-lg border border-gray-800 flex flex-col relative group min-h-[500px] sm:min-h-[600px] lg:h-full shrink-0 lg:flex-none">
                         <OhifViewer
                             dicomUrl={exam.dicomUrl || ''}
                             onBack={() => { }} // No back action needed inside embedded view
+                            isSharedView={false}
                         />
                     </div>
                 ) : (
@@ -406,27 +410,27 @@ Exame dentro dos padrões da normalidade para os achados descritos.
 
                 {/* Right Side: Report & AI */}
                 {userRole !== 'patient' && (
-                    <div className="flex flex-col gap-4 min-h-0 overflow-y-auto pr-1">
+                    <div className="flex flex-col gap-4 min-h-0 lg:overflow-y-auto pr-0 lg:pr-1">
                         {/* AI Assistant Card */}
                         {userRole === 'doctor' && exam.status !== 'Concluído' && (
-                            <div className="panel-card p-4 flex items-center justify-between shrink-0" style={{ border: '1px solid var(--teal-glow)' }}>
-                                <div className="flex items-center gap-3">
-                                    <div className="p-2 rounded-lg text-white" style={{ background: 'linear-gradient(135deg, var(--navy-800), var(--blue-600))' }}>
-                                        <SparklesIcon className="h-5 w-5" />
+                            <div className="panel-card p-3 sm:p-4 flex items-center justify-between shrink-0" style={{ border: '1px solid var(--teal-glow)' }}>
+                                <div className="flex items-center gap-3 min-w-0">
+                                    <div className="p-2 rounded-lg text-white shrink-0" style={{ background: 'linear-gradient(135deg, var(--navy-800), var(--blue-600))' }}>
+                                        <SparklesIcon className="h-4 w-4 sm:h-5 sm:w-5" />
                                     </div>
-                                    <div>
-                                        <h3 className="font-bold text-sm" style={{ color: 'var(--text-primary)' }}>IA Assistant</h3>
-                                        <p className="text-[10px] font-bold uppercase tracking-wider" style={{ color: 'var(--text-muted)' }}>Sugestão de laudo disponível</p>
+                                    <div className="min-w-0">
+                                        <h3 className="font-bold text-[13px] sm:text-sm truncate" style={{ color: 'var(--text-primary)' }}>IA Assistant</h3>
+                                        <p className="text-[10px] font-bold uppercase tracking-wider truncate" style={{ color: 'var(--text-muted)' }}>Sugestão disponível</p>
                                     </div>
                                 </div>
-                                <Button size="sm" onClick={generateAIDraft} disabled={isGenerating} variant="outline" className="text-xs">
-                                    {isGenerating ? 'Gerando...' : 'Gerar Pré-Laudo'}
+                                <Button size="sm" onClick={generateAIDraft} disabled={isGenerating} variant="outline" className="btn-touch text-[10px] px-3 py-1.5 h-auto shrink-0">
+                                    {isGenerating ? 'Gerando...' : 'Gerar'}
                                 </Button>
                             </div>
                         )}
 
                         {/* Report Editor - Weighted by Theme */}
-                        <div className="flex-1 flex flex-col min-h-[400px]">
+                        <div className="flex-1 flex flex-col min-h-[500px] lg:min-h-0">
                             {userRole === 'doctor' && reportText === '' && !exam.templateId && !isGenerating && (
                                 <div className="bg-amber-50 border border-amber-200 rounded-xl p-3 mb-3 flex items-center gap-3 animate-in fade-in slide-in-from-top-2">
                                     <div className="bg-amber-100 p-1.5 rounded-lg text-amber-600">
@@ -474,18 +478,20 @@ Exame dentro dos padrões da normalidade para os achados descritos.
 
                         {/* Action Bar */}
                         {userRole === 'doctor' && exam.status !== 'Concluído' && (
-                            <div className="bg-white p-4 rounded-2xl shadow-sm border border-gray-100 flex justify-between items-center shrink-0">
-                                <div className="text-xs text-gray-500">
+                            <div className="bg-white p-3 sm:p-4 rounded-2xl shadow-sm border border-gray-100 flex flex-col sm:flex-row gap-3 sm:justify-between sm:items-center shrink-0">
+                                <div className="text-[10px] text-gray-500 hidden md:block">
                                     <span className="block font-bold">Dr. Roberto Martins</span>
                                     <span>CRM/SP 123456</span>
                                 </div>
-                                <div className="flex gap-3">
-                                    <Button variant="outline" onClick={() => setIsShareModalOpen(true)} className="border-brand-blue-200 text-brand-blue-700 hover:bg-brand-blue-50">
-                                        <svg className="w-4 h-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" /></svg>
-                                        Segunda Opinião
+                                <div className="grid grid-cols-2 sm:flex gap-2 sm:gap-3">
+                                    <Button variant="outline" onClick={() => setIsShareModalOpen(true)} className="btn-touch border-brand-blue-200 text-brand-blue-700 hover:bg-brand-blue-50 text-[10px] h-9 sm:h-10 px-2 sm:px-4">
+                                        <svg className="w-4 h-4 sm:mr-2 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" /></svg>
+                                        <span className="truncate">Opinião</span>
                                     </Button>
-                                    <Button variant="outline" onClick={onBack}>Salvar e Sair</Button>
-                                    <Button onClick={handleComplete} className="bg-green-600 hover:bg-green-700 text-white shadow-green-200">
+                                    <Button variant="outline" onClick={onBack} className="btn-touch text-[10px] h-9 sm:h-10 px-2 sm:px-4">
+                                        Sair
+                                    </Button>
+                                    <Button onClick={handleComplete} className="btn-touch col-span-2 sm:col-auto bg-green-600 hover:bg-green-700 text-white shadow-green-200 text-xs h-10 sm:h-10 font-black">
                                         <SuccessIcon className="w-4 h-4 mr-2" />
                                         Assinar Laudo
                                     </Button>

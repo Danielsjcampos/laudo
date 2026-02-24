@@ -32,8 +32,8 @@ const AdminOverview: React.FC<AdminOverviewProps> = ({ stats }) => {
                     <p className="text-sm mt-3 font-medium" style={{ color: 'var(--text-secondary)' }}>Visão geral do ecossistema LaudoDigital (Real-time)</p>
                 </div>
                 <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-3">
-                    <Button variant="outline" className="w-full sm:w-auto">Baixar Relatório</Button>
-                    <Button variant="primary" className="w-full sm:w-auto">Relatório Consolidado</Button>
+                    <Button variant="outline" className="w-full sm:w-auto btn-touch">Baixar Relatório</Button>
+                    <Button variant="primary" className="w-full sm:w-auto btn-touch">Relatório Consolidado</Button>
                 </div>
             </div>
             

@@ -157,37 +157,40 @@ export const ReportEditor: React.FC<ReportEditorProps> = ({ value, onChange, onS
             }}
         >
             {/* Header Toolbar Minimalista */}
-            <div className="px-4 py-3 border-b flex items-center justify-between bg-white/80 backdrop-blur-md sticky top-0 z-20" style={{ borderColor: theme.design_tokens.colors.border }}>
-                <div className="flex items-center gap-3">
+            <div className="px-3 sm:px-4 py-3 border-b flex items-center justify-between bg-white/80 backdrop-blur-md sticky top-0 z-20" style={{ borderColor: theme.design_tokens.colors.border }}>
+                <div className="flex items-center gap-2 sm:gap-3 flex-1 min-w-0">
                     <button 
                         onMouseDown={(e) => e.preventDefault()}
                         onClick={toggleRecording}
                         disabled={readOnly}
-                        className={`transition-all duration-300 flex items-center gap-2 px-5 py-2.5 rounded-full font-bold shadow-sm ${
+                        className={`transition-all duration-300 flex items-center gap-2 px-3 sm:px-5 py-2 sm:py-2.5 rounded-full font-bold shadow-sm shrink-0 ${
                             isRecording 
                                 ? 'bg-red-500 text-white hover:bg-red-600 ring-4 ring-red-500/20' 
                                 : 'bg-gray-900 text-white hover:bg-gray-800 hover:shadow-md'
                         } disabled:opacity-50 disabled:cursor-not-allowed`}
                     >
                         {isRecording ? <MicOff size={16} className="animate-pulse" /> : <Mic size={16} />}
-                        <span className="text-[13px] tracking-wide">{isRecording ? "Parar Ditado" : "Ditar Laudo"}</span>
+                        <span className="text-[12px] sm:text-[13px] tracking-wide">{isRecording ? (
+                            <span className="flex items-center gap-1">Parar <span className="hidden xs:inline">Ditado</span></span>
+                        ) : (
+                            <span className="flex items-center gap-1">Ditar <span className="hidden xs:inline">Laudo</span></span>
+                        )}</span>
                     </button>
 
-                    <div className="h-6 w-px bg-gray-200 mx-2"></div>
+                    <div className="h-6 w-px bg-gray-200 mx-1 sm:mx-2 shrink-0"></div>
 
-                    <div className="flex gap-1 bg-gray-50 p-1 rounded-xl border border-gray-100">
+                    <div className="hidden sm:flex gap-1 bg-gray-50 p-1 rounded-xl border border-gray-100 shrink-0">
                         <button className="w-8 h-8 rounded-lg hover:bg-white hover:shadow-sm transition-all text-gray-600 flex items-center justify-center"><span className="font-bold font-serif text-sm">B</span></button>
                         <button className="w-8 h-8 rounded-lg hover:bg-white hover:shadow-sm transition-all text-gray-600 flex items-center justify-center"><span className="italic font-serif text-sm">I</span></button>
-                        <button className="w-8 h-8 rounded-lg hover:bg-white hover:shadow-sm transition-all text-gray-600 flex items-center justify-center"><span className="underline font-serif text-sm">U</span></button>
                     </div>
                 </div>
 
                 {!readOnly && onSaveDraft && (
                     <button 
                         onClick={onSaveDraft} 
-                        className="text-[11px] font-black uppercase tracking-widest text-gray-400 hover:text-gray-800 transition-colors px-3 py-1.5 rounded-lg hover:bg-gray-50"
+                        className="text-[10px] sm:text-[11px] font-black uppercase tracking-widest text-gray-400 hover:text-gray-800 transition-colors px-2 sm:px-3 py-1.5 rounded-lg hover:bg-gray-50 shrink-0"
                     >
-                        Rascunho
+                        Salvar
                     </button>
                 )}
             </div>
@@ -195,17 +198,17 @@ export const ReportEditor: React.FC<ReportEditorProps> = ({ value, onChange, onS
             <div className="flex-1 relative bg-white">
                 <textarea
                     ref={textAreaRef}
-                    className="w-full h-full p-8 outline-none leading-relaxed resize-none transition-colors relative z-10"
+                    className="w-full h-full p-4 sm:p-8 outline-none leading-relaxed resize-none transition-colors relative z-10"
                     style={{ 
                         background: 'transparent',
                         color: theme.design_tokens.colors.primary,
-                        fontSize: '15px',
+                        fontSize: '16px', // 16px handles iOS zoom better
                         lineHeight: '1.7',
                         fontFamily: theme.design_tokens.typography.body_font === 'Space Mono' ? 'monospace' : 'serif'
                     }}
                     value={value}
                     onChange={(e) => onChange(e.target.value)}
-                    placeholder="Clique em 'Ditar Laudo' para transcrição de alta precisão ou digite livremente..."
+                    placeholder="Dite ou digite o laudo aqui..."
                     readOnly={readOnly}
                 />
             </div>

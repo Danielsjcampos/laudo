@@ -20,6 +20,7 @@ const MarketplaceExams: React.FC<MarketplaceExamsProps> = ({ exams, onAccept, ha
   const [selectedModalities, setSelectedModalities] = useState<string[]>([]);
   const [onlyUrgent, setOnlyUrgent] = useState(false);
   const [regionFilter, setRegionFilter] = useState('');
+  const [showFilters, setShowFilters] = useState(false);
 
   const availableExams = exams.filter(e => e.status === 'Disponível');
 
@@ -52,10 +53,21 @@ const MarketplaceExams: React.FC<MarketplaceExamsProps> = ({ exams, onAccept, ha
   };
 
   return (
-    <div className="flex flex-col lg:flex-row gap-8 h-[calc(100vh-140px)]">
+    <div className="flex flex-col lg:flex-row gap-6 lg:gap-8">
+      {/* Filters — botão toggle no mobile */}
+      <div className="lg:hidden flex items-center gap-2">
+        <SearchInput value={searchTerm} onChange={setSearchTerm} placeholder="Buscar exames..." />
+        <button
+          onClick={() => setShowFilters(!showFilters)}
+          className="btn-touch shrink-0 px-3 py-2 rounded-xl text-sm font-bold border"
+          style={{ backgroundColor: 'var(--surface-card)', border: '1px solid var(--surface-border)', color: 'var(--text-primary)' }}
+        >
+          🔍
+        </button>
+      </div>
       {/* Filters Sidebar */}
-      <div className="w-full lg:w-64 shrink-0 space-y-6 overflow-y-auto pr-2">
-        <div>
+      <div className={`w-full lg:w-64 shrink-0 space-y-6 lg:block ${showFilters ? 'block' : 'hidden'}`}>
+        <div className="hidden lg:block">
             <h2 className="section-title mb-4">Filtros</h2>
             <SearchInput 
                 value={searchTerm} 
@@ -114,8 +126,8 @@ const MarketplaceExams: React.FC<MarketplaceExamsProps> = ({ exams, onAccept, ha
         </div>
       </div>
 
-      {/* Grid */}
-      <div className="flex-1 overflow-y-auto custom-scrollbar pr-2">
+      {/* Grid de exames */}
+      <div className="flex-1 overflow-y-auto custom-scrollbar">
         <div className="flex justify-between items-center mb-6">
             <div>
                 <h1 className="page-header">Marketplace</h1>
@@ -195,9 +207,8 @@ const MarketplaceExams: React.FC<MarketplaceExamsProps> = ({ exams, onAccept, ha
                             <span className="text-lg font-black" style={{ color: 'var(--teal-500)' }}>R$ {exam.price.toFixed(2)}</span>
                         </div>
                         <Button 
-                            size="sm" 
                             onClick={() => onAccept(exam.id)} 
-                            className={`shadow-lg ${isDisabled ? 'bg-gray-400 cursor-not-allowed shadow-none' : 'shadow-brand-blue-200/50'}`}
+                            className={`btn-touch shadow-lg ${isDisabled ? 'bg-gray-400 cursor-not-allowed shadow-none' : 'shadow-brand-blue-200/50'}`}
                             disabled={isDisabled}
                             title={buttonTitle}
                         >

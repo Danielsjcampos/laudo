@@ -6,7 +6,7 @@ interface ModalProps {
   title: string;
   children: React.ReactNode;
   size?: 'sm' | 'md' | 'lg' | 'xl';
-  maxWidth?: string; // e.g., 'max-w-7xl'
+  maxWidth?: string;
 }
 
 export const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title, children, size = 'md', maxWidth }) => {
@@ -40,7 +40,7 @@ export const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title, children, 
   return (
     <div
       ref={overlayRef}
-      className="fixed inset-0 z-[100] flex items-center justify-center p-4"
+      className="fixed inset-0 z-[100] flex items-end md:items-center justify-center md:p-4"
       style={{ backgroundColor: 'rgba(10, 15, 26, 0.6)', backdropFilter: 'blur(4px)' }}
       onClick={(e) => { if (e.target === overlayRef.current) onClose(); }}
     >
@@ -48,15 +48,20 @@ export const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title, children, 
         className={`w-full ${containerClass} animate-in fade-in slide-in-from-bottom-4 duration-300`}
         style={{
           backgroundColor: 'var(--surface-card)',
-          borderRadius: 'var(--radius-2xl)',
-          boxShadow: '0 20px 60px rgba(0,0,0,0.15)',
+          borderRadius: '1.25rem 1.25rem 0 0',
+          boxShadow: '0 -4px 40px rgba(0,0,0,0.18)',
           border: '1px solid var(--surface-border)',
-          maxHeight: '90vh',
+          maxHeight: '92vh',
           overflow: 'hidden',
           display: 'flex',
           flexDirection: 'column',
         }}
       >
+        {/* Drag handle — apenas mobile */}
+        <div className="flex justify-center pt-3 pb-1 md:hidden shrink-0">
+          <div className="w-10 h-1 rounded-full" style={{ backgroundColor: 'var(--surface-border)' }} />
+        </div>
+
         {/* Header */}
         <div
           className="flex items-center justify-between px-6 py-4 border-b shrink-0"
@@ -67,8 +72,9 @@ export const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title, children, 
           </h2>
           <button
             onClick={onClose}
-            className="p-1.5 rounded-lg transition-colors hover:bg-gray-100"
+            className="btn-touch p-1.5 rounded-lg transition-colors hover:bg-gray-100"
             style={{ color: 'var(--text-muted)' }}
+            aria-label="Fechar"
           >
             <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
@@ -77,7 +83,7 @@ export const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title, children, 
         </div>
 
         {/* Content */}
-        <div className="overflow-y-auto px-6 py-5 flex-1">
+        <div className="overflow-y-auto px-6 py-5 flex-1 touch-scroll">
           {children}
         </div>
       </div>

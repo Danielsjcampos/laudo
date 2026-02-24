@@ -57,7 +57,7 @@ const ClinicOverview: React.FC<ClinicOverviewProps> = ({ exams, patients, stats,
             </div>
 
             {/* Quick Action Buttons */}
-            <div className="flex flex-wrap gap-3">
+            <div className="grid grid-cols-2 sm:flex sm:flex-wrap gap-3">
                 {[
                     { label: 'Novo Exame', icon: <PlusIcon className="h-4 w-4" />, action: () => onOpenRequestExam(), color: '#ffffff', bgColor: 'var(--teal-500)' },
                     { label: 'Cadastrar Paciente', icon: <UsersIcon className="h-4 w-4" />, action: () => onNavigateToPatients(), color: '#ffffff', bgColor: 'var(--blue-600)' },
@@ -70,7 +70,7 @@ const ClinicOverview: React.FC<ClinicOverviewProps> = ({ exams, patients, stats,
                             e.preventDefault();
                             btn.action();
                         }}
-                        className="flex items-center gap-2 px-5 py-3 rounded-xl text-xs font-bold uppercase tracking-wider transition-all duration-200 hover:scale-[1.03] hover:shadow-lg active:scale-[0.98] shadow-sm"
+                        className="btn-touch flex items-center justify-center gap-2 px-4 py-3 rounded-xl text-xs font-bold uppercase tracking-wider transition-all duration-200 hover:scale-[1.03] hover:shadow-lg active:scale-[0.98] shadow-sm w-full sm:w-auto"
                         style={{ backgroundColor: btn.bgColor, color: btn.color }}
                     >
                         {btn.icon}
@@ -80,7 +80,7 @@ const ClinicOverview: React.FC<ClinicOverviewProps> = ({ exams, patients, stats,
             </div>
 
             {/* Cards de Métricas Estilizados */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
                 <div className="panel-card p-6 flex flex-col justify-between relative overflow-hidden">
                     <div className="absolute left-0 top-4 bottom-4 w-[3px] rounded-r-full" style={{ backgroundColor: 'var(--blue-600)' }} />
                     <div className="pl-3">
@@ -208,15 +208,21 @@ const ClinicOverview: React.FC<ClinicOverviewProps> = ({ exams, patients, stats,
                 </div>
             </div>
 
-            {/* Tabela de Rastreamento Modernizada */}
+            {/* Tabela Exames Ativos */}
             <div className="panel-card overflow-hidden">
-                <div className="p-6 flex flex-col md:flex-row justify-between items-center gap-4 border-b" style={{ borderColor: 'var(--surface-border)' }}>
-                    <h2 className="section-title">Exames Ativos (Neon)</h2>
-                    <div className="flex space-x-2">
-                        <button className="text-[10px] font-bold uppercase px-4 py-2 rounded-lg transition-colors" style={{ backgroundColor: 'var(--surface-bg)', color: 'var(--text-secondary)' }}>Todos</button>
-                    </div>
+                <div className="p-4 md:p-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 border-b" style={{ borderColor: 'var(--surface-border)' }}>
+                    <h2 className="section-title">Exames Ativos</h2>
+                    <button
+                        onClick={onNavigateToExams}
+                        className="btn-touch text-[10px] font-bold uppercase px-4 py-2 rounded-lg transition-colors"
+                        style={{ backgroundColor: 'var(--surface-bg)', color: 'var(--text-secondary)' }}
+                    >
+                        Ver Todos →
+                    </button>
                 </div>
-                <div className="overflow-x-auto">
+
+                {/* Desktop: Tabela */}
+                <div className="exam-table-desktop overflow-x-auto">
                     <table className="w-full text-sm text-left">
                         <thead>
                             <tr style={{ backgroundColor: 'var(--surface-bg)' }}>
@@ -229,36 +235,56 @@ const ClinicOverview: React.FC<ClinicOverviewProps> = ({ exams, patients, stats,
                         </thead>
                         <tbody className="divide-y divide-gray-50">
                             {exams.map((exam) => (
-                                <tr key={exam.id} className="hover:bg-gray-50/50 transition-all cursor-pointer group" onClick={() => onNavigateToExams()}>
-                                    <td className="px-10 py-6">
-                                        <p className="font-black text-gray-900 text-base">{exam.patientName}</p>
-                                        <p className="text-[10px] text-gray-400 font-black uppercase tracking-widest mt-0.5">REQ #{exam.id.slice(-5)}</p>
+                                <tr key={exam.id} className="hover:bg-gray-50/50 transition-all cursor-pointer" onClick={onNavigateToExams}>
+                                    <td className="px-6 py-4">
+                                        <p className="font-black text-gray-900">{exam.patientName}</p>
+                                        <p className="text-[10px] text-gray-400 font-bold uppercase tracking-widest mt-0.5">REQ #{exam.id.slice(-5)}</p>
                                     </td>
-                                    <td className="px-10 py-6">
-                                        <div className="bg-gray-100 text-gray-600 text-[10px] font-black px-3 py-1 rounded-lg w-max uppercase">
-                                            {exam.examType}
-                                        </div>
+                                    <td className="px-6 py-4">
+                                        <div className="bg-gray-100 text-gray-600 text-[10px] font-black px-3 py-1 rounded-lg w-max uppercase">{exam.examType}</div>
                                     </td>
-                                    <td className="px-10 py-6">
-                                        <div className="flex items-center">
-                                            <div className="w-8 h-8 rounded-full bg-brand-blue-50 text-brand-blue-600 flex items-center justify-center font-black text-[10px] mr-3 shadow-sm">
+                                    <td className="px-6 py-4">
+                                        <div className="flex items-center gap-2">
+                                            <div className="w-7 h-7 rounded-full bg-brand-blue-50 text-brand-blue-600 flex items-center justify-center font-black text-[10px]">
                                                 {exam.doctorAssignedName?.charAt(0) || '?'}
                                             </div>
-                                            <div>
-                                                <span className="text-sm font-bold text-gray-800">{exam.doctorAssignedName || 'Aguardando...'}</span>
-                                            </div>
+                                            <span className="text-sm font-bold text-gray-800">{exam.doctorAssignedName || 'Aguardando...'}</span>
                                         </div>
                                     </td>
-                                    <td className="px-10 py-6">
-                                        <Badge status={exam.status} />
-                                    </td>
-                                    <td className="px-10 py-6 text-right">
-                                        <button className="text-[10px] font-black text-brand-blue-600 uppercase tracking-widest hover:underline decoration-2">Ver Detalhes</button>
+                                    <td className="px-6 py-4"><Badge status={exam.status} /></td>
+                                    <td className="px-6 py-4 text-right">
+                                        <button className="text-[10px] font-black text-brand-blue-600 uppercase tracking-widest hover:underline">Ver</button>
                                     </td>
                                 </tr>
                             ))}
                         </tbody>
                     </table>
+                </div>
+
+                {/* Mobile: Cards */}
+                <div className="exam-card-mobile divide-y" style={{ borderColor: 'var(--surface-border)' }}>
+                    {exams.map((exam) => (
+                        <button
+                            key={exam.id}
+                            onClick={onNavigateToExams}
+                            className="btn-touch w-full flex flex-col gap-2 p-4 text-left hover:bg-gray-50/50 transition-colors"
+                        >
+                            <div className="flex items-start justify-between gap-2">
+                                <div className="min-w-0">
+                                    <p className="font-black text-gray-900 text-sm truncate">{exam.patientName}</p>
+                                    <p className="text-[10px] text-gray-400 font-bold uppercase tracking-wider">REQ #{exam.id.slice(-5)}</p>
+                                </div>
+                                <Badge status={exam.status} />
+                            </div>
+                            <div className="flex items-center justify-between">
+                                <div className="bg-gray-100 text-gray-600 text-[10px] font-black px-2.5 py-1 rounded-md uppercase">{exam.examType}</div>
+                                <span className="text-xs font-bold" style={{ color: 'var(--blue-600)' }}>Ver Detalhes →</span>
+                            </div>
+                            {exam.doctorAssignedName && (
+                                <p className="text-[11px] text-gray-500">👨‍⚕️ {exam.doctorAssignedName}</p>
+                            )}
+                        </button>
+                    ))}
                 </div>
             </div>
         </div>

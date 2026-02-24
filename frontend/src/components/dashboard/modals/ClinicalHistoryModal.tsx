@@ -30,8 +30,8 @@ export const ClinicalHistoryModal: React.FC<ClinicalHistoryModalProps> = ({ isOp
         </div>
         
         <div className="p-8">
-          <div className="bg-gray-50 p-6 rounded-xl border border-gray-100 min-h-[200px]">
-            <p className="text-gray-700 whitespace-pre-wrap leading-relaxed text-lg">
+          <div className="bg-gray-50 p-6 rounded-xl border border-gray-100 min-h-[200px] overflow-x-hidden">
+            <p className="text-gray-700 whitespace-pre-wrap break-words break-all leading-relaxed text-lg pb-4">
               {history || "Nenhuma história clínica informada pelo solicitante."}
             </p>
           </div>

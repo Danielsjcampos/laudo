@@ -62,7 +62,7 @@ const DoctorOverview: React.FC<DoctorOverviewProps> = ({
                     <div className="page-header-line" />
                     <p className="text-sm mt-3 font-medium" style={{ color: 'var(--text-secondary)' }}>Bem-vindo de volta, Dr. Roberto. Há novos exames na fila.</p>
                 </div>
-                <div className="flex flex-col items-end gap-3">
+                <div className="flex flex-col items-start md:items-end gap-3 w-full md:w-auto">
                     <div className="flex items-center gap-3 p-2 rounded-xl" style={{ backgroundColor: 'var(--surface-card)', border: '1px solid var(--surface-border)', boxShadow: 'var(--shadow-sm)' }}>
                         <span className={`text-[10px] font-bold uppercase tracking-wider ${isDutyMode ? 'text-green-600' : 'text-gray-400'}`}>
                             {isDutyMode ? 'Modo Plantão Ativo' : 'Modo Plantão Inativo'}
@@ -75,7 +75,7 @@ const DoctorOverview: React.FC<DoctorOverviewProps> = ({
                             <div className={`w-4 h-4 bg-white rounded-full shadow-md transform transition-transform duration-300 ease-in-out ${isDutyMode ? 'translate-x-6' : 'translate-x-0'}`} />
                         </button>
                     </div>
-                    <div className="flex gap-2">
+                    <div className="flex flex-wrap gap-2 w-full md:w-auto">
                          <select 
                             className="text-xs font-semibold rounded-xl py-2 px-3 focus:ring-0 focus:outline-none"
                             style={{ backgroundColor: 'var(--surface-card)', border: '1px solid var(--surface-border)', color: 'var(--text-primary)' }}
@@ -103,7 +103,7 @@ const DoctorOverview: React.FC<DoctorOverviewProps> = ({
             </div>
 
             {/* Quick Action Buttons */}
-            <div className="flex flex-wrap gap-3">
+            <div className="grid grid-cols-2 sm:flex sm:flex-wrap gap-3">
                 {[
                     { label: 'Marketplace', icon: <SparklesIcon className="h-4 w-4" />, action: () => onNavigateToMarketplace(), color: '#ffffff', bgColor: 'var(--teal-500)' },
                     { label: 'Consultório IA', icon: <BrainIcon className="h-4 w-4" />, action: () => onNavigateToAiConsult(), color: '#ffffff', bgColor: 'var(--blue-600)' },
@@ -117,7 +117,7 @@ const DoctorOverview: React.FC<DoctorOverviewProps> = ({
                             e.preventDefault();
                             btn.action();
                         }}
-                        className="flex items-center gap-2 px-5 py-3 rounded-xl text-xs font-bold uppercase tracking-wider transition-all duration-200 hover:scale-[1.03] hover:shadow-lg active:scale-[0.98] shadow-sm"
+                        className="btn-touch flex items-center justify-center gap-2 px-4 py-3 rounded-xl text-xs font-bold uppercase tracking-wider transition-all duration-200 hover:scale-[1.03] hover:shadow-lg active:scale-[0.98] shadow-sm w-full sm:w-auto"
                         style={{ backgroundColor: btn.bgColor, color: btn.color }}
                     >
                         {btn.icon}
@@ -126,7 +126,7 @@ const DoctorOverview: React.FC<DoctorOverviewProps> = ({
                 ))}
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 stagger-children">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 stagger-children">
                 <Card title="Pendente na Fila" value={pendingExams.length} icon={<ClockIcon className="h-5 w-5" />} color="yellow" />
                 <Card title="Concluídos (Mês)" value={completedCount} icon={<FileTextIcon className="h-5 w-5" />} color="green" />
                 <Card title="Ganhos Estimados" value={`R$ ${estimatedEarnings.toLocaleString()}`} icon={<WalletIcon className="h-5 w-5" />} color="blue" />
@@ -150,7 +150,9 @@ const DoctorOverview: React.FC<DoctorOverviewProps> = ({
                             Ver Fila Completa
                         </button>
                     </div>
-                    <div className="flex-1 overflow-x-auto">
+                        <div className="flex-1">
+                        {/* Desktop: Tabela */}
+                        <div className="exam-table-desktop overflow-x-auto">
                         <table className="w-full text-sm text-left">
                             <thead>
                                 <tr style={{ backgroundColor: 'var(--surface-bg)' }}>
@@ -205,9 +207,37 @@ const DoctorOverview: React.FC<DoctorOverviewProps> = ({
                         {pendingExams.length === 0 && (
                             <div className="text-center py-20 text-gray-400">
                                 <FileTextIcon className="h-16 w-16 mx-auto mb-4 opacity-10" />
-                                <p className="font-bold">Fila de trabalho vazia. Bom descanso!</p>
+                                <p className="font-bold">Fila vazia. Bom descanso!</p>
                             </div>
                         )}
+                        </div>
+                        {/* Mobile: Cards */}
+                        <div className="exam-card-mobile divide-y" style={{ borderColor: 'var(--surface-border)' }}>
+                            {pendingExams.slice(0, 5).map((exam) => (
+                                <button
+                                    key={exam.id}
+                                    onClick={() => onNavigateToDetail(exam.id)}
+                                    className="btn-touch w-full flex flex-col gap-1.5 p-4 text-left hover:bg-gray-50/50 transition-colors"
+                                >
+                                    <div className="flex items-start justify-between gap-2">
+                                        <div className="min-w-0">
+                                            <p className="font-bold text-sm truncate" style={{ color: 'var(--text-primary)' }}>{exam.patientName}</p>
+                                            <p className="text-[10px]" style={{ color: 'var(--text-muted)' }}>{exam.clinicName}</p>
+                                        </div>
+                                        <span className="text-[10px] font-bold px-2 py-0.5 rounded-md shrink-0" style={{ backgroundColor: 'var(--surface-bg)', color: 'var(--text-secondary)' }}>2H 15M</span>
+                                    </div>
+                                    <div className="flex items-center justify-between">
+                                        <div className="text-[10px] font-black px-2.5 py-1 rounded-md uppercase" style={{ backgroundColor: 'var(--surface-bg)', color: 'var(--text-secondary)' }}>{exam.examType}</div>
+                                        <span className="text-xs font-bold" style={{ color: 'var(--teal-500)' }}>Laudar →</span>
+                                    </div>
+                                </button>
+                            ))}
+                            {pendingExams.length === 0 && (
+                                <div className="text-center py-12 text-gray-400">
+                                    <p className="font-bold text-sm">Fila vazia!</p>
+                                </div>
+                            )}
+                        </div>
                     </div>
                 </div>
 
