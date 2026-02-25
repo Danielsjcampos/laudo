@@ -1,9 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ReportThemePreviewer } from './report-designer/components/ReportThemePreviewer';
 import { reportThemes } from './report-designer/themes';
+import api from '../../../lib/api';
+import { authService } from '../../../services/authService';
 
 export const DoctorSettingsPage: React.FC = () => {
     const [activeTab, setActiveTab] = useState<'geral' | 'designer' | 'notificacoes' | 'perfil'>('perfil');
+    const [userId, setUserId] = useState<string | null>(null);
+    const [isDarkMode, setIsDarkMode] = useState(() => localStorage.getItem('isDarkMode') === 'true');
+    const [isCompactMode, setIsCompactMode] = useState(() => localStorage.getItem('isCompactMode') === 'true');
+    const [chatSearchable, setChatSearchable] = useState(true);
+
     const [profileData, setProfileData] = useState({
         name: 'Dr. Roberto Martins',
         specialty: 'Radiologista Sênior',
@@ -13,15 +20,50 @@ export const DoctorSettingsPage: React.FC = () => {
         phone: '(11) 99999-8888',
     });
 
-    const handleSaveProfile = () => {
-        // Mock save
-        alert('Perfil atualizado com sucesso!');
+    useEffect(() => {
+        authService.getMe().then(res => {
+            if (res.user) setUserId(res.user.id);
+        }).catch(err => console.error(err));
+    }, []);
+
+    const handleSaveProfile = async () => {
+        try {
+            if (userId) {
+                await api.put(`/doctors/${userId}`, {
+                    name: profileData.name,
+                    specialty: profileData.specialty,
+                    crm: profileData.crm,
+                    chatSearchable
+                });
+            }
+            alert('Perfil atualizado com sucesso!');
+        } catch (error) {
+            console.error(error);
+            alert('Erro ao atualizar perfil.');
+        }
+    };
+    
+    // Toggle Handlers
+    const toggleDarkMode = () => {
+        const next = !isDarkMode;
+        setIsDarkMode(next);
+        localStorage.setItem('isDarkMode', String(next));
+    };
+
+    const toggleCompactMode = () => {
+        const next = !isCompactMode;
+        setIsCompactMode(next);
+        localStorage.setItem('isCompactMode', String(next));
+    };
+
+    const toggleChatSearchable = () => {
+        setChatSearchable(!chatSearchable);
     };
     
     // Mock Data for initialization
     const initialData = {
-        NOME_CLINICA: "Clínica Exemplo",
-        LOGOTIPO_CLINICA: "https://ui-avatars.com/api/?name=Clinic&background=0D8ABC&color=fff", 
+        NOME_CLINICA: "Clínica Radiologia Avançada",
+        LOGOTIPO_CLINICA: "https://ui-avatars.com/api/?name=CRA&background=0066cc&color=fff", 
         DADOS_PACIENTE_DYNAMIC_BLOCK: `
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
                 <div><strong>Paciente:</strong> João Silva Santos</div>
@@ -30,9 +72,12 @@ export const DoctorSettingsPage: React.FC = () => {
                 <div><strong>Data Exame:</strong> 10/02/2026</div>
             </div>
         `,
-        NOME_MEDICO: "João Mendes",
-        CRM_MEDICO: "12345/SP",
-        ASSINATURA_DIGITAL_MEDICO: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAABICAIAAAB8m9B8AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAHLSURBVHhe7dShDYBADIThv09ZgWEY7pEAnpBwAnXIdqXvN887c/re58vj/PndXU/v8+VjP7f78/0A0MECWAcLYB0sgHWwANbBAlgHC2AdLIB1sADWwQJYBwtgHSyAdbAA1sECWAcLYB0sgHWwANbBAlgHC2AdLIB1sADWwQJYBwtgHSyAdbAA1sECWAcLYB0sgHWwANbBAlgHC2AdLIB1sADWwQJYBwtgHSyAdbAA1sECWAcLYB0sgHWwANbBAlgHC2AdLIB1sADWwQJYBwtgHSyAdbAA1sECWAcLYB0sgHWwANbBAlgHC2AdLIB1sADWwQJYBwtgHSyAdbAA1sECWAcLYB0sgHWwANbBAlgHC2AdLIB1sADWwQJYBwtgHSyAdbAA1sECWAcLYB0sgHWwANbBAlgHC2AdLIB1sADWwQJYBwtgHSyAdbAA1sECWAcLYB0sgHWwANbBAlgHC2AdLIB1sADWwQJYBwtgHSyAdbAA1sECWAcLYB0sgHWwANbBAlgHC2AdLIB1sADWwQJYBwtgHSyAdbAA1sECWAcLYB0sgHWwANbBAlgHC2AdLIB1sADWwQJYBwtgHSyAdbAA1sECWAcLYB0sgHWwANax/wE6tA7qH5M3+AAAAABJRU5ErkJggg=="
+        NOME_MEDICO: profileData.name,
+        CRM_MEDICO: profileData.crm,
+        ASSINATURA_DIGITAL_MEDICO: "https://upload.wikimedia.org/wikipedia/commons/f/f6/Signature_of_John_Hancock.svg",
+        CLINICA_SOLICITANTE: "Hospital das Clínicas de São Paulo",
+        DATA_HORA_PEDIDO: "09/02/2026 14:30",
+        DATA_HORA_LAUDO: "10/02/2026 10:15"
     };
 
     const tenantConfig = {
@@ -176,12 +221,30 @@ export const DoctorSettingsPage: React.FC = () => {
                             <div className="space-y-4">
                                 <div className="flex items-center justify-between p-4 border border-gray-100 rounded-xl">
                                     <span className="font-bold text-gray-700">Modo Escuro (Dark Mode)</span>
-                                    <div className="w-12 h-6 bg-gray-200 rounded-full relative cursor-pointer"><div className="w-4 h-4 bg-white rounded-full absolute left-1 top-1 shadow-sm"></div></div>
+                                    <div onClick={toggleDarkMode} className={`w-12 h-6 ${isDarkMode ? 'bg-brand-blue-600' : 'bg-gray-200'} rounded-full relative cursor-pointer transition-colors`}><div className={`w-4 h-4 bg-white rounded-full absolute top-1 shadow-sm transition-transform ${isDarkMode ? 'right-1' : 'left-1'}`}></div></div>
                                 </div>
                                 <div className="flex items-center justify-between p-4 border border-gray-100 rounded-xl">
                                     <span className="font-bold text-gray-700">Densidade de Informação (Compacta)</span>
-                                    <div className="w-12 h-6 bg-brand-blue-600 rounded-full relative cursor-pointer"><div className="w-4 h-4 bg-white rounded-full absolute right-1 top-1 shadow-sm"></div></div>
+                                    <div onClick={toggleCompactMode} className={`w-12 h-6 ${isCompactMode ? 'bg-brand-blue-600' : 'bg-gray-200'} rounded-full relative cursor-pointer transition-colors`}><div className={`w-4 h-4 bg-white rounded-full absolute top-1 shadow-sm transition-transform ${isCompactMode ? 'right-1' : 'left-1'}`}></div></div>
                                 </div>
+                            </div>
+                        </section>
+
+                        <section className="pt-6 border-t border-gray-100">
+                            <h2 className="text-lg font-bold text-gray-900 mb-4">Privacidade</h2>
+                            <div className="space-y-4">
+                                <div className="flex items-center justify-between p-4 border border-gray-100 rounded-xl">
+                                    <div>
+                                        <span className="font-bold text-gray-700 block">Visível na busca do Chat</span>
+                                        <span className="text-xs text-gray-500">Permite que clínicas busquem por seu perfil no sistema de chat geral</span>
+                                    </div>
+                                    <div onClick={toggleChatSearchable} className={`w-12 h-6 ${chatSearchable ? 'bg-brand-blue-600' : 'bg-gray-200'} rounded-full relative cursor-pointer transition-colors`}><div className={`w-4 h-4 bg-white rounded-full absolute top-1 shadow-sm transition-transform ${chatSearchable ? 'right-1' : 'left-1'}`}></div></div>
+                                </div>
+                            </div>
+                            <div className="flex justify-end mt-4">
+                                <button onClick={handleSaveProfile} className="bg-brand-blue-600 text-white px-6 py-2 rounded-xl font-bold hover:bg-brand-blue-700 shadow-lg shadow-brand-blue-200 transition-colors">
+                                    Salvar Preferências
+                                </button>
                             </div>
                         </section>
                      </div>

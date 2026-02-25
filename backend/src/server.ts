@@ -15,6 +15,8 @@ import financeRoutes from './routes/finance';
 import commonRoutes from './routes/common';
 import templatesRoutes from './routes/templates';
 import clinicsRoutes from './routes/clinics';
+import messageRoutes from './routes/messages';
+import doctorsRoutes from './routes/doctors';
 import path from 'path';
 
 import { getDashboard, logMiddleware } from './controllers/MonitorController';
@@ -100,6 +102,8 @@ app.use('/api/finance', financeRoutes);
 app.use('/api/common', commonRoutes);
 app.use('/api/templates', templatesRoutes);
 app.use('/api/clinics', clinicsRoutes);
+app.use('/api/messages', messageRoutes);
+app.use('/api/doctors', doctorsRoutes);
 
 // Rotas Básicas para Health Check
 app.get('/health', (req, res) => {

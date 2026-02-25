@@ -22,7 +22,7 @@ export const getExams = async (req: Request, res: Response) => {
     const userId = user?.userId;
     const email = user?.email;
 
-    let exams;
+    let exams: any[] = [];
     if (role === 'admin') {
       exams = await prisma.exam.findMany({ orderBy: { dateRequested: 'desc' } });
     } else if (role === 'clinic') {
@@ -67,7 +67,25 @@ export const getExams = async (req: Request, res: Response) => {
       });
     }
 
-    res.json(exams);
+    const formattedExams = exams.map(exam => {
+       let suggestions = undefined;
+       if (exam.externalSuggestion) {
+          try {
+             suggestions = JSON.parse(exam.externalSuggestion);
+             console.log(`[getExams] Parsed ${suggestions.length} suggestions for exam ${exam.id}`);
+          } catch(e) {
+             console.error(`[getExams] Failed to parse suggestions for exam ${exam.id}:`, e);
+          }
+       }
+       return {
+          ...exam,
+          suggestions
+       };
+    });
+
+    console.log(`[getExams] Returning ${formattedExams.length} exams. Found suggestions for:`, 
+      formattedExams.filter(e => e.suggestions && e.suggestions.length > 0).map(e => e.id));
+    res.json(formattedExams);
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: 'Erro ao buscar exames' });
@@ -269,13 +287,24 @@ export const acceptExam = async (req: Request, res: Response) => {
     console.log(`[acceptExam] User found: ${dbUser.name} (${dbUser.role})`);
 
     // FIND DOCTOR ENTITY
-    // Fix for 500 Error: User.id (Auth) != Doctor.id (Business Entity).
     console.log('[acceptExam] Finding linked Doctor profile...');
-    const doctor = await prisma.doctor.findFirst({ where: { name: dbUser.name } });
+    let doctor = await prisma.doctor.findFirst({ where: { name: dbUser.name } });
 
     if (!doctor) {
-      console.error(`[acceptExam] CRITICAL: No Doctor profile found for user ${dbUser.name}`);
-      return res.status(404).json({ error: 'Perfil de médico não encontrado. Entre em contato com o suporte.' });
+      if (dbUser.role === 'doctor' || dbUser.role === 'admin') {
+         console.warn(`[acceptExam] Auto-creating Doctor profile for user ${dbUser.name}...`);
+         doctor = await prisma.doctor.create({
+            data: {
+               name: dbUser.name,
+               crm: `PENDENTE-${Date.now().toString().slice(-6)}`,
+               specialty: 'Radiologia (Auto-Gerado)',
+               status: 'Ativo'
+            }
+         });
+      } else {
+         console.error(`[acceptExam] CRITICAL: No Doctor profile found for user ${dbUser.name}`);
+         return res.status(404).json({ error: 'Perfil de médico não encontrado. Entre em contato com o suporte.' });
+      }
     }
     console.log(`[acceptExam] Doctor profile found: ${doctor.id}`);
 
@@ -425,16 +454,31 @@ export const getPublicExam = async (req: Request, res: Response) => {
     const { id } = req.params;
     console.log('🌍 Public fetch for exam:', id);
 
-    const exam = await prisma.exam.findUnique({
+    // Try finding by ID first, then by accessionNumber as fallback
+    let exam = await prisma.exam.findUnique({
       where: { id: id as string }
     });
+
+    if (!exam) {
+      console.log('🔍 Exam not found by ID, trying accessionNumber...');
+      exam = await prisma.exam.findUnique({
+        where: { accessionNumber: id as string }
+      });
+    }
 
     if (!exam) {
       console.log('❌ Public exam not found:', id);
       return res.status(404).json({ error: 'Exame não encontrado' });
     }
 
-    res.json(exam);
+    let suggestions = undefined;
+    if (exam.externalSuggestion) {
+       try {
+          suggestions = JSON.parse(exam.externalSuggestion);
+       } catch(e) {}
+    }
+
+    res.json({ ...exam, suggestions });
   } catch (error) {
     console.error('❌ Error fetching public exam:', error);
     res.status(500).json({ error: 'Erro ao buscar exame público' });
@@ -444,20 +488,42 @@ export const getPublicExam = async (req: Request, res: Response) => {
 export const saveExternalSuggestion = async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
-    const { suggestion, crm } = req.body;
+    const { suggestion, crm, name } = req.body;
     
-    console.log(`📝 Saving external suggestion for exam ${id} from Dr. ${crm}`);
+    console.log(`📝 Saving external suggestion for exam ${id} from Dr. ${name} (CRM: ${crm})`);
 
-    const exam = await prisma.exam.findUnique({ where: { id } });
+    // Support both ID and accessionNumber
+    let exam = await prisma.exam.findUnique({ where: { id } });
+    if (!exam) {
+      exam = await prisma.exam.findUnique({ where: { accessionNumber: id } });
+    }
+
     if (!exam) {
       return res.status(404).json({ error: 'Exame não encontrado' });
     }
 
+    let existingSuggestions = [];
+    if (exam.externalSuggestion) {
+       try {
+          existingSuggestions = JSON.parse(exam.externalSuggestion);
+          if (!Array.isArray(existingSuggestions)) existingSuggestions = [];
+       } catch(e) {
+          existingSuggestions = [];
+       }
+    }
+
+    existingSuggestions.push({
+       id: `s_${Date.now()}`,
+       doctorName: name || `Médico ${crm}`,
+       doctorCrm: crm,
+       content: suggestion,
+       createdAt: new Date().toISOString()
+    });
+
     const updatedExam = await prisma.exam.update({
       where: { id },
       data: {
-        // @ts-ignore: Prisma client might be stale
-        externalSuggestion: suggestion
+        externalSuggestion: JSON.stringify(existingSuggestions)
       }
     });
 

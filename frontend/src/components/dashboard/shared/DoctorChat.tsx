@@ -2,10 +2,12 @@ import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { User } from '../../../types/auth';
 import { Doctor, Exam, Clinic } from '../../../data/mockData';
 import { SearchIcon } from '../../icons/SearchIcon';
+import api from '../../../lib/api';
 
 interface Message {
   id: string;
   senderId: string;
+  recipientId?: string; // Added for API consistency
   content: string;
   timestamp: Date;
   attachment?: {
@@ -56,131 +58,215 @@ export const DoctorChat: React.FC<DoctorChatProps> = ({
   const [conversations, setConversations] = useState<Conversation[]>([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [isExamSelectorOpen, setIsExamSelectorOpen] = useState(false);
+  const [activeTab, setActiveTab] = useState<'ativos' | 'historico'>('ativos');
+  const [archivedUserIds, setArchivedUserIds] = useState<string[]>([]);
 
   // Persist messages across conversation switches using a ref-backed state
-  const messagesStoreRef = useRef<Record<string, Message[]>>({ ...SEED_MESSAGES });
   const [currentMessages, setCurrentMessages] = useState<Message[]>([]);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
+  
+  // Track previous conversation to clean up polling
+  const selectedConvRef = useRef<string | null>(null);
 
   const scrollToBottom = useCallback(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, []);
 
-  // Initialize conversations
+  // Fetch contacts and archives API
   useEffect(() => {
-    const allParticipants: ChatParticipant[] = [...doctors, ...(otherParticipants || [])];
+    const initData = async () => {
+      try {
+        const [contactsRes, archivesRes] = await Promise.all([
+          api.get('/messages/contacts'),
+          api.get(`/messages/archives?userId=${currentActorId}`)
+        ]);
 
-    const newConversations: Conversation[] = allParticipants
-      .filter(p => p.id !== currentActorId)
-      .map(p => ({
-        id: `conv_${[currentActorId, p.id].sort().join('_')}`,
-        participantId: p.id,
-        participantName: p.name,
-        participantRole: 'crm' in p ? 'doctor' : 'clinic',
-        participantAvatar: ('avatarUrl' in p ? p.avatarUrl : undefined) as string | undefined,
-        lastMessage: messagesStoreRef.current[`conv_${[currentActorId, p.id].sort().join('_')}`]?.slice(-1)[0]?.content || '',
-        unreadCount: 0,
-        updatedAt: new Date(),
+        const { clinics, doctors } = contactsRes.data;
+        const allParticipants: ChatParticipant[] = [...doctors, ...clinics];
+        const archivedIds: string[] = archivesRes.data;
+        
+        setArchivedUserIds(archivedIds);
+
+        const newConversations: Conversation[] = allParticipants
+          .filter(p => p.id !== currentActorId)
+          .map(p => ({
+            id: `conv_${[currentActorId, p.id].sort().join('_')}`,
+            participantId: p.id,
+            participantName: p.name,
+            participantRole: 'crm' in p ? 'doctor' : 'clinic',
+            participantAvatar: undefined,
+            lastMessage: '',
+            unreadCount: 0,
+            updatedAt: new Date(),
+          }));
+
+        if (initialDoctorId) {
+          const targetConv = newConversations.find(c => c.participantId === initialDoctorId);
+          if (targetConv) {
+            setSelectedConversationId(targetConv.id);
+          }
+        }
+
+        setConversations(newConversations);
+      } catch (err) {
+        console.error('Falha ao carregar contatos', err);
+      }
+    };
+    initData();
+  }, [currentActorId, initialDoctorId]);
+
+  // Handle auto-inject message from initial exam context
+  useEffect(() => {
+    if (initialExamId && selectedConversationId && currentMessages.length === 0) {
+      const participantId = conversations.find(c => c.id === selectedConversationId)?.participantId;
+      if (participantId && !selectedConvRef.current /* avoid duplicate send */) {
+        // We will just populate the text area instead of auto sending immediately, or auto-send.
+        setMessageText(`Olá, gostaria de falar sobre o exame (ID: ${initialExamId})`);
+      }
+    }
+  }, [initialExamId, selectedConversationId, conversations, currentMessages]);
+
+  const fetchMessages = useCallback(async (convId: string, participantId: string) => {
+    try {
+      const response = await api.get('/messages', {
+        params: { user1: currentActorId, user2: participantId }
+      });
+      
+      const mappedMessages: Message[] = response.data.map((m: any) => ({
+        id: m.id,
+        senderId: m.senderId,
+        recipientId: m.recipientId,
+        content: m.content,
+        timestamp: new Date(m.timestamp),
+        attachment: m.examId ? {
+          type: 'exam',
+          examId: m.examId,
+          examName: m.examName
+        } : undefined
       }));
 
-    if (initialDoctorId) {
-      const targetConv = newConversations.find(c => c.participantId === initialDoctorId);
-      if (targetConv) {
-        setSelectedConversationId(targetConv.id);
-      }
+      setCurrentMessages(mappedMessages);
+    } catch (err) {
+      console.error('Failed to fetch messages:', err);
     }
+  }, [currentActorId]);
 
-    setConversations(newConversations);
-  }, [doctors, otherParticipants, currentActorId, initialDoctorId]);
-
-  // Load messages when conversation changes
+  // Load messages and start polling when conversation changes
   useEffect(() => {
     if (selectedConversationId) {
-      const stored = messagesStoreRef.current[selectedConversationId] || [];
+      const participantId = conversations.find(c => c.id === selectedConversationId)?.participantId;
+      if (!participantId) return;
 
-      // If entering with exam context, add context message if not already there
-      if (initialExamId && selectedConversationId.includes(initialDoctorId || '')) {
-        const exam = exams.find(e => e.id === initialExamId);
-        if (exam && !stored.some(m => m.attachment?.examId === initialExamId)) {
-          const contextMsg: Message = {
-            id: `m_ctx_${Date.now()}`,
-            senderId: currentActorId,
-            content: `Olá, gostaria de falar sobre o exame de ${exam.examType} do(a) paciente ${exam.patientName}.`,
-            timestamp: new Date(),
-            attachment: {
-              type: 'exam',
-              examId: exam.id,
-              examName: `${exam.examType} - ${exam.patientName}`,
-            },
-          };
-          stored.push(contextMsg);
-          messagesStoreRef.current[selectedConversationId] = stored;
+      selectedConvRef.current = selectedConversationId;
+      
+      // Initial fetch
+      fetchMessages(selectedConversationId, participantId);
+      
+      // Polling for new messages
+      const interval = setInterval(() => {
+        if (selectedConvRef.current === selectedConversationId) {
+          fetchMessages(selectedConversationId, participantId);
         }
-      }
+      }, 3000);
 
-      setCurrentMessages([...stored]);
-      setTimeout(scrollToBottom, 100);
+      return () => clearInterval(interval);
     }
-  }, [selectedConversationId, initialExamId, exams, currentActorId, initialDoctorId, scrollToBottom]);
+  }, [selectedConversationId, conversations, fetchMessages]);
 
-  // Auto-scroll on new messages
   useEffect(() => {
     scrollToBottom();
   }, [currentMessages, scrollToBottom]);
 
-  const handleSendMessage = () => {
+  const handleSendMessage = async () => {
     if (!messageText.trim() || !selectedConversationId) return;
+    
+    const participantId = conversations.find(c => c.id === selectedConversationId)?.participantId;
+    if (!participantId) return;
 
-    const newMessage: Message = {
-      id: `m_${Date.now()}`,
-      senderId: currentActorId,
-      content: messageText,
-      timestamp: new Date(),
-    };
+    try {
+      const response = await api.post('/messages', {
+        senderId: currentActorId,
+        recipientId: participantId,
+        content: messageText
+      });
 
-    const updated = [...(messagesStoreRef.current[selectedConversationId] || []), newMessage];
-    messagesStoreRef.current[selectedConversationId] = updated;
-    setCurrentMessages([...updated]);
+      const newMessage: Message = {
+        id: response.data.id,
+        senderId: response.data.senderId,
+        recipientId: response.data.recipientId,
+        content: response.data.content,
+        timestamp: new Date(response.data.timestamp)
+      };
 
-    setConversations(prev =>
-      prev.map(c =>
-        c.id === selectedConversationId
-          ? { ...c, lastMessage: messageText, updatedAt: new Date() }
-          : c
-      )
-    );
-
-    setMessageText('');
-    textareaRef.current?.focus();
+      setCurrentMessages(prev => [...prev, newMessage]);
+      setMessageText('');
+      textareaRef.current?.focus();
+    } catch (err) {
+      console.error('Failed to send message:', err);
+    }
   };
 
-  const handleAttachExam = (exam: Exam) => {
+  const handleAttachExam = async (exam: Exam) => {
     if (!selectedConversationId) return;
+    
+    const participantId = conversations.find(c => c.id === selectedConversationId)?.participantId;
+    if (!participantId) return;
 
-    const newMessage: Message = {
-      id: `m_${Date.now()}`,
-      senderId: currentActorId,
-      content: `Compartilhei o exame: ${exam.examType} — ${exam.patientName}`,
-      timestamp: new Date(),
-      attachment: {
-        type: 'exam',
+    try {
+      const response = await api.post('/messages', {
+        senderId: currentActorId,
+        recipientId: participantId,
+        content: `Compartilhei o exame: ${exam.examType} — ${exam.patientName}`,
         examId: exam.id,
-        examName: `${exam.examType} - ${exam.patientName}`,
-      },
-    };
+        examName: `${exam.examType} - ${exam.patientName}`
+      });
 
-    const updated = [...(messagesStoreRef.current[selectedConversationId] || []), newMessage];
-    messagesStoreRef.current[selectedConversationId] = updated;
-    setCurrentMessages([...updated]);
-    setIsExamSelectorOpen(false);
+      const newMessage: Message = {
+        id: response.data.id,
+        senderId: response.data.senderId,
+        recipientId: response.data.recipientId,
+        content: response.data.content,
+        timestamp: new Date(response.data.timestamp),
+        attachment: {
+          type: 'exam',
+          examId: exam.id,
+          examName: `${exam.examType} - ${exam.patientName}`
+        }
+      };
+
+      setCurrentMessages(prev => [...prev, newMessage]);
+      setIsExamSelectorOpen(false);
+    } catch (err) {
+      console.error('Failed to attach exam:', err);
+    }
+  };
+
+  const handleArchiveConversation = async () => {
+    if (!selectedConversationId) return;
+    const participantId = conversations.find(c => c.id === selectedConversationId)?.participantId;
+    if (!participantId) return;
+
+    try {
+      await api.post('/messages/archive', {
+        userId: currentActorId,
+        peerId: participantId
+      });
+      setArchivedUserIds(prev => [...prev, participantId]);
+      setSelectedConversationId(null);
+    } catch (err) {
+      console.error('Failed to archive:', err);
+    }
   };
 
   const selectedConversation = conversations.find(c => c.id === selectedConversationId);
 
-  const filteredConversations = conversations.filter(c =>
-    c.participantName.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+  const filteredConversations = conversations.filter(c => {
+    const matchesSearch = c.participantName.toLowerCase().includes(searchQuery.toLowerCase());
+    const isArchived = archivedUserIds.includes(c.participantId);
+    const matchesTab = activeTab === 'ativos' ? !isArchived : isArchived;
+    return matchesSearch && matchesTab;
+  });
 
   const formatTime = (date: Date) =>
     date.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
@@ -213,13 +299,29 @@ export const DoctorChat: React.FC<DoctorChatProps> = ({
               }}
             />
           </div>
+
+          {/* Abas */}
+          <div className="flex px-5 mt-4 border-b" style={{ borderColor: 'var(--surface-border)' }}>
+            <button
+              onClick={() => setActiveTab('ativos')}
+              className={`pb-2 px-2 mr-4 text-[13px] font-bold transition-colors ${activeTab === 'ativos' ? 'text-teal-500 border-b-2 border-teal-500' : 'text-gray-400 hover:text-gray-600'}`}
+            >
+              Ativos
+            </button>
+            <button
+              onClick={() => setActiveTab('historico')}
+              className={`pb-2 px-2 text-[13px] font-bold transition-colors ${activeTab === 'historico' ? 'text-teal-500 border-b-2 border-teal-500' : 'text-gray-400 hover:text-gray-600'}`}
+            >
+              Histórico
+            </button>
+          </div>
         </div>
 
         {/* Conversation List */}
         <div className="flex-1 overflow-y-auto">
           {filteredConversations.map(conv => {
             const isActive = selectedConversationId === conv.id;
-            const hasMessages = (messagesStoreRef.current[conv.id]?.length || 0) > 0;
+            const hasMessages = currentMessages.length > 0 && selectedConversationId === conv.id;
             return (
               <button
                 key={conv.id}
@@ -259,11 +361,9 @@ export const DoctorChat: React.FC<DoctorChatProps> = ({
                         {formatTime(conv.updatedAt)}
                       </span>
                     </div>
-                    <p className="text-[11px] truncate" style={{ color: 'var(--text-muted)' }}>
-                      {hasMessages
-                        ? messagesStoreRef.current[conv.id]!.slice(-1)[0].content
-                        : 'Nenhuma mensagem ainda'}
-                    </p>
+                      <p className="text-[11px] truncate" style={{ color: 'var(--text-muted)' }}>
+                       {conv.lastMessage || 'Nenhuma mensagem ainda'}
+                      </p>
                   </div>
                 </div>
               </button>
@@ -312,43 +412,52 @@ export const DoctorChat: React.FC<DoctorChatProps> = ({
                 </div>
               </div>
 
-              {/* Attach exam button */}
-              <div className="relative">
-                <button
-                  onClick={() => setIsExamSelectorOpen(!isExamSelectorOpen)}
-                  className="p-2.5 rounded-xl transition-all hover:scale-105"
-                  style={{ color: 'var(--text-muted)', backgroundColor: 'var(--input-bg, rgba(0,0,0,0.04))' }}
-                  title="Anexar Exame"
-                >
-                  <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13" />
-                  </svg>
-                </button>
-
-                {/* Exam Selector Popover */}
-                {isExamSelectorOpen && (
-                  <div
-                    className="absolute top-full right-0 mt-2 w-80 rounded-2xl shadow-2xl max-h-72 overflow-y-auto z-20 animate-in fade-in slide-in-from-top-2"
-                    style={{ backgroundColor: 'var(--surface-bg)', border: '1px solid var(--surface-border)' }}
+              <div className="flex items-center">
+                {/* Attach exam button */}
+                <div className="relative">
+                  <button
+                    onClick={() => setIsExamSelectorOpen(!isExamSelectorOpen)}
+                    className="p-2.5 rounded-xl transition-all hover:scale-105"
+                    style={{ color: 'var(--text-muted)', backgroundColor: 'var(--input-bg, rgba(0,0,0,0.04))' }}
+                    title="Anexar Exame"
                   >
-                    <div className="p-3 border-b text-[10px] font-black uppercase tracking-widest" style={{ borderColor: 'var(--surface-border)', color: 'var(--text-muted)' }}>
-                      Selecionar Exame
+                    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13" />
+                    </svg>
+                  </button>
+
+                  {/* Exam Selector Popover */}
+                  {isExamSelectorOpen && (
+                    <div
+                      className="absolute top-full right-0 mt-2 w-80 rounded-2xl shadow-2xl max-h-72 overflow-y-auto z-20 animate-in fade-in slide-in-from-top-2"
+                      style={{ backgroundColor: 'var(--surface-bg)', border: '1px solid var(--surface-border)' }}
+                    >
+                      <div className="p-3 border-b text-[10px] font-black uppercase tracking-widest" style={{ borderColor: 'var(--surface-border)', color: 'var(--text-muted)' }}>
+                        Selecionar Exame
+                      </div>
+                      {exams.map(exam => (
+                        <button
+                          key={exam.id}
+                          onClick={() => handleAttachExam(exam)}
+                          className="w-full text-left p-3 transition-colors border-b last:border-0"
+                          style={{ borderColor: 'var(--surface-border)' }}
+                        >
+                          <p className="text-sm font-bold" style={{ color: 'var(--text-primary)' }}>{exam.examType}</p>
+                          <p className="text-[11px]" style={{ color: 'var(--text-muted)' }}>
+                            {exam.patientName} — {new Date(exam.dateRequested).toLocaleDateString('pt-BR')}
+                          </p>
+                        </button>
+                      ))}
                     </div>
-                    {exams.map(exam => (
-                      <button
-                        key={exam.id}
-                        onClick={() => handleAttachExam(exam)}
-                        className="w-full text-left p-3 transition-colors border-b last:border-0"
-                        style={{ borderColor: 'var(--surface-border)' }}
-                      >
-                        <p className="text-sm font-bold" style={{ color: 'var(--text-primary)' }}>{exam.examType}</p>
-                        <p className="text-[11px]" style={{ color: 'var(--text-muted)' }}>
-                          {exam.patientName} — {new Date(exam.dateRequested).toLocaleDateString('pt-BR')}
-                        </p>
-                      </button>
-                    ))}
-                  </div>
-                )}
+                  )}
+                </div>
+                  
+                <button
+                  onClick={handleArchiveConversation}
+                  className="p-2 ml-2 rounded-xl text-xs font-bold transition-all hover:bg-red-50 text-red-500 border border-red-100 hidden md:block"
+                >
+                  Finalizar
+                </button>
               </div>
             </header>
 

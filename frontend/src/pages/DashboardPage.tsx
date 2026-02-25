@@ -56,10 +56,11 @@ interface DashboardPageProps {
   onCompleteReport: (examId: string, report: string) => void;
   onRegisterPatient: (data: { name: string, cpf: string, email: string, sex?: string }) => void;
   onRefreshData: () => void;
+  currentActorId: string;
 }
 
 const DashboardPage: React.FC<DashboardPageProps> = (props) => {
-  const { user, onLogout, patients, doctors, exams, stats, onRequestExam, onAcceptExam, onCompleteReport, onRegisterPatient, onRefreshData } = props;
+  const { user, onLogout, patients, doctors, exams, stats, onRequestExam, onAcceptExam, onCompleteReport, onRegisterPatient, onRefreshData, currentActorId } = props;
 
   const [currentView, setCurrentView] = useState<string>('overview');
   const [detailId, setDetailId] = useState<string | null>(null);
@@ -167,7 +168,7 @@ const DashboardPage: React.FC<DashboardPageProps> = (props) => {
         if (currentView === 'chat') {
             return <DoctorChat 
                 currentUser={user} 
-                currentActorId="c1"
+                currentActorId={currentActorId || 'c1'}
                 doctors={doctors} 
                 exams={clinicExams} 
                 initialDoctorId={chatInitialDoctorId}
@@ -213,7 +214,7 @@ const DashboardPage: React.FC<DashboardPageProps> = (props) => {
           /> : <PlaceholderPage title="Exame não encontrado" />;
         }
         if (currentView === 'marketplace') {
-          return <MarketplaceExams exams={exams} onAccept={onAcceptExam} hasActiveExam={hasActiveExam} isDutyMode={isDutyMode} />;
+          return <MarketplaceExams exams={exams} onAccept={onAcceptExam} hasActiveExam={false} isDutyMode={isDutyMode} />;
         }
         if (currentView === 'ai_consult') return <DoctorAiConsultation />;
         if (currentView === 'pending_exams') {
@@ -236,10 +237,9 @@ const DashboardPage: React.FC<DashboardPageProps> = (props) => {
         if (currentView === 'profile') return <DoctorProfilePage />;
         if (currentView === 'settings') return <DoctorSettingsPage />;
         if (currentView === 'chat') {
-            const currentActorId = doctors.find(d => d.name === user.name)?.id || 'd1';
             return <DoctorChat 
                 currentUser={user} 
-                currentActorId={currentActorId}
+                currentActorId={currentActorId || 'd1'}
                 doctors={doctors}
                 otherParticipants={mockClinics}
                 exams={doctorExams} 

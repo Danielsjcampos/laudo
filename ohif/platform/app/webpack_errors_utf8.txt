@@ -1,0 +1,84 @@
+﻿node : Browserslist: 
+browsers data (caniuse-lite) 
+is 8 months old. Please run:
+No linha:1 caractere:1
++ node 
+--max_old_space_size=4096 ../
+../node_modules/webpack/bin/w
+ebpack ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~
+    + CategoryInfo           
+   : NotSpecified: (Browser  
+  slist: b...ld. Please ru   
+ n::String) [], RemoteExc    
+eption
+    + FullyQualifiedErrorId  
+   : NativeCommandError
+ 
+  npx 
+update-browserslist-db@latest
+  Why you should do it 
+regularly: https://github.com
+/browserslist/update-db#readm
+e
+<w> [ReactRefreshPlugin] Hot 
+Module Replacement (HMR) is 
+not enabled! React Refresh 
+requires HMR to function 
+properly.
+The exported identifier 
+"Services" is not declared 
+in Babel's scope tracker
+as a JavaScript value 
+binding, and "@babel/plugin-t
+ransform-typescript"
+never encountered it as a 
+TypeScript type declaration.
+It will be treated as a 
+JavaScript value.
+
+This problem is likely 
+caused by another plugin 
+injecting
+"Services" without 
+registering it in the scope 
+tracker. If you are the 
+author
+ of that plugin, please use "
+scope.registerDeclaration(dec
+larationPath)".
+assets by path [1m[32massets/[39m[22m 1.4 MiB 75 assets
+assets by path [1m[32m*.js[39m[22m 44.2 MiB 67 assets
+assets by path [1m[32mort/[39m[22m 136 MiB 55 assets
+assets by path [1m[32mdicom-microscopy-viewer/[39m[22m 19.7 MiB 8 assets
+assets by info 7.97 MiB [1m[32m[immutable][39m[22m 6 assets
+assets by path [1m[32m*.svg[39m[22m 32.3 KiB 2 assets
+assets by path [1m[32m*.html[39m[22m 6.78 KiB
+  asset [1m[32mindex.html[39m[22m 6.15 KiB [1m[32m[emitted][39m[22m
+  asset [1m[32msilent-refresh.html[39m[22m 640 bytes [1m[32m[emitted][39m[22m [from: ../public/silent-refresh.html] [1m[32m[copied][39m[22m
+assets by path [1m[32m*.json[39m[22m 1.34 KiB
+  asset [1m[32mmanifest.json[39m[22m 1.28 KiB [1m[32m[emitted][39m[22m [from: ../public/manifest.json] [1m[32m[copied][39m[22m
+  asset [1m[32mserve.json[39m[22m 67 bytes [1m[32m[emitted][39m[22m [from: ../public/serve.json] [1m[32m[copied][39m[22m
+asset [1m[32m_redirects[39m[22m 150 bytes [1m[32m[emitted][39m[22m [from: ../public/_redirects] [1m[32m[copied][39m[22m
+asset [1m[32m_headers[39m[22m 0 bytes [1m[32m[emitted][39m[22m [from: ../public/_headers] [1m[32m[copied][39m[22m
+
+[1mLOG from InjectManifest[39m[22m
+<i> [1m[32mThe service worker at sw.js will precache[39m[22m
+<i> [1m[32m        279 URLs, totaling 258 MB.[39m[22m
+
+[1m[33mWARNING[39m[22m in [1mDefinePlugin
+[1m[31mConflicting[39m[22m[1m values for 'process.env.NODE_ENV'[39m[22m
+'undefined' !== '"development"'
+
+[1m[33mWARNING[39m[22m in [1mDefinePlugin
+[1m[31mConflicting[39m[22m[1m values for 'process.env.NODE_ENV'[39m[22m
+'undefined' !== '"development"'
+
+[1m[33mWARNING[39m[22m in [entry] [initial]
+[1mCircular dependency between chunks with runtime (app, compute, polySeg)
+This prevents using hashes of each other and should be avoided.[39m[22m
+
+[1m[33m2 WARNINGS in child compilations (Use 'stats.children: true' resp. '--stats-children' for more details)[39m[22m
+webpack 5.95.0 compiled with [1m[33m5 warnings[39m[22m in 43932 ms (5b23a96d95a44924d473)

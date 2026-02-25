@@ -17,6 +17,9 @@ import { ReportEditor } from '../doctor/ReportEditor';
 import { ClinicalHistoryModal } from '../modals/ClinicalHistoryModal';
 import { ShareExamModal } from '../modals/ShareExamModal';
 import { FileTextIcon } from '../../icons/FileTextIcon';
+import { reportThemes } from '../doctor/report-designer/themes';
+import { ReportRenderer } from '../../reports/ReportRenderer';
+import { ReportData } from '../../../types/report';
 
 const MonitorIcon = ({ className }: { className?: string }) => (
     <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -50,13 +53,24 @@ const ExamDetailPage: React.FC<ExamDetailPageProps> = ({ exam, userRole, onBack,
     const [isHistoryOpen, setIsHistoryOpen] = useState(false);
     const [isShareModalOpen, setIsShareModalOpen] = useState(false);
     const [isSuggestionViewOpen, setIsSuggestionViewOpen] = useState(false);
+    const [isSignatureConfirmOpen, setIsSignatureConfirmOpen] = useState(false);
+    const [isPreviewOpen, setIsPreviewOpen] = useState(false);
     const { addToast } = useToast();
+    const selectedThemeId = localStorage.getItem('selected_report_theme_id') || 'swiss-clinic';
+    const theme = reportThemes.find(t => t.id === selectedThemeId) || reportThemes[0];
 
     // Sincroniza dados ao abrir o detalhe
     React.useEffect(() => {
-        if (onRefreshData) {
-            onRefreshData();
-        }
+        const fetchCurrentExam = async () => {
+             try {
+                 const res = await api.get(`/exams`);
+                 // Refreshing the entire list will update the prop via DashboardPage
+                 if (onRefreshData) onRefreshData();
+             } catch (e) {
+                 console.error("Detail refresh fail:", e);
+             }
+        };
+        fetchCurrentExam();
     }, [exam.id]);
 
     // AI Generation Logic (Simulated for MVP if no API Key)
@@ -101,11 +115,17 @@ Exame dentro dos padrões da normalidade para os achados descritos.
         }, 1500);
     };
 
+    const handleSignRequest = () => {
+        setIsSignatureConfirmOpen(true);
+    };
+
     const handleComplete = () => {
+        setIsSignatureConfirmOpen(false);
+        setIsPreviewOpen(false);
         if (onCompleteReport) {
             onCompleteReport(exam.id, reportText);
             addToast('Laudo finalizado e assinado!', 'success');
-            onBack();
+            setTimeout(() => onBack(), 500);
         }
     };
 
@@ -123,6 +143,105 @@ Exame dentro dos padrões da normalidade para os achados descritos.
                 examId={exam.id}
                 patientName={exam.patientName}
             />
+
+            {/* Signature Confirmation Modal */}
+            <Transition appear show={isSignatureConfirmOpen} as={Fragment}>
+                <Dialog as="div" className="relative z-[60]" onClose={() => setIsSignatureConfirmOpen(false)}>
+                    <Transition.Child as={Fragment} enter="ease-out duration-300" enterFrom="opacity-0" enterTo="opacity-100" leave="ease-in duration-200" leaveFrom="opacity-100" leaveTo="opacity-0">
+                        <div className="fixed inset-0 bg-black/60 backdrop-blur-sm" />
+                    </Transition.Child>
+                    <div className="fixed inset-0 overflow-y-auto">
+                        <div className="flex min-h-full items-center justify-center p-4">
+                            <Transition.Child as={Fragment} enter="ease-out duration-300" enterFrom="opacity-0 scale-95" enterTo="opacity-100 scale-100" leave="ease-in duration-200" leaveFrom="opacity-100 scale-100" leaveTo="opacity-0 scale-95">
+                                <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 shadow-xl transition-all">
+                                    <Dialog.Title as="h3" className="text-lg font-bold text-gray-900 mb-2">
+                                        Assinar Laudo
+                                    </Dialog.Title>
+                                    <p className="text-sm text-gray-500 mb-6">
+                                        Deseja pré-visualizar como o laudo final ficará com o seu template antes de assinar?
+                                    </p>
+                                    <div className="flex justify-end gap-3 rounded-lg border border-yellow-100 bg-yellow-50 p-4 mb-6">
+                                        <SparklesIcon className="w-5 h-5 text-yellow-600 shrink-0" />
+                                        <p className="text-xs text-yellow-800">
+                                            A pré-visualização insere automaticamente sua assinatura, CRM e a logo da clínica no template <strong>{theme.name}</strong>.
+                                        </p>
+                                    </div>
+                                    <div className="flex justify-end gap-3 mt-4">
+                                        <Button variant="outline" onClick={() => setIsSignatureConfirmOpen(false)}>Cancelar</Button>
+                                        <Button onClick={handleComplete} className="bg-brand-blue-600 hover:bg-brand-blue-700 text-white font-bold">Assinar Diretamente</Button>
+                                        <Button onClick={() => { setIsSignatureConfirmOpen(false); setIsPreviewOpen(true); }} className="bg-green-600 hover:bg-green-700 text-white shadow-green-200 font-bold">Pré-visualizar</Button>
+                                    </div>
+                                </Dialog.Panel>
+                            </Transition.Child>
+                        </div>
+                    </div>
+                </Dialog>
+            </Transition>
+
+            {/* Fullscreen Preview Modal */}
+            <Transition appear show={isPreviewOpen} as={Fragment}>
+                <Dialog as="div" className="relative z-[70]" onClose={() => setIsPreviewOpen(false)}>
+                    <Transition.Child as={Fragment} enter="ease-out duration-300" enterFrom="opacity-0" enterTo="opacity-100" leave="ease-in duration-200" leaveFrom="opacity-100" leaveTo="opacity-0">
+                        <div className="fixed inset-0 bg-gray-900/90 backdrop-blur-md" />
+                    </Transition.Child>
+                    <div className="fixed inset-0 overflow-y-auto">
+                        <div className="flex min-h-full flex-col items-center justify-start p-4 md:p-8">
+                            <Transition.Child as={Fragment} enter="ease-out duration-500" enterFrom="opacity-0 translate-y-8" enterTo="opacity-100 translate-y-0" leave="ease-in duration-300" leaveFrom="opacity-100 translate-y-0" leaveTo="opacity-0 translate-y-8">
+                                <Dialog.Panel className="w-full max-w-4xl flex flex-col items-center">
+                                    {/* Preview Actions Bar */}
+                                    <div className="w-full flex justify-between items-center mb-6 bg-slate-900 p-5 rounded-2xl shadow-2xl border border-slate-800 backdrop-blur-xl">
+                                        <div className="flex items-center gap-4">
+                                            <div className="w-10 h-10 rounded-full bg-brand-blue-500/20 flex items-center justify-center">
+                                                <SparklesIcon className="w-6 h-6 text-brand-blue-500" />
+                                            </div>
+                                            <div>
+                                                <p className="text-sm font-black text-white tracking-widest uppercase italic">Modo de Verificação Final</p>
+                                                <p className="text-[10px] text-slate-400 font-bold uppercase tracking-widest">Template Ativo: {theme.name}</p>
+                                            </div>
+                                        </div>
+                                        <div className="flex gap-4">
+                                            <Button variant="outline" onClick={() => setIsPreviewOpen(false)} className="border-slate-700 text-slate-400 hover:bg-slate-800 font-bold">Voltar ao Editor</Button>
+                                            <Button onClick={handleComplete} className="bg-brand-blue-600 hover:bg-brand-blue-700 text-white font-black shadow-lg shadow-brand-blue-500/40 flex items-center gap-2 group">
+                                                <SuccessIcon className="w-4 h-4 transition-transform group-hover:scale-125" />
+                                                Confirmar Assinatura e Laudar
+                                            </Button>
+                                        </div>
+                                    </div>
+
+                                    {/* Document Preview Rendering */}
+                                    <div className="bg-white w-full shadow-2xl overflow-hidden rounded-b-2xl">
+                                        <ReportRenderer 
+                                            theme={theme} 
+                                            data={{
+                                                NOME_CLINICA: exam.clinicName,
+                                                LOGOTIPO_CLINICA: `https://ui-avatars.com/api/?name=${exam.clinicName}&background=0D8ABC&color=fff`,
+                                                DADOS_PACIENTE_DYNAMIC_BLOCK: `
+                                                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                                                        <div><strong>Paciente:</strong> ${exam.patientName}</div>
+                                                        <div><strong>Data Nasc:</strong> 15/05/1980 (45 anos)</div>
+                                                        <div><strong>ID Exame:</strong> #${exam.id}</div>
+                                                        <div><strong>Data Exame:</strong> ${new Date(exam.dateRequested).toLocaleDateString('pt-BR')}</div>
+                                                        <div><strong>Modalidade:</strong> ${exam.modality}</div>
+                                                        <div><strong>Acesso:</strong> ${exam.accessionNumber || '---'}</div>
+                                                    </div>
+                                                `,
+                                                CORPO_DO_LAUDO: reportText.replace(/\n/g, '<br/>'),
+                                                NOME_MEDICO: "Roberto Martins",
+                                                CRM_MEDICO: "123.456/SP",
+                                                ASSINATURA_DIGITAL_MEDICO: "https://upload.wikimedia.org/wikipedia/commons/f/f6/Signature_of_John_Hancock.svg",
+                                                CLINICA_SOLICITANTE: exam.clinicName,
+                                                DATA_HORA_PEDIDO: new Date(exam.dateRequested).toLocaleString('pt-BR'),
+                                                DATA_HORA_LAUDO: new Date().toLocaleString('pt-BR')
+                                            }} 
+                                            viewMode="desktop"
+                                        />
+                                    </div>
+                                </Dialog.Panel>
+                            </Transition.Child>
+                        </div>
+                    </div>
+                </Dialog>
+            </Transition>
 
             {/* Suggestion View Modal — Premium Redesign */}
             <Transition appear show={isSuggestionViewOpen} as={Fragment}>
@@ -478,22 +597,24 @@ Exame dentro dos padrões da normalidade para os achados descritos.
 
                         {/* Action Bar */}
                         {userRole === 'doctor' && exam.status !== 'Concluído' && (
-                            <div className="bg-white p-3 sm:p-4 rounded-2xl shadow-sm border border-gray-100 flex flex-col sm:flex-row gap-3 sm:justify-between sm:items-center shrink-0">
-                                <div className="text-[10px] text-gray-500 hidden md:block">
-                                    <span className="block font-bold">Dr. Roberto Martins</span>
-                                    <span>CRM/SP 123456</span>
+                            <div className="bg-white p-3 sm:p-4 rounded-2xl shadow-sm border border-slate-200 flex flex-col sm:flex-row gap-4 sm:justify-between sm:items-center shrink-0">
+                                <div className="flex items-center gap-3">
+                                    <div className="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center font-black text-slate-400 text-xs border border-slate-200">
+                                        RM
+                                    </div>
+                                    <div>
+                                        <p className="text-xs font-black text-slate-900 uppercase">Dr. Roberto Martins</p>
+                                        <p className="text-[10px] font-bold text-brand-blue-600 uppercase tracking-widest leading-none">CRM/SP 123.456</p>
+                                    </div>
                                 </div>
                                 <div className="grid grid-cols-2 sm:flex gap-2 sm:gap-3">
-                                    <Button variant="outline" onClick={() => setIsShareModalOpen(true)} className="btn-touch border-brand-blue-200 text-brand-blue-700 hover:bg-brand-blue-50 text-[10px] h-9 sm:h-10 px-2 sm:px-4">
+                                    <Button variant="outline" onClick={() => setIsShareModalOpen(true)} className="btn-touch border-slate-200 text-slate-600 hover:bg-slate-50 text-[10px] h-10 px-4 font-bold">
                                         <svg className="w-4 h-4 sm:mr-2 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" /></svg>
-                                        <span className="truncate">Opinião</span>
+                                        <span className="truncate">Segunda Opinião</span>
                                     </Button>
-                                    <Button variant="outline" onClick={onBack} className="btn-touch text-[10px] h-9 sm:h-10 px-2 sm:px-4">
-                                        Sair
-                                    </Button>
-                                    <Button onClick={handleComplete} className="btn-touch col-span-2 sm:col-auto bg-green-600 hover:bg-green-700 text-white shadow-green-200 text-xs h-10 sm:h-10 font-black">
-                                        <SuccessIcon className="w-4 h-4 mr-2" />
-                                        Assinar Laudo
+                                    <Button onClick={handleSignRequest} className="btn-touch col-span-2 sm:col-auto bg-brand-blue-600 hover:bg-brand-blue-700 text-white shadow-lg shadow-brand-blue-100 text-xs h-10 font-black flex items-center gap-2">
+                                        <SuccessIcon className="w-4 h-4" />
+                                        Assinar e Laudar
                                     </Button>
                                 </div>
                             </div>

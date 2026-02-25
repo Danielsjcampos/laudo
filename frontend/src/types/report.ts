@@ -62,6 +62,9 @@ export interface ReportData {
   ASSINATURA_DIGITAL_MEDICO?: string;
   NOME_MEDICO?: string;
   CRM_MEDICO?: string;
+  CLINICA_SOLICITANTE?: string;
+  DATA_HORA_PEDIDO?: string;
+  DATA_HORA_LAUDO?: string;
   [key: string]: any;
 }
 

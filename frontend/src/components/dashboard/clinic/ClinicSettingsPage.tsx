@@ -1,7 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import api from '../../../lib/api';
+import { authService } from '../../../services/authService';
 
 export const ClinicSettingsPage: React.FC = () => {
     const [activeTab, setActiveTab] = useState<'geral' | 'marketplace' | 'notificacoes'>('geral');
+    const [userId, setUserId] = useState<string | null>(null);
     
     // Mock States for toggles
     const [settings, setSettings] = useState({
@@ -9,11 +12,29 @@ export const ClinicSettingsPage: React.FC = () => {
         notificationsSms: false,
         autoApproveDocs: true,
         marketplaceVisibility: true,
-        defaultPricetable: 'padrao_2024'
+        defaultPricetable: 'padrao_2024',
+        chatSearchable: true
     });
 
-    const handleToggle = (key: keyof typeof settings) => {
-        setSettings(prev => ({ ...prev, [key]: !prev[key] }));
+    useEffect(() => {
+        authService.getMe().then(res => {
+            if (res.user) setUserId(res.user.id);
+        }).catch(err => console.error(err));
+    }, []);
+
+    const handleToggle = async (key: keyof typeof settings) => {
+        const newValue = !settings[key];
+        setSettings(prev => ({ ...prev, [key]: newValue }));
+
+        if (key === 'chatSearchable' && userId) {
+            try {
+                await api.put(`/clinics/${userId}`, {
+                    chatSearchable: newValue
+                });
+            } catch (err) {
+                console.error("Failed to update chatSearchable", err);
+            }
+        }
     };
 
     return (
@@ -61,6 +82,24 @@ export const ClinicSettingsPage: React.FC = () => {
                                         className={`w-12 h-6 rounded-full transition-colors flex items-center px-1 ${settings.autoApproveDocs ? 'bg-brand-blue-600' : 'bg-gray-300'}`}
                                     >
                                         <div className={`w-4 h-4 bg-white rounded-full shadow-sm transition-transform ${settings.autoApproveDocs ? 'translate-x-6' : 'translate-x-0'}`} />
+                                    </button>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section className="pt-6 border-t border-gray-100">
+                            <h2 className="text-lg font-bold text-gray-900 mb-4">Privacidade</h2>
+                            <div className="space-y-4">
+                                <div className="flex items-center justify-between p-4 border border-gray-100 rounded-xl hover:border-gray-200 transition-colors">
+                                    <div>
+                                        <p className="font-bold text-gray-800">Visível na busca do Chat</p>
+                                        <p className="text-xs text-gray-500 mt-1">Permite que médicos busquem sua clínica para contatos proativos.</p>
+                                    </div>
+                                    <button 
+                                        onClick={() => handleToggle('chatSearchable')}
+                                        className={`w-12 h-6 rounded-full transition-colors flex items-center px-1 ${settings.chatSearchable ? 'bg-brand-blue-600' : 'bg-gray-300'}`}
+                                    >
+                                        <div className={`w-4 h-4 bg-white rounded-full shadow-sm transition-transform ${settings.chatSearchable ? 'translate-x-6' : 'translate-x-0'}`} />
                                     </button>
                                 </div>
                             </div>

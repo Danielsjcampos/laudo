@@ -1,0 +1,110 @@
+﻿node.exe : Browserslist: 
+browsers data (caniuse-lite) 
+is 8 months old. Please run:
+No linha:1 caractere:1
++ & "D:\Tudo 
+programação/node.exe" 
+"D:\Tudo 
+programação/node_modules/np 
+...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~
+    + CategoryInfo           
+   : NotSpecified: (Browser  
+  slist: b...ld. Please ru   
+ n::String) [], RemoteExc    
+eption
+    + FullyQualifiedErrorId  
+   : NativeCommandError
+ 
+  npx 
+update-browserslist-db@latest
+  Why you should do it 
+regularly: https://github.com
+/browserslist/update-db#readm
+e
+(node:17616) [DEP_WEBPACK_DEV
+_SERVER_PROXY_ROUTES_ARGUMENT
+] DeprecationWarning: 
+Invalid proxy configuration:
+
+{
+  "/dicomweb": 
+"http://localhost:5000",
+  "logLevel": "info"
+}
+
+The use of proxy object 
+notation as proxy routes has 
+been removed.
+Please use the 'router' or 
+'context' options. Read more 
+at https://github.com/chimura
+i/http-proxy-middleware/tree/
+v2.0.6#http-proxy-middleware-
+options
+(Use `node 
+--trace-deprecation ...` to 
+show where the warning was 
+created)
+C:\Users\PC\Downloads\Viewers
+-master\Viewers-master\node_m
+odules\webpack-dev-server\lib
+\Server.js:2638
+        throw error;
+        ^
+
+Error: listen EADDRINUSE: 
+address already in use 
+:::3000
+    at 
+Server.setupListenHandle [as 
+_listen2] (node:net:1940:16)
+    at listenInCluster 
+(node:net:1997:12)
+    at Server.listen 
+(node:net:2102:7)
+    at READ_WRITE (C:\Users\P
+C\Downloads\Viewers-master\Vi
+ewers-master\node_modules\web
+pack-dev-server\lib\Server.js
+:3460:23)
+    at new Promise 
+(<anonymous>)
+    at Server.start (C:\Users
+\PC\Downloads\Viewers-master\
+Viewers-master\node_modules\w
+ebpack-dev-server\lib\Server.
+js:3458:7)
+    at async 
+Command.<anonymous> (C:\Users
+\PC\Downloads\Viewers-master\
+Viewers-master\node_modules\@
+webpack-cli\serve\lib\index.j
+s:158:21)
+    at async 
+Command.parseAsync (C:\Users\
+PC\Downloads\Viewers-master\V
+iewers-master\node_modules\co
+mmander\lib\command.js:923:5)
+    at async 
+Command.<anonymous> (C:\Users
+\PC\Downloads\Viewers-master\
+Viewers-master\node_modules\w
+ebpack-cli\lib\webpack-cli.js
+:1356:13)
+    at async 
+Command.parseAsync (C:\Users\
+PC\Downloads\Viewers-master\V
+iewers-master\node_modules\co
+mmander\lib\command.js:923:5)
+ {
+  code: 'EADDRINUSE',
+  errno: -4091,
+  syscall: 'listen',
+  address: '::',
+  port: 3000
+}
+
+Node.js v24.13.0

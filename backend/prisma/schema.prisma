@@ -19,6 +19,7 @@ model Clinic {
   examCount          Int      @default(0)
   joinedDate         DateTime @default(now())
   adminEmail         String   @unique
+  chatSearchable     Boolean  @default(true)
   patients           Patient[]
   exams              Exam[]
 }
@@ -31,6 +32,7 @@ model Doctor {
   status        String   @default("Pendente") // 'Ativo' | 'Pendente'
   joinedDate    DateTime @default(now())
   rating        Float    @default(0)
+  chatSearchable Boolean @default(true)
   exams         Exam[]
 }
 
@@ -148,3 +150,22 @@ model VerifiedCrm {
   @@unique([crm, uf])
 }
 
+
+model Message {
+  id          String   @id @default(cuid())
+  senderId    String
+  recipientId String
+  content     String
+  examId      String?
+  examName    String?
+  timestamp   DateTime @default(now())
+}
+
+model ConversationArchive {
+  id          String   @id @default(cuid())
+  userId      String
+  peerId      String
+  archivedAt  DateTime @default(now())
+
+  @@unique([userId, peerId])
+}

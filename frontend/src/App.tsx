@@ -20,18 +20,21 @@ const App: React.FC = () => {
   const [doctors, setDoctors] = useState<Doctor[]>([]);
   const [exams, setExams] = useState<Exam[]>([]);
   const [stats, setStats] = useState<any>(null);
+  const [currentActorId, setCurrentActorId] = useState<string>('');
 
   const fetchData = async () => {
     try {
       // Usando allSettled para não travar o dashboard se uma rota falhar
-      const [examsRes, patientsRes, statsRes] = await Promise.allSettled([
+      const [examsRes, patientsRes, statsRes, doctorsRes] = await Promise.allSettled([
         api.get('/exams'),
         api.get('/patients'),
-        api.get('/stats')
+        api.get('/stats'),
+        api.get('/doctors')
       ]);
 
       if (examsRes.status === 'fulfilled') setExams(examsRes.value.data);
       if (patientsRes.status === 'fulfilled') setPatients(patientsRes.value.data);
+      if (doctorsRes.status === 'fulfilled') setDoctors(doctorsRes.value.data);
       if (statsRes.status === 'fulfilled') {
         setStats(statsRes.value.data);
       } else {
@@ -57,6 +60,20 @@ const App: React.FC = () => {
       try {
         const { user } = await authService.getMe();
         setUser(user);
+        
+        // Fetch specific actor ID (Clinic or Doctor)
+        if (user.role === 'clinic') {
+           const res = await api.get('/clinics');
+           // Assumes the first clinic for the admin as currentActorId
+           if(res.data && res.data.length > 0) {
+              setCurrentActorId(res.data[0].id);
+           }
+        } else if (user.role === 'doctor') {
+           const res = await api.get('/doctors');
+           const doc = res.data.find((d: any) => d.name === user.name);
+           if(doc) setCurrentActorId(doc.id);
+        }
+        
         setView('dashboard');
       } catch (err) {
         setUser(null);
@@ -66,6 +83,19 @@ const App: React.FC = () => {
     };
     checkAuth();
   }, []);
+
+  // Polling for new data every 10 seconds
+  React.useEffect(() => {
+    let interval: NodeJS.Timeout;
+    if (user && view === 'dashboard') {
+      interval = setInterval(() => {
+        fetchData();
+      }, 10000);
+    }
+    return () => {
+      if (interval) clearInterval(interval);
+    };
+  }, [user, view]);
 
   // Fetch data when user logs in
   React.useEffect(() => {
@@ -213,6 +243,7 @@ const App: React.FC = () => {
           onCompleteReport={handleCompleteReport}
           onRegisterPatient={handleRegisterPatient}
           onRefreshData={fetchData}
+          currentActorId={currentActorId}
         />;
       case 'landing':
       default:
