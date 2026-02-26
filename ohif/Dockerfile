@@ -27,7 +27,7 @@ ARG PUBLIC_URL=/
 ENV PUBLIC_URL=${PUBLIC_URL}
 
 # Patch mini-css-extract-plugin: skip gracefully in child compilations (InjectManifest/workbox)
-RUN find /usr/src/app -path "*/mini-css-extract-plugin/dist/loader.js" -exec sed -i 's/if (!optionsFromPlugin) {/if (!optionsFromPlugin) { if(this._compilation\&\&this._compilation.compiler\&\&this._compilation.compiler.isChild()){return;}/g' {} +
+RUN find /usr/src/app -path "*/mini-css-extract-plugin/dist/loader.js" -exec sed -i 's/if (!optionsFromPlugin) {/if (!optionsFromPlugin) { console.log("DEBUG COMPILATION", !!this._compilation, !!this._compilation.compiler, this._compilation.compiler?this._compilation.compiler.isChild():false, this._compilation.name); if(this._compilation\&\&this._compilation.compiler\&\&this._compilation.compiler.isChild()){return;}/g' {} +
 RUN unpatched=$(find /usr/src/app -path "*/mini-css-extract-plugin/dist/loader.js" -exec grep -L "isChild" {} +) && \
     if [ -n "$unpatched" ]; then echo "Failed to patch: $unpatched"; exit 1; else echo "All loaders patched OK"; fi
 
