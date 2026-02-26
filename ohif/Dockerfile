@@ -26,6 +26,21 @@ ARG APP_CONFIG=config/default.js
 ARG PUBLIC_URL=/
 ENV PUBLIC_URL=${PUBLIC_URL}
 
+# Patch mini-css-extract-plugin: skip gracefully in child compilations (InjectManifest/workbox)
+# The InjectManifest plugin creates a child webpack compilation for sw.js that doesn't register
+# MiniCssExtractPlugin, causing it to throw. We patch it to return early in child compilations.
+RUN node -e "\
+    const fs = require('fs');\
+    const f = '/usr/src/app/node_modules/mini-css-extract-plugin/dist/loader.js';\
+    let c = fs.readFileSync(f, 'utf8');\
+    c = c.replace(\
+    \"throw new Error(\\\`You forgot to add 'mini-css-extract-plugin' plugin\",\
+    \"if(this._compilation&&this._compilation.compiler&&this._compilation.compiler.isChild()){return;}throw new Error(\\\`You forgot to add 'mini-css-extract-plugin' plugin\"\
+    );\
+    fs.writeFileSync(f, c);\
+    console.log('mini-css-extract-plugin patched for child compilation support');\
+    "
+
 # Run build
 RUN yarn run build
 
