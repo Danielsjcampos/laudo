@@ -13,8 +13,8 @@ COPY package.json yarn.lock preinstall.js lerna.json ./
 # Copy workspaces package files to leverage cache
 COPY --parents ./addOns/package.json ./addOns/*/*/package.json ./extensions/*/package.json ./modes/*/package.json ./platform/*/package.json ./
 
-# Install dependencies using yarn (frozen lockfile for stability)
-RUN yarn install --frozen-lockfile
+# Install dependencies using yarn
+RUN yarn install
 
 # Copy the rest of the files
 COPY --link --exclude=yarn.lock --exclude=package.json --exclude=Dockerfile . .
