@@ -6,7 +6,7 @@ RUN apt-get update && apt-get install -y build-essential python3
 WORKDIR /usr/src/app
 
 # Install yarn and lerna
-RUN npm install -g yarn@1.22.22 lerna@7.4.2
+RUN npm install -g yarn@1.22.22 lerna@7.4.2 --force
 
 # Copy package files
 COPY package.json yarn.lock preinstall.js lerna.json ./
