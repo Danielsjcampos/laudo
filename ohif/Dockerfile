@@ -26,9 +26,9 @@ ARG APP_CONFIG=config/default.js
 ARG PUBLIC_URL=/
 ENV PUBLIC_URL=${PUBLIC_URL}
 
-# Patch mini-css-extract-plugin: skip gracefully when InjectManifest is compiling the CSS
-RUN find /usr/src/app -path "*/mini-css-extract-plugin/dist/loader.js" -exec sed -i 's/if (!optionsFromPlugin) {/if (!optionsFromPlugin) { if(this._compilation\&\&this._compilation.name==="InjectManifest"){return callback(null, "");}/g' {} +
-RUN unpatched=$(find /usr/src/app -path "*/mini-css-extract-plugin/dist/loader.js" -exec grep -L "InjectManifest" {} +) && \
+# Patch mini-css-extract-plugin: skip gracefully when Workbox/InjectManifest is compiling the CSS
+RUN find /usr/src/app -path "*/mini-css-extract-plugin/dist/loader.js" -exec sed -i 's/if (!optionsFromPlugin) {/if (!optionsFromPlugin) { if(new Error().stack.includes("workbox")){return callback(null, "");}/g' {} +
+RUN unpatched=$(find /usr/src/app -path "*/mini-css-extract-plugin/dist/loader.js" -exec grep -L "Error().stack" {} +) && \
     if [ -n "$unpatched" ]; then echo "Failed to patch: $unpatched"; exit 1; else echo "All loaders patched OK"; fi
 
 # Run build with verbose to diagnose any remaining failures
