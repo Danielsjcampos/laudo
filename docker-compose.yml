@@ -9,7 +9,7 @@ services:
       - JWT_SECRET=${JWT_SECRET}
       - OPENAI_API_KEY=${OPENAI_API_KEY}
     volumes:
-      - ./uploads:/app/uploads
+      - laudo_uploads:/app/uploads
     networks:
       - 2net
     deploy:
@@ -29,7 +29,7 @@ services:
     environment:
       - VITE_API_URL=https://laudo.2b.app.br/api
     volumes:
-      - ./uploads:/uploads:ro
+      - laudo_uploads:/uploads:ro
     networks:
       - 2net
     deploy:
@@ -63,3 +63,6 @@ services:
 networks:
   2net:
     external: true
+
+volumes:
+  laudo_uploads:
