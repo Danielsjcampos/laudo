@@ -21,13 +21,13 @@ COPY --link --exclude=yarn.lock --exclude=package.json --exclude=Dockerfile . .
 
 # Build settings
 ENV QUICK_BUILD true
-ENV NODE_OPTIONS="--max_old_space_size=8192"
+ENV NODE_OPTIONS="--max_old_space_size=4096"
 ARG APP_CONFIG=config/default.js
 ARG PUBLIC_URL=/
 ENV PUBLIC_URL=${PUBLIC_URL}
 
 # Run build
-RUN yarn run build
+RUN yarn run build --verbose
 
 # Precompress files
 RUN chmod u+x .docker/compressDist.sh
