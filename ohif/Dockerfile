@@ -26,9 +26,9 @@ ARG APP_CONFIG=config/default.js
 ARG PUBLIC_URL=/
 ENV PUBLIC_URL=${PUBLIC_URL}
 
-# Patch mini-css-extract-plugin: skip gracefully in child compilations (InjectManifest/workbox)
-RUN find /usr/src/app -path "*/mini-css-extract-plugin/dist/loader.js" -exec sed -i 's/if (!optionsFromPlugin) {/if (!optionsFromPlugin) { console.log("DEBUG COMPILATION", !!this._compilation, !!this._compilation.compiler, this._compilation.compiler?this._compilation.compiler.isChild():false, this._compilation.name); if(this._compilation\&\&this._compilation.compiler\&\&this._compilation.compiler.isChild()){return;}/g' {} +
-RUN unpatched=$(find /usr/src/app -path "*/mini-css-extract-plugin/dist/loader.js" -exec grep -L "isChild" {} +) && \
+# Patch mini-css-extract-plugin: skip gracefully when options are missing (usually InjectManifest/workbox compilations)
+RUN find /usr/src/app -path "*/mini-css-extract-plugin/dist/loader.js" -exec sed -i 's/if (!optionsFromPlugin) {/if (!optionsFromPlugin) { return callback(null, "");/g' {} +
+RUN unpatched=$(find /usr/src/app -path "*/mini-css-extract-plugin/dist/loader.js" -exec grep -L "return callback(null" {} +) && \
     if [ -n "$unpatched" ]; then echo "Failed to patch: $unpatched"; exit 1; else echo "All loaders patched OK"; fi
 
 # Run build with verbose to diagnose any remaining failures
