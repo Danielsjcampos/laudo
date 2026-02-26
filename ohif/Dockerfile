@@ -27,8 +27,9 @@ ARG PUBLIC_URL=/
 ENV PUBLIC_URL=${PUBLIC_URL}
 
 # Patch mini-css-extract-plugin: skip gracefully in child compilations (InjectManifest/workbox)
-# Uses regex so it works regardless of exact formatting in any plugin version.
-RUN node -e "var fs=require('fs'),f='/usr/src/app/node_modules/mini-css-extract-plugin/dist/loader.js',c=fs.readFileSync(f,'utf8'),b=c;var g='if(this._compilation&&this._compilation.compiler&&this._compilation.compiler.isChild()){return;}';c=c.replace(/throw new Error\(\`You forgot to add 'mini-css-extract-plugin' plugin/g,g+'throw new Error\`You forgot to add \\'mini-css-extract-plugin\\' plugin');if(c===b){c=c.replace(/throw new Error\(/g,g+'throw new Error(');}fs.writeFileSync(f,c);console.log(c===b?'WARNING: patch may not have applied':'mini-css-extract-plugin patched OK');"
+RUN find /usr/src/app -path "*/mini-css-extract-plugin/dist/loader.js" -exec sed -i 's/if (!optionsFromPlugin) {/if (!optionsFromPlugin) { if(this._compilation\&\&this._compilation.compiler\&\&this._compilation.compiler.isChild()){return;}/g' {} +
+RUN unpatched=$(find /usr/src/app -path "*/mini-css-extract-plugin/dist/loader.js" -exec grep -L "isChild" {} +) && \
+    if [ -n "$unpatched" ]; then echo "Failed to patch: $unpatched"; exit 1; else echo "All loaders patched OK"; fi
 
 # Run build with verbose to diagnose any remaining failures
 RUN yarn run build --verbose
