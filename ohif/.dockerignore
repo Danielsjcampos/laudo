@@ -35,3 +35,7 @@ dockerfile
 coverage/
 platform/docs/
 testdata/
+
+# Exclude yarnrc so Docker uses globally installed yarn (not the local .cjs release)
+.yarnrc
+
