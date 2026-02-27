@@ -17,12 +17,12 @@ services:
       replicas: 1
       labels:
         - traefik.enable=true
-        - traefik.http.routers.laudo_backend.rule=Host(`laudo.2b.app.br`) && PathPrefix(`/api`)
+        - traefik.http.routers.laudo_backend.rule=Host(`laudo.2b.app.br`) && (PathPrefix(`/api`) || PathPrefix(`/uploads`))
         - traefik.http.routers.laudo_backend.entrypoints=websecure
         - traefik.http.routers.laudo_backend.tls.certresolver=letsencryptresolver
         - traefik.http.services.laudo_backend.loadbalancer.server.port=3001
         - traefik.http.services.laudo_backend.loadbalancer.passHostHeader=true
-        # Sem strip_api: backend já espera /api nas rotas (ex: /api/auth, /api/exams)
+        # Sem strip_api: backend já espera /api nas rotas (ex: /api/auth, /api/exams) e /uploads para DICOM
 
   frontend:
     image: ghcr.io/danielsjcampos/laudo-frontend:main
