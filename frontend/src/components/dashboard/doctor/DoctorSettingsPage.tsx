@@ -10,6 +10,7 @@ export const DoctorSettingsPage: React.FC = () => {
     const [isDarkMode, setIsDarkMode] = useState(() => localStorage.getItem('isDarkMode') === 'true');
     const [isCompactMode, setIsCompactMode] = useState(() => localStorage.getItem('isCompactMode') === 'true');
     const [chatSearchable, setChatSearchable] = useState(true);
+    const [sendReadReceipts, setSendReadReceipts] = useState(true);
 
     const [profileData, setProfileData] = useState({
         name: 'Dr. Roberto Martins',
@@ -21,8 +22,18 @@ export const DoctorSettingsPage: React.FC = () => {
     });
 
     useEffect(() => {
-        authService.getMe().then(res => {
-            if (res.user) setUserId(res.user.id);
+        authService.getMe().then(async res => {
+            if (res.user) {
+                setUserId(res.user.id);
+                try {
+                    const doctorsRes = await api.get('/doctors');
+                    const myDoc = doctorsRes.data.find((d: any) => d.name === res.user.name);
+                    if (myDoc) {
+                        setChatSearchable(myDoc.chatSearchable ?? true);
+                        setSendReadReceipts(myDoc.sendReadReceipts ?? true);
+                    }
+                } catch(e) {}
+            }
         }).catch(err => console.error(err));
     }, []);
 
@@ -33,7 +44,8 @@ export const DoctorSettingsPage: React.FC = () => {
                     name: profileData.name,
                     specialty: profileData.specialty,
                     crm: profileData.crm,
-                    chatSearchable
+                    chatSearchable,
+                    sendReadReceipts
                 });
             }
             alert('Perfil atualizado com sucesso!');
@@ -58,6 +70,10 @@ export const DoctorSettingsPage: React.FC = () => {
 
     const toggleChatSearchable = () => {
         setChatSearchable(!chatSearchable);
+    };
+
+    const toggleSendReadReceipts = () => {
+        setSendReadReceipts(!sendReadReceipts);
     };
     
     // Mock Data for initialization
@@ -239,6 +255,13 @@ export const DoctorSettingsPage: React.FC = () => {
                                         <span className="text-xs text-gray-500">Permite que clínicas busquem por seu perfil no sistema de chat geral</span>
                                     </div>
                                     <div onClick={toggleChatSearchable} className={`w-12 h-6 ${chatSearchable ? 'bg-brand-blue-600' : 'bg-gray-200'} rounded-full relative cursor-pointer transition-colors`}><div className={`w-4 h-4 bg-white rounded-full absolute top-1 shadow-sm transition-transform ${chatSearchable ? 'right-1' : 'left-1'}`}></div></div>
+                                </div>
+                                <div className="flex items-center justify-between p-4 border border-gray-100 rounded-xl">
+                                    <div>
+                                        <span className="font-bold text-gray-700 block">Enviar Confirmação de Leitura</span>
+                                        <span className="text-xs text-gray-500">Permite que outros saibam quando você leu suas mensagens no chat (dois tiques azuis)</span>
+                                    </div>
+                                    <div onClick={toggleSendReadReceipts} className={`w-12 h-6 ${sendReadReceipts ? 'bg-brand-blue-600' : 'bg-gray-200'} rounded-full relative cursor-pointer transition-colors`}><div className={`w-4 h-4 bg-white rounded-full absolute top-1 shadow-sm transition-transform ${sendReadReceipts ? 'right-1' : 'left-1'}`}></div></div>
                                 </div>
                             </div>
                             <div className="flex justify-end mt-4">

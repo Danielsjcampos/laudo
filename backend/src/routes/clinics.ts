@@ -24,7 +24,8 @@ router.put('/:id', async (req, res) => {
         ...(name && { name }),
         ...(location && { location }),
         ...(adminEmail && { adminEmail }),
-        ...(chatSearchable !== undefined && { chatSearchable })
+        ...(chatSearchable !== undefined && { chatSearchable }),
+        ...(req.body.sendReadReceipts !== undefined && { sendReadReceipts: req.body.sendReadReceipts })
       }
     });
 

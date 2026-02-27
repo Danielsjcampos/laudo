@@ -15,7 +15,7 @@ export const mapExamToReportData = (
             <div><strong>Exame:</strong> ${exam.examType}</div>
             <div><strong>Data:</strong> ${new Date(exam.dateRequested).toLocaleDateString('pt-BR')}</div>
             ${patient?.birthDate ? `<div><strong>Nasc:</strong> ${patient.birthDate}</div>` : ''}
-            ${patient?.gender ? `<div><strong>Sexo:</strong> ${patient.gender}</div>` : ''}
+            ${patient?.sex ? `<div><strong>Sexo:</strong> ${patient.sex}</div>` : ''}
         </div>
     `;
 

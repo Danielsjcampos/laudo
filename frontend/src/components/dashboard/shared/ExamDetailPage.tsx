@@ -59,18 +59,10 @@ const ExamDetailPage: React.FC<ExamDetailPageProps> = ({ exam, userRole, onBack,
     const selectedThemeId = localStorage.getItem('selected_report_theme_id') || 'swiss-clinic';
     const theme = reportThemes.find(t => t.id === selectedThemeId) || reportThemes[0];
 
-    // Sincroniza dados ao abrir o detalhe
+    // Sincroniza dados ao abrir o detalhe apenas se necessário
     React.useEffect(() => {
-        const fetchCurrentExam = async () => {
-             try {
-                 const res = await api.get(`/exams`);
-                 // Refreshing the entire list will update the prop via DashboardPage
-                 if (onRefreshData) onRefreshData();
-             } catch (e) {
-                 console.error("Detail refresh fail:", e);
-             }
-        };
-        fetchCurrentExam();
+        // Only refresh if we don't have basic data or if it's explicitly needed
+        // Removed aggressive onRefreshData() on every mount to avoid render loops and insertBefore errors
     }, [exam.id]);
 
     // AI Generation Logic (Simulated for MVP if no API Key)
@@ -130,7 +122,7 @@ Exame dentro dos padrões da normalidade para os achados descritos.
     };
 
     return (
-        <div className="flex flex-col lg:h-[calc(100vh-100px)]">
+        <div className="flex flex-col h-full lg:overflow-hidden">
             <ClinicalHistoryModal 
                 isOpen={isHistoryOpen} 
                 onClose={() => setIsHistoryOpen(false)} 
@@ -384,28 +376,6 @@ Exame dentro dos padrões da normalidade para os achados descritos.
                 </Dialog>
             </Transition>
 
-            {/* ALERT: Sugestão de Segunda Opinião */}
-            {exam.suggestions && exam.suggestions.length > 0 && (
-                <div className="mx-4 mb-4 animate-in slide-in-from-top duration-500 shrink-0">
-                    <div className="bg-yellow-50 border border-yellow-200 rounded-2xl p-4 flex items-center justify-between shadow-sm">
-                        <div className="flex items-center gap-4">
-                            <div className="w-10 h-10 rounded-full bg-yellow-400/20 flex items-center justify-center">
-                                <SparklesIcon className="w-6 h-6 text-yellow-600" />
-                            </div>
-                            <div>
-                                <h3 className="text-sm font-bold text-yellow-900">Segunda Opinião Recebida!</h3>
-                                <p className="text-xs text-yellow-700">Há {exam.suggestions.length} observação(ões) de especialistas parceiros para este exame.</p>
-                            </div>
-                        </div>
-                        <Button 
-                            onClick={() => setIsSuggestionViewOpen(true)}
-                            className="bg-yellow-600 hover:bg-yellow-700 text-white border-none shadow-md"
-                        >
-                            Ver Sugestões
-                        </Button>
-                    </div>
-                </div>
-            )}
 
             {/* Workstation Header */}
             <div className="mb-4 flex flex-col md:flex-row md:items-center justify-between panel-card p-3 sm:p-4 shrink-0 gap-4">

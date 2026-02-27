@@ -15,6 +15,7 @@ interface DashboardLayoutProps {
   onNavigate: (view: string) => void;
   onLogout: () => void;
   children: React.ReactNode;
+  totalUnreadMessages: number;
 }
 
 // Bottom nav links por role (max 4 itens — thumb zone)
@@ -49,10 +50,12 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({
   currentView,
   onNavigate,
   onLogout,
-  children
+  children,
+  totalUnreadMessages
 }) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const isOhifViewer = currentView === 'ohif_viewer';
+  const isWorkstationView = ['ohif_viewer', 'exam_detail', 'chat'].includes(currentView);
   const bottomLinks = bottomNavLinks[user.role] || [];
 
   return (
@@ -69,6 +72,7 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({
           currentView={currentView}
           isOpen={isSidebarOpen}
           onClose={() => setIsSidebarOpen(false)}
+          totalUnreadMessages={totalUnreadMessages}
         />
       )}
 
@@ -107,7 +111,10 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({
         {/* Main Content */}
         <main
           className="flex-1 overflow-y-auto p-4 lg:p-6 focus:outline-none touch-scroll"
-          style={{ paddingBottom: !isOhifViewer ? 'calc(var(--bottom-nav-height) + env(safe-area-inset-bottom, 0px) + 1rem)' : '1.5rem' }}
+          style={{ 
+            paddingBottom: !isWorkstationView ? 'calc(var(--bottom-nav-height) + env(safe-area-inset-bottom, 0px) + 1rem)' : '1rem',
+            paddingTop: isWorkstationView ? '1rem' : undefined
+          }}
         >
           <div className="w-full h-full">
             {children}

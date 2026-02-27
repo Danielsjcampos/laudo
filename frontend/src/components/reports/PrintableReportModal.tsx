@@ -25,7 +25,7 @@ export const PrintableReportModal: React.FC<PrintableReportModalProps> = ({
     const componentRef = useRef<HTMLDivElement>(null);
 
     const handlePrint = useReactToPrint({
-        content: () => componentRef.current,
+        contentRef: componentRef,
         documentTitle: `Laudo-${data.NOME_PACIENTE || 'Paciente'}-${new Date().toISOString().split('T')[0]}`,
     });
 

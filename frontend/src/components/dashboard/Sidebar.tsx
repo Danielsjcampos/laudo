@@ -21,6 +21,7 @@ interface SidebarProps {
   currentView: string;
   isOpen: boolean;
   onClose: () => void;
+  totalUnreadMessages?: number;
 }
 
 const navLinks: Record<UserRole, { view: string; label: string; icon: React.ReactNode }[]> = {
@@ -58,7 +59,7 @@ const navLinks: Record<UserRole, { view: string; label: string; icon: React.Reac
   ],
 };
 
-const Sidebar: React.FC<SidebarProps> = ({ user, onLogout, onNavigate, currentView, isOpen, onClose }) => {
+const Sidebar: React.FC<SidebarProps> = ({ user, onLogout, onNavigate, currentView, isOpen, onClose, totalUnreadMessages = 0 }) => {
   const links = navLinks[user.role];
 
   const handleNavigate = (view: string) => {
@@ -138,8 +139,13 @@ const Sidebar: React.FC<SidebarProps> = ({ user, onLogout, onNavigate, currentVi
                     style={{ backgroundColor: 'var(--teal-500)' }}
                   />
                 )}
-                <span className="mr-3 transition-colors" style={{ color: isActive ? 'var(--teal-500)' : 'inherit' }}>
+                <span className="mr-3 transition-colors relative" style={{ color: isActive ? 'var(--teal-500)' : 'inherit' }}>
                   {link.icon}
+                  {(link.view === 'chat' || link.view === 'doctors_contact') && totalUnreadMessages > 0 && (
+                     <span className="absolute -top-1 -right-1 w-3.5 h-3.5 bg-red-500 border-2 border-slate-900 rounded-full flex items-center justify-center text-[7px] font-bold text-white shadow-sm">
+                       {totalUnreadMessages > 9 ? '9+' : totalUnreadMessages}
+                     </span>
+                  )}
                 </span>
                 <span>{link.label}</span>
               </button>

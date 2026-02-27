@@ -10,6 +10,8 @@ interface Message {
   recipientId?: string; // Added for API consistency
   content: string;
   timestamp: Date;
+  isRead?: boolean;
+  readAt?: Date;
   attachment?: {
     type: 'exam';
     examId: string;
@@ -75,6 +77,8 @@ export const DoctorChat: React.FC<DoctorChatProps> = ({
 
   // Fetch contacts and archives API
   useEffect(() => {
+    if (!currentActorId) return;
+
     const initData = async () => {
       try {
         const [contactsRes, archivesRes] = await Promise.all([
@@ -82,18 +86,18 @@ export const DoctorChat: React.FC<DoctorChatProps> = ({
           api.get(`/messages/archives?userId=${currentActorId}`)
         ]);
 
-        const { clinics, doctors } = contactsRes.data;
+        const { clinics = [], doctors = [] } = contactsRes.data;
         const allParticipants: ChatParticipant[] = [...doctors, ...clinics];
-        const archivedIds: string[] = archivesRes.data;
+        const archivedIds: string[] = archivesRes.data || [];
         
         setArchivedUserIds(archivedIds);
 
         const newConversations: Conversation[] = allParticipants
-          .filter(p => p.id !== currentActorId)
+          .filter(p => p && p.id && p.id !== currentActorId)
           .map(p => ({
             id: `conv_${[currentActorId, p.id].sort().join('_')}`,
             participantId: p.id,
-            participantName: p.name,
+            participantName: p.name || 'Usuário',
             participantRole: 'crm' in p ? 'doctor' : 'clinic',
             participantAvatar: undefined,
             lastMessage: '',
@@ -109,11 +113,38 @@ export const DoctorChat: React.FC<DoctorChatProps> = ({
         }
 
         setConversations(newConversations);
+
+        // Fetch unread counts after setting up conversations
+        try {
+          const countsRes = await api.get('/messages/unread', { params: { userId: currentActorId } });
+          const counts = countsRes.data;
+          setConversations(prev => prev.map(conv => ({
+             ...conv,
+             unreadCount: counts[conv.participantId] || 0
+          })));
+        } catch (err) {
+           console.error('Failed to load unread counts', err);
+        }
+
       } catch (err) {
-        console.error('Falha ao carregar contatos', err);
+        console.error('Falha ao carregar contatos ou arquivos', err);
       }
     };
     initData();
+
+    // Poll unread counts globally every 10s
+    const unreadInterval = setInterval(async () => {
+       try {
+          const countsRes = await api.get('/messages/unread', { params: { userId: currentActorId } });
+          const counts = countsRes.data;
+          setConversations(prev => prev.map(conv => ({
+             ...conv,
+             unreadCount: counts[conv.participantId] || 0
+          })));
+       } catch (err) {}
+    }, 10000);
+
+    return () => clearInterval(unreadInterval);
   }, [currentActorId, initialDoctorId]);
 
   // Handle auto-inject message from initial exam context
@@ -135,10 +166,12 @@ export const DoctorChat: React.FC<DoctorChatProps> = ({
       
       const mappedMessages: Message[] = response.data.map((m: any) => ({
         id: m.id,
-        senderId: m.senderId,
-        recipientId: m.recipientId,
+        senderId: String(m.senderId), // Force string comparison consistency
+        recipientId: String(m.recipientId),
         content: m.content,
         timestamp: new Date(m.timestamp),
+        isRead: m.isRead,
+        readAt: m.readAt ? new Date(m.readAt) : undefined,
         attachment: m.examId ? {
           type: 'exam',
           examId: m.examId,
@@ -147,6 +180,34 @@ export const DoctorChat: React.FC<DoctorChatProps> = ({
       }));
 
       setCurrentMessages(mappedMessages);
+
+      // Tell the server we read these messages if any are unread and we are the recipient
+      const hasUnreadFromSender = mappedMessages.some(m => !m.isRead && String(m.senderId) === participantId);
+      if (hasUnreadFromSender) {
+         try {
+           await api.post('/messages/read', { senderId: participantId, recipientId: currentActorId });
+           // Re-fetch to update local state with read status, or mutate local state to avoid extra hop
+           setCurrentMessages(prev => prev.map(m => (!m.isRead && String(m.senderId) === participantId) ? { ...m, isRead: true, readAt: new Date() } : m));
+           setConversations(prev => prev.map(c => c.id === convId ? { ...c, unreadCount: 0 } : c));
+         } catch (e) {
+           console.error('Failed to mark as read', e);
+         }
+      }
+
+      // Update the last message in the conversation list dynamically
+      if (mappedMessages.length > 0) {
+        setConversations(prev => prev.map(conv => {
+          if (conv.id === convId) {
+            const lastMsg = mappedMessages[mappedMessages.length - 1];
+            return {
+              ...conv,
+              lastMessage: lastMsg.content,
+              updatedAt: lastMsg.timestamp
+            };
+          }
+          return conv;
+        }));
+      }
     } catch (err) {
       console.error('Failed to fetch messages:', err);
     }
@@ -361,9 +422,16 @@ export const DoctorChat: React.FC<DoctorChatProps> = ({
                         {formatTime(conv.updatedAt)}
                       </span>
                     </div>
-                      <p className="text-[11px] truncate" style={{ color: 'var(--text-muted)' }}>
+                    <div className="flex justify-between items-center gap-2">
+                      <p className={`text-[11px] truncate ${conv.unreadCount > 0 && !isActive ? 'font-bold text-gray-800' : ''}`} style={{ color: (conv.unreadCount > 0 && !isActive) ? 'var(--text-primary)' : 'var(--text-muted)' }}>
                        {conv.lastMessage || 'Nenhuma mensagem ainda'}
                       </p>
+                      {conv.unreadCount > 0 && !isActive && (
+                         <div className="w-4 h-4 shrink-0 rounded-full bg-teal-500 text-white flex items-center justify-center text-[9px] font-black shadow-sm">
+                            {conv.unreadCount > 9 ? '9+' : conv.unreadCount}
+                         </div>
+                      )}
+                    </div>
                   </div>
                 </div>
               </button>
@@ -461,59 +529,75 @@ export const DoctorChat: React.FC<DoctorChatProps> = ({
               </div>
             </header>
 
-            {/* Messages Area */}
-            <div className="flex-1 overflow-y-auto p-6 space-y-4" style={{ backgroundColor: 'var(--page-bg, #f8fafc)' }}>
+            {/* Messages Area — WhatsApp/Instagram Style */}
+            <div className="flex-1 overflow-y-auto p-4 md:p-6 space-y-4 bg-[#f0f2f5]/30 custom-scrollbar">
               {currentMessages.length === 0 && (
-                <div className="flex flex-col items-center justify-center h-full opacity-40">
-                  <svg className="w-16 h-16 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" style={{ color: 'var(--text-muted)' }}>
+                <div className="flex flex-col items-center justify-center h-64 text-gray-400 opacity-40">
+                  <svg className="w-16 h-16 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
                   </svg>
-                  <p className="text-sm font-bold" style={{ color: 'var(--text-muted)' }}>Inicie a conversa</p>
-                  <p className="text-xs mt-1" style={{ color: 'var(--text-muted)' }}>Envie a primeira mensagem</p>
+                  <p className="text-sm font-bold">Inicie sua conversa</p>
                 </div>
               )}
 
-              {currentMessages.map(msg => {
-                const isMe = msg.senderId === currentActorId;
+              {currentMessages.map((msg, index) => {
+                const isMe = String(msg.senderId) === String(currentActorId);
+                const showAvatar = !isMe && (index === 0 || currentMessages[index - 1].senderId !== msg.senderId);
+                
                 return (
-                  <div key={msg.id} className={`flex ${isMe ? 'justify-end' : 'justify-start'}`}>
-                    <div
-                      className={`max-w-[70%] rounded-2xl px-5 py-3.5 shadow-sm ${
-                        isMe ? 'rounded-br-md' : 'rounded-bl-md'
-                      }`}
-                      style={{
-                        backgroundColor: isMe ? 'var(--teal-500)' : 'var(--surface-bg)',
-                        color: isMe ? '#fff' : 'var(--text-primary)',
-                        border: isMe ? 'none' : '1px solid var(--surface-border)',
-                      }}
-                    >
-                      {/* Exam Attachment */}
-                      {msg.attachment && msg.attachment.type === 'exam' && (
-                        <div
-                          className="mb-3 p-3 rounded-xl flex items-center gap-3"
-                          style={{
-                            backgroundColor: isMe ? 'rgba(255,255,255,0.15)' : 'rgba(0,0,0,0.03)',
-                          }}
-                        >
-                          <div className="p-2 rounded-lg" style={{ backgroundColor: isMe ? 'rgba(255,255,255,0.2)' : 'var(--teal-500-10, rgba(20,184,166,0.1))' }}>
-                            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" style={{ color: isMe ? '#fff' : 'var(--teal-500)' }}>
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                            </svg>
-                          </div>
-                          <div className="flex-1 min-w-0">
-                            <p className="text-[10px] font-black uppercase tracking-wider opacity-70">Exame Anexado</p>
-                            <p className="text-xs font-bold truncate">{msg.attachment.examName}</p>
-                          </div>
+                  <div key={msg.id} className={`flex ${isMe ? 'justify-end' : 'justify-start'} animate-in fade-in slide-in-from-bottom-2 duration-300`}>
+                    <div className="flex items-end gap-2 max-w-[85%] sm:max-w-[70%]">
+                      {!isMe && (
+                        <div className={`w-7 h-7 rounded-full bg-slate-200 flex-shrink-0 flex items-center justify-center text-[10px] font-black text-slate-500 mb-1 shadow-sm border border-white ${showAvatar ? 'opacity-100' : 'opacity-0'}`}>
+                          {selectedConversation?.participantName.charAt(0)}
                         </div>
                       )}
-
-                      <p className="text-[13px] leading-relaxed whitespace-pre-wrap">{msg.content}</p>
-                      <p
-                        className="text-[10px] mt-2 text-right font-medium"
-                        style={{ opacity: 0.6 }}
+                      
+                      <div
+                        className={`relative rounded-2xl px-4 py-2.5 shadow-sm ${
+                          isMe 
+                            ? 'bg-brand-blue-600 text-white rounded-br-sm' 
+                            : 'bg-white text-gray-800 border border-gray-100 rounded-bl-sm'
+                        }`}
                       >
-                        {formatTime(msg.timestamp)}
-                      </p>
+                        {/* Exam Attachment */}
+                        {msg.attachment && msg.attachment.type === 'exam' && (
+                          <div
+                            className={`mb-2.5 p-3 rounded-xl flex items-center gap-3 cursor-pointer transition-all border ${
+                              isMe 
+                                ? 'bg-white/15 border-white/20 hover:bg-white/25' 
+                                : 'bg-blue-50 border-blue-100 hover:bg-blue-100'
+                            }`}
+                            onClick={() => {
+                                // Here we could open the exam detail if we had the callback, 
+                                // for now we show a toast or message
+                            }}
+                          >
+                            <div className={`p-2 rounded-lg ${isMe ? 'bg-white/20' : 'bg-brand-blue-500/10'}`}>
+                              <svg className={`w-3.5 h-3.5 ${isMe ? 'text-white' : 'text-brand-blue-600'}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                              </svg>
+                            </div>
+                            <div className="text-left overflow-hidden">
+                              <p className={`text-[10px] font-black uppercase tracking-widest ${isMe ? 'text-white/70' : 'text-brand-blue-500'}`}>Exame Anexo</p>
+                              <p className="text-xs font-black truncate max-w-[140px]">{msg.attachment.examName}</p>
+                            </div>
+                          </div>
+                        )}
+
+                        <p className="text-[14px] leading-relaxed whitespace-pre-wrap">{msg.content}</p>
+                        <div className={`flex items-center justify-end gap-1.5 mt-1.5 ${isMe ? 'text-white/60' : 'text-gray-400'}`}>
+                          <span className="text-[9.5px] font-bold uppercase tracking-wide">
+                            {formatTime(msg.timestamp)}
+                          </span>
+                          {isMe && (
+                            <svg className={`w-3.5 h-3.5 fill-current mb-0.5 ${msg.isRead ? 'text-blue-300' : 'text-white/50'}`} viewBox="0 0 16 16">
+                                <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z" />
+                                <path d="M13.854 3.646l-7 7L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0zm-5 5a.5.5 0 0 1 0 .708l-5 5a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l4.646-4.647a.5.5 0 0 1 .708 0z" />
+                            </svg>
+                          )}
+                        </div>
+                      </div>
                     </div>
                   </div>
                 );

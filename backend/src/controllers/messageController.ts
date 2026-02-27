@@ -61,6 +61,76 @@ export const getMessages = async (req: Request, res: Response) => {
   }
 };
 
+export const markAsRead = async (req: Request, res: Response) => {
+  try {
+    const { senderId, recipientId } = req.body;
+    if (!senderId || !recipientId) return res.status(400).json({ error: 'Campos obrigatórios ausentes' });
+
+    // Check if recipient (me) wants to send read receipts
+    let sendReceipts = true;
+
+    const clinic = await prisma.clinic.findUnique({ where: { id: recipientId } });
+    if (clinic) {
+      sendReceipts = clinic.sendReadReceipts;
+    } else {
+      const doctor = await prisma.doctor.findUnique({ where: { id: recipientId } });
+      if (doctor) {
+        sendReceipts = doctor.sendReadReceipts;
+      }
+    }
+
+    if (!sendReceipts) {
+       // Silently succeed
+       return res.status(200).json({ success: true, receiptsDisabled: true });
+    }
+
+    await prisma.message.updateMany({
+      where: {
+        senderId: senderId,
+        recipientId: recipientId,
+        isRead: false
+      },
+      data: {
+        isRead: true,
+        readAt: new Date()
+      }
+    });
+
+    res.status(200).json({ success: true });
+  } catch (error) {
+    console.error('Error marking messages as read:', error);
+    res.status(500).json({ error: 'Erro ao marcar as mensagens como lidas' });
+  }
+};
+
+export const getUnreadCounts = async (req: Request, res: Response) => {
+  try {
+    const { userId } = req.query;
+    if (!userId) return res.status(400).json({ error: 'Falta userId' });
+
+    const unreadMessages = await prisma.message.groupBy({
+      by: ['senderId'],
+      where: {
+        recipientId: String(userId),
+        isRead: false,
+      },
+      _count: {
+        id: true,
+      },
+    });
+
+    const counts = unreadMessages.reduce((acc: any, curr) => {
+      acc[curr.senderId] = curr._count.id;
+      return acc;
+    }, {});
+
+    res.json(counts);
+  } catch (error) {
+    console.error('Error fetching unread counts:', error);
+    res.status(500).json({ error: 'Erro ao buscar contagens de não-lidas' });
+  }
+};
+
 export const archiveConversation = async (req: Request, res: Response) => {
   try {
     const { userId, peerId } = req.body;

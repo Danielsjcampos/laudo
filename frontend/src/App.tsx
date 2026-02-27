@@ -21,6 +21,7 @@ const App: React.FC = () => {
   const [exams, setExams] = useState<Exam[]>([]);
   const [stats, setStats] = useState<any>(null);
   const [currentActorId, setCurrentActorId] = useState<string>('');
+  const [totalUnreadMessages, setTotalUnreadMessages] = useState(0);
 
   const fetchData = async () => {
     try {
@@ -42,8 +43,42 @@ const App: React.FC = () => {
         console.warn('Estatísticas indisponíveis, usando fallback');
         setStats({ activeClinics: 0, totalDoctors: 0, totalExamsProcessed: 0, totalRevenue: 0, platformProfit: 0, totalTransferred: 0 });
       }
+
+      // Fetch unread messages
+      if (currentActorId) {
+         try {
+            const countsRes = await api.get('/messages/unread', { params: { userId: currentActorId } });
+            const counts = countsRes.data;
+            const total = Object.values(counts).reduce((acc: number, val: any) => acc + val, 0) as number;
+            setTotalUnreadMessages(total);
+         } catch(e) { /* ignore */ }
+      }
     } catch (err) {
       console.error('Erro crítico ao buscar dados:', err);
+    }
+  };
+
+  const loadActorId = async (loggedInUser: User) => {
+    try {
+      if (loggedInUser.role === 'clinic') {
+         const res = await api.get('/clinics');
+         const myClinic = res.data.find((c: any) => c.adminEmail === loggedInUser.email);
+         if(myClinic) {
+            setCurrentActorId(myClinic.id);
+         } else if (res.data.length > 0) {
+            setCurrentActorId(res.data[0].id);
+         }
+      } else if (loggedInUser.role === 'doctor') {
+         const res = await api.get('/doctors');
+         const doc = res.data.find((d: any) => d.name === loggedInUser.name);
+         if(doc) {
+            setCurrentActorId(doc.id);
+         } else if (res.data.length > 0) {
+            setCurrentActorId(res.data[0].id);
+         }
+      }
+    } catch (e) {
+      console.error("Failed to load actor ID", e);
     }
   };
 
@@ -60,20 +95,7 @@ const App: React.FC = () => {
       try {
         const { user } = await authService.getMe();
         setUser(user);
-        
-        // Fetch specific actor ID (Clinic or Doctor)
-        if (user.role === 'clinic') {
-           const res = await api.get('/clinics');
-           // Assumes the first clinic for the admin as currentActorId
-           if(res.data && res.data.length > 0) {
-              setCurrentActorId(res.data[0].id);
-           }
-        } else if (user.role === 'doctor') {
-           const res = await api.get('/doctors');
-           const doc = res.data.find((d: any) => d.name === user.name);
-           if(doc) setCurrentActorId(doc.id);
-        }
-        
+        await loadActorId(user);
         setView('dashboard');
       } catch (err) {
         setUser(null);
@@ -112,12 +134,13 @@ const App: React.FC = () => {
       doctor: { email: 'roberto.martins@doc.com', password: 'password' },
       doctor_ana: { email: 'ana.souza@doc.com', password: 'password' },
       patient: { email: 'carla.f@email.com', password: 'password' },
-    };
+    } as const;
 
     try {
-      const { email, password } = devCredentials[role];
-      const data = await authService.login(email, password);
+      const creds = devCredentials[role as keyof typeof devCredentials];
+      const data = await authService.login(creds.email, creds.password);
       setUser(data.user);
+      await loadActorId(data.user);
       setView('dashboard');
     } catch (err) {
       alert('Erro ao realizar login dev');
@@ -128,6 +151,7 @@ const App: React.FC = () => {
     try {
       const data = await authService.login(email, password);
       setUser(data.user);
+      await loadActorId(data.user);
       setView('dashboard');
     } catch (err: any) {
       alert(err.response?.data?.error || 'Erro ao realizar login');
@@ -137,6 +161,7 @@ const App: React.FC = () => {
   const handleLogout = async () => {
     await authService.logout();
     setUser(null);
+    setCurrentActorId('');
     setExams([]);
     setPatients([]);
     setView('login');
@@ -244,6 +269,7 @@ const App: React.FC = () => {
           onRegisterPatient={handleRegisterPatient}
           onRefreshData={fetchData}
           currentActorId={currentActorId}
+          totalUnreadMessages={totalUnreadMessages}
         />;
       case 'landing':
       default:

@@ -57,10 +57,11 @@ interface DashboardPageProps {
   onRegisterPatient: (data: { name: string, cpf: string, email: string, sex?: string }) => void;
   onRefreshData: () => void;
   currentActorId: string;
+  totalUnreadMessages: number;
 }
 
 const DashboardPage: React.FC<DashboardPageProps> = (props) => {
-  const { user, onLogout, patients, doctors, exams, stats, onRequestExam, onAcceptExam, onCompleteReport, onRegisterPatient, onRefreshData, currentActorId } = props;
+  const { user, onLogout, patients, doctors, exams, stats, onRequestExam, onAcceptExam, onCompleteReport, onRegisterPatient, onRefreshData, currentActorId, totalUnreadMessages } = props;
 
   const [currentView, setCurrentView] = useState<string>('overview');
   const [detailId, setDetailId] = useState<string | null>(null);
@@ -299,6 +300,7 @@ const DashboardPage: React.FC<DashboardPageProps> = (props) => {
       onLogout={onLogout}
       onNavigate={navigateTo}
       currentView={currentView}
+      totalUnreadMessages={totalUnreadMessages}
     >
       {renderDashboard()}
 

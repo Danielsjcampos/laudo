@@ -29,7 +29,8 @@ router.put('/:id', async (req, res) => {
         ...(name && { name }),
         ...(specialty && { specialty }),
         ...(crm && { crm }),
-        ...(chatSearchable !== undefined && { chatSearchable })
+        ...(chatSearchable !== undefined && { chatSearchable }),
+        ...(req.body.sendReadReceipts !== undefined && { sendReadReceipts: req.body.sendReadReceipts })
       }
     });
     

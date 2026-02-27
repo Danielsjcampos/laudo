@@ -13,12 +13,26 @@ export const ClinicSettingsPage: React.FC = () => {
         autoApproveDocs: true,
         marketplaceVisibility: true,
         defaultPricetable: 'padrao_2024',
-        chatSearchable: true
+        chatSearchable: true,
+        sendReadReceipts: true
     });
 
     useEffect(() => {
-        authService.getMe().then(res => {
-            if (res.user) setUserId(res.user.id);
+        authService.getMe().then(async res => {
+            if (res.user) {
+                setUserId(res.user.id);
+                try {
+                    const clinicsRes = await api.get('/clinics');
+                    const myClinic = clinicsRes.data.find((c: any) => c.adminEmail === res.user.email);
+                    if (myClinic) {
+                        setSettings(prev => ({
+                            ...prev,
+                            chatSearchable: myClinic.chatSearchable ?? true,
+                            sendReadReceipts: myClinic.sendReadReceipts ?? true
+                        }));
+                    }
+                } catch(e) {}
+            }
         }).catch(err => console.error(err));
     }, []);
 
@@ -26,14 +40,17 @@ export const ClinicSettingsPage: React.FC = () => {
         const newValue = !settings[key];
         setSettings(prev => ({ ...prev, [key]: newValue }));
 
-        if (key === 'chatSearchable' && userId) {
-            try {
-                await api.put(`/clinics/${userId}`, {
-                    chatSearchable: newValue
-                });
-            } catch (err) {
-                console.error("Failed to update chatSearchable", err);
+        const keyStr = String(key);
+        try {
+            const payload: any = {};
+            if (keyStr === 'chatSearchable') payload.chatSearchable = newValue;
+            if (keyStr === 'sendReadReceipts') payload.sendReadReceipts = newValue;
+
+            if (userId) {
+                await api.put(`/clinics/${userId}`, payload);
             }
+        } catch (err) {
+            console.error(`Failed to update ${keyStr}`, err);
         }
     };
 
@@ -100,6 +117,18 @@ export const ClinicSettingsPage: React.FC = () => {
                                         className={`w-12 h-6 rounded-full transition-colors flex items-center px-1 ${settings.chatSearchable ? 'bg-brand-blue-600' : 'bg-gray-300'}`}
                                     >
                                         <div className={`w-4 h-4 bg-white rounded-full shadow-sm transition-transform ${settings.chatSearchable ? 'translate-x-6' : 'translate-x-0'}`} />
+                                    </button>
+                                </div>
+                                <div className="flex items-center justify-between p-4 border border-gray-100 rounded-xl hover:border-gray-200 transition-colors">
+                                    <div>
+                                        <p className="font-bold text-gray-800">Enviar Confirmação de Leitura</p>
+                                        <p className="text-xs text-gray-500 mt-1">Permite que outros saibam quando você leu suas mensagens no chat (dois tiques azuis).</p>
+                                    </div>
+                                    <button 
+                                        onClick={() => handleToggle('sendReadReceipts')}
+                                        className={`w-12 h-6 rounded-full transition-colors flex items-center px-1 ${settings.sendReadReceipts ? 'bg-brand-blue-600' : 'bg-gray-300'}`}
+                                    >
+                                        <div className={`w-4 h-4 bg-white rounded-full shadow-sm transition-transform ${settings.sendReadReceipts ? 'translate-x-6' : 'translate-x-0'}`} />
                                     </button>
                                 </div>
                             </div>
