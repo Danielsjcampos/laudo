@@ -57,16 +57,7 @@ app.use(helmet({
 }));
 
 app.use(cors({
-    origin: [
-        'http://localhost:5173',
-        'http://127.0.0.1:5173',
-        'http://localhost:3000',
-        'http://127.0.0.1:3000',
-        'http://localhost:3003',
-        'http://127.0.0.1:3003',
-        'https://laudo.2b.app.br',
-        'https://viewer.laudo.2b.app.br'
-    ],
+    origin: '*',
     credentials: true
 }));
 
@@ -74,15 +65,9 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(logMiddleware);
 
-// Servir arquivos estáticos de uploads com headers corretos para OHIF/SharedArrayBuffer
-app.use('/uploads', express.static(path.join(process.cwd(), 'uploads'), {
-    setHeaders: (res, path, stat) => {
-        res.set('Cross-Origin-Resource-Policy', 'cross-origin');
-        res.set('Access-Control-Allow-Origin', '*');
-        res.set('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-        res.set('Cache-Control', 'public, max-age=3600'); // Cache por 1 hora
-    }
-}));
+
+
+
 
 // Painel de Monitoramento do Core Engine
 app.get('/', getDashboard);
@@ -105,10 +90,22 @@ app.use('/api/clinics', clinicsRoutes);
 app.use('/api/messages', messageRoutes);
 app.use('/api/doctors', doctorsRoutes);
 
-// Rotas Básicas para Health Check
+// Rota Básicas para Health Check
 app.get('/health', (req, res) => {
     res.json({ status: 'ok', timestamp: new Date(), service: 'LaudoDigital Backend' });
 });
+
+// Servir arquivos estáticos de uploads com headers corretos para OHIF/SharedArrayBuffer
+app.use('/uploads', express.static(path.join(process.cwd(), 'uploads'), {
+    setHeaders: (res, path, stat) => {
+        res.set('Cross-Origin-Resource-Policy', 'cross-origin');
+        res.set('Cross-Origin-Opener-Policy', 'same-origin');
+        res.set('Cross-Origin-Embedder-Policy', 'require-corp');
+        res.set('Access-Control-Allow-Origin', '*');
+        res.set('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
+        res.set('Cache-Control', 'public, max-age=3600'); // Cache por 1 hora
+    }
+}));
 
 // Rota 404 Real-time Log
 app.use((req, res) => {
